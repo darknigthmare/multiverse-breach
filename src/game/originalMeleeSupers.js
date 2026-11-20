@@ -36,6 +36,33 @@ const heal = (range, healRatio, animationDuration, hitAt) => support(
 // These timings and distances belong to Mêlée. The manifest supplies the
 // move name, equipment, colour, identity, and base power for offensive moves.
 const profiles = new Map(Object.entries({
+  // Neon Requiem — root access disrupts, monowire sweeps, and Imani treats allies.
+  nyra_vale: targetZone('area', 281, 76, 3, 1.21, 0.5, 'glitched'),
+  jax_rook: sweep(151, 94, 0.96, 0.38, 3),
+  imani_quell: heal(169, 0.32, 1.38, 0.63),
+  // The corsair rallies her crew, the wrench shapes a beam, and the boiler vents on both sides.
+  elara_voss: buff(184, 1.24, 4.3, 1.05, 0.41),
+  bram_quill: line(354, 2, 1.2, 0.51),
+  merek_flint: radial(142, 3, 1.45, 0.67),
+  // Meridian — the thirteenth hour and the gear launcher jam different areas.
+  seraphine_meridius: targetZone('area', 246, 72, 2, 1.16, 0.5, 'glitched'),
+  lio_ferrante: targetZone('projectile', 295, 88, 2, 1.14, 0.48, 'glitched'),
+  brother_ors: radial(169, 3, 1.43, 0.65),
+  // Iron Tempest — radio orders, a rivet volley and a strike called ahead of the line.
+  mara_veylan: buff(226, 1.23, 4.7, 0.98, 0.4),
+  anton_rook: volley(313, 2, 1.19, 0.52),
+  ilya_cross: targetZone('area', 324, 92, 3, 1.34, 0.58),
+  // Helios 56 — ray emitter, comet pass and a rescue directive.
+  celeste_ray: line(409, 3, 1.25, 0.56),
+  nova_bell: targetZone('projectile', 296, 73, 2, 1.08, 0.44),
+  aura_7: heal(199, 0.33, 1.31, 0.6),
+  // Kemet — the Tribunal weighs a group, the sun staff draws a line and the spear sweeps forward.
+  nefra_balance: targetZone('area', 239, 102, 3, 1.3, 0.61),
+  khepri_sen: line(372, 3, 1.24, 0.55),
+  taset_lioness: sweep(144, 88, 1.02, 0.42),
+  // The civic flame heals and the Aquila steadies the shield line.
+  aurelia_marcellina: heal(181, 0.35, 1.35, 0.64),
+  cassian_varro: guard(144, 0.46, 4.2, 1.25, 0.54),
   // Imperium Aeternum — the augur disrupts a small patch of the front line.
   numa_corvinus: targetZone('area', 268, 86, 2, 1.22, 0.56, 'glitched'),
   // Aegea — the navigator cuts forward, the oracle disrupts a vision, the smith forges protection.

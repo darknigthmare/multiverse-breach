@@ -30,6 +30,7 @@ import { usesConfirmedSummonContactWave11 } from './combat/rosterSummonChoreogra
 // Final Fantasy Record Keeper ATB RPG Engine with Synergies & Status Effects
 import { captureRpgActionCommitment } from './rpgActionCommitment.js';
 import { RPG_ACTION_ATB_COST } from './rpgActionEconomy.js';
+import { isBriarQueen, isBriarQueenGuard } from './originalBriarQueenGuard.js';
 import { drawPixelSprite, drawPixelEnemy, drawBoss, drawCosmeticAtlasFrame, preloadSpriteSheetSrcs } from './renderer';
 import { combatBuffSource } from './combat/characterFormState';
 import { absorbBattleItemDamage, previewBattleItemDamage } from './battleItemShield';
@@ -1160,6 +1161,7 @@ export class EngineRpg {
         }
         target.rpgGuardTicks = Math.round(profile.duration * 60);
         target.rpgGuardReduce = profile.guardReduce;
+        if (isBriarQueen(target)) target.rpgBriarGuardApplied = target === actor && isBriarQueenGuard(actor, profile);
         if (target.rpgGuardTicks > 0 && target.rpgGuardReduce > 0) recordSummonEffect(summon?.effectContacts, target);
         this.particles.add(target.x, target.y - 20, 0, -1, color, 12, 45, 'text', 'GUARD');
       } else if (profile.effect === 'control') {
@@ -1628,6 +1630,7 @@ export class EngineRpg {
     actor.stateTimer = durationTicks;
     actor.rpgSpecialDurationTicks = abilityType === 'special' ? durationTicks : 0;
     actor.rpgSpecialImpactProgress = abilityType === 'special' ? Math.ceil(impactDelay * 60 / 1000) / durationTicks : 0;
+    if (isBriarQueen(actor)) actor.rpgBriarGuardPreparing = isBriarQueenGuard(actor, profile);
     this.faceTarget(actor, anchor);
     const meleeContact = profile.delivery === 'melee' && profile.effect === 'damage';
     // Edge clearance can force the approach onto the opposite side. Capture

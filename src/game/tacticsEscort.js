@@ -1,6 +1,7 @@
 import { HEROES_DB } from './heroes.js';
 import { getHeroSpriteSheetSrc, getSpriteSheetLayout } from './spriteAssets.js';
 import { KHIPU_WITNESS_ACTOR, KHIPU_WITNESS_ID } from './tacticsKhipuWitness.js';
+import { LANTERN_SHIP_ID, LANTERN_SHIP_UNIVERSE } from './tacticsCrownlessSea.js';
 
 const localized = (value, fallback) => {
   if (typeof value === 'string' && value.trim()) return { fr: value.trim(), en: value.trim() };
@@ -26,6 +27,16 @@ const ROLE_PROFILES = [
 ];
 
 export const resolveTacticsEscort = (stage = {}, roster = HEROES_DB, battlefieldEscort = {}) => {
+  if (battlefieldEscort.id === LANTERN_SHIP_ID && battlefieldEscort.universe === LANTERN_SHIP_UNIVERSE) {
+    const { id, name, role, universe } = battlefieldEscort;
+    return {
+      id, name, role, universe,
+      provisional: false, identitySource: 'mission', renderKind: 'lantern-ship',
+      sourceHeroId: null, sourceHeroName: null, sourceUniverse: universe, spritePath: null,
+      representation: { fr: 'Navire original de la mission.', en: 'Original mission vessel.' },
+      spriteHero: { id, name: name.fr, universe, tacticsHeight: 1.4 }
+    };
+  }
   const authored = stage.escort && typeof stage.escort === 'object' ? stage.escort : battlefieldEscort;
   const universe = authored.universe || stage.universe || 'Nexus de Convergence';
   const profile = ROLE_PROFILES.find(entry => entry.match.test(universe));
@@ -72,6 +83,7 @@ export const getTacticsEscortBriefing = (stage = {}, lang = 'fr', battlefieldEsc
 
 export const getTacticsEscortPose = escort => {
   if (!escort?.extracted) return escort?.state || 'idle';
+  if (escort.identity?.renderKind === 'lantern-ship') return 'idle';
   const layout = getSpriteSheetLayout(getHeroSpriteSheetSrc(escort, 'tactics'));
   if (Number.isInteger(layout?.rowByState?.extract)) return 'extract';
   if (Number.isInteger(layout?.rowByState?.victory)) return 'victory';

@@ -253,9 +253,10 @@ export function getCatastropheBeamGeometry({ x, feetY, groundY, facing = 1, reac
   };
 }
 
-export function samplePresentationScript(script, elapsedSeconds = 0) {
+export function samplePresentationScript(script, elapsedSeconds = 0, { reducedMotion = false } = {}) {
   if (!script?.beats?.length) return null;
-  const elapsed = clamp(Number(elapsedSeconds) || 0, 0, script.duration);
+  const heldPose = reducedMotion && Number.isFinite(script.reducedMotionAt);
+  const elapsed = heldPose ? script.reducedMotionAt * script.duration : clamp(Number(elapsedSeconds) || 0, 0, script.duration);
   const progress = elapsed / script.duration;
   let index = 0;
   while (index + 1 < script.beats.length && script.beats[index + 1].at <= progress) index += 1;
@@ -266,13 +267,18 @@ export function samplePresentationScript(script, elapsedSeconds = 0) {
   let stateStart = index;
   while (stateStart > 0 && script.beats[stateStart - 1].state === from.state) stateStart -= 1;
   const stateElapsed = Math.max(0, elapsed - script.beats[stateStart].at * script.duration);
-  const asset = resolveAsset(script.actor, from.state, from.frame, stateElapsed, script.phase, progress,
+  const reviewedLegacy = script.provenance?.kind === 'historical-iconic-duel-presentation';
+  const asset = reviewedLegacy ? {
+    ...script.sourceAsset, kind: 'reviewed-legacy-cell', actorId: script.heroId, state: from.state,
+    requestedState: from.state, dedicatedPhaseAsset: false,
+    ...getSpriteFrameForLayout(from.state, from.frame * 10, getSpriteSheetLayout(script.sourceAsset.sheet))
+  } : resolveAsset(script.actor, from.state, from.frame, stateElapsed, script.phase, progress,
     script.provenance?.kind === 'reviewed-base16-presentation');
   return {
     poseState: asset.state, frame: asset.col, asset,
-    x: mix('x'), y: mix('y'), scale: mix('scale'), opacity: mix('opacity'), progress,
+    x: heldPose ? 0 : mix('x'), y: heldPose ? 0 : mix('y'), scale: mix('scale'), opacity: heldPose ? 1 : mix('opacity'), progress,
     facing: script.phase === 'outro' && from.state === 'run' && script.beats.at(-1).x < script.beats[0].x ? -1 : 1,
     stateElapsed,
-    effect: { ...script.effect, active: progress >= script.effect.startsAt && progress <= script.effect.endsAt, progress: clamp((progress - script.effect.startsAt) / (script.effect.endsAt - script.effect.startsAt), 0, 1) }
+    effect: { ...script.effect, active: !heldPose && progress >= script.effect.startsAt && progress <= script.effect.endsAt, progress: clamp((progress - script.effect.startsAt) / (script.effect.endsAt - script.effect.startsAt), 0, 1) }
   };
 }

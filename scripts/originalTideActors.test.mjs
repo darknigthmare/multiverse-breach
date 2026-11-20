@@ -32,12 +32,12 @@ const lighthouseDefinition = enemies.find(({ actor }) => actor.id === lighthouse
 const noop = () => {};
 const stage = { mode: 'RPG', disableHazards: true, customBattle: { singleRoster: true, opponentControl: 'p2' } };
 
-function makeRpg(universe, enemyIds) {
+function makeRpg(universe, enemyIds, opponentControl = 'p2') {
   const catalog = buildCustomEnemyCatalog().filter(entry => entry.universe === universe && enemyIds.includes(entry.data.id));
   const data = buildCustomEnemyData(enemyIds.map(id => catalog.find(entry => entry.data.id === id).id), catalog);
   const particles = [];
   const engine = new EngineRpg(1040, 520, heroes.filter(actor => actor.universe === universe), data,
-    { add: (...args) => particles.push(args) }, noop, noop, { ...stage, universe });
+    { add: (...args) => particles.push(args) }, noop, noop, { ...stage, universe, customBattle: { ...stage.customBattle, opponentControl } });
   installSignatureDirector(engine, { mode: 'RPG' });
   return { engine, particles };
 }
@@ -152,10 +152,15 @@ test('the Briar Queen guards her side after confirmation and the guard reduces r
     assert.equal(engine.confirmTargeting(), true);
     assert.equal(source.atb, 0);
     assert.equal(source.specialCharge, 0);
+    assert.equal(source.rpgBriarGuardPreparing, true);
+    assert.equal(source.rpgBriarGuardApplied, undefined);
     for (let tick = 0; tick < 17; tick++) engine.update();
     assert.equal(Boolean(ally.rpgGuardTicks), false);
+    assert.equal(source.rpgBriarGuardApplied, undefined);
     engine.update();
     assert.ok(source.rpgGuardTicks > 0 && ally.rpgGuardTicks > 0);
+    assert.equal(source.rpgBriarGuardApplied, true);
+    assert.equal(ally.rpgBriarGuardApplied, undefined);
     assert.equal(ally.rpgGuardReduce, 0.4);
     assert.equal(Boolean(excluded.rpgGuardTicks), false);
     assert.ok(engine.heroes.every(hero => !hero.rpgGuardTicks));
@@ -168,6 +173,56 @@ test('the Briar Queen guards her side after confirmation and the guard reduces r
     const unguarded = ally.currentHp;
     engine.applyDamage(striker, ally, 100);
     assert.ok(protectedDamage > 0 && unguarded - ally.currentHp > protectedDamage);
+  } finally {
+    engine.dispose();
+  }
+});
+
+test('another guard can overwrite the Queen’s protection without borrowing her wreaths', () => {
+  const allyId = 'valedor_shattered_crown:dragon_du_pic_creux';
+  const { engine } = makeRpg(valedor, [queen, allyId]);
+  try {
+    const [source, ally] = engine.enemies;
+    source.atb = source.specialCharge = 100;
+    assert.equal(engine.beginTargeting(source, 'special', 'enemy'), true);
+    assert.equal(engine.confirmTargeting(), true);
+    for (let tick = 0; tick < 18; tick++) engine.update();
+    assert.equal(source.rpgBriarGuardApplied, true);
+    const borrowedGuard = getRpgActionProfile(ally, 'special', 'enemy', {}, {
+      name: 'Forêt défensive', type: 'shield', targeting: { effect: 'guard', targetSide: 'ally', shape: 'group', duration: 8, reduce: 0.3 }
+    });
+    engine.applyRpgImpact(ally, borrowedGuard, [source], '#ff7700', 'special');
+    assert.equal(source.rpgGuardTicks, 480);
+    assert.equal(source.rpgGuardReduce, 0.3);
+    assert.equal(source.rpgBriarGuardApplied, false);
+  } finally {
+    engine.dispose();
+  }
+});
+
+test('the Queen’s CPU cast uses the same animation commitment through an interrupted and a completed turn', () => {
+  const { engine } = makeRpg(valedor, [queen], 'cpu');
+  try {
+    const [source] = engine.enemies;
+    source.summonUsed = true;
+    const ready = () => {
+      source.atb = source.specialCharge = 100;
+      engine.enemyGlobalRecovery = 0;
+    };
+    ready();
+    engine.update();
+    assert.equal(source.rpgBriarGuardPreparing, true);
+    assert.equal(source.actionPending, true);
+    engine.cancelActorActions(source);
+    for (let tick = 0; tick < 80; tick++) engine.update();
+    assert.equal(Boolean(source.rpgBriarGuardApplied), false);
+    assert.equal(Boolean(source.rpgGuardTicks), false);
+    ready();
+    engine.update();
+    assert.equal(source.actionPending, true);
+    for (let tick = 0; tick < 18; tick++) engine.update();
+    assert.equal(source.rpgBriarGuardApplied, true);
+    assert.ok(source.rpgGuardTicks > 0);
   } finally {
     engine.dispose();
   }

@@ -210,7 +210,7 @@ export class TacticsVerticalRuntime {
     else if (!human) reason = 'Tour de l’adversaire';
     else if (e.paused) reason = 'Combat en pause';
     else if (e.actionPhase === 'moving') reason = 'Déplacement en cours';
-    else if (!selected?.walkable) reason = 'Surface impraticable';
+    else if (!selected?.walkable || (e.actionPhase === 'move' && this.pathOptions(e.activeUnit).isBlocked?.(selected))) reason = 'Surface impraticable';
     else if (e.actionPhase === 'move' && occupied) reason = 'Surface occupée';
     else if (!reachable) reason = e.actionPhase === 'move' ? 'Hors budget ou aucun passage praticable' : 'Hors portée ou ligne de vue obstruée';
     return {
@@ -267,7 +267,12 @@ export class TacticsVerticalRuntime {
     return surface.moveCost;
   }
   pathOptions(unit, destination = null) {
+    const { battlefield, escortUnit } = this.engine;
+    const escortLayer = battlefield.escort?.terrainLayer;
     return { unit,
+      ...(escortLayer ? {
+        isBlocked: surface => unit === escortUnit ? surface.layerId !== escortLayer : surface.layerId === escortLayer
+      } : {}),
       isOccupied: surface => surface.id !== destination && this.occupied(surface.x, surface.y, unit, surface.id),
       getMoveCost: surface => this.moveCost(surface, unit) };
   }
@@ -789,7 +794,10 @@ export class TacticsVerticalRuntime {
       isOccupied: surface => blockers.some(entry => this.unitOccupies(entry.unit, surface.x, surface.y, surface.id))
     };
     const nextStep = this.getEscortRoute(escort, escortOptions)?.path[1];
-    const adjacent = new Set(getTerrainNeighbors(this.terrain, escort, escortOptions)
+    const supportOptions = e.battlefield.escort?.terrainLayer
+      ? { ...this.pathOptions(unit), isOccupied: escortOptions.isOccupied }
+      : escortOptions;
+    const adjacent = new Set(getTerrainNeighbors(this.terrain, escort, supportOptions)
       .filter(neighbor => neighbor.surfaceId !== nextStep).map(neighbor => neighbor.surfaceId));
     const remaining = Math.max(0, e.movementBudget - e.movementSpent);
     const plans = this.reachable(unit, Infinity);

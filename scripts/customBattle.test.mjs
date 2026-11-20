@@ -10,6 +10,7 @@ const projectRoot = path.resolve(scriptDirectory, '..');
 const customBattleModeSource = readFileSync(path.join(projectRoot, 'src/components/CustomBattleMode.jsx'), 'utf8');
 const gameCanvasSource = readFileSync(path.join(projectRoot, 'src/components/GameCanvas.jsx'), 'utf8');
 const hubScreenSource = readFileSync(path.join(projectRoot, 'src/components/HubScreen.jsx'), 'utf8');
+const hubCommandDeckSource = readFileSync(path.join(projectRoot, 'src/components/HubCommandDeck.jsx'), 'utf8');
 const engineRpgSource = readFileSync(path.join(projectRoot, 'src/game/engineRpg.js'), 'utf8');
 const engineTacticsSource = readFileSync(path.join(projectRoot, 'src/game/engineTactics.js'), 'utf8');
 const indexCssSource = readFileSync(path.join(projectRoot, 'src/index.css'), 'utf8');
@@ -167,7 +168,9 @@ test('hero resonance belongs to Arsenal and keeps shared hero cross-links', () =
   assert.equal(nexusGroup.includes("id: 'roster'"), false);
   assert.equal(arsenalGroup.includes("id: 'roster'"), true);
   assert.equal((hubScreenSource.match(/\{ id: 'roster', label:/g) || []).length, 1);
-  assert.match(hubScreenSource, /openHeroArsenal\(hero\.id, 'roster'\)/);
+  assert.match(hubScreenSource, /<SquadMemberCard\b[^>]*onOpen=\{openHeroArsenal\}/);
+  assert.match(hubScreenSource, /<SquadReserveCard\b[^>]*onOpen=\{openHeroArsenal\}/);
+  assert.match(hubCommandDeckSource, /onOpen\(hero\.id, 'roster'\)/);
   assert.match(hubScreenSource, /openHeroArsenal\(selectedHero\.id, 'inventory'\)/);
   assert.match(hubScreenSource, /openHeroArsenal\(selectedHero\.id, 'party'\)/);
 });

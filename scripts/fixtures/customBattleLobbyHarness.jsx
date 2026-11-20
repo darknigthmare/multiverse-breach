@@ -29,6 +29,7 @@ export function Fixture() {
   const [collection, setCollection] = useState({ archives: [archive], customBattlePreset: { playerTeamIds: activeTeam } });
   const [exitRequest, setExitRequest] = useState(0);
   const [mounted, setMounted] = useState(true);
+  const [paused, setPaused] = useState(false);
   useEffect(() => { window.__customLobbyQA.collection = collection; }, [collection]);
   return <>
     <GameDisplayPreferencesSync />
@@ -36,9 +37,14 @@ export function Fixture() {
     <main className="custom-lobby-fixture">
       {mounted && <CustomBattleMode lang={lang} heroes={heroes} unlockedHeroes={unlockedHeroes} activeTeam={activeTeam}
         portalCollection={collection} setPortalCollection={setCollection} dedicatedSession sessionExitRequest={exitRequest}
+        sessionPaused={paused}
         onSessionStart={() => { window.__customLobbyQA.starts += 1; }}
         onSessionEnd={report => { window.__customLobbyQA.reports.push(report); }} />}
       <details className="custom-lobby-qa-controls"><summary>QA controls</summary>
+        <button type="button" onClick={() => {
+          setPaused(value => !value);
+          setCollection(previous => ({ ...previous, archives: previous.archives.map(entry => ({ ...entry })) }));
+        }}>Toggle pause and refresh collection</button>
         <button type="button" onClick={() => setExitRequest(value => value + 1)}>Request session exit</button>
         <button type="button" onClick={() => setMounted(value => !value)}>{mounted ? 'Unmount lobby' : 'Remount lobby'}</button>
       </details>

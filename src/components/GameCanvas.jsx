@@ -193,7 +193,11 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
   const sessionPaused = externalSessionPaused || ['briefing', 'controls', 'leave'].includes(activeDrawer);
   const completionGateRef = useRef(createCombatCompletionGate());
   const canvasRef = useRef(null);
-  const escortBriefing = useMemo(() => stage.mode === 'Tactics' ? getTacticsEscortBriefing(stage, lang) : '', [stage, lang]);
+  const escortBriefing = useMemo(() => {
+    if (stage.mode !== 'Tactics') return '';
+    const battlefield = getTacticsBattlefield(stage);
+    return battlefield.objective === 'escort' ? getTacticsEscortBriefing(stage, lang, battlefield.escort) : '';
+  }, [stage, lang]);
   const engineRef = useRef(null);
   const sessionPausedRef = useRef(sessionPaused);
   const simulationClockRef = useRef(null);

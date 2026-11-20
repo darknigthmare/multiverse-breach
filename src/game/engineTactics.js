@@ -25,6 +25,7 @@ import { getTacticsBattlefield, getTacticsMissionProfile } from './tacticsBattle
 import { getGeneratedStageTexturePattern } from './generatedStageAssets';
 import { faceGridUnitToward as faceUnitToward, getGridFacingVector, getGridFacingBonus } from './tacticalFacing.js';
 import { resolveTacticsEscort, getTacticsEscortPose } from './tacticsEscort.js';
+import { drawDeadCalmLanternShip } from './tacticsCrownlessSea.js';
 import { normalizeTacticsTerrain } from './tacticsTerrain.js';
 import { TacticsVerticalRuntime } from './tacticsVerticalRuntime.js';
 import { drawTacticsEnvironment, getTacticsEnvironmentProfile } from './tacticsEnvironmentRenderer.js';
@@ -4221,6 +4222,8 @@ export class EngineTactics {
       } else {
         drawPixelEnemy(ctx, unit.x, unit.y, actorForDraw, animTime, unit.facing, 68 * renderScale);
       }
+    } else if (entry.type === 'escort' && unit.identity?.renderKind === 'lantern-ship') {
+      drawDeadCalmLanternShip(ctx, unit, renderScale);
     } else {
       drawPixelSprite(ctx, unit.x, unit.y, actorForDraw, animTime, unit.facing, 72 * renderScale, 'tactics');
     }

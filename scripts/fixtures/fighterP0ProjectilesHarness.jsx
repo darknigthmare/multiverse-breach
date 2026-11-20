@@ -11,7 +11,9 @@ import './combatHarness.css';
 const query = new URLSearchParams(location.search);
 const heroId = query.get('actor');
 const side = query.get('side') === 'cpu' ? 'cpu' : 'player';
-if (!['raven_tt', 'starfire_tt'].includes(heroId)) throw Error('Choose a current P0 projectile identity');
+const wizard = ['harry', 'hermione'].includes(heroId);
+if (!wizard && !['raven_tt', 'starfire_tt'].includes(heroId)) throw Error('Choose a current P0 projectile identity');
+const gap = wizard ? 270 : 540;
 const ids = [heroId, 'tifa_ff7', 'cloud_ff7', 'barret_ff7'];
 const heroes = ids.map(id => {
   const actor = HEROES_DB.find(hero => hero.id === id);
@@ -87,7 +89,8 @@ EngineFighter.prototype.applyHit = function (actor, target, action, ...args) {
   const damage = originalHit.call(this, actor, target, action, ...args);
   if (this === audit.engine && audit.prepared && damage > 0) audit.hits.push({
     owner: identity(actor), target: identity(target), side: actor.side, damage,
-    canonSourceAbility: action.canonSourceAbility, delivery: action.delivery, elapsed: this.elapsed
+    canonSourceAbility: action.canonSourceAbility, delivery: action.delivery, elapsed: this.elapsed,
+    hitstun: target.hitstun
   });
   return damage;
 };
@@ -99,18 +102,20 @@ audit.prepare = () => {
   engine.hitStop = 0;
   engine.clearInputs();
   engine.projectiles.length = 0;
+  const sourceX = side === 'player' ? 160 : 800;
+  const direction = side === 'player' ? 1 : -1;
   for (const camp of ['player', 'cpu']) for (const actor of engine.getTeam(camp).fighters) Object.assign(actor, {
     state: 'idle', action: null, meter: 100, hitstun: 0, guardBreak: 0, invulnerable: 0,
     guarding: false, crouching: false, vx: 0, vy: 0, y: engine.groundY, currentHp: actor.maxHp,
     comboWindow: 0, comboStep: 0,
     // Inactive reserves lie inside the flight corridor: collision must still
     // select the actual active opponent, never a bench actor.
-    x: 480
+    x: wizard ? sourceX + direction * gap / 2 : 480
   });
   const actor = engine.getActive(side), target = engine.getOpponent(side);
-  actor.x = side === 'player' ? 160 : 800;
-  target.x = side === 'player' ? 700 : 260;
-  actor.facing = side === 'player' ? 1 : -1;
+  actor.x = sourceX;
+  target.x = sourceX + direction * gap;
+  actor.facing = direction;
   target.facing = -actor.facing;
   const originalParticle = engine.particles.add;
   engine.particles.add = function (...args) {
@@ -138,7 +143,7 @@ export default function Harness() {
   const [prepared, setPrepared] = useState(false);
   return <>
     <header className="combat-qa-toolbar">
-      <p>{heroId} · {side} · prepared 540px gap · actual F/P controls · procedural feedback, artwork unverified</p>
+      <p>{heroId} · {side} · prepared {gap}px gap · actual F/P controls · procedural feedback, artwork unverified</p>
       <button id="qa-prepare" disabled={prepared} onClick={() => { audit.prepare(); setPrepared(true); }}>Prepare</button>
       <button id="qa-pause" disabled={!prepared} onClick={() => setPaused(value => !value)}>{paused ? 'Resume' : 'Pause'}</button>
     </header>

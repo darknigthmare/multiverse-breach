@@ -1,4 +1,6 @@
-// Concrete RPG secondaries for ordinary enemies in the original campaign.
+import { ORIGINAL_UNIVERSE_DEFINITIONS } from './originalUniverseWave.js';
+
+// Concrete RPG secondaries for the original campaign.
 // Adapts the declared weapon and signature to the effects the RPG supports.
 const secondary = (name, type, targeting, dmg = 1.45, statusEffect = null) => Object.freeze({
   name, type, targeting: Object.freeze(targeting), dmg, cd: 3,
@@ -397,4 +399,50 @@ export function getOriginalCampaignEnemySecondary(actor) {
   }
   if (actor.contentPackId !== undefined || actor.lore !== source.lore) return null;
   return source.action;
+}
+
+// These are the boss encounters attached to the RPG mission of each world.
+// Their separate phase signatures remain on the existing special command.
+const bossSecondaries = new Map(Object.entries({
+  'neon_requiem:omnia_citymind_of_nadir_9': disruption('Effacement de quartier', 0),
+  'aether_crown:crown_of_storms_leviathan_engine': radial('Mise à vide des chaudières', 159),
+  'meridian_clockwork:chronophage_of_the_last_meridian': disruption('Dévoration d’un instant', 0),
+  'iron_tempest:moloch_continental_landship': line('Batteries du flanc', 52),
+  'helios_56:helio_1_smiling_sun_reactor': zone('Fuite de fusion', 118, 'radiated'),
+  'kemet_devoured_sun:apep_devoreur_de_l_aube': radial('Sillage des anneaux', 166),
+  'imperium_aeternum:collecteur_d_orcus': disruption('Perception de la dette', 0),
+  'aegea_moirai:typhon_tempete_des_cent_voix': cone('Souffle de tempête', 54),
+  'nine_realms_last_twilight:jormungandr_anneau_du_dernier_crepuscule': radial('Balayage de la Mer-Anneau', 182),
+  'tawantinsuyu_split_sun:pachakuti_du_soleil_noir': zone('Onde du Puits solaire', 109),
+  'yomi_no_kage:porte_de_yomi_aux_mille_ombres': secondary('Aspiration des noms', 'glitch', {
+    delivery: 'area', shape: 'area', areaRadius: 98
+  }, 0, 'glitched'),
+  'mandate_nine_heavens:usurpateur_du_neuvieme_ciel': line('Sceau de l’édit', 45, 'beam'),
+  'mythos_primordia:le_dieu_d_avant_les_noms': selfBuff('Appel à la première Foi', 1.19),
+  'crownless_sea:kraken_sans_couronne': contact('Fouet du tentacule avant'),
+  'aetherion_seven_laws:le_sort_non_ecrit': zone('Dérive du Cercle blanc', 124, 'glitched'),
+  'infernum_nine_pits:trone_rouge_du_premier_peche': cone('Bouche du combustible', 47),
+  'ilyr_concordat:l_architecte_pale': line('Panneau de compression', 58, 'beam'),
+  'drowned_testament:le_dormeur_derriere_la_maree': radial('Ressac du rêve', 173, 'glitched'),
+  'valedor_shattered_crown:vaelgor_premier_wyrm': cone('Souffle des Sept Fragments', 63),
+  'aevum_fracture:moteur_de_l_histoire_unique': line('Coupure d’une ligne', 47, 'beam')
+}));
+
+const manifestBosses = new Map(ORIGINAL_UNIVERSE_DEFINITIONS.flatMap(world => [...world.bosses, world.worldBoss]
+  .filter(boss => bossSecondaries.has(boss.id)).map(boss => [boss.id, boss])));
+
+export function getOriginalCampaignBossSecondary(actor) {
+  const source = manifestBosses.get(actor?.id);
+  if (!source || actor.universe !== source.universe || actor.name !== source.name || actor.weapon !== source.weapon
+    || actor.combatRole !== source.combatRole || actor.production?.id !== source.production.id
+    || actor.production.isWorldBoss !== source.production.isWorldBoss
+    || (actor.sourceUniverse != null && actor.sourceUniverse !== source.universe)
+    || (actor.sourceId != null && actor.sourceId !== source.id)
+    || (actor.sourceHeroId != null && actor.sourceHeroId !== source.id)
+    || (actor.isBoss != null && actor.isBoss !== true)
+    || (actor.isWorldBoss != null && actor.isWorldBoss !== source.production.isWorldBoss)) return null;
+  const signature = actor.special;
+  if (typeof signature !== 'object' || !signature || Object.keys(signature).length !== 2
+    || signature.fr !== source.special.fr || signature.en !== source.special.en) return null;
+  return bossSecondaries.get(source.id);
 }

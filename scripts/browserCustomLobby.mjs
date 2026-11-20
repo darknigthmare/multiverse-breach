@@ -227,7 +227,22 @@ try {
             assert.equal(handoff.custom.skipPreMatchInTraining, true);
           }
         }
-        record.handoffs.push({ mode, prepared, handoff });
+        await page.evaluate(() => { window.__customLobbyQA.originalHandoff = window.__customLobbyQA.handoff; });
+        const controls = page.getByText('QA controls', { exact: true });
+        await controls.click();
+        const refresh = page.getByRole('button', { name: 'Toggle pause and refresh collection' });
+        for (const paused of [true, false]) {
+          await refresh.click();
+          await page.waitForFunction(expected => Boolean(window.__customLobbyQA.handoff.paused) === expected, paused);
+          const unchanged = await page.evaluate(() => {
+            const { handoff, originalHandoff } = window.__customLobbyQA;
+            return handoff.mode === 'Fighter' ? handoff.config === originalHandoff.config
+              : handoff.stage === originalHandoff.stage && handoff.team === originalHandoff.team && handoff.custom === originalHandoff.custom;
+          });
+          assert.equal(unchanged, true, `${mode} keeps its launch configuration on collection refresh during pause and resume`);
+        }
+        await controls.click();
+        record.handoffs.push({ mode, prepared, handoff, preservedAcrossPauseAndResume: true });
         await page.getByRole('button', { name: 'Return to preparation', exact: true }).click();
         await root.waitFor(); await focused(root.locator('.custom-lobby-actions button').last());
         assert.deepEqual(await presetOf(page), prepared, 'return preserves the complete preparation');
@@ -239,6 +254,16 @@ try {
       await page.screenshot({ path: resolve(evidence, `${name}-rules.png`) });
       const saved = await presetOf(page);
       await page.getByText('QA controls', { exact: true }).click();
+      const refresh = page.getByRole('button', { name: 'Toggle pause and refresh collection' });
+      const launch = root.locator('.custom-lobby-actions button').last();
+      await refresh.click();
+      assert.equal(await launch.isDisabled(), true);
+      const blocked = root.locator('.custom-lobby-launch-status');
+      assert.equal(await launch.getAttribute('aria-describedby'), await blocked.getAttribute('id'));
+      assert.equal(await blocked.textContent(), fr ? 'Reprends la session pour lancer le combat.' : 'Resume the session to launch the battle.');
+      await refresh.click();
+      assert.equal(await launch.isEnabled(), true);
+      assert.equal(await blocked.count(), 0);
       await page.getByRole('button', { name: 'Unmount lobby', exact: true }).click();
       await root.waitFor({ state: 'detached' });
       await page.getByRole('button', { name: 'Remount lobby', exact: true }).click();

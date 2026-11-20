@@ -1,5 +1,6 @@
 import { createReducedMotionReader } from './reducedMotion.js';
 import { getOriginalBossMotionId } from './originalBossMotionIdentity.js';
+import { BRIAR_QUEEN } from './originalBriarQueenGuard.js';
 
 const SIZE = 1024;
 const reducedMotion = createReducedMotionReader();
@@ -24,6 +25,7 @@ const bosses = new Map([
     sheet: '/sprites/generated/bosses/ilyr-concordat/cuirasse-nul-oblique.png',
     draw: drawObliqueScreens,
   }],
+  [BRIAR_QUEEN.id, { ...BRIAR_QUEEN, deployment: getBriarWreathDeployment, draw: drawBriarWreaths }],
 ]);
 
 // The upper vortex bends around its horizontal cut at y=247. Pixels below
@@ -103,7 +105,32 @@ const obliquePanels = [
     hinge: [[480, 339], [599, 309]], travel: [0.32, 0.23],
   },
 ];
-function easePanelDeployment(value) {
+
+// Keep the oak staff and the Queen's hands on the fixed layer. Each crown
+// stretches away from the original bough that connects it to the body.
+const briarWreaths = [
+  {
+    bounds: [80, 386, 245, 298],
+    outline: [[237, 386], [285, 404], [318, 434], [325, 474], [325, 619], [294, 663],
+      [238, 684], [154, 658], [103, 632], [80, 577], [86, 485], [113, 430], [149, 403]],
+    hinge: [[325, 474], [325, 619]], travel: [-0.16, -0.07],
+  },
+  {
+    bounds: [582, 32, 284, 264],
+    outline: [[582, 163], [595, 106], [644, 62], [680, 32], [754, 35], [809, 58], [852, 102],
+      [866, 169], [865, 218], [834, 265], [790, 296], [765, 296], [746, 270], [728, 276],
+      [718, 296], [630, 296], [592, 258], [582, 217]],
+    hinge: [[790, 296], [630, 296]], travel: [0.07, -0.17],
+  },
+  {
+    bounds: [709, 394, 243, 269],
+    outline: [[713, 435], [745, 407], [778, 394], [827, 395], [885, 420], [927, 451],
+      [952, 514], [950, 573], [925, 624], [875, 663], [800, 662], [766, 644], [709, 608]],
+    hinge: [[709, 608], [713, 435]], travel: [0.16, -0.09],
+  },
+];
+
+function easeDeployment(value) {
   const amount = Math.min(1, Math.max(0, value));
   return amount * amount * (3 - 2 * amount);
 }
@@ -130,6 +157,22 @@ function drawSegment(ctx, image, segment) {
   ctx.clip();
   const [x, y, width, height] = segment.bounds;
   ctx.drawImage(image, x, y, width, height, x, y, width, height);
+}
+
+function drawHingedSegment(ctx, image, segment, dx, dy) {
+  const [from, to] = segment.hinge;
+  const width = to[0] - from[0];
+  const rise = to[1] - from[1];
+  const size = Math.hypot(width, rise);
+  const nx = -rise / size;
+  const ny = width / size;
+  const plane = from[0] * nx + from[1] * ny;
+  ctx.save();
+  // Displacement is proportional to the distance from the original seam.
+  // Both ends of that seam stay fixed, including non-horizontal hinges.
+  ctx.transform(1 + dx * nx, dy * nx, dx * ny, 1 + dy * ny, -dx * plane, -dy * plane);
+  drawSegment(ctx, image, segment);
+  ctx.restore();
 }
 
 function drawPneuma(ctx, image, state, time) {
@@ -177,10 +220,10 @@ function drawOrochi(ctx, image, state, time) {
 function getObliqueDeployment(actor) {
   // The RPG guard counter begins at the accepted impact. The panels stay
   // deployed while the screens protect the group and fold as they expire.
-  if (actor.rpgGuardTicks > 0) return easePanelDeployment(actor.rpgGuardTicks / 30);
+  if (actor.rpgGuardTicks > 0) return easeDeployment(actor.rpgGuardTicks / 30);
   if (actor.state === 'special' && actor.actionPending && actor.rpgSpecialDurationTicks > 0) {
     const progress = 1 - actor.stateTimer / actor.rpgSpecialDurationTicks;
-    return 0.84 * easePanelDeployment(progress / (actor.rpgSpecialImpactProgress || 0.4));
+    return 0.84 * easeDeployment(progress / (actor.rpgSpecialImpactProgress || 0.4));
   }
   return actor.guarding || actor.state === 'defense' ? 1 : 0;
 }
@@ -190,21 +233,27 @@ function drawObliqueScreens(ctx, image, state, time, actor) {
   const tension = Math.sin(time * (state === 'hit' ? 0.19 : 0.054)) * 0.035 * (1 - deployment);
   drawFixedBody(ctx, image, obliquePanels);
   for (const [index, panel] of obliquePanels.entries()) {
-    const [from, to] = panel.hinge;
-    const width = to[0] - from[0];
-    const rise = to[1] - from[1];
-    const size = Math.hypot(width, rise);
-    const nx = -rise / size;
-    const ny = width / size;
-    const plane = from[0] * nx + from[1] * ny;
     const dx = panel.travel[0] * deployment + (index === 0 ? tension : -tension);
     const dy = panel.travel[1] * deployment;
-    ctx.save();
-    // Each pixel moves with its signed distance from the panel hinge. The
-    // entire hinge line stays in place, including the oblique rear seam.
-    ctx.transform(1 + dx * nx, dy * nx, dx * ny, 1 + dy * ny, -dx * plane, -dy * plane);
-    drawSegment(ctx, image, panel);
-    ctx.restore();
+    drawHingedSegment(ctx, image, panel, dx, dy);
+  }
+}
+
+function getBriarWreathDeployment(actor) {
+  if (actor.rpgBriarGuardApplied && actor.rpgGuardTicks > 0) return easeDeployment(actor.rpgGuardTicks / 36);
+  if (actor.state !== 'special' || !actor.actionPending || !actor.rpgBriarGuardPreparing
+    || !(actor.rpgSpecialDurationTicks > 0 && actor.rpgSpecialImpactProgress > 0 && Number.isFinite(actor.stateTimer))) return 0;
+  const progress = 1 - actor.stateTimer / actor.rpgSpecialDurationTicks;
+  return 0.68 * easeDeployment(progress / actor.rpgSpecialImpactProgress);
+}
+
+function drawBriarWreaths(ctx, image, _state, _time, actor, deployment) {
+  drawFixedBody(ctx, image, briarWreaths);
+  const protecting = actor.rpgBriarGuardApplied && actor.rpgGuardTicks > 0;
+  for (const [index, wreath] of briarWreaths.entries()) {
+    const sway = protecting ? Math.sin(actor.rpgGuardTicks * 0.12 + index * 1.8) * 0.09 : 0;
+    const extension = deployment * (1 + sway);
+    drawHingedSegment(ctx, image, wreath, wreath.travel[0] * extension, wreath.travel[1] * extension);
   }
 }
 
@@ -217,12 +266,14 @@ export function drawOriginalStaticBossMotion(ctx, actor, image, animTime, x, y, 
   const projected = actor.sourceUniverse === boss.universe && actor.spriteSource === boss.sheet;
   const url = new URL(image.currentSrc || image.src, 'https://sprite.invalid');
   if ((!native && !projected) || url.pathname !== boss.sheet) return false;
+  const deployment = boss.deployment?.(actor);
+  if (deployment === 0) return false;
   const time = Math.max(0, Number.isFinite(animTime) ? animTime : 0);
   const state = actor.state === 'special' ? 'attack' : actor.state;
   ctx.save();
   ctx.translate(x, y);
   ctx.scale(width / SIZE, height / SIZE);
-  boss.draw(ctx, image, state, time, actor);
+  boss.draw(ctx, image, state, time, actor, deployment);
   ctx.restore();
   return true;
 }

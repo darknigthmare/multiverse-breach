@@ -32,6 +32,7 @@ import { resolveFighterTagEntry } from './fighterTagPlacement.js';
 import { resolveMeleeSuper, resolveCombatAbility, resolveCombatPresentation } from './combatIdentity.js';
 import { samplePresentationScript, sampleCatastropheMotion, getCatastropheBeamGeometry } from './combat/presentationCatalog.js';
 import { drawOriginalFighterPresentationEffect, resolveOriginalFighterPresentation } from './combat/originalFighterPresentations.js';
+import { drawHistoricalIconicDuelEffect, resolveHistoricalIconicP0DuelPresentation } from './combat/historicalIconicP0DuelPresentations.js';
 import { hasSelectedCombatSource, prefersCurrentCanonCombatKit } from './combat/sourceKitPriority.js';
 import { emitCanonHeroAttackEffect, resolveCanonHeroAttackEffect } from './canonHeroAttackEffects.js';
 import { drawP0CanonParticle } from './canonP0ParticleRenderer.js';
@@ -56,6 +57,9 @@ const resolveSide = side => side === 'player' ? 'player' : ['cpu', 'opponent'].i
 const live = actor => !!actor && Number.isFinite(actor.currentHp) && actor.currentHp > 0 && actor.state !== 'dead';
 const positioned = actor => Number.isFinite(actor?.x) && Number.isFinite(actor?.y);
 const MAX_FIGHTER_PROJECTILES = 64;
+const CANON_PROJECTILE_TYPES = new Map([
+  ['starbolt', 'starbolt'], ['shadow', 'shadow_wisp'], ['spell', 'spell_bolt']
+]);
 const lerp = (from, to, amount) => from + (to - from) * amount;
 const faceOpponent = (fighter, target) => {
   const dx = target?.x - fighter?.x;
@@ -169,14 +173,16 @@ const createFighter = (hero, side, index, width, groundY, remainingShot) => {
 
 const createPresentationEntry = (fighter, side, actorPhase) => {
   const identity = resolveCombatPresentation(fighter, actorPhase);
-  const original = resolveOriginalFighterPresentation(fighter, actorPhase);
-  if (original) {
-    identity.name = original.name;
+  const authored = resolveOriginalFighterPresentation(fighter, actorPhase)
+    || resolveHistoricalIconicP0DuelPresentation(fighter, actorPhase);
+  if (authored) {
+    identity.name = authored.name;
     identity.description = fighter.universe;
-    identity.duration = original.duration;
-    identity.presentationScript = original;
+    identity.duration = authored.duration;
+    identity.presentationScript = authored;
+    if (authored.provenance.kind === 'historical-iconic-duel-presentation') identity.sourceAbility = null;
     identity.provenance = { ...identity.provenance, presentationAuthored: true,
-      presentationSourceReference: original.sourceReference, visualFidelity: original.provenance.visualFidelity };
+      presentationSourceReference: authored.sourceReference, visualFidelity: authored.provenance.visualFidelity };
   }
   return { side, actorPhase, identity, script: identity.presentationScript };
 };
@@ -804,10 +810,13 @@ export class EngineFighter {
   }
 
   getPersonalSuperSpec(fighter) {
-    const identity = resolveMeleeSuper(fighter);
-    if (!identity) return null;
+    const sourceIdentity = resolveMeleeSuper(fighter);
+    if (!sourceIdentity) return null;
+    const iconic = resolveHistoricalIconicP0FighterAction(fighter, sourceIdentity);
+    const identity = iconic ? { ...sourceIdentity, range: iconic.range, delivery: iconic.delivery } : sourceIdentity;
     return {
       identity,
+      ...(iconic ? { canonSourceAbility: true, canonSourceFeedback: iconic.feedback } : {}),
       duration: identity.duration,
       hitAt: identity.hitAt,
       base: 23 * identity.multiplier,
@@ -1366,8 +1375,8 @@ export class EngineFighter {
       radius,
       sourceJadeGyrodiskWave17:!!jadeGloveOriginWave17,
       ...(starfireLaunch ? { starfireLaunch } : {}),
-      canonParticleType: starfireLaunch || action.canonSourceFeedback?.kind === 'starbolt' ? 'starbolt'
-        : action.canonSourceFeedback?.kind === 'shadow' ? 'shadow_wisp' : action.reservedShot ? 'bullet' : null,
+      canonParticleType: starfireLaunch ? 'starbolt'
+        : CANON_PROJECTILE_TYPES.get(action.canonSourceFeedback?.kind) || (action.reservedShot ? 'bullet' : null),
       ...(nativeVisual ? { visualElapsed: 0, visualOriginX: origin.x,
         visualFlightDistance: Math.max(1, Math.min(action.range, ((target?.x ?? fighter.x + direction * action.range) - fighter.x) * direction) - originDistance - radius - 32) } : {}),
       life,
@@ -1523,18 +1532,20 @@ export class EngineFighter {
       target.guarding = false;
       target.crouching = false;
       target.action = null;
-      target.hitstun = action.sequenceParent && !action.sequenceFinal ? .18 : action.type === 'super'
+      const spellImpact = projectile && action.canonSourceFeedback?.kind === 'spell';
+      const ordinaryHitstun = action.sequenceParent && !action.sequenceFinal ? .18 : action.type === 'super'
         ? 0.78
         : action.type === 'heavy'
           ? 0.42
           : action.type === 'assist'
             ? 0.34
             : 0.24;
+      target.hitstun = Math.max(ordinaryHitstun, spellImpact ? finiteOr(action.canonSourceFeedback.fighterHitstun, 0) : 0);
       target.state = 'hit';
       target.vx = hitDirection * knockback;
       target.vy = (action.sequenceParent && !action.sequenceFinal) || (action.meleeContact && !action.meleeContact.final) ? 0
         : action.type === 'super' ? -235 : action.type === 'heavy' ? -130 : -60;
-      this.playSfx(projectile && !action.reservedShot ? 'shoot' : 'hit');
+      this.playSfx(projectile && !action.reservedShot && !spellImpact ? 'shoot' : 'hit');
       this.spawnBurst(target.x, target.y - 60, attacker.secondaryColor || '#ff5a36', action.type === 'super' ? 26 : 12);
       this.hitStop = action.type === 'super' ? 0.1 : action.type === 'heavy' ? 0.055 : 0.025;
     }
@@ -2185,7 +2196,7 @@ export class EngineFighter {
       if (!fighter) return;
       const anchorX = finalScene ? this.width / 2 : side === 'player' ? this.width * 0.25 : this.width * 0.75;
       const entryElapsed = this.getPresentationEntryElapsed(entry, presentation);
-      const sample = script ? samplePresentationScript(script, entryElapsed) : null;
+      const sample = script ? samplePresentationScript(script, entryElapsed, { reducedMotion }) : null;
       const actorProgress = sample?.progress ?? clamp(entryElapsed / identity.duration, 0, 1);
       const original = script?.provenance?.kind === 'original-duel-presentation';
       const matchingBody = original && sample?.asset.sheet === script.sourceAsset.sheet;
@@ -2216,7 +2227,7 @@ export class EngineFighter {
         presentationProgress: actorProgress,
         presentationFrame: sample ? {
           sheet: sample.asset.sheet, columns: sample.asset.columns, rows: sample.asset.rows,
-          row: sample.asset.row, col: sample.asset.col
+          row: sample.asset.row, col: sample.asset.col, reviewedLegacyCell: sample.asset.kind === 'reviewed-legacy-cell'
         } : null
       };
       ctx.save();
@@ -2244,7 +2255,8 @@ export class EngineFighter {
         ctx.fillText(script?.name || identity.name, anchorX, this.height * 0.75, this.width * 0.44);
         ctx.fillStyle = '#b8c9d0';
         ctx.font = '11px "Share Tech Mono", monospace';
-        ctx.fillText(original ? fighter.universe : `${fighter.universe} · ${identity.sourceAbility?.name || ''}`, anchorX, this.height * 0.8, this.width * 0.44);
+        const sourceAction = original ? null : identity.sourceAbility?.name;
+        ctx.fillText(sourceAction ? `${fighter.universe} · ${sourceAction}` : fighter.universe, anchorX, this.height * 0.8, this.width * 0.44);
       }
     });
     ctx.restore();
@@ -2252,6 +2264,7 @@ export class EngineFighter {
 
   drawScriptedPresentationEffect(ctx, sample, identity, x, feetY, facing, phase = 'fatality') {
     if (!sample.effect.active || sample.effect.kind === 'none') return;
+    if (drawHistoricalIconicDuelEffect(ctx, sample, x, feetY, facing)) return;
     // These source-specific presentation poses already contain their gestures.
     // A cinematic has no accepted simulation contact. Do not fall through to
     // the generic body aura or invent a shot/hit for a native W12 finale.

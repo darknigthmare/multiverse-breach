@@ -1,4 +1,4 @@
-import React, { useEffect, useId, useMemo, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useId, useMemo, useRef, useState } from 'react';
 import GameCanvas from './GameCanvas';
 import FighterMode from './FighterMode';
 import CatalogPagination from './CatalogPagination.jsx';
@@ -38,6 +38,13 @@ const CUSTOM_BATTLE_COSMETIC_COLLECTION_KEYS = Object.freeze({
   introPose: 'introPoses',
   victoryPose: 'victoryPoses'
 });
+
+const LAUNCH_BLOCK_REASONS = {
+  paused: { fr: 'Reprends la session pour lancer le combat.', en: 'Resume the session to launch the battle.' },
+  squad: { fr: 'Ajoute un personnage à ton escouade dans Équipes.', en: 'Add a character to your squad in Teams.' },
+  opponent: { fr: 'Ajoute un adversaire dans Équipes.', en: 'Add an opponent in Teams.' },
+  threat: { fr: 'Ajoute une menace dans Équipes.', en: 'Add a threat in Teams.' }
+};
 
 const panelStyle = {
   padding: 14,
@@ -255,7 +262,8 @@ export default function CustomBattleMode({
   sessionExitRequest = 0,
   dedicatedSession = false
 }) {
-  const [phase, setPhase] = useState('setup');
+  const [launchedBattle, setLaunchedBattle] = useState(null);
+  const phase = launchedBattle ? (launchedBattle.fighterConfig ? 'fighter' : 'battle') : 'setup';
   const [lobbyStep, setLobbyStep] = useState(0);
   const lobbyId = useId();
   const stepRefs = useRef([]);
@@ -263,7 +271,7 @@ export default function CustomBattleMode({
   const launchButtonRef = useRef(null);
   const pendingStepFocusRef = useRef(null);
   const lastPhaseRef = useRef(phase);
-  const [runtimeNonce, setRuntimeNonce] = useState(0);
+  const runtimeNonceRef = useRef(0);
   const sessionActiveRef = useRef(false);
   const pendingBattleReportRef = useRef(null);
   const sessionExitRequestRef = useRef(sessionExitRequest);
@@ -307,9 +315,11 @@ export default function CustomBattleMode({
     if (phase !== 'setup') return;
     const pending = pendingStepFocusRef.current;
     pendingStepFocusRef.current = null;
+    const launchButton = launchButtonRef.current;
+    const returnTarget = launchButton && !launchButton.disabled ? launchButton : stepRefs.current[lobbyStep];
     const target = pending === 'panel' ? panelRef.current
       : pending === 'tab' ? stepRefs.current[lobbyStep]
-        : returnedFromBattle ? launchButtonRef.current : null;
+        : returnedFromBattle ? returnTarget : null;
     target?.focus({ preventScroll: true });
     target?.scrollIntoView({ block: pending === 'panel' ? 'start' : 'nearest' });
   }, [lobbyStep, phase]);
@@ -318,7 +328,8 @@ export default function CustomBattleMode({
   useEffect(() => {
     if (sessionExitRequestRef.current === sessionExitRequest) return;
     sessionExitRequestRef.current = sessionExitRequest;
-    setPhase('setup');
+    setLaunchedBattle(null);
+    pendingBattleReportRef.current = null;
     if (!sessionActiveRef.current) return;
     sessionActiveRef.current = false;
     onSessionEnd?.({ reason: 'abandoned' });
@@ -417,7 +428,7 @@ export default function CustomBattleMode({
     () => buildCustomEnemyData(preset.enemyIds, enemyCatalog),
     [enemyCatalog, preset.enemyIds]
   );
-  const runtimeStage = useMemo(() => buildCustomRuntimeStage({
+  const createRuntimeStage = useCallback(nonce => buildCustomRuntimeStage({
     preset,
     archive: selectedArchive,
     enemyData,
@@ -425,8 +436,9 @@ export default function CustomBattleMode({
     stageMusic: selectedStageMusic,
     fieldSuper: selectedFieldSuper,
     cosmetics: selectedCustomCosmetics,
-    nonce: runtimeNonce
-  }), [enemyData, preset, runtimeNonce, selectedArchive, selectedBattleMusic, selectedCustomCosmetics, selectedFieldSuper, selectedStageMusic]);
+    nonce
+  }), [enemyData, preset, selectedArchive, selectedBattleMusic, selectedCustomCosmetics, selectedFieldSuper, selectedStageMusic]);
+  const runtimeStage = useMemo(() => launchedBattle?.stage ?? createRuntimeStage(0), [createRuntimeStage, launchedBattle]);
   const tacticalTerrain = runtimeStage.tacticsBattlefieldId ? TACTICS_BATTLEFIELDS[runtimeStage.tacticsBattlefieldId] : null;
   const tacticalTerrainLabel = tacticalTerrain?.label?.[lang] || tacticalTerrain?.label?.fr;
 
@@ -443,20 +455,38 @@ export default function CustomBattleMode({
   };
 
   const returnToSetup = (reason = 'quit') => {
-    setPhase('setup');
+    setLaunchedBattle(null);
     endDedicatedSession({ ...pendingBattleReportRef.current, reason: reason === 'quit' ? 'abandoned' : 'completed', result: reason });
     pendingBattleReportRef.current = null;
   };
 
+  const launchBlock = sessionPaused ? 'paused'
+    : !preset.playerTeamIds.length ? 'squad'
+      : preset.mode === 'Fighter' && !preset.opponentTeamIds.length ? 'opponent'
+        : preset.mode !== 'Fighter' && !enemyData.customRoster.length ? 'threat' : null;
+  const launchBlockText = launchBlock ? LAUNCH_BLOCK_REASONS[launchBlock][lang === 'fr' ? 'fr' : 'en'] : '';
   const launch = () => {
-    if (sessionPaused) return;
-    if (!preset.playerTeamIds.length) return;
-    if (preset.mode === 'Fighter' && !preset.opponentTeamIds.length) return;
-    if (preset.mode !== 'Fighter' && !enemyData.customRoster.length) return;
+    if (launchBlock || sessionActiveRef.current) return;
+    // The active simulation owns its preparation until it returns to the lobby.
+    // A collection refresh can rebuild the preview while a combat is paused.
+    setLaunchedBattle({
+      stage: createRuntimeStage(++runtimeNonceRef.current),
+      team: preset.playerTeamIds,
+      fighterConfig: preset.mode === 'Fighter' ? {
+        playerTeamIds: preset.playerTeamIds,
+        opponentTeamIds: preset.opponentTeamIds,
+        opponentControl: preset.opponentControl,
+        archiveId: selectedArchive?.id || null,
+        battleMusicId: preset.battleMusicId,
+        stageMusicId: preset.stageMusicId,
+        fieldSuperId: preset.fieldSuperId,
+        cosmetics: selectedCustomCosmetics,
+        difficulty: preset.difficulty,
+        autoStart: true
+      } : null
+    });
     pendingBattleReportRef.current = null;
     beginDedicatedSession();
-    setRuntimeNonce(previous => previous + 1);
-    setPhase(preset.mode === 'Fighter' ? 'fighter' : 'battle');
     sound.playSfx('portal');
   };
 
@@ -465,7 +495,7 @@ export default function CustomBattleMode({
       <GameCanvas
         lang={lang}
         playerProfile={playerProfile}
-        activeTeam={preset.playerTeamIds}
+        activeTeam={launchedBattle.team}
         stage={runtimeStage}
         heroLevels={heroLevels}
         equippedGear={equippedGear}
@@ -495,29 +525,18 @@ export default function CustomBattleMode({
           lang={lang}
           heroes={heroes}
           unlockedHeroes={unlockedHeroes}
-          activeTeam={preset.playerTeamIds}
+          activeTeam={launchedBattle.team}
           heroLevels={heroLevels}
           portalCollection={portalCollection}
           setPortalCollection={setPortalCollection}
           hiddenUniverses={hiddenUniverses}
           disabledAssets={disabledAssets}
-          customConfig={{
-            playerTeamIds: preset.playerTeamIds,
-            opponentTeamIds: preset.opponentTeamIds,
-            opponentControl: preset.opponentControl,
-            archiveId: selectedArchive?.id || null,
-            battleMusicId: preset.battleMusicId,
-            stageMusicId: preset.stageMusicId,
-            fieldSuperId: preset.fieldSuperId,
-            cosmetics: selectedCustomCosmetics,
-            difficulty: preset.difficulty,
-            autoStart: true
-          }}
+          customConfig={launchedBattle.fighterConfig}
           onExit={() => returnToSetup('quit')}
           onSessionStart={beginDedicatedSession}
           onSessionEnd={(report = {}) => {
             endDedicatedSession(report);
-            if (report.reason === 'abandoned') setPhase('setup');
+            if (report.reason === 'abandoned') setLaunchedBattle(null);
           }}
           onPauseRequest={onPauseRequest}
           sessionPaused={sessionPaused}
@@ -802,12 +821,14 @@ export default function CustomBattleMode({
         type="button"
         className="btn-retro"
         onClick={launch}
-        disabled={!preset.playerTeamIds.length || (preset.mode === 'Fighter' ? !preset.opponentTeamIds.length : !enemyData.customRoster.length)}
+        disabled={Boolean(launchBlock)}
+        aria-describedby={launchBlock ? `${lobbyId}-launch-status` : undefined}
         style={{ justifySelf: 'stretch', padding: '13px 18px', borderColor: '#39c5bb', color: '#fff', background: 'linear-gradient(90deg, rgba(57,197,187,0.2), rgba(255,138,80,0.12))' }}
       >
         {lang === 'fr' ? `LANCER ${modeInfo.fr} — ${preset.opponentControl === 'p2' ? 'P2 LOCAL' : 'CPU'}` : `LAUNCH ${modeInfo.en} — ${preset.opponentControl === 'p2' ? 'LOCAL P2' : 'CPU'}`}
       </button>
         </div>
+        {lobbyStep === 3 && launchBlockText && <p id={`${lobbyId}-launch-status`} className="custom-lobby-launch-status" role="status">{launchBlockText}</p>}
       </footer>
     </div>
   );

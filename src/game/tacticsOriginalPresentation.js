@@ -7,6 +7,12 @@ export const TACTICS_ORIGINAL_MATERIALS = Object.freeze({
   'ashline-gravel': material('gravel', '#9b9986', '#817f6d', '#6d6251', '#413b30', '#d1cbbb', '#e5d9bc', '#b8ad92', 'strata'),
   'ashline-rock': material('rock', '#77776b', '#606458', '#4f5148', '#32382e', '#aaa792', '#cec2a2', '#a5a18a', 'strata'),
   'ashline-planks': material('wood', '#97764d', '#7b5d3d', '#674b33', '#3c2e23', '#c49f6d', '#dfbd83', '#b99a67'),
+  'dead-calm-channel': material('water', '#265a69', '#204656', '#163643', '#101f29', '#6caca9', '#a4cbc1', '#699da0'),
+  'dead-calm-silt': material('mud', '#635249', '#51443c', '#483e36', '#2d2a28', '#968073', '#bca496', '#a18b7d'),
+  'dead-calm-shingle': material('gravel', '#80847b', '#68766e', '#5e6460', '#3b4745', '#a1b4aa', '#c2cec0', '#a2b4ab', 'strata'),
+  'dead-calm-towpath': material('wood', '#887458', '#6b624d', '#594f43', '#392e26', '#b39b75', '#dbbf8b', '#ad9370'),
+  'dead-calm-wreck': material('wood', '#976343', '#75513a', '#513a2e', '#392820', '#b8815a', '#dec09a', '#b88d63'),
+  'dead-calm-reef': material('rock', '#525f63', '#3e535d', '#35444e', '#233039', '#788789', '#a7b9b2', '#7b9393', 'strata'),
   'greywake-causeway': material('stone', '#3c5d65', '#2b4852', '#28424c', '#172632', '#63949c', '#81c1cb', '#71a9b6'),
   'greywake-crypt': material('rock', '#2d424a', '#223640', '#1f2e3d', '#15212b', '#527581', '#72a4ab', '#5f8e95'),
   'greywake-gallery': material('panel', '#494b6b', '#383953', '#2e304f', '#1f2038', '#8c7fa0', '#d7abef', '#a184bc'),
@@ -32,6 +38,11 @@ export const TACTICS_ORIGINAL_ENVIRONMENTS = Object.freeze({
     sky: ['#59645f', '#a9ac98'], ground: '#4f5141', haze: '#c2b995',
     far: '#7c8270', near: '#5d6852', ridge: 'hills', flora: 'steppe',
     accent: '#d0b987', architecture: 'none'
+  },
+  'dead-calm-graveyard': {
+    sky: ['#102a43', '#45707a'], ground: '#263d4a', haze: '#a7bbad',
+    far: '#4a6570', near: '#334d5b', ridge: 'lowlands', flora: 'none',
+    accent: '#e3b66f', architecture: 'dead-calm-wrecks'
   },
   'greywake-observatory': {
     sky: ['#071b24', '#172b3b'], ground: '#182b36', haze: '#9c88b5',
@@ -63,6 +74,31 @@ const outline = (ctx, points) => {
 };
 
 export function drawOriginalTacticsLandmarks(ctx, profile, width, horizon, pan) {
+  if (profile.architecture === 'dead-calm-wrecks') {
+    for (const [position, scale, lean] of [[0.23, 0.8, -1], [0.72, 1, 1]]) {
+      ctx.save();
+      ctx.translate(position * width + pan, horizon + 10);
+      ctx.scale(scale * lean, scale);
+      ctx.fillStyle = '#223844';
+      outline(ctx, [[-65, -1], [-47, 8], [46, 7], [68, -12], [21, -6], [-41, -15]]);
+      ctx.fill();
+      ctx.lineWidth = 4;
+      ctx.strokeStyle = '#293e49';
+      ctx.beginPath();
+      ctx.moveTo(-18, -4); ctx.lineTo(-23, -64);
+      ctx.moveTo(16, -4); ctx.lineTo(8, -46);
+      ctx.moveTo(-38, -47); ctx.lineTo(3, -56);
+      ctx.stroke();
+      ctx.lineWidth = 1;
+      ctx.strokeStyle = '#52636a';
+      ctx.beginPath();
+      ctx.moveTo(-23, -60); ctx.lineTo(-60, -9);
+      ctx.moveTo(-23, -60); ctx.lineTo(31, -7);
+      ctx.stroke();
+      ctx.restore();
+    }
+    return true;
+  }
   if (profile.architecture === 'greywake-observatory') {
     ctx.save();
     ctx.translate(width * 0.75 + pan, horizon + 28);
@@ -124,6 +160,26 @@ export function drawOriginalTacticsLandmarks(ctx, profile, width, horizon, pan) 
     return true;
   }
   return false;
+}
+
+export function drawDeadCalmWreck(ctx, { obstacle, point, width, height }) {
+  if (obstacle?.sceneryKind !== 'dead-calm-wreck') return false;
+  ctx.save();
+  ctx.translate(point.x, point.y);
+  ctx.scale(width, height);
+  ctx.fillStyle = '#654734';
+  outline(ctx, [[-0.5, -0.83], [-0.22, -0.56], [0.19, -0.42], [0.48, -0.12], [0.25, -0.02], [-0.29, -0.04]]);
+  ctx.fill();
+  ctx.lineWidth = 0.045;
+  ctx.strokeStyle = '#c09b75';
+  ctx.beginPath();
+  ctx.moveTo(-0.42, -0.48); ctx.lineTo(-0.47, -0.96);
+  ctx.moveTo(-0.19, -0.32); ctx.lineTo(-0.23, -0.72);
+  ctx.moveTo(0.07, -0.2); ctx.lineTo(0.03, -0.56);
+  ctx.moveTo(-0.38, -0.32); ctx.lineTo(0.32, -0.1);
+  ctx.stroke();
+  ctx.restore();
+  return true;
 }
 
 export function drawInfernumLedger(ctx, { obstacle, point, width, height }) {

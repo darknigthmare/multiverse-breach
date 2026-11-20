@@ -62,11 +62,11 @@ function snapshot(units) {
   return units.map(unit => ({ hp: unit.currentHp, ...unit.statusEffects, support: unit.meleeSuperSupport || null }));
 }
 
-test('forty manifest heroes receive distinct scoped Melee contracts and preserve their other modes', () => {
+test('sixty manifest heroes receive distinct scoped Melee contracts and preserve their other modes', () => {
   assert.equal(originals.length, 60);
-  assert.equal(roster.length, 40);
-  assert.equal(new Set(roster.map(hero => hero.id)).size, 40);
-  assert.equal(new Set(roster.map(hero => JSON.stringify(getOriginalMeleeSuper(hero).special.targeting))).size, 40);
+  assert.equal(roster.length, 60);
+  assert.equal(new Set(roster.map(hero => hero.id)).size, 60);
+  assert.equal(new Set(roster.map(hero => JSON.stringify(getOriginalMeleeSuper(hero).special.targeting))).size, 60);
   for (const [index, actor] of originals.entries()) {
     const generic = resolveMeleeSuper(actor);
     const melee = resolveSmashSuper(actor);

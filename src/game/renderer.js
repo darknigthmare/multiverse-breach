@@ -544,8 +544,12 @@ const drawGeneratedSpriteSheet = (ctx, x, y, entity, animTime, facing, targetHei
     // Blocked native artwork may explicitly reuse an older harmless pose.
     // Preserve that declared row/column instead of exposing an unrelated prop.
     if (!layout.adaptedLegacyFallback) frame.row = Math.max(0, Math.min(layout.rows - 1, Math.floor(pose.row)));
-    if (!Number.isInteger(layout.fixedColumn) && !layout.columnsByRow?.[frame.row]?.length) {
-      frame.col = Math.max(0, Math.min(layout.columns - 1, Math.floor(pose.col)));
+    const requestedColumn = Math.floor(pose.col);
+    const allowedColumns = layout.columnsByRow?.[frame.row];
+    const reviewedLegacyCell = pose.reviewedLegacyCell === true && layout.adaptedLegacyFallback
+      && pose.row === frame.row && allowedColumns?.includes(requestedColumn);
+    if (!Number.isInteger(layout.fixedColumn) && (!allowedColumns?.length || reviewedLegacyCell)) {
+      frame.col = Math.max(0, Math.min(layout.columns - 1, requestedColumn));
     }
     frame.trim = layout?.trimByState?.[entity.state] || layout?.trimByRow?.[frame.row] || layout?.trim || null;
   }

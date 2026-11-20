@@ -5,6 +5,7 @@ import { resolve } from 'node:path';
 
 const root = fileURLToPath(new URL('../', import.meta.url));
 const lobby = resolve(root, 'src/components/CustomBattleMode.jsx');
+const fixtureDirectory = process.env.PLAYWRIGHT_FIXTURE_DIR;
 const stubs = {
   './GameCanvas': '\0custom-lobby-game', './FighterMode': '\0custom-lobby-fighter', '../game/renderer': '\0custom-lobby-sprite'
 };
@@ -25,7 +26,7 @@ await build({ root, configFile: false, publicDir: false, base: './', plugins: [{
     const fighter = id === stubs['./FighterMode'];
     return `import React, { useEffect } from 'react';
       export default function BattleHandoff(props) {
-        useEffect(() => { window.__customLobbyQA.handoff = ${fighter ? '{ mode: "Fighter", config: props.customConfig }' : '{ mode: props.stage.mode, stage: props.stage, team: props.activeTeam, custom: props.customBattle }'}; }, [props]);
+        useEffect(() => { window.__customLobbyQA.handoff = ${fighter ? '{ mode: "Fighter", config: props.customConfig, paused: props.sessionPaused }' : '{ mode: props.stage.mode, stage: props.stage, team: props.activeTeam, custom: props.customBattle, paused: props.sessionPaused }'}; }, [props]);
         return React.createElement('section', {className: 'custom-lobby-battle-fixture', 'data-testid': 'battle-handoff'},
           React.createElement('h2', {}, 'Battle handoff fixture'),
           React.createElement('button', {type: 'button', onClick: () => ${fighter ? 'props.onExit()' : "props.onBattleEnd('quit')"}}, 'Return to preparation'));
@@ -40,6 +41,6 @@ await build({ root, configFile: false, publicDir: false, base: './', plugins: [{
       this.error('Custom lobby fixture is missing its battle handoff controls');
     }
   }
-}, react()], build: { outDir: resolve(root, '.tmp/custom-battle-lobby'), emptyOutDir: true,
+}, react()], build: { outDir: resolve(root, fixtureDirectory || '.tmp/custom-battle-lobby'), emptyOutDir: !fixtureDirectory,
   rollupOptions: { input: resolve(root, 'scripts/fixtures/custom-battle-lobby.html') }
 } });

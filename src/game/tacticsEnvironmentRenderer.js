@@ -2,7 +2,7 @@ import { TACTICS_ENVIRONMENT_PROFILES_WAVE15, drawTacticsLandmarksWave15, drawTa
 import { TACTICS_ENVIRONMENT_PROFILES_WAVE16, drawTacticsLandmarksWave16, drawTacticsSceneryWave16 } from './tacticsUniversePresentationWave16.js';
 import { TACTICS_ENVIRONMENT_PROFILES_WAVE17, drawTacticsLandmarksWave17, drawTacticsSceneryWave17 } from './tacticsUniversePresentationWave17.js';
 import { TACTICS_APERTURE_ENVIRONMENT, drawApertureLandmarks, drawApertureScenery } from './tacticsAperturePresentation.js';
-import { TACTICS_ORIGINAL_ENVIRONMENTS, drawInfernumLedger, drawOriginalTacticsLandmarks } from './tacticsOriginalPresentation.js';
+import { TACTICS_ORIGINAL_ENVIRONMENTS, drawDeadCalmWreck, drawInfernumLedger, drawOriginalTacticsLandmarks } from './tacticsOriginalPresentation.js';
 // Dedicated environments for every Tactics board, including source sectors
 // and the older Nexus grids. These draw the horizon around real geometry;
 // they never borrow another engine's backdrop or define a walkable tile.
@@ -332,6 +332,7 @@ export function getTacticsSceneryBounds(obstacle, point, width, height) {
 // The caller supplies a real obstacle's support and physical height. Artwork
 // never adds a blocker, changes HP or expands its collision footprint.
 export function drawTacticsScenery(ctx, { obstacle, point, width, height } = {}) {
+  if (drawDeadCalmWreck(ctx, { obstacle, point, width, height })) return true;
   if (drawInfernumLedger(ctx, { obstacle, point, width, height })) return true;
   if (drawApertureScenery(ctx, { obstacle, point, width, height })) return true;
   if (drawTacticsSceneryWave17(ctx, { obstacle, point, width, height })) return true;

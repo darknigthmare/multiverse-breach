@@ -3,6 +3,7 @@
 // playable interpretation of that setting with its own geometry and materials.
 import { KHIPU_WITNESS_ACTOR, KHIPU_WITNESS_ID } from './tacticsKhipuWitness.js';
 import { TACTICS_IRON_ASHLINE_BATTLEFIELD } from './tacticsIronAshlineBattlefield.js';
+import { LANTERN_SHIP_ID, LANTERN_SHIP_UNIVERSE } from './tacticsCrownlessSea.js';
 
 const frEn = (fr, en) => ({ fr, en });
 const reference = 'src/game/originalUniversesManifest.json';
@@ -25,7 +26,13 @@ const materialNames = {
   'infernum-clinker': frEn('Scories du greffe', 'Clinker from the clerk’s floor'),
   'infernum-iron': frEn('Fer riveté des coursives', 'Riveted catwalk iron'),
   'infernum-obsidian': frEn('Obsidienne de la fosse', 'Trench obsidian'),
-  'infernum-lava': frEn('Lave du canal fiscal', 'Fiscal channel lava')
+  'infernum-lava': frEn('Lave du canal fiscal', 'Fiscal channel lava'),
+  'dead-calm-channel': frEn('Eau dormante du chenal', 'Still channel water'),
+  'dead-calm-silt': frEn('Vase du banc', 'Silt bank'),
+  'dead-calm-shingle': frEn('Galets de l’estran', 'Shoreline shingle'),
+  'dead-calm-towpath': frEn('Planches du halage', 'Towpath boards'),
+  'dead-calm-wreck': frEn('Chêne de l’épave', 'Wreck oak'),
+  'dead-calm-reef': frEn('Récif feuilleté', 'Layered reef')
 };
 
 function makeBoard(id, cols, rows, baseMaterial, upperLayer = 'gallery') {
@@ -275,6 +282,60 @@ function pitOfAuditors() {
   });
 }
 
+function deadCalmGraveyard() {
+  const channel = 'dead-calm-channel', silt = 'dead-calm-silt', shingle = 'dead-calm-shingle';
+  const towpath = 'dead-calm-towpath', wreck = 'dead-calm-wreck', reef = 'dead-calm-reef';
+  const b = makeBoard('crownless_dead_calm_graveyard_tactics', 13, 9, shingle, 'wreck-deck');
+  b.area(0, 3, 12, 3, -1, silt, { moveCost: 2 });
+  b.area(0, 4, 12, 4, -1, channel, { layerId: 'channel', opaque: false, solidBottom: -1.3 });
+  b.area(0, 5, 12, 5, -1, towpath);
+  b.area(7, 5, 8, 5, -1, silt, { moveCost: 2 });
+  b.area(4, 0, 8, 0, 1.25, reef);
+  b.incline(3, 0, 0, 1.25, 'east', reef, 'stairs');
+
+  for (const x of [1, 6, 10]) b.incline(x, 2, -1, 0, 'north', silt);
+  for (const x of [0, 2, 9, 11]) b.incline(x, 6, -1, 0, 'south', towpath);
+  const deck = { layerId: 'wreck-deck', shape: 'slab', solidBottom: 1.72 };
+  b.area(5, 3, 7, 5, 2, wreck, deck);
+  for (const x of [5, 7]) b.incline(x, 2, 0, 2, 'south', wreck, 'stairs');
+  b.incline(6, 6, 0, 2, 'north', wreck, 'stairs');
+  b.get(7, 4, true).coverEdges = { east: { height: 0.62, reduction: 0.23 } };
+  b.get(5, 5).coverEdges = { south: { height: 0.5, reduction: 0.15 } };
+
+  const departure = b.get(11, 4);
+  Object.assign(departure, { type: 'objective', label: frEn('Sortie des épaves', 'Wrecks exit') });
+  return finish(b, {
+    label: frEn('Cimetière du Calme Mort', 'Dead Calm Graveyard'),
+    objective: 'escort', objectiveTarget: 1,
+    objectiveText: frEn('Guidez le navire-lanterne jusqu’à la sortie. En fin de tour, il avance si un allié reste à sa hauteur sur un appui adjacent.',
+      'Guide the lantern ship to the exit. At turn end it advances if an ally stands on an adjacent support at its level.'),
+    tags: ['vertical', 'universeSector', 'escort', 'shoreline', 'shipwrecks'],
+    source: {
+      universe: LANTERN_SHIP_UNIVERSE, work: 'Multiverse Breach',
+      stageKey: 'pirate_dead_calm_graveyard', location: 'Cimetière du Calme Mort',
+      sourceReference: reference, source1to1Verified: false
+    },
+    tacticsPresentation: { biome: 'dead-calm-graveyard', skyline: 'Dead Calm wrecks', weather: 'clear' },
+    escort: {
+      id: LANTERN_SHIP_ID, universe: LANTERN_SHIP_UNIVERSE,
+      name: frEn('Navire-lanterne', 'Lantern ship'),
+      role: frEn('Traverse le chenal du Calme Mort', 'Crosses the Dead Calm channel'),
+      terrainLayer: 'channel'
+    },
+    escortSpawn: b.ref(1, 4), extractionZone: [b.ref(11, 4)],
+    heroSpawns: refs(b, [[1, 5], [0, 7], [2, 7]]),
+    monsterSpawns: refs(b, [[9, 1], [3, 2], [9, 7]]),
+    bossSpawns: refs(b, [[10, 0], [10, 7]]), worldBossSpawn: b.ref(0, 0),
+    pickupSpawns: refs(b, [[2, 5], [6, 4, true], [9, 3], [3, 1], [9, 8]]),
+    obstacles: [
+      obstacle(b, 'Coque échouée du banc ouest', 4, 3, 'dead-calm-wreck', { tacticsHeight: 1.6 }),
+      obstacle(b, 'Carcasse du banc est', 8, 3, 'dead-calm-wreck', { tacticsHeight: 1.6 }),
+      obstacle(b, 'Débris de proue', 5, 6, 'dead-calm-wreck', { tacticsHeight: 1.3 })
+    ]
+  });
+}
+
 export const TACTICS_ORIGINAL_BATTLEFIELDS = Object.freeze(Object.fromEntries(
-  [observatory(), crossroads(), qhapaqNan(), pitOfAuditors(), TACTICS_IRON_ASHLINE_BATTLEFIELD].map(field => [field.id, field])
+  [observatory(), crossroads(), qhapaqNan(), pitOfAuditors(), TACTICS_IRON_ASHLINE_BATTLEFIELD,
+    deadCalmGraveyard()].map(field => [field.id, field])
 ));

@@ -5,6 +5,7 @@ import test from 'node:test';
 import { getBossesForUniverse, getWorldBossForUniverse } from '../src/game/enemies.js';
 import { drawOriginalStaticBossMotion } from '../src/game/originalStaticBossMotion.js';
 import { getEnemySpriteSheetSrc, getSpriteSheetLayout } from '../src/game/spriteAssets.js';
+import { BRIAR_QUEEN } from '../src/game/originalBriarQueenGuard.js';
 
 const oblique = {
   actor: getBossesForUniverse('Ilyr Concordat').find(enemy => enemy.id === 'ilyr_concordat:cuirasse_nul_oblique'),
@@ -162,4 +163,57 @@ test('Oblique deploys its own articulated plates with the accepted RPG guard win
   assert.ok(0 > charging[0][2] && charging[0][2] > deployed[0][2]);
   assert.ok(0 > folding[0][2] && folding[0][2] > deployed[0][2]);
   assert.ok(folding[1][2] > 0 && folding[1][2] < deployed[1][2]);
+});
+
+test('the Briar Queen grows three source crowns in place and folds them on the guard clock', () => {
+  const actor = getBossesForUniverse(BRIAR_QUEEN.universe).find(enemy => enemy.id === BRIAR_QUEEN.id);
+  const image = { src: 'http://localhost' + BRIAR_QUEEN.sheet, naturalWidth: 1024, naturalHeight: 1024 };
+  const original = readFileSync(new URL('../public' + BRIAR_QUEEN.sheet, import.meta.url));
+  assert.equal(createHash('sha256').update(original).digest('hex'), '7a795b230657eb182c360ab427cd8d41390d7085f8467020610e9c55b9c07315');
+  assert.equal(getEnemySpriteSheetSrc(actor), BRIAR_QUEEN.sheet);
+  const layout = getSpriteSheetLayout(BRIAR_QUEEN.sheet);
+  assert.deepEqual([layout.columns, layout.rows], [1, 1]);
+  const cuts = [[80, 386, 245, 298], [582, 32, 284, 264], [709, 394, 243, 269]];
+  const hinges = [[[325, 474], [325, 619]], [[790, 296], [630, 296]], [[709, 608], [713, 435]]];
+  function pose(motion, time = 0, source = actor, bitmap = image) {
+    const { ctx, trace } = recordingContext();
+    if (!drawOriginalStaticBossMotion(ctx, { ...source, state: 'idle', ...motion }, bitmap, time, ...worldRect)) {
+      assert.deepEqual(trace, []);
+      return null;
+    }
+    assert.deepEqual(trace.filter(([op]) => op === 'drawImage'), [
+      ['drawImage', image, 0, 0, 1024, 1024],
+      ...cuts.map(rect => ['drawImage', image, ...rect, ...rect])
+    ]);
+    const matrices = trace.filter(([op]) => op === 'transform').map(([, ...matrix]) => matrix);
+    assert.equal(matrices.length, hinges.length);
+    assert.deepEqual(trace.filter(([op]) => op === 'clip'), [['clip', 'evenodd'], ['clip'], ['clip'], ['clip']]);
+    for (const [index, [a, b, c, d, e, f]] of matrices.entries()) {
+      for (const [x, y] of hinges[index]) {
+        assert.ok(Math.abs(a * x + c * y + e - x) < 1e-9);
+        assert.ok(Math.abs(b * x + d * y + f - y) < 1e-9);
+      }
+    }
+    return matrices;
+  }
+  const cast = { state: 'special', actionPending: true, rpgBriarGuardPreparing: true,
+    rpgSpecialDurationTicks: 45, rpgSpecialImpactProgress: 18 / 45 };
+  const guard = { rpgBriarGuardApplied: true, rpgGuardTicks: 179 };
+  assert.equal(pose({}), null);
+  assert.equal(pose({ rpgGuardTicks: 180 }), null);
+  assert.equal(pose({ ...guard, state: 'dead' }), null);
+  assert.equal(pose(guard, 0, { ...actor, id: 'other' }), null);
+  assert.equal(pose(guard, 0, { ...actor, weapon: 'staff' }), null);
+  assert.equal(pose(guard, 0, actor, { ...image, src: 'other.png' }), null);
+  assert.equal(pose(guard, 0, actor, { ...image, naturalHeight: 512 }), null);
+  assert.equal(pose({ ...cast, stateTimer: 45 }), null);
+  assert.equal(pose({ ...cast, stateTimer: 33, actionPending: false }), null);
+  const before = pose({ ...cast, stateTimer: 28 });
+  const applied = pose(guard);
+  const folding = pose({ ...guard, rpgGuardTicks: 18 });
+  assert.deepEqual(pose(guard, 30), applied, 'visual progress uses only simulation, including a paused battle');
+  assert.notDeepEqual(pose({ ...guard, rpgGuardTicks: 168 }), applied);
+  assert.ok(before[0][0] > folding[0][0] && applied[0][0] > before[0][0]);
+  assert.ok(before[1][3] > folding[1][3] && applied[1][3] > before[1][3]);
+  assert.equal(pose({ ...guard, rpgGuardTicks: 0 }), null);
 });
