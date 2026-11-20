@@ -67,7 +67,8 @@ import * as dlcOliverTree from '../../DLC/OliverTree/data/renderer.js';
 
 import { drawWardrobeEffect } from './wardrobeEffects.js';
 import { drawFallbackEnergyBlades } from './energyBladeFallback.js';
-import { getQuarantinedCanonSprite } from './canonicalSpriteQuarantine.js';
+import { getQuarantinedCanonSprite } from './runtimeSpriteQuarantine.js';
+import { getReviewedDcP0Bust } from './historicalDcP0SpriteQuarantine.js';
 import { drawPachakutiFallback } from './pachakutiWorldBossArt.js';
 import { drawTwelveBellJudgesMotion } from './twelveBellJudgesMotion.js';
 import { drawOriginalStaticBossMotion } from './originalStaticBossMotion.js';
@@ -272,25 +273,31 @@ const drawQuarantinedCombatantBust = (ctx, x, y, width, height) => {
   ctx.fillStyle = '#f6d18c';
   ctx.textAlign = 'center';
   ctx.font = `bold ${Math.max(8, Math.min(11, Math.round(height / 9)))}px monospace`;
-  ctx.fillText('ART PENDING', centerX, y + height - 7);
+  ctx.fillText('ART PENDING', centerX, y + height - 7, Math.max(1, width - 6));
   ctx.restore();
   return true;
 };
 
 export const drawCombatantBust = (ctx, x, y, width, height, entity, kind = 'hero') => {
-  if (kind === 'hero' && getQuarantinedCanonSprite(entity) && !getReviewedQuarantinedHeroSprite(entity)) {
+  const quarantine = kind === 'hero' ? getQuarantinedCanonSprite(entity) : null;
+  const reviewedSprite = quarantine ? getReviewedQuarantinedHeroSprite(entity) : null;
+  const reviewedBust = getReviewedDcP0Bust(entity, quarantine);
+  if (quarantine && !reviewedSprite && !reviewedBust) {
     return drawQuarantinedCombatantBust(ctx, x, y, width, height);
   }
-  const sources = kind === 'hero'
+  const sources = reviewedBust ? [reviewedBust.sheet] : kind === 'hero'
     ? getHeroSpriteSheetSources(entity, 'tactics')
     : getEnemySpriteSheetSources(entity);
   const entry = getFirstAvailableSpriteSheet(sources);
-  if (!entry) return false;
+  if (!entry) return reviewedBust ? drawQuarantinedCombatantBust(ctx, x, y, width, height) : false;
   if (entry.status !== 'ready' || !entry.image.complete || entry.image.naturalWidth === 0) {
     queueSpriteSheetRedraw(entry, ctx, () => {
       drawCombatantBust(ctx, x, y, width, height, entity, kind);
     });
-    return false;
+    return reviewedBust ? drawQuarantinedCombatantBust(ctx, x, y, width, height) : false;
+  }
+  if (reviewedBust && (entry.image.naturalWidth !== reviewedBust.width || entry.image.naturalHeight !== reviewedBust.height)) {
+    return drawQuarantinedCombatantBust(ctx, x, y, width, height);
   }
 
   const layout = entity.sourceSpriteLayoutWave16 || getSpriteSheetLayout(entry.image.currentSrc || entry.image.src);
@@ -298,9 +305,9 @@ export const drawCombatantBust = (ctx, x, y, width, height, entity, kind = 'hero
   const frameHeight = entry.image.naturalHeight / layout.rows;
   const frame = getSpriteFrameForLayout('idle', 0, layout);
   const trim = frame.trim || {};
-  const reviewedPortrait = kind === 'hero' ? getReviewedQuarantinedHeroSprite(entity)?.portrait : null;
-  const sourceX = frame.col * frameWidth + (reviewedPortrait?.x ?? trim.left ?? 0);
-  const sourceY = frame.row * frameHeight + (reviewedPortrait?.y ?? trim.top ?? 0);
+  const reviewedPortrait = reviewedBust?.crop || reviewedSprite?.portrait;
+  const sourceX = reviewedBust?.crop.x ?? (frame.col * frameWidth + (reviewedPortrait?.x ?? trim.left ?? 0));
+  const sourceY = reviewedBust?.crop.y ?? (frame.row * frameHeight + (reviewedPortrait?.y ?? trim.top ?? 0));
   const sourceW = reviewedPortrait?.width ?? Math.max(1, frameWidth - (trim.left || 0) - (trim.right || 0));
   const trimmedH = Math.max(1, frameHeight - (trim.top || 0) - (trim.bottom || 0));
   const sourceH = reviewedPortrait?.height ?? Math.max(1, layout.fullBodyPortrait ? trimmedH : trimmedH * 0.68);
@@ -508,7 +515,9 @@ const drawGeneratedSpriteSheet = (ctx, x, y, entity, animTime, facing, targetHei
     // Blocked native artwork may explicitly reuse an older harmless pose.
     // Preserve that declared row/column instead of exposing an unrelated prop.
     if (!layout.adaptedLegacyFallback) frame.row = Math.max(0, Math.min(layout.rows - 1, Math.floor(pose.row)));
-    if (!Number.isInteger(layout.fixedColumn)) frame.col = Math.max(0, Math.min(layout.columns - 1, Math.floor(pose.col)));
+    if (!Number.isInteger(layout.fixedColumn) && !layout.columnsByRow?.[frame.row]?.length) {
+      frame.col = Math.max(0, Math.min(layout.columns - 1, Math.floor(pose.col)));
+    }
     frame.trim = layout?.trimByState?.[entity.state] || layout?.trimByRow?.[frame.row] || layout?.trim || null;
   }
   const trim = frame.trim || {};
@@ -720,6 +729,11 @@ export const drawPixelSprite = (ctx, x, y, character, animTime, facing = 1, targ
     drawPixelSprite(ctx, x, y, character, animTime, facing, targetHeight, context);
   }, context);
   if (generatedStatus !== 'missing') {
+    return;
+  }
+  if (quarantinedArt?.actorId) {
+    const size = targetHeight * 0.75;
+    drawQuarantinedCombatantBust(ctx, x - size / 2, y - size, size, size);
     return;
   }
 

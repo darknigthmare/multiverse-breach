@@ -6,10 +6,10 @@ import { COMBAT_STEP_MS, createFixedStepClock } from '../game/fixedStepClock';
 import { createReducedMotionReader } from '../game/reducedMotion.js';
 import { ParticleSystem, getOpenAiBackdropSrc, drawUniverseBackground, preloadSpriteSheetSrcs } from '../game/renderer';
 import { getRecentUniverseLevelProfile } from '../game/recentUniverseLevels';
-import { getHeroSpriteSheetSrc, getSpriteSheetLayout } from '../game/spriteAssets';
+import { getHeroSpriteSheetSrc, getSpritePreviewPosition, getSpriteSheetLayout } from '../game/spriteAssets';
 import { resolveCharacterAnimationAsset } from '../game/combat/characterAnimationCatalog';
 import { preloadCharacterSuperAssets } from '../game/combat/characterSuperVisuals';
-import { getQuarantinedCanonSprite } from '../game/canonicalSpriteQuarantine.js';
+import { getQuarantinedCanonSprite } from '../game/runtimeSpriteQuarantine.js';
 import { getUnlockableById } from '../game/universeUnlockables';
 import { resolveActiveHudTheme } from '../game/cosmeticVisualAssets';
 import sound from '../game/soundEngine';
@@ -131,7 +131,7 @@ function FighterPortrait({ hero, active = false, ko = false }) {
       style={{
         backgroundImage: loaded ? `url("${src}")` : 'none',
         backgroundSize: `${layout.columns * 100}% ${layout.rows * 100}%`,
-        backgroundPosition: '0 0',
+        backgroundPosition: getSpritePreviewPosition(layout),
         color: hero?.secondaryColor || '#39c5bb'
       }}
       aria-hidden="true"

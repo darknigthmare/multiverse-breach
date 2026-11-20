@@ -1,4 +1,4 @@
-import { getSpriteSheetLayout } from '../../game/spriteAssets.js';
+import { getSpriteFrameForLayout, getSpriteSheetLayout } from '../../game/spriteAssets.js';
 
 /** Select one existing pose; retain the original sheet for the provenance viewer. */
 export function getCardArtPresentation(art = {}) {
@@ -9,8 +9,9 @@ export function getCardArtPresentation(art = {}) {
   const layout = art.columns && art.rows ? art : getSpriteSheetLayout(src);
   const columns = Math.max(1, Number(layout.columns) || 1);
   const rows = Math.max(1, Number(layout.rows) || 1);
-  const row = Math.max(0, Math.min(rows - 1, Number(art.row ?? layout.rowByState?.idle) || 0));
-  const col = Math.max(0, Math.min(columns - 1, Number(art.column) || 0));
+  const idle = getSpriteFrameForLayout('idle', 0, layout);
+  const row = Math.max(0, Math.min(rows - 1, Number(art.row ?? idle.row) || 0));
+  const col = Math.max(0, Math.min(columns - 1, Number(art.column ?? idle.col) || 0));
   if (columns === 1 && rows === 1) return { src, sheet: null, style: null };
   return {
     src, sheet: src,

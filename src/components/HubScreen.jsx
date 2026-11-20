@@ -64,9 +64,9 @@ import {
   getOcCampaignEnding,
   getOcCampaignMission
 } from '../game/ocCampaign';
-import { CORRECTED_CANON_HERO_SPRITES, getEnemySpriteSheetSrc, getHeroCompleteSpritePack, getHeroSpriteSheetSrc, getItemSpriteSrc, getSpriteSheetLayout, MIRELLE_COMPLETE_SPRITES } from '../game/spriteAssets';
+import { CORRECTED_CANON_HERO_SPRITES, getEnemySpriteSheetSrc, getHeroCompleteSpritePack, getHeroSpriteSheetSrc, getItemSpriteSrc, getSpritePreviewPosition, getSpriteSheetLayout, MIRELLE_COMPLETE_SPRITES } from '../game/spriteAssets';
 import { getBattleItemsForUniverse } from '../game/battleItems';
-import { getQuarantinedCanonSprite } from '../game/canonicalSpriteQuarantine.js';
+import { getQuarantinedCanonSprite } from '../game/runtimeSpriteQuarantine.js';
 import { getUnlockableById } from '../game/universeUnlockables';
 import { OPENAI_COSMETIC_VISUALS, resolveActiveHudTheme } from '../game/cosmeticVisualAssets';
 import { getEventLoreDescription, getGearLoreDescription, getStageLoreDescription, getUniverseLoreDescription } from '../game/loreDescriptions';
@@ -5297,7 +5297,7 @@ function MissionRequirementPortrait({ hero, label }) {
       style={{
         backgroundImage: loaded ? `url("${src}")` : 'none',
         backgroundSize: `${layout.columns * 100}% ${layout.rows * 100}%`,
-        backgroundPosition: '0 0',
+        backgroundPosition: getSpritePreviewPosition(layout),
         color: hero?.secondaryColor || '#39c5bb'
       }}
       aria-hidden="true"

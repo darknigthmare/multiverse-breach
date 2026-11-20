@@ -7,7 +7,10 @@ import { buildEditionSpriteAudit,EDITION_IDS,REVIEW_COLUMNS,EXACT_SOURCE_ART_BLO
 import { QUARANTINED_CANON_SPRITES, getQuarantinedCanonSprite } from '../src/game/canonicalSpriteQuarantine.js';
 import { SOLAR_OPPOSITES_SIREN_STAR_WARS_HERO_EXPANSIONS, SOLAR_OPPOSITES_SIREN_STAR_WARS_HERO_OVERRIDES } from '../src/game/solarOppositesSirenStarWarsPack.js';
 import { createServer } from './fixtures/ssrTestServer.mjs';
-import { getHeroCompleteSpritePack, getHeroMeleeAnimationFrame, getHeroMeleeSpriteSheetSrcs, getHeroSpriteSheetSources } from '../src/game/spriteAssets.js';
+import { getHeroCompleteSpritePack, getHeroMeleeAnimationFrame, getHeroMeleeSpriteSheetSrcs, getHeroSpriteSheetSources, getReviewedQuarantinedHeroSprite } from '../src/game/spriteAssets.js';
+
+const starWarsEditionRecords = Object.entries(QUARANTINED_CANON_SPRITES)
+  .filter(([id, record]) => record.universe === 'Star Wars' && EDITION_IDS.includes(id));
 
 test('seven edition-specific PNG sources exist and have different file fingerprints',()=>{
   const {rows}=buildEditionSpriteAudit();
@@ -87,9 +90,8 @@ test('confirmed wrong Star Wars actor art is quarantined by exact source incarna
     ...SOLAR_OPPOSITES_SIREN_STAR_WARS_HERO_EXPANSIONS['Star Wars'],
     ...Object.values(SOLAR_OPPOSITES_SIREN_STAR_WARS_HERO_OVERRIDES)
   ];
-  assert.deepEqual(Object.keys(QUARANTINED_CANON_SPRITES).sort(),
-    ['ahsoka','ahsoka_padawan','darth_revan'].sort());
-  for(const [id,record] of Object.entries(QUARANTINED_CANON_SPRITES)) {
+  assert.deepEqual(starWarsEditionRecords.map(([id])=>id).sort(), ['ahsoka','ahsoka_padawan','darth_revan']);
+  for(const [id,record] of starWarsEditionRecords) {
     const sourceActor=actors.find(actor=>actor.id===id);
     assert.ok(sourceActor,id);
     // Pack templates intentionally omit the universe; heroes.js adds it
@@ -116,15 +118,17 @@ test('confirmed wrong Star Wars actor art is quarantined by exact source incarna
 });
 
 test('quarantine blocks every playable source even with cosmetic and production candidates while keeping other incarnations available', () => {
-  for (const [id, record] of Object.entries(QUARANTINED_CANON_SPRITES)) {
+  for (const [id, record] of starWarsEditionRecords) {
     const hero = { id, universe: record.universe, incarnation: record.incarnation,
       activeSkin: 'sourceLockedArtApproved', sourceLockedArtApproved: true,
       portrait: record.asset, spriteSource: record.asset,
       production: { sprite: record.asset }, heroVariants: [{ src: record.asset }] };
     for (const view of [hero, { ...hero, id: `combat:${id}`, sourceHeroId: id },
       { ...hero, id: `summon:${id}`, sourceId: id }]) {
+      const reviewed = getReviewedQuarantinedHeroSprite(view);
       for (const context of ['auto', 'rpg', 'melee', 'tactics', 'collection', 'hud', 'fps', 'kart']) {
-        assert.deepEqual(getHeroSpriteSheetSources(view, context), [], `${view.id}: ${context}`);
+        assert.deepEqual(getHeroSpriteSheetSources(view, context), reviewed ? [reviewed.sheet] : [], `${view.id}: ${context}`);
+        assert.ok(!getHeroSpriteSheetSources(view, context).includes(record.asset));
       }
       assert.equal(getHeroCompleteSpritePack(view), null);
       assert.equal(getHeroMeleeAnimationFrame(view), null);
@@ -137,7 +141,7 @@ test('quarantine blocks every playable source even with cosmetic and production 
   }
 });
 
-test('real roster, Kart and Canvas renderers keep quarantined actors playable without requesting their PNGs', async () => {
+test('real roster, Kart and Canvas renderers keep both quarantined Ahsoka editions playable with their schematic blades', async () => {
   const server = await createServer({ configFile: false, appType: 'custom', logLevel: 'silent', server: { middlewareMode: true } });
   const originalImage = globalThis.Image;
   const requested = [];
@@ -147,7 +151,7 @@ test('real roster, Kart and Canvas renderers keep quarantined actors playable wi
     const { drawPixelSprite, drawCombatantBust } = await server.ssrLoadModule('/src/game/renderer.js');
     const { getKartForHero } = await server.ssrLoadModule('/src/game/kart/kartRoster.js');
     const { getExtinctionViewmodel } = await server.ssrLoadModule('/src/game/extinctionContent.js');
-    for (const id of Object.keys(QUARANTINED_CANON_SPRITES)) {
+    for (const id of ['ahsoka_padawan', 'ahsoka']) {
       const hero = HEROES_DB.find(actor => actor.id === id);
       assert.ok(getQuarantinedCanonSprite(hero), `${id}: actual DLC incarnation is quarantined`);
       const before = JSON.stringify(hero);

@@ -24,6 +24,8 @@ import { COMBAT_SOURCE_DEFINITIONS_WAVE12 } from './combat/combatSourceDefinitio
 import characterSpriteCorrectionsWave12A from './combat/characterSpriteCorrectionsWave12PartA.generated.json' with { type: 'json' };
 import characterSpriteCorrectionsWave12B from './combat/characterSpriteCorrectionsWave12PartB.generated.json' with { type: 'json' };
 import { LEGACY_POSE_FALLBACKS_WAVE12 } from './combat/characterLegacyFallbacksWave12.js';
+import { HISTORICAL_ICONIC_P0_POSE_FALLBACKS } from './combat/historicalIconicP0PoseFallbacks.js';
+import { HISTORICAL_LILO_P0_POSE_FALLBACKS } from './combat/historicalLiloP0PoseFallbacks.js';
 import { COMBAT_SOURCE_DEFINITIONS_WAVE11 } from './combat/combatSourceDefinitionsWave11.js';
 import characterSpriteCorrectionsWave11A from './combat/characterSpriteCorrectionsWave11PartA.generated.json' with { type: 'json' };
 import characterSpriteCorrectionsWave11B from './combat/characterSpriteCorrectionsWave11PartB.generated.json' with { type: 'json' };
@@ -35,7 +37,8 @@ import { buildPresentationFallbacksWave10 } from './combat/characterPresentation
 import { getSourceCaptureEnemyFrameWave17 } from './combat/sourceCaptureEnemyCatalogWave17.js';
 import { DISCIPLINE_SPRITE_LAYOUTS, getDisciplineSpriteLayout, getDisciplineSpriteSources } from './disciplineSprites.js';
 import { getCloudMeadowSpriteLayout, getCloudMeadowSpriteSrc } from './cloudMeadowCharacters.js';
-import { getQuarantinedCanonSprite, getReviewedQuarantineCorrection, REVIEWED_KOTOR_I_REVAN_CORRECTION } from './canonicalSpriteQuarantine.js';
+import { getReviewedQuarantineCorrection, REVIEWED_KOTOR_I_REVAN_CORRECTION } from './canonicalSpriteQuarantine.js';
+import { getQuarantinedCanonSprite } from './runtimeSpriteQuarantine.js';
 import { getBoundEnemySpriteSrc } from './enemySpriteBindings.js';
 import {
   getMeleeAnimationFrame,
@@ -104,6 +107,9 @@ const blockedLegacySourcesWave11 = new Map([...LEGACY_POSE_FALLBACKS_WAVE11, ...
 ].map(entry => [entry.heroId, entry]));
 
 const legacyPoseFallbackLayoutsWave11 = Object.fromEntries([...LEGACY_POSE_FALLBACKS_WAVE11, ...LEGACY_POSE_FALLBACKS_WAVE12].map(entry => [entry.sheet, entry.layout]));
+const historicalP0PoseLayouts = Object.fromEntries([
+  ...HISTORICAL_LILO_P0_POSE_FALLBACKS, ...HISTORICAL_ICONIC_P0_POSE_FALLBACKS
+].map(entry => [entry.sheet, entry.layout]));
 
 export const SPRITE_SHEET_META = {
   frameWidth: 256,
@@ -1166,6 +1172,7 @@ export const getSpriteSheetLayout = (src) => {
   getDisciplineSpriteLayout(src)
   || getCloudMeadowSpriteLayout(src)
   || getMeleeSheetLayout(src)
+  || historicalP0PoseLayouts[normalizeSpriteSrc(src)]
   || legacyPoseFallbackLayoutsWave11[normalizeSpriteSrc(src)]
   || adaptedPresentationLayoutsWave10[normalizeSpriteSrc(src)]
   || calibratedBaseLayouts[normalizeSpriteSrc(src)]
@@ -1218,11 +1225,24 @@ export const getSpriteStateResolution = (state, layout) => {
 
 export const getSpriteFrameForLayout = (state, animTime, layout) => {
   const row = Math.max(0, Math.min((layout?.rows || SPRITE_SHEET_META.rows.length) - 1, animationRowForLayout(state, layout)));
+  const tick = Math.floor(Math.max(0, Number(animTime) || 0) / 10);
+  const columns = layout?.columns || SPRITE_SHEET_META.columns;
+  const allowedColumns = layout?.columnsByRow?.[row];
+  const col = Number.isInteger(layout?.fixedColumn)
+    ? Math.max(0, Math.min(columns - 1, layout.fixedColumn))
+    : allowedColumns?.length ? allowedColumns[tick % allowedColumns.length] : tick % columns;
   return {
     row,
-    col: Number.isInteger(layout?.fixedColumn) ? Math.max(0, Math.min((layout?.columns || 4) - 1, layout.fixedColumn)) : Math.floor(Math.max(0, Number(animTime) || 0) / 10) % (layout?.columns || SPRITE_SHEET_META.columns),
+    col,
     trim: layout?.trimByState?.[state] || layout?.trimByState?.[COARSE_SPRITE_STATE_ALIASES[state]] || layout?.trimByRow?.[row] || layout?.trim || null
   };
+};
+
+export const getSpritePreviewPosition = layout => {
+  const { col, row } = getSpriteFrameForLayout('idle', 0, layout);
+  const x = col / Math.max(1, layout.columns - 1) * 100;
+  const y = row / Math.max(1, layout.rows - 1) * 100;
+  return `${x}% ${y}%`;
 };
 
 export const getSpriteFrame = (state, animTime) => ({

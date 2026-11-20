@@ -6,6 +6,7 @@ import { createServer } from './fixtures/ssrTestServer.mjs';
 import { HEROES_DB, getHeroById } from '../src/game/heroes.js';
 import { getHeroSpriteSheetSrc } from '../src/game/spriteAssets.js';
 import { getRpgActionProfile, resolveRpgTargets } from '../src/game/rpgTargeting.js';
+import { getQuarantinedCanonSprite } from '../src/game/runtimeSpriteQuarantine.js';
 
 const kit = hero => JSON.stringify([
   hero.equipment, hero.simple, hero.secondary, hero.defense, hero.special
@@ -98,7 +99,15 @@ test('the six corrected identities preserve saved IDs, stats, categories and exi
     if (Object.hasOwn(NATIVE_SOURCE_BASE_EDITIONS, id)) {
       assert.equal(sprite, NATIVE_SOURCE_BASE_EDITIONS[id].reference, id + ': retained master reference path');
       assertNativeSourceBaseEdition(hero, getHeroSpriteSheetSrc(hero));
-    } else assert.equal(getHeroSpriteSheetSrc(hero), sprite, id);
+    } else {
+      const quarantine = getQuarantinedCanonSprite(hero);
+      if (quarantine) {
+        assert.equal(quarantine.asset, sprite, id);
+        assert.equal(getHeroSpriteSheetSrc(hero), '', id);
+      } else {
+        assert.equal(getHeroSpriteSheetSrc(hero), sprite, id);
+      }
+    }
     assert.equal(hero.visualReviewStatus, 'pending', id);
   }
 });

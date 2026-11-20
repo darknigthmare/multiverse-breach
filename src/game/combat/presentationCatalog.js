@@ -15,7 +15,7 @@ import { WAVE_16_PRESENTATION_DEFINITIONS } from './presentationCatalogWave16.js
 import { WAVE_17_PRESENTATION_DEFINITIONS } from './presentationCatalogWave17.js';
 import { getCharacterAnimationFrame } from './characterAnimationCatalog.js';
 import { hasReviewedBasePresentationSource20261113, resolveReviewedBasePresentation20261113, resolveReviewedBasePresentationFrame20261113 } from './reviewedBasePresentations20261113.js';
-import { getQuarantinedCanonSprite } from '../canonicalSpriteQuarantine.js';
+import { getQuarantinedCanonSprite } from '../runtimeSpriteQuarantine.js';
 import { getDisciplineSpriteSources } from '../disciplineSprites.js';
 
 export const PRESENTATION_PHASES = Object.freeze(['intro', 'outro', 'fatality', 'victory', 'defeat', 'roundVictory', 'roundDefeat']);

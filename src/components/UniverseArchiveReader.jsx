@@ -3,8 +3,8 @@ import UniverseArchiveDialog from './UniverseArchiveDialog.jsx';
 import UniverseArchiveCatalog from './UniverseArchiveCatalog.jsx';
 import CharacterWardrobe from './CharacterWardrobe.jsx';
 import { getCharacterPlaque } from '../game/characterPlaques.js';
-import { getHeroSpriteSheetSrc, getItemSpriteSrc, getSpriteSheetLayout } from '../game/spriteAssets.js';
-import { getQuarantinedCanonSprite } from '../game/canonicalSpriteQuarantine.js';
+import { getHeroSpriteSheetSrc, getItemSpriteSrc, getSpritePreviewPosition, getSpriteSheetLayout } from '../game/spriteAssets.js';
+import { getQuarantinedCanonSprite } from '../game/runtimeSpriteQuarantine.js';
 import { getBattleItemLoreDescription, getEnemyLoreDescription } from '../game/loreDescriptions.js';
 import { archiveSearchText, getArchiveNeighbour } from '../game/universeArchiveView.js';
 import { updateCatalogView } from '../game/catalogPagination.js';
@@ -125,7 +125,7 @@ export default function UniverseArchiveReader({ archive: selectedUniverseArchive
                                 backgroundImage: spriteSrc ? `url("${spriteSrc}")` : 'none',
                                 backgroundRepeat: 'no-repeat',
                                 backgroundSize: portraitSrc ? 'cover' : `${spriteLayout.columns * 100}% ${spriteLayout.rows * 100}%`,
-                                backgroundPosition: portraitSrc ? 'center 22%' : '0 0',
+                                backgroundPosition: portraitSrc ? 'center 22%' : getSpritePreviewPosition(spriteLayout),
                                 imageRendering: 'pixelated',
                                 display: 'grid',
                                 placeItems: 'center',
