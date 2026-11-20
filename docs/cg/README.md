@@ -2,6 +2,10 @@
 
 [Vérification d’intégration à master](MASTER_INTEGRATION_2026-11-02.md) : hub, galerie, variantes, références Rift et classeur synchronisés.
 
+## Alien, Predator et Infernum du 20 novembre 2026
+
+**51 nouveaux décors CG03** portent la famille Alien et Predator à **66/66** fiches équipées dans **16 univers**. **10 scènes de Morcant l’Enchaîné** portent sa série à **15/15** dans *Infernum: Nine Pits*. [Planches, sources et illustrations](reviews/horror-alien-predator-cg-2026-11-20/README.md).
+
 ## Univers d’horreur du 20 novembre 2026
 
 Cette vague livre **66 décors CG03** répartis sur **17 univers d’horreur**. **3 variantes de Jonas Mire** portent le Testament des noyés à 45 CG sur 45. La galerie contient 70 décors pour les 70 fiches du roster dans les univers sélectionnés. [Planches, sources et illustrations](reviews/horror-cg-2026-11-20/README.md).
