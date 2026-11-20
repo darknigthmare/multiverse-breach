@@ -2,6 +2,10 @@
 
 [Vérification d’intégration à master](MASTER_INTEGRATION_2026-11-02.md) : hub, galerie, variantes, références Rift et classeur synchronisés.
 
+## Univers d’horreur du 20 novembre 2026
+
+Cette vague livre **66 décors CG03** répartis sur **17 univers d’horreur**. **3 variantes de Jonas Mire** portent le Testament des noyés à 45 CG sur 45. La galerie contient 70 décors pour les 70 fiches du roster dans les univers sélectionnés. [Planches, sources et illustrations](reviews/horror-cg-2026-11-20/README.md).
+
 ## Music par univers du 20 novembre 2026
 
 Cette vague ajoute **79 décors CG03** pour **26 univers Music** et **21 scènes, poses ou accessoires**. La galerie livre **154 décors sur 154** pour la catégorie Music. Il reste **2 110 CG Music** à réaliser. [Planches, sources et illustrations](reviews/music-universes-2026-11-20/README.md).
