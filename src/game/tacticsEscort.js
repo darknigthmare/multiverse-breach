@@ -24,8 +24,8 @@ const ROLE_PROFILES = [
   { match: /nexus de convergence/i, role: { fr: 'Temoin de faille a evacuer', en: 'Breach witness to evacuate' }, preferred: /arca_mirelle/i }
 ];
 
-export const resolveTacticsEscort = (stage = {}, roster = HEROES_DB) => {
-  const authored = stage.escort && typeof stage.escort === 'object' ? stage.escort : {};
+export const resolveTacticsEscort = (stage = {}, roster = HEROES_DB, battlefieldEscort = {}) => {
+  const authored = stage.escort && typeof stage.escort === 'object' ? stage.escort : battlefieldEscort;
   const universe = authored.universe || stage.universe || 'Nexus de Convergence';
   const profile = ROLE_PROFILES.find(entry => entry.match.test(universe));
   const role = localized(authored.role, profile?.role || { fr: 'Personne a evacuer', en: 'Person to evacuate' });
@@ -60,8 +60,8 @@ export const resolveTacticsEscort = (stage = {}, roster = HEROES_DB) => {
   };
 };
 
-export const getTacticsEscortBriefing = (stage = {}, lang = 'fr') => {
-  const identity = resolveTacticsEscort(stage);
+export const getTacticsEscortBriefing = (stage = {}, lang = 'fr', battlefieldEscort) => {
+  const identity = resolveTacticsEscort(stage, undefined, battlefieldEscort);
   const locale = lang === 'en' ? 'en' : 'fr';
   return `${identity.name[locale]} | ${identity.universe} | ${identity.role[locale]}. ${identity.representation[locale]}`;
 };

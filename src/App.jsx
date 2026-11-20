@@ -823,7 +823,11 @@ const getMissionNarrative = (stage, lang, isOutro, victory) => {
 
 function MissionNarrativeScreen({ lang, stage, result, rewardSummary, onContinue, onBack }) {
   const isOutro = Boolean(result);
-  const escortBriefing = useMemo(() => stage.mode === 'Tactics' && getTacticsBattlefield(stage).objective === 'escort' ? getTacticsEscortBriefing(stage, lang) : '', [stage, lang]);
+  const escortBriefing = useMemo(() => {
+    if (stage.mode !== 'Tactics') return '';
+    const battlefield = getTacticsBattlefield(stage);
+    return battlefield.objective === 'escort' ? getTacticsEscortBriefing(stage, lang, battlefield.escort) : '';
+  }, [stage, lang]);
   const victory = result === 'victory';
   const nonCombatDetails = getNonCombatStageDetails(stage, lang);
   const backdrop = stage.stageArt || stage.image || getOpenAiBackdropSrc(stage.universe, stage.mode);

@@ -434,7 +434,7 @@ test('real category effect preserves restored selection on mount, and resets onl
   const previousMissionScreenRef = { current: 'universeArcs' };
   const missionEntryRequestRef = { current: null };
   const updates = {};
-  const names = ['setSelectedNarrativeArcId', 'setSelectedNarrativeGroupId', 'setNarrativeGroupView', 'setMissionWorkspaceView', 'setMissionModeFilter', 'setDirectoryQuery', 'setDirectoryStatus', 'setNarrativeGroupQuery', 'setMediaFilter', 'setBriefingStageId'];
+  const names = ['setSelectedNarrativeArcId', 'setSelectedNarrativeGroupId', 'setNarrativeGroupView', 'setMissionWorkspaceView', 'setMissionModeFilter', 'setDirectoryQuery', 'setDirectoryStatus', 'setNarrativeGroupQuery', 'setMediaFilter', 'setBriefingStageId', 'setLibraryBriefingId'];
   const runEffect = missionScreen => new Function('previousMissionScreenRef', 'missionEntryRequestRef', 'missionScreen', ...names, hub.slice(start, end))(
     previousMissionScreenRef, missionEntryRequestRef, missionScreen, ...names.map(name => value => { updates[name] = value; })
   );
@@ -448,6 +448,7 @@ test('real category effect preserves restored selection on mount, and resets onl
   assert.equal(updates.setSelectedNarrativeGroupId, null);
   assert.equal(updates.setSelectedNarrativeArcId, null);
   assert.equal(updates.setBriefingStageId, null);
+  assert.equal(updates.setLibraryBriefingId, null);
   assert.equal(updates.setMissionWorkspaceView, 'missions');
 
   // The Directive shortcut changes category and selects a mission in one event.

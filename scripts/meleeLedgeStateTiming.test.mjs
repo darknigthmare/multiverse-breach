@@ -2,13 +2,14 @@ import { after, before, test } from 'node:test';
 import assert from 'node:assert/strict';
 import { createServer } from 'vite';
 
-let vite, EngineSmash, ripley, runtime, sample;
+let vite, EngineSmash, ripley, runtime, sample, crownlessEnemies;
 before(async () => {
   vite = await createServer({ appType: 'custom', logLevel: 'silent', server: { middlewareMode: true } });
   ({ EngineSmash } = await vite.ssrLoadModule('/src/game/engineSmash.js'));
   ripley = (await vite.ssrLoadModule('/src/game/heroes.js')).HEROES_DB.find(hero => hero.id === 'ripley');
   runtime = await vite.ssrLoadModule('/src/game/melee/meleeCombatRuntime.js');
   ({ getHeroMeleeAnimationFrame: sample } = await vite.ssrLoadModule('/src/game/spriteAssets.js'));
+  crownlessEnemies = (await vite.ssrLoadModule('/src/game/enemies.js')).ENEMIES_DB['The Crownless Sea'];
 });
 after(async () => { await vite?.close(); });
 
@@ -92,4 +93,58 @@ test('an inactive local companion keeps the exit poses while its physical update
     assert.equal(actor.state, 'ledgeDrop');
   }
   assert.deepEqual([...columns], [0, 1, 2, 3]); assert.ok(actor.y > startY);
+});
+
+test('the Amiral Chain and Corsaire noyé hit poses follow simulation ticks in the real Melee draw path', () => {
+  const boss = crownlessEnemies.bosses.find(enemy => enemy.id === 'crownless_sea:amiral_chain');
+  const monster = crownlessEnemies.monsters.find(enemy => enemy.id === 'crownless_sea:corsaire_noye');
+  const engine = new EngineSmash(960, 540, [ripley], {
+    customRoster: [{ ...boss, isBoss: true }, monster]
+  }, { add() {} }, () => {}, () => {}, {
+    universe: 'The Crownless Sea', mode: 'Smash', difficulty: 'Training', skipPreMatchInTraining: true,
+    disableItems: true, disableHazards: true, customBattle: { singleRoster: true, opponentControl: 'p2' }
+  });
+  const originalImage = globalThis.Image;
+  globalThis.Image = class {
+    complete = true;
+    naturalWidth = 1024;
+    naturalHeight = 1024;
+    set src(path) { this.currentSrc = new URL(path, 'https://fixture.invalid').href; }
+    get src() { return this.currentSrc; }
+  };
+  const crops = new Map();
+  const noop = () => {};
+  const ctx = new Proxy({
+    canvas: { width: 960, height: 540 },
+    globalAlpha: 1,
+    createLinearGradient: () => ({ addColorStop: noop }),
+    createRadialGradient: () => ({ addColorStop: noop }),
+    drawImage(image, ...crop) {
+      const path = image?.currentSrc || '';
+      if (path.endsWith('/amiral-chain.png')) crops.set('boss', crop.slice(0, 4));
+      if (path.endsWith('/corsaire-noye.png')) crops.set('monster', crop.slice(0, 4));
+    }
+  }, { get(target, key) { return target[key] ?? noop; } });
+  const readCrops = time => {
+    crops.clear();
+    engine.draw(ctx, time);
+    assert.equal(crops.size, 2);
+    return [crops.get('boss'), crops.get('monster')];
+  };
+  try {
+    for (const enemy of engine.enemies) {
+      assert.ok(engine.applyDamage(engine.heroes[0], enemy, 12, 20) > 0);
+      assert.equal(enemy.state, 'hit');
+      assert.equal(enemy.stateElapsed, 0);
+    }
+    const first = [[0, 768, 256, 256], [0, 768, 256, 256]];
+    assert.deepEqual(readCrops(31), first);
+    assert.deepEqual(readCrops(126), first);
+    for (let step = 0; step < 11; step++) engine.update({}, {});
+    assert.ok(engine.enemies.every(enemy => enemy.state === 'hit' && enemy.stateElapsed >= 11 / 60 - 1e-9));
+    assert.deepEqual(readCrops(31), [[256, 768, 256, 256], [256, 768, 256, 256]]);
+  } finally {
+    globalThis.Image = originalImage;
+    engine.dispose();
+  }
 });

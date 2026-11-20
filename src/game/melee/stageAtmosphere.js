@@ -2,6 +2,7 @@ import { getStageLoreProfile } from '../stageLoreProfiles.js';
 import { getRecentUniverseLevelProfile } from '../recentUniverseLevels.js';
 import { getUniverseStageAtmosphereDefault } from './stageAtmosphereUniverseDefaults.js';
 import { getConcreteStageLocation, getStageAnimationProfile, renderStageAnimation } from './stageAnimationCatalog.js';
+import { drawOriginalMeleeStageMotion, getOriginalMeleeStageMotion } from './originalMeleeStageMotion.js';
 
 // These are background adaptations of locations already named by the stage
 // catalogue, not claims that a procedural drawing reproduces a source 1:1.
@@ -76,6 +77,24 @@ const wrap = (value, size) => ((value % size) + size) % size;
 
 export function getStageAtmosphereProfile(stageOrUniverse = {}) {
   const stage = typeof stageOrUniverse === 'string' ? { universe: stageOrUniverse } : (stageOrUniverse || {});
+  const originalStageMotion = getOriginalMeleeStageMotion(stage);
+  if (originalStageMotion) return Object.freeze({
+    id: originalStageMotion.effect,
+    universe: stage.universe,
+    effect: originalStageMotion.effect,
+    color: originalStageMotion.color,
+    description: originalStageMotion.description,
+    fidelity: STAGE_ATMOSPHERE_FIDELITY.authored,
+    selection: 'stage-scene',
+    sourceFields: ['stage.contentStageId/stage.stageKey', 'originalUniversesManifest.stages.setting'],
+    sourceAnchor: getConcreteStageLocation(stage) || stage.contentStageId || stage.stageKey,
+    sourceReference: 'src/game/originalUniversesManifest.json',
+    sourceVisualValidation: 'not-validated-1:1',
+    renderingKind: 'procedural-atmosphere',
+    gameplayEffect: 'none',
+    originalStageMotion,
+    enabled: !stage.disableStageAtmosphere && !stage.disableStageAnimations
+  });
   const lore = getStageLoreProfile(stage);
   const level = getRecentUniverseLevelProfile(stage.universe);
   const stageLocation = getConcreteStageLocation(stage);
@@ -377,7 +396,8 @@ export function renderStageAtmosphere(ctx, { stage = {}, width, height, elapsedS
       ctx.translate(width * (x - spread * 0.5), height * (y - 0.3 * 0.8));
       ctx.scale(spread, 0.8);
     }
-    drawAtmosphere(ctx, profile.effect, width, height, time);
+    if (profile.originalStageMotion) drawOriginalMeleeStageMotion(ctx, profile.originalStageMotion, width, height, time);
+    else drawAtmosphere(ctx, profile.effect, width, height, time);
   } finally {
     ctx.restore();
   }

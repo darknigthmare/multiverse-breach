@@ -70,6 +70,7 @@ import { drawFallbackEnergyBlades } from './energyBladeFallback.js';
 import { getQuarantinedCanonSprite } from './canonicalSpriteQuarantine.js';
 import { drawPachakutiFallback } from './pachakutiWorldBossArt.js';
 import { drawTwelveBellJudgesMotion } from './twelveBellJudgesMotion.js';
+import { drawOriginalStaticBossMotion } from './originalStaticBossMotion.js';
 
 // Pixel Art Renderer and Particle System for Multiverse Breach
 
@@ -527,7 +528,8 @@ const drawGeneratedSpriteSheet = (ctx, x, y, entity, animTime, facing, targetHei
   ctx.filter = entity?.spriteFilter || 'none';
   ctx.imageSmoothingEnabled = false;
   if (sourceX !== 0 || sourceY !== 0 || sourceW !== entry.image.naturalWidth || sourceH !== entry.image.naturalHeight
-    || !drawTwelveBellJudgesMotion(ctx, entity, entry.image, animTime, -drawW / 2, -baseline * scale, drawW, drawH)) {
+    || !(drawTwelveBellJudgesMotion(ctx, entity, entry.image, animTime, -drawW / 2, -baseline * scale, drawW, drawH)
+      || drawOriginalStaticBossMotion(ctx, entity, entry.image, animTime, -drawW / 2, -baseline * scale, drawW, drawH))) {
     ctx.drawImage(entry.image, sourceX, sourceY, sourceW, sourceH, -drawW / 2, -baseline * scale, drawW, drawH);
   }
   ctx.restore();
@@ -1092,7 +1094,7 @@ const drawOriginForgeThreat = (ctx, x, y, enemy, animTime, facing, targetHeight 
 
 };
 
-export const drawPixelEnemy = (ctx, x, y, enemy, animTime, facing = -1, targetHeight = 68) => {
+export const drawPixelEnemy = (ctx, x, y, enemy, animTime, facing = -1, targetHeight = 68, context = 'auto') => {
   enemy = getSourceRuntimeViewWave16(enemy);
   if (drawSourceCaptureEnemyWave17(ctx, x, y, enemy, animTime, facing, targetHeight)) return;
   if (drawOriginForgeThreat(ctx, x, y, enemy, animTime, facing, targetHeight)) return;
@@ -1100,12 +1102,12 @@ export const drawPixelEnemy = (ctx, x, y, enemy, animTime, facing = -1, targetHe
   // renderer selects dedicated presentation cells before that hero's base PNG.
   const heroActor = resolveCombatHeroSpriteActor(enemy);
   if (heroActor) {
-    drawPixelSprite(ctx, x, y, heroActor, animTime, facing, targetHeight);
+    drawPixelSprite(ctx, x, y, heroActor, animTime, facing, targetHeight, context);
     return;
   }
   const generatedStatus = drawGeneratedSpriteSheet(ctx, x, y, enemy, animTime, facing, targetHeight, getEnemySpriteSheetSources, () => {
-    drawPixelEnemy(ctx, x, y, enemy, animTime, facing, targetHeight);
-  });
+    drawPixelEnemy(ctx, x, y, enemy, animTime, facing, targetHeight, context);
+  }, context);
   if (generatedStatus !== 'missing') {
     return;
   }
@@ -1215,13 +1217,13 @@ export const drawPixelEnemy = (ctx, x, y, enemy, animTime, facing = -1, targetHe
   ctx.restore();
 };
 
-export const drawBoss = (ctx, x, y, boss, animTime, facing = -1) => {
+export const drawBoss = (ctx, x, y, boss, animTime, facing = -1, context = 'auto') => {
   const requestedScale = Number(boss?.tacticsRenderScale);
   const renderScale = Number.isFinite(requestedScale) && requestedScale > 0 ? requestedScale : 1;
   const targetHeight = Math.max(96, Math.min(620, boss.renderHeight || 126)) * renderScale;
   const generatedStatus = drawGeneratedSpriteSheet(ctx, x, y, boss, animTime, facing, targetHeight, getEnemySpriteSheetSources, () => {
-    drawBoss(ctx, x, y, boss, animTime, facing);
-  });
+    drawBoss(ctx, x, y, boss, animTime, facing, context);
+  }, context);
   if (generatedStatus !== 'missing') {
     return;
   }

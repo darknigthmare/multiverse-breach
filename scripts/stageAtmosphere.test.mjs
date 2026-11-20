@@ -2,6 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import { HEROES_DB } from '../src/game/heroes.js';
+import { ORIGINAL_UNIVERSE_WAVE } from '../src/game/originalUniverseWave.js';
 import {
   AUTHORED_STAGE_ATMOSPHERES,
   getStageAtmosphereProfile,
@@ -61,6 +62,46 @@ test('different places in one universe do not inherit unrelated canonical set pi
   assert.notEqual(getStageAtmosphereProfile({ universe: 'Demon Slayer', name: 'Mount Natagumo forest' }).effect, 'castle-panels');
   assert.notEqual(getStageAtmosphereProfile({ universe: 'Tokyo Ghoul', name: 'Cochlea prison concrete' }).effect, 'rain');
   assert.notEqual(getStageAtmosphereProfile({ universe: 'Silent Hill', name: 'Otherworld hospital corridor' }).id, 'toluca-fog');
+});
+
+test('eight original Melee stages use their exact location motion, with finite loops and reduced motion', () => {
+  const stages = new Map([
+    ['aether_coppermarket', 'coppermarket-airships'],
+    ['meridian_thousand_dials', 'meridian-remote-clockfaces'],
+    ['iron_zephyr_airfield', 'zephyr-windsocks'],
+    ['helios_tomorrowville_expo', 'helios-exposition-orbits'],
+    ['primordia_shoreless_sea', 'primordia-shoreless-reflections'],
+    ['pirate_port_no_flag', 'crownless-rigging-lanterns'],
+    ['lovecraft_greywake_harbor', 'greywake-harbour-backwash'],
+    ['fantasy_hollow_peak', 'valedor-peak-cloudbanks']
+  ]);
+  const matched = [];
+  for (const world of ORIGINAL_UNIVERSE_WAVE) for (const runtimeStage of [world, ...world.stageVariants]) {
+    const id = stages.get(runtimeStage.contentStageId);
+    if (!id) continue;
+    matched.push(id);
+    const stage = { ...runtimeStage, universe: world.universe };
+    const profile = getStageAtmosphereProfile(stage);
+    assert.equal(profile.id, id);
+    assert.equal(profile.selection, 'stage-scene');
+    assert.equal(profile.gameplayEffect, 'none');
+    assert.equal(profile.sourceReference, 'src/game/originalUniversesManifest.json');
+    const first = draw(stage, 0);
+    const advanced = draw(stage, profile.originalStageMotion.periodSeconds * .24);
+    assert.notDeepEqual(advanced, first, stage.name);
+    assert.deepEqual(draw(stage, profile.originalStageMotion.periodSeconds), first);
+    assert.deepEqual(draw(stage, 193, { reducedMotion: true }), first);
+    assert.deepEqual(draw({ ...stage, reducedMotion: true }, 193), first);
+    for (const patch of [
+      { mode: 'RPG' }, { mode: 'Tactics' }, { mode: 'Combat' },
+      { universe: 'Nexus de Convergence' }, { contentStageId: 'custom' }, { forceBaseArena: true }, { dlcSuppressedArena: true }
+    ]) assert.notEqual(getStageAtmosphereProfile({ ...stage, ...patch }).id, id);
+    assert.notEqual(getStageAtmosphereProfile({ name: stage.name, universe: stage.universe, mode: 'Smash' }).id, id);
+    const { ctx, operations } = recordingContext();
+    assert.equal(renderStageAtmosphere(ctx, { stage: { ...stage, disableStageAnimations: true }, width: 900, height: 420 }), false);
+    assert.deepEqual(operations, []);
+  }
+  assert.equal(matched.length, 8);
 });
 
 test('physical profiles use authored surfaces and never genre, faction or stage hashes', () => {

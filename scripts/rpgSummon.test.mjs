@@ -68,7 +68,7 @@ after(async () => {
   await vite?.close();
 });
 
-for (const side of ['player', 'enemy']) test(`RPG ${side}: stock ÜberCharge stops infection damage while the beam remains connected`, () => {
+function prepareStockUber(side) {
   const team = [hero('team_fortress_2_scout'), hero('team_fortress_2_medic')];
   const foes = [enemyData('opponent')];
   const engine = side === 'player' ? makeEngine(team, foes) : makeEngine(foes, team);
@@ -84,6 +84,11 @@ for (const side of ['player', 'enemy']) test(`RPG ${side}: stock ÜberCharge sto
   assert.equal(beam?.connected, true);
   beam.charge = 1;
   assert.equal(engine.summon(patient, side) && engine.confirmTargeting(), true);
+  return { engine, patient, medic, beam };
+}
+
+for (const side of ['player', 'enemy']) test(`RPG ${side}: stock ÜberCharge stops infection damage while the beam remains connected`, () => {
+  const { engine, patient, medic, beam } = prepareStockUber(side);
   tick(engine, engine.activeSummon.durationTicks);
   assert.equal(beam.uberRemaining, 8);
   patient.currentHp = patient.maxHp * 1.5;
@@ -101,6 +106,31 @@ for (const side of ['player', 'enemy']) test(`RPG ${side}: stock ÜberCharge sto
   tick(engine);
   assert.equal(beam.connected, false);
   assert.deepEqual(pair.map(actor => actor.currentHp), exposedHp.map(hp => hp - 3));
+});
+
+for (const side of ['player', 'enemy']) test(`RPG ${side}: a missing ÜberCharge atlas shows the real Medic and the connected beam`, () => {
+  const { engine, patient, medic } = prepareStockUber(side);
+  tick(engine, engine.activeSummon.impactTick);
+  const before = engine.getSummonSceneState();
+  const bodies = [], beams = [];
+  engine.drawRpgHero = (_ctx, actor) => bodies.push({ actor, side: 'player' });
+  engine.drawRpgEnemy = (_ctx, actor) => bodies.push({ actor, side: 'enemy' });
+  const ctx = new Proxy({
+    beginPath() { this.points = []; },
+    moveTo(x, y) { this.points.push([x, y]); },
+    lineTo(x, y) { this.points.push([x, y]); },
+    stroke() { if (this.strokeStyle === '#ffb57c') beams.push(this.points); },
+    createRadialGradient() { return { addColorStop: noop }; },
+    createLinearGradient() { return { addColorStop: noop }; }
+  }, { get(target, key) { return key in target ? target[key] : noop; } });
+  engine.draw(ctx, before.tick, 'fr', { showSummonCaption: false });
+  assert.deepEqual(bodies.filter(body => body.actor === medic), [{ actor: medic, side }]);
+  const expectedY = patient.y - 72 * engine.getDepthScale(patient.y) * 0.38;
+  const realBeam = beams.filter(points => points?.length === 2 && points.at(-1)[0] === patient.x
+    && Math.abs(points.at(-1)[1] - expectedY) < 1e-9);
+  assert.equal(realBeam.length, 1);
+  assert.ok(Math.abs(realBeam[0][0][0] - medic.x) < 30);
+  assert.deepEqual(engine.getSummonSceneState(), before);
 });
 
 for (const side of ['player', 'enemy']) test('RPG summon selection and cancellation never spend resources for ' + side, () => {

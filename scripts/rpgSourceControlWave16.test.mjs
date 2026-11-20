@@ -99,6 +99,55 @@ test('RPG: an allied invocation pauses a committed Slig rifle pose and its relea
  assert.ok(other.currentHp < hp);
 });
 
+test('RPG J2: releasing a Slig leaves its teammate’s current attack locked', () => {
+ const c = make('possession', 'enemy', [hero('kirito_sao'), hero('noble_six')]);
+ const { engine, actor, target, other } = c;
+ const [, attacker, reserve] = engine.enemies;
+ attacker.x = attacker.homeX = other.x - 135;
+ attacker.y = attacker.homeY = other.y;
+ other.currentHp = other.maxHp = 100000;
+ start(c);
+ tick(engine, 67);
+ attacker.atb = reserve.atb = 100;
+ assert.equal(engine.triggerEnemyAbility(attacker, 'special', [other.battleId]), true);
+ assert.equal(engine.releaseRpgPossession(actor.battleId, 'enemy'), true);
+ assert.equal(target.sourceControlWave16.active, false);
+ assert.equal(attacker.actionPending, true);
+ assert.equal(engine.canUseAction(reserve, 'simple', 'enemy'), false);
+ let ticks = 0;
+ while (attacker.actionPending && ticks++ < 300) engine.update();
+ assert.equal(attacker.actionPending, false);
+ assert.equal(engine.canUseAction(reserve, 'simple', 'enemy'), true);
+});
+
+for (const end of ['release', 'expiry']) test(`RPG J2: possession ${end} cancels its own pending rifle and returns the command`, () => {
+ const c = make('possession', 'enemy', [hero('noble_six')]);
+ const { engine, actor, target, other } = c;
+ const reserve = engine.enemies[1];
+ start(c);
+ tick(engine, 67);
+ if (end === 'expiry') {
+  let ticks = 0;
+  while (target.sourceControlWave16.remaining > 0.1 && ticks++ < 180) engine.update();
+  assert.ok(target.sourceControlWave16.active);
+ }
+ reserve.atb = target.atb = 100;
+ assert.equal(engine.beginPossessedTargeting(actor.battleId, 'enemy'), true);
+ assert.equal(engine.confirmTargeting(), true);
+ assert.equal(engine.enemyActionOwner, target);
+ assert.equal(engine.canUseAction(reserve, 'simple', 'enemy'), false);
+ const hp = other.currentHp;
+ if (end === 'release') assert.equal(engine.releaseRpgPossession(actor.battleId, 'enemy'), true);
+ else tick(engine, 8);
+ assert.equal(target.sourceControlWave16.active, false);
+ assert.equal(target.rpgPossessedRifleActionWave16, null);
+ assert.equal(engine.enemyActionOwner, null);
+ assert.equal(engine.canUseAction(reserve, 'simple', 'enemy'), true);
+ tick(engine, 20);
+ assert.equal(other.currentHp, hp);
+ assert.equal(target.rpgPossessedRifleLastReleaseWave16, undefined);
+});
+
 test('RPG J2: the Paralyzer cannot unlock a teammate’s command while another enemy is still attacking', () => {
  const c = make('paralyzer', 'player', [], [hero('kirito_sao'), hero('noble_six')]);
  const { engine, actor, target, other } = c;

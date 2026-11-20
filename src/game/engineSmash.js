@@ -2899,13 +2899,16 @@ export class EngineSmash {
 
     this.enemies.forEach(e => {
       const heroSpriteActor = resolveCombatHeroSpriteActor(e);
+      // Living foes already update their own state clock. A knockout still
+      // uses the existing display clock as the body leaves the arena.
+      const spriteContext = e.state === 'dead' ? 'auto' : 'melee';
       if (heroSpriteActor) {
         const visualActor = this.getMeleeVisualActor(heroSpriteActor);
         drawPixelSprite(ctx, visualActor.x, visualActor.y, visualActor, animTime, visualActor.facing, 72, 'melee');
       } else if (e.isBoss) {
-        drawBoss(ctx, e.x, e.y, e, animTime, e.facing);
+        drawBoss(ctx, e.x, e.y, e, animTime, e.facing, spriteContext);
       } else {
-        drawPixelEnemy(ctx, e.x, e.y, e, animTime, e.facing, e.sourceEnemyId === 'oddworld_slig' && e.universe === 'Oddworld' ? 72 : 68);
+        drawPixelEnemy(ctx, e.x, e.y, e, animTime, e.facing, e.sourceEnemyId === 'oddworld_slig' && e.universe === 'Oddworld' ? 72 : 68, spriteContext);
       }
 
       drawCombatControl(ctx, e, 72);

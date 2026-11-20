@@ -8,6 +8,7 @@ import { getEffectiveCombatDefense } from './combatStatPreparation.js';
 import { resolveCombatAbility, resolveUniverseSummon } from './combatIdentity.js';
 import { getNexusActorDesign } from './nexusActorDesigns.js';
 import { resolveOriginalRpgSpecial } from './originalActorDesigns.js';
+import { getOriginalCampaignEnemySecondary } from './originalCampaignEnemyActions.js';
 import { isPhaselockProfile, isPhaselockTargetEligible } from './combat/combatControlWave15.js';
 import { isSourceControlProfileWave16 } from './combat/combatControlWave16.js';
 import { canSourceControlTargetWave16, getPossessedSligActionWave16 } from './combat/sourceCombatRuntimeWave16.js';
@@ -50,7 +51,10 @@ export function getRpgCombatantAbility(actor, abilityType) {
     const authored = resolveCombatAbility(actor, abilityType);
     if (authored?.provenance?.identityAuthored) return authored.sourceAbility;
   }
-  return actor?.[abilityType] || null;
+  if (abilityType === 'secondary' && supplied === undefined && actor?.rpgAttacks?.secondary === undefined) {
+    return getOriginalCampaignEnemySecondary(actor);
+  }
+  return supplied || null;
 }
 
 export function getRpgActionProfile(actor, abilityType, side = 'player', arena = {}, suppliedAction = null) {

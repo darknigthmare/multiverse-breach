@@ -107,6 +107,19 @@ def verify(page, out, name, lang, result):
     library.locator('.oc-act-controls > button').click()
     expect(search).to_be_focused()
     assert page.evaluate('structuredClone(window.__ocLibraryQA.model)') == initial, 'search/filter changed parent state'
+    state_filter = library.locator('select')
+    search.fill('Thalassa')
+    expect(cards).to_have_count(1)
+    for status, hidden in [('active', ['Thalassa Mnémique']), ('reserve', [])]:
+        state_filter.select_option(status)
+        reserve = cards.first.locator('[data-oc-act-reserve]')
+        reserve.focus()
+        page.keyboard.press('Enter')
+        expect(cards).to_have_count(0)
+        expect(state_filter).to_be_focused()
+        assert page.evaluate('window.__ocLibraryQA.model.hiddenUniverses') == hidden
+    assert page.evaluate('structuredClone(window.__ocLibraryQA.model)') == initial
+    state_filter.select_option('all')
     first = cards.first
     missions = first.locator('[data-oc-act-missions]')
     missions.locator('summary').focus()
@@ -144,13 +157,31 @@ def verify(page, out, name, lang, result):
     })''')
     assert all(item['titleScrollWidth'] <= item['titleClientWidth'] + 1 and item['titleWhiteSpace'] == 'normal' for item in metrics), 'mission title clipped'
     assert page.evaluate('document.documentElement.scrollWidth <= innerWidth'), 'expanded missions overflowed the page'
+    state_filter.select_option('active')
     first.locator('.oc-act-next').click()
     page.wait_for_function('window.__ocLibraryQA.navigationRef.current.briefingStageId === 47001 && window.__ocLibraryQA.navigationRef.current.missionWorkspaceView === "map"')
+    dossier = page.locator('.rift-briefing-title').filter(has_text='#47001')
+    back = page.get_by_role('button', name='RETOUR AUX ACTES' if lang == 'fr' else 'BACK TO ACTS', exact=True)
+    expect(dossier).to_be_focused()
+    expect(library).to_be_hidden()
+    back.focus()
+    page.keyboard.press('Enter')
+    expect(first.locator('.oc-act-next')).to_be_focused()
+    expect(search).to_have_value('Thalassa')
+    expect(state_filter).to_have_value('active')
+    expect(missions).to_have_attribute('open', '')
+    mission_buttons.nth(0).focus()
+    page.keyboard.press('Enter')
+    expect(dossier).to_be_focused()
+    back.focus()
+    page.keyboard.press('Enter')
+    expect(mission_buttons.nth(0)).to_be_focused()
     assert page.evaluate('window.__ocLibraryQA.launches') == [], 'a briefing launched combat'
     assert page.evaluate('structuredClone(window.__ocLibraryQA.model)') == initial
     result['verification'] = {'searchAndEmptyReset': True, 'searchFilterPreservesState': True,
       'keyboardDetails': True, 'lockedMissionBlocked': True, 'reserveBlocksBriefings': True,
       'reserveRoundtripPreservesState': True, 'nextBriefingId': 47001, 'combatNotLaunched': True,
+      'filteredReserveRestoresFilterFocus': True, 'briefingReturnRetainsReadingAndFocus': True,
       'resetFocusGeometry': focus_geometry, 'missions': metrics}
 
 

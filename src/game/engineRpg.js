@@ -346,6 +346,12 @@ export class EngineRpg {
     return action;
   }
 
+  releaseEnemyActionLock(actor) {
+    if (this.enemyActionOwner !== actor) return;
+    this.enemyActionOwner = null;
+    this.enemyActionLock = false;
+  }
+
   cancelActorActions(actor) {
     if (!actor || typeof actor !== 'object') return;
     // Invalidate incoming effects synchronously, even when this actor had no
@@ -368,10 +374,7 @@ export class EngineRpg {
     this.actorActions.delete(actor);
     this.actionQueue = this.actionQueue.filter(action => action.actor !== actor);
     actor.actionPending = false;
-    if (this.enemyActionOwner === actor) {
-      this.enemyActionOwner = null;
-      this.enemyActionLock = false;
-    }
+    this.releaseEnemyActionLock(actor);
     this.returnToFormation(actor);
   }
 
@@ -712,11 +715,13 @@ export class EngineRpg {
     const body = owner && getPossessedBodyWave16(owner, actors);
     if (!body || !releaseSourcePossessionWave16(owner, actors)) return false;
     body.rpgPossessedRifleActionWave16 = null;
+    body.sourceControlProfileRpgWave16 = null;
     this.sourceRpgControlTargetsWave16.delete(body);
     owner.sourceRpgPossessionCastWave16=null;owner.rpgSpecialVisual=null;owner.actionPending=false;
     if(owner.currentHp>0)owner.state='idle';
     if(body.currentHp>0)body.state='idle';
-    if(this.enemies.includes(owner))this.enemyActionLock=false;
+    this.releaseEnemyActionLock(body);
+    this.releaseEnemyActionLock(owner);
     if (this.targeting?.actor === body) this.targeting = null;
     return true;
   }
@@ -1173,10 +1178,7 @@ export class EngineRpg {
             this.sourceRpgControlTargetsWave16.add(target);
           }
           if (this.targeting?.actor === target) this.targeting = null;
-          if (this.enemyActionOwner === target) {
-            this.enemyActionOwner = null;
-            this.enemyActionLock = false;
-          }
+          this.releaseEnemyActionLock(target);
           this.particles.add(target.x,target.y-20,0,-.4,color,12,45,'text',profile.controlKind==='possession'?'POSSESSION':'PARALYZER');
           continue;
         }
@@ -2079,6 +2081,7 @@ export class EngineRpg {
       const old=priorControls.get(actor),state=actor.sourceControlWave16;
       if(old?.active&&state&&!state.active){
         if(old.kind==='possession'&&this.targeting?.actor===actor)this.targeting=null;
+        if (old.kind === 'possession') this.releaseEnemyActionLock(actor);
         this.sourceRpgControlTargetsWave16.delete(actor);
         actor.rpgPossessedRifleActionWave16=null;actor.sourceControlProfileRpgWave16=null;
         actor.rpgActionVersion=(actor.rpgActionVersion||0)+1;actor.actionPending=false;
@@ -2088,7 +2091,7 @@ export class EngineRpg {
           owner.rpgActionVersion=(owner.rpgActionVersion||0)+1;owner.actionPending=false;
           owner.sourceRpgPossessionCastWave16=null;owner.rpgSpecialVisual=null;
           if(owner.currentHp>0)owner.state='idle';
-          if(this.enemies.includes(owner))this.enemyActionLock=false;
+          this.releaseEnemyActionLock(owner);
         }
       }
       if (!this.activeSummon && actor.rpgPossessedRifleActionWave16) {
@@ -2374,7 +2377,6 @@ export class EngineRpg {
   }
 
   drawRpgHero(ctx, h, animTime) {
-    if(this.activeSummon?.sourceMedicWave17===h)return;
     const scale = this.getDepthScale(h.y);
     const lift = h.rpgControlTicks > 0 ? 16 * scale : 0;
     if(h.sourceEnemyId==='oddworld_slig'&&h.universe==='Oddworld')drawPixelEnemy(ctx,h.x,h.y-lift,this.getRpgPresentationActor(h),animTime,h.facing,68*scale);
@@ -2411,7 +2413,6 @@ export class EngineRpg {
   }
 
   drawRpgEnemy(ctx, e, animTime) {
-    if(this.activeSummon?.sourceMedicWave17===e)return;
     const scale = this.getDepthScale(e.y);
     const lift = e.rpgControlTicks > 0 ? 16 * scale : 0;
     const heroSpriteActor = resolveCombatHeroSpriteActor(e);
@@ -2518,6 +2519,7 @@ export class EngineRpg {
     ctx.save();
     ctx.globalAlpha = alpha;
     const performer = descriptor.performer;
+    const medic = scene.sourceMedicWave17;
     const entityAsset = descriptor.entityRender?.asset;
     const drawRosterPerformer = () => drawPixelSprite(ctx, x, y, {
       ...performer,
@@ -2535,16 +2537,16 @@ export class EngineRpg {
       nativeDrawn = nativeFrame && drawCosmeticAtlasFrame(ctx, { ...nativeAsset, row: nativeFrame.row, frames: 4 }, nativeFrame.col,
         0, size / 2 - nativeBaseline / nativeAsset.frameHeight * size, size * nativeAsset.frameWidth / nativeAsset.frameHeight, size,
         { facing: side, glowColor: color, glowBlur: nativeAsset?.sheet?.startsWith('/sprites/generated/summon-animations-wave17/') ? 0 : 8, redrawWhenReady: false });
-      if (!nativeDrawn && entityAsset) entityDrawn = drawCosmeticAtlasFrame(ctx, entityAsset, frameIndex,
+      if (!nativeDrawn && !medic && entityAsset) entityDrawn = drawCosmeticAtlasFrame(ctx, entityAsset, frameIndex,
         0, -size / 2, size, size,
         { facing: side, glowColor: color, glowBlur: 8, redrawWhenReady: false });
       ctx.restore();
     }
-    if (!nativeDrawn && !entityDrawn && performer && !entityAsset
+    if (!medic && !nativeDrawn && !entityDrawn && performer && !entityAsset
       && (nativeAsset ? descriptor.performerRole === 'reinforcement' : descriptor.performerRole !== 'caller')) {
       // Use the existing partner identity and its registered sprite renderer.
       drawRosterPerformer();
-    } else if (!nativeDrawn && !entityDrawn) {
+    } else if (!medic && !nativeDrawn && !entityDrawn) {
       // A missing or pending atlas uses the existing abstract manifestation.
       // Only an explicitly roster-backed performer may draw a character body.
       const style = descriptor.entityRender?.style || 'energy';
@@ -2577,11 +2579,19 @@ export class EngineRpg {
       }
     }
     ctx.restore();
-    if(nativeDrawn&&scene.sourceMedicWave17&&nativeFrame?.phase==='attack'&&scene.sourceMedicWave17.sourceMediGunWave17?.connected){
+    if (medic && !nativeDrawn) {
+      // Without the cinematic pose, keep the real connected pair in formation.
+      const allies = scene.side === 'enemy' ? this.enemies : this.heroes;
+      if (allies.includes(medic) && allies.includes(scene.actor)) {
+        drawMediGunBeamsWave17(ctx, [medic, scene.actor], { height: unit => 72 * this.getDepthScale(unit.y) });
+        if (scene.side === 'enemy') this.drawRpgEnemy(ctx, medic, tick);
+        else this.drawRpgHero(ctx, medic, tick);
+      }
+    } else if (medic && nativeDrawn && nativeFrame?.phase === 'attack' && medic.sourceMediGunWave17?.connected) {
       // The existing ally remains the channel owner. Its native RPG nozzle,
       // measured in this exact attack cell, connects to the actual patient.
       const patient=scene.actor,origin=effectChoreography.origin;
-      ctx.save();ctx.strokeStyle=scene.sourceMedicWave17.sourceMediGunWave17.uberRemaining>0?'#ffb57c':'#e85245';ctx.lineWidth=3;
+      ctx.save();ctx.strokeStyle=medic.sourceMediGunWave17.uberRemaining>0?'#ffb57c':'#e85245';ctx.lineWidth=3;
       ctx.beginPath();ctx.moveTo(origin.x,origin.y);ctx.lineTo(patient.x,patient.y-72*this.getDepthScale(patient.y)*.38);ctx.stroke();ctx.restore();
     }
     drawSummonChoreographyEffects(ctx, effectChoreography, 'front', { nativeMegaflare: nativeMegaflare && !!nativeDrawn });
@@ -2589,9 +2599,10 @@ export class EngineRpg {
   }
 
   draw(ctx, animTime, lang = 'fr', { showSummonCaption = true } = {}) {
+    const sceneMedic = this.activeSummon?.sourceMedicWave17;
     drawPhotographicEvidenceWave17(ctx,[...this.heroes,...this.enemies]);
     drawBubbleCapturesWave17(ctx,[...this.heroes,...this.enemies]);
-    drawMediGunBeamsWave17(ctx,[...this.heroes,...this.enemies],{height:unit=>72*this.getDepthScale(unit.y),exclude:this.activeSummon?.sourceMedicWave17});
+    drawMediGunBeamsWave17(ctx,[...this.heroes,...this.enemies],{height:unit=>72*this.getDepthScale(unit.y),exclude:sceneMedic});
     if (this.piratesCurseEncounter) {
       // This is an objective marker, not a source-faithful rendered prop.
       const x = this.width * 0.45;
@@ -2629,6 +2640,7 @@ export class EngineRpg {
     ]
       .sort((a, b) => a.unit.y - b.unit.y || a.unit.x - b.unit.x)
       .forEach(entry => {
+        if (entry.unit === sceneMedic) return;
         if (entry.type === 'hero') this.drawRpgHero(ctx, entry.unit, animTime);
         else this.drawRpgEnemy(ctx, entry.unit, animTime);
       });

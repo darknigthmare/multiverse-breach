@@ -26,7 +26,7 @@ import { getUniverseHubPlace } from '../game/mosaicUniversePlaces.js';
 import { getExtinctionRoster, getExtinctionHandFrame, getExtinctionHandSourceRect, getExtinctionHandPlacement, getExtinctionProjectilePlacement, drawExtinctionSchematic } from '../game/extinctionContent.js';
 import CharacterWardrobe from './CharacterWardrobe.jsx';
 import { applyActorAppearance } from '../game/wardrobe.js';
-import React, { lazy, Suspense, useCallback, useEffect, useId, useMemo, useRef, useState } from 'react';
+import React, { lazy, Suspense, useCallback, useEffect, useId, useLayoutEffect, useMemo, useRef, useState } from 'react';
 import { HEROES_DB as BASE_HEROES_DB, EQUIP_ITEMS_DB, EVENT_ITEMS_DB, SYNERGIES_DB } from '../game/heroes';
 import { getTranslation } from '../game/translation';
 import { drawPixelSprite, getGeneratedSpriteBounds, getOpenAiBackdropSrc } from '../game/renderer';
@@ -5412,6 +5412,7 @@ export function RiftBriefingPanel({
   isUnlocked,
   onLaunch,
   onClose,
+  returnToLibrary = false,
   getStageModifier,
   getStageArc,
   getLootRarity,
@@ -5427,10 +5428,16 @@ export function RiftBriefingPanel({
   onOpenPortal
 }) {
   const [activeSection, setActiveSection] = useState('briefing');
+  const titleRef = useRef(null);
 
   useEffect(() => {
     setActiveSection('briefing');
   }, [stage?.id]);
+  useLayoutEffect(() => {
+    if (!returnToLibrary) return;
+    titleRef.current?.focus({ preventScroll: true });
+    titleRef.current?.scrollIntoView({ block: 'center', behavior: 'instant' });
+  }, [returnToLibrary, stage?.id]);
 
   if (!stage) {
     return (
@@ -5531,7 +5538,7 @@ export function RiftBriefingPanel({
           <div className="portal-focus-kicker">
             {lang === 'fr' ? 'DOSSIER DE FAILLE' : 'RIFT DOSSIER'}
           </div>
-          <div className="rift-briefing-title">
+          <div className="rift-briefing-title" ref={titleRef} role="heading" aria-level={3} tabIndex={returnToLibrary ? -1 : undefined}>
             #{stage.id} {stage.displayName?.[lang] || stage.name}
           </div>
           <div className="rift-briefing-tags">
@@ -5653,9 +5660,9 @@ export function RiftBriefingPanel({
         <button
           onClick={onClose}
           className="btn-retro"
-          title={lang === 'fr' ? 'Ferme ce dossier et revient a la selection.' : 'Close this dossier and return to selection.'}
+          title={returnToLibrary ? undefined : (lang === 'fr' ? 'Ferme ce dossier et revient a la selection.' : 'Close this dossier and return to selection.')}
         >
-          {lang === 'fr' ? 'FERMER' : 'CLOSE'}
+          {returnToLibrary ? (lang === 'fr' ? 'RETOUR AUX ACTES' : 'BACK TO ACTS') : (lang === 'fr' ? 'FERMER' : 'CLOSE')}
         </button>
       </div>
     </div>
@@ -5825,6 +5832,7 @@ export default function HubScreen({
   const [missionSeed, setMissionSeed] = useState(() => initialNavigation.missionSeed ?? Date.now());
   const [showMissionArchive, setShowMissionArchive] = useState(initialNavigation.showMissionArchive);
   const [briefingStageId, setBriefingStageId] = useState(initialNavigation.briefingStageId);
+  const [libraryBriefingId, setLibraryBriefingId] = useState(null);
   const [selectedNarrativeArcId, setSelectedNarrativeArcId] = useState(initialNavigation.selectedNarrativeArcId);
   const [selectedNarrativeGroupId, setSelectedNarrativeGroupId] = useState(initialNavigation.selectedNarrativeGroupId);
   const [directoryQuery, setDirectoryQuery] = useState(initialNavigation.directoryQuery);
@@ -6277,6 +6285,7 @@ insertBeforeMetaStage(SOURCE_SCENE_STAGES);
   const selectedBriefingStage = briefingStageId
     ? ADMIN_VISIBLE_STAGES.find(stage => stage.id === briefingStageId)
     : null;
+  const isLibraryBriefing = missionScreen === 'ocDlc' && libraryBriefingId != null && selectedBriefingStage?.id === libraryBriefingId;
   const NORMAL_STAGE_COUNT = ADMIN_VISIBLE_STAGES.filter(stage => !stage.finalGameBoss && !stage.characterArc).length;
   const OC_STORY_STAGE_COUNT = BASE_OC_STAGES.length;
   const FINAL_STAGE_REQUIRED_CLEARS = Math.max(0, OC_STORY_STAGE_COUNT - 1);
@@ -9262,6 +9271,7 @@ insertBeforeMetaStage(SOURCE_SCENE_STAGES);
     setDirectoryQuery('');
     setDirectoryStatus('all');
     setNarrativeGroupQuery('');
+    setLibraryBriefingId(null);
     if (missionScreen === 'ocDlc' || missionScreen === 'originalWorlds') {
       setMediaFilter('all');
     }
@@ -10721,6 +10731,7 @@ insertBeforeMetaStage(SOURCE_SCENE_STAGES);
                   onChange={(viewId) => {
                     setMissionWorkspaceView(viewId);
                     setBriefingStageId(null);
+                    setLibraryBriefingId(null);
                     sound.playSfx('click');
                   }}
                   label={lang === 'fr' ? 'Vues de cette operation' : 'Operation views'}
@@ -10765,15 +10776,17 @@ insertBeforeMetaStage(SOURCE_SCENE_STAGES);
                   />
                 )}
 
-                {missionScreen === 'ocDlc' && missionWorkspaceView === 'library' && (
+                {missionScreen === 'ocDlc' && (
                   <OcDlcLibrary
                     lang={lang}
+                    isOpen={missionWorkspaceView === 'library'}
                     completedStages={completedStages}
                     hiddenUniverses={hiddenUniverses}
                     getStageByMissionId={(missionId) => STAGES.find(stage => stage.id === missionId)}
                     onSetPackActive={(universe, active) => setUniverseHidden(universe, !active)}
                     onOpenBriefing={(stage) => {
                       setBriefingStageId(stage.id);
+                      setLibraryBriefingId(stage.id);
                       setMissionWorkspaceView('map');
                       sound.playSfx('click');
                     }}
@@ -10794,7 +10807,7 @@ insertBeforeMetaStage(SOURCE_SCENE_STAGES);
                               key={route.id}
                               type="button"
                               className={`arca-route-card ${briefingStageId === route.stage.id ? 'selected' : ''}`}
-                              onClick={() => { setBriefingStageId(route.stage.id); sound.playSfx('click'); }}
+                              onClick={() => { setBriefingStageId(route.stage.id); setLibraryBriefingId(null); sound.playSfx('click'); }}
                               title={lang === 'fr' ? `Inspecte ${route.stage.displayName?.fr || route.stage.name}.` : `Inspect ${route.stage.displayName?.en || route.stage.name}.`}
                             >
                               <strong>{route.label}</strong>
@@ -10812,7 +10825,7 @@ insertBeforeMetaStage(SOURCE_SCENE_STAGES);
                         allStages={visibleStages}
                         completedStages={completedStages}
                         isStageUnlocked={isStageUnlocked}
-                        onSelectStage={(stage) => { setBriefingStageId(stage.id); sound.playSfx('click'); }}
+                        onSelectStage={(stage) => { setBriefingStageId(stage.id); setLibraryBriefingId(null); sound.playSfx('click'); }}
                         onSelectArc={openNarrativeArc}
                         narrativeArcs={activeNarrativeArcs}
                         mapKicker={riftMapCopy.kicker}
@@ -10835,7 +10848,12 @@ insertBeforeMetaStage(SOURCE_SCENE_STAGES);
                         stage={selectedBriefingStage}
                         isUnlocked={isStageUnlocked}
                         onLaunch={launchStage}
-                        onClose={() => setBriefingStageId(null)}
+                        returnToLibrary={isLibraryBriefing}
+                        onClose={() => {
+                          setBriefingStageId(null);
+                          setLibraryBriefingId(null);
+                          if (isLibraryBriefing) setMissionWorkspaceView('library');
+                        }}
                         getStageModifier={getStageModifier}
                         getStageArc={getStageArc}
                         getLootRarity={getLootRarity}

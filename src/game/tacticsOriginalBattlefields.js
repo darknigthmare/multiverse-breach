@@ -14,10 +14,18 @@ const materialNames = {
   'valedor-garden': frEn('Herbe du jardin elfique', 'Elven garden grass'),
   'valedor-forge': frEn('Grès du quartier des forges', 'Forges district sandstone'),
   'valedor-basalt': frEn('Basalte de la place orque', 'Orc square basalt'),
-  'valedor-market': frEn('Bois du marché humain', 'Human market timber')
+  'valedor-market': frEn('Bois du marché humain', 'Human market timber'),
+  'qhapaq-trail': frEn('Terre ocre du sentier bas', 'Ochre soil of the low trail'),
+  'qhapaq-wall': frEn('Maçonnerie à sec de la terrasse', 'Dry-stone terrace masonry'),
+  'qhapaq-crag': frEn('Roche feuilletée de la corniche', 'Layered ridge rock'),
+  'qhapaq-pampa': frEn('Herbe sèche du col', 'Dry pass grass'),
+  'infernum-clinker': frEn('Scories du greffe', 'Clinker from the clerk’s floor'),
+  'infernum-iron': frEn('Fer riveté des coursives', 'Riveted catwalk iron'),
+  'infernum-obsidian': frEn('Obsidienne de la fosse', 'Trench obsidian'),
+  'infernum-lava': frEn('Lave du canal fiscal', 'Fiscal channel lava')
 };
 
-function makeBoard(id, cols, rows, baseMaterial) {
+function makeBoard(id, cols, rows, baseMaterial, upperLayer = 'gallery') {
   const ground = new Map(), upper = new Map();
   const key = (x, y) => `${x}:${y}`;
   function put(x, y, z, materialId, options = {}) {
@@ -27,7 +35,7 @@ function makeBoard(id, cols, rows, baseMaterial) {
       materialId, materialLabel: materialNames[materialId], solidBottom: -2.5,
       shape: 'flat', type: 'normal', walkable: true, ...options
     };
-    (layerId === 'gallery' ? upper : ground).set(key(x, y), surface);
+    (layerId === upperLayer ? upper : ground).set(key(x, y), surface);
     return surface;
   }
   const area = (x0, y0, x1, y1, z, material, options) => {
@@ -176,6 +184,94 @@ function crossroads() {
   });
 }
 
+function qhapaqNan() {
+  const trail = 'qhapaq-trail', wall = 'qhapaq-wall', crag = 'qhapaq-crag', pampa = 'qhapaq-pampa';
+  const b = makeBoard('tawantinsuyu_qhapaq_nan_tactics', 12, 9, trail);
+  b.area(3, 0, 5, 8, 1, wall);
+  b.area(6, 0, 8, 8, 2.5, crag);
+  b.area(9, 0, 11, 8, 3.5, pampa);
+  for (const y of [6, 7]) b.incline(3, y, 0, 1, 'east', trail);
+  for (const y of [2, 3]) b.incline(6, y, 1, 2.5, 'east', wall, 'stairs');
+  for (const y of [5, 6]) b.incline(9, y, 2.5, 3.5, 'east', crag);
+  b.get(4, 5).coverEdges = { north: { height: 0.55, reduction: 0.16 } };
+  b.get(7, 4).coverEdges = { south: { height: 0.58, reduction: 0.18 } };
+  const extractionZone = refs(b, [[11, 5], [11, 6]]);
+  for (const { x, y } of extractionZone) Object.assign(b.get(x, y), { type: 'objective', label: 'Col de passage du khipu' });
+  return finish(b, {
+    label: frEn('Qhapaq Ñan des Falaises', 'Cliff Qhapaq Nan'),
+    objective: 'escort', objectiveTarget: 1,
+    objectiveText: frEn('Restez à portée du témoin du khipu. Suivez les trois lacets jusqu’au passage haut.',
+      'Stay alongside the khipu witness. Follow three switchbacks to the high pass.'),
+    tags: ['vertical', 'universeSector', 'escort', 'switchbacks', 'cliffs'],
+    source: {
+      universe: 'Tawantinsuyu: The Split Sun', work: 'Multiverse Breach',
+      stageKey: 'inca_qhapaq_nan_cliffs', location: 'Qhapaq Ñan des Falaises',
+      sourceReference: reference, source1to1Verified: false
+    },
+    tacticsPresentation: { biome: 'qhapaq-terraces', skyline: 'Andean cliff terraces' },
+    escort: {
+      id: 'tawantinsuyu:khipu-witness',
+      name: frEn('Témoin du khipu', 'Khipu witness'),
+      role: frEn('Porte le khipu de mémoire au passage haut', 'Carries the memory khipu to the high pass'),
+      heroId: 'sumaq_khipu'
+    },
+    extractionZone, escortSpawn: b.ref(1, 7),
+    heroSpawns: refs(b, [[0, 7], [0, 5], [0, 8]]),
+    monsterSpawns: refs(b, [[7, 0], [8, 7], [10, 2]]),
+    bossSpawns: refs(b, [[10, 0], [10, 7]]),
+    worldBossSpawn: b.ref(10, 3),
+    pickupSpawns: refs(b, [[1, 5], [4, 6], [4, 2], [7, 3], [10, 6]]),
+    obstacles: [
+      obstacle(b, 'Bloc de soutènement du premier lacet', 5, 5, 'boulder', { color: '#97775a', tacticsHeight: 1.8 }),
+      obstacle(b, 'Rocher de la corniche', 8, 3, 'boulder', { color: '#77757b', tacticsHeight: 2 }),
+      obstacle(b, 'Muret du versant', 9, 4, 'ruin-wall', { color: '#8a7e64' })
+    ]
+  });
+}
+
+function pitOfAuditors() {
+  const clinker = 'infernum-clinker', iron = 'infernum-iron', obsidian = 'infernum-obsidian', lava = 'infernum-lava';
+  const b = makeBoard('infernum_pit_of_auditors_tactics', 12, 9, clinker, 'catwalk');
+  b.area(5, 0, 5, 8, -1.25, lava, { walkable: false, opaque: false, solidBottom: -1.45 });
+  b.area(6, 0, 6, 8, -1.25, obsidian);
+  b.area(4, 2, 4, 5, 2.5, iron);
+  b.area(7, 2, 8, 5, 2.5, iron);
+  b.incline(3, 4, 0, 2.5, 'east', obsidian, 'stairs');
+  b.incline(9, 4, 0, 2.5, 'west', obsidian, 'stairs');
+  b.area(5, 4, 6, 4, 2.5, iron, { layerId: 'catwalk', shape: 'slab', solidBottom: 2.18 });
+  b.incline(4, 7, -1.25, 0, 'west', obsidian);
+  b.put(5, 7, -1.25, obsidian, { type: 'hazard', moveCost: 2, label: 'Passage chaud de la fosse' });
+  b.incline(7, 7, -1.25, 0, 'east', obsidian);
+  b.get(5, 4, true).coverEdges = { north: { height: 0.65, reduction: 0.22 } };
+  const ledger = (x, y, name) => obstacle(b, name, x, y, 'infernum-ledger', {
+    type: 'objective', tacticsHeight: 0.9, hp: 32, maxHp: 32
+  });
+  return finish(b, {
+    label: frEn('Gouffre des Auditeurs', 'Pit of Auditors'),
+    objective: 'disable', objectiveTarget: 3, objectiveTurnLimit: 24,
+    objectiveText: frEn('Détruisez les trois registres avant la clôture, sur la coursive, dans la fosse et au greffe.',
+      'Destroy the three ledgers before closing, on the catwalk, in the trench and at the clerk’s office.'),
+    tags: ['vertical', 'universeSector', 'disable', 'hazard', 'ledgerDeadline'],
+    source: {
+      universe: 'Infernum: Nine Pits', work: 'Multiverse Breach',
+      stageKey: 'hell_pit_auditors', location: 'Gouffre des Auditeurs',
+      sourceReference: reference, source1to1Verified: false
+    },
+    tacticsPresentation: { biome: 'infernum-auditors', weather: 'embers', skyline: 'Infernal archive towers' },
+    heroSpawns: refs(b, [[0, 4], [0, 3], [0, 5]]),
+    monsterSpawns: refs(b, [[8, 3], [9, 2], [9, 7]]),
+    bossSpawns: refs(b, [[10, 0], [10, 7]]),
+    worldBossSpawn: b.ref(10, 4),
+    pickupSpawns: refs(b, [[2, 5], [4, 5], [6, 4, true], [6, 6], [10, 6]]),
+    obstacles: [
+      ledger(4, 2, 'Registre des Condamnations'),
+      ledger(6, 4, 'Registre des Dettes'),
+      ledger(9, 6, 'Registre du Greffe'),
+      obstacle(b, 'Éperon de scories', 2, 2, 'boulder', { color: '#5d4a51', tacticsHeight: 2 })
+    ]
+  });
+}
+
 export const TACTICS_ORIGINAL_BATTLEFIELDS = Object.freeze(Object.fromEntries(
-  [observatory(), crossroads()].map(field => [field.id, field])
+  [observatory(), crossroads(), qhapaqNan(), pitOfAuditors()].map(field => [field.id, field])
 ));

@@ -32,7 +32,13 @@ const leads = {
   oona_vell: ['Carte du Rivage qui n’Existe Pas', 'absent-shore'],
   aelwen_starbough: ['Pluie sur les Sept Royaumes', 'seven-kingdoms-rain'],
   brokk_embervein: ['Enclume des Sept Serments', 'seven-oaths-anvil'],
-  goruk_ash_tusk: ['Aucun Peuple ne Sera l’Ennemi', 'free-clans']
+  goruk_ash_tusk: ['Aucun Peuple ne Sera l’Ennemi', 'free-clans'],
+  celeste_ray: ['Équation du Soleil Sûr', 'safe-sun-equation'],
+  nova_bell: ['Passage Comète', 'comet-passage'],
+  aura_7: ['Directive : Sauver Tout le Monde', 'rescue-directive'],
+  astra_vey: ['Carte de l’Avant-Monde', 'beforeworld-chart'],
+  korun_stoneborn: ['Soulèvement des Fondations', 'rising-foundations'],
+  nyme_first_song: ['Le Monde se souvient de son Chant', 'first-song-memory']
 };
 let vite, EngineFighter, HEROES_DB, PRESENTATION_PHASES, samplePresentationScript, resolveOriginalFighterPresentation;
 let resolvePresentationScript, getHeroSpriteSheetSrc, drawPixelSprite;

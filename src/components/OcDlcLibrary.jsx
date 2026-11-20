@@ -1,4 +1,4 @@
-import React, { useId, useRef, useState } from 'react';
+import React, { useId, useLayoutEffect, useRef, useState } from 'react';
 import { OC_DLC_PACKS, getOcDlcPackByUniverse, isOcDlcMissionUnlocked } from '../game/ocDlcPacks.js';
 import { OC_DLC_SAVE_METADATA } from '../game/dlcContentIdentity.js';
 import { isUniverseInstalled } from '../game/dlcInstallation.js';
@@ -9,25 +9,57 @@ import './OcDlcLibrary.css';
 const text = (entry, lang) => typeof entry === 'string' ? entry : entry?.[lang] || entry?.fr || entry?.en || '';
 const stateLabel = (state, fr) => state === 'active' ? (fr ? 'ACTIF' : 'ACTIVE') : state === 'reserve'
   ? (fr ? 'EN RÉSERVE' : 'IN RESERVE') : (fr ? 'NON INCLUS' : 'NOT INCLUDED');
+const focusLibraryControl = control => {
+  control?.focus({ preventScroll: true });
+  control?.scrollIntoView({ block: 'center', behavior: 'instant' });
+};
 
-export default function OcDlcLibrary({ lang, completedStages, hiddenUniverses, getStageByMissionId, onSetPackActive, onOpenBriefing }) {
+export default function OcDlcLibrary({ lang, completedStages, hiddenUniverses, getStageByMissionId, onSetPackActive, onOpenBriefing, isOpen = true }) {
   const fr = lang === 'fr';
   const uid = useId();
   const [query, setQuery] = useState('');
   const [status, setStatus] = useState('all');
   const search = useRef(null);
+  const statusControl = useRef(null);
+  const pendingVisibility = useRef(null);
+  const briefingOrigin = useRef(null);
   const entries = getOcDlcLibraryEntries({ packs: OC_DLC_PACKS, metadata: OC_DLC_SAVE_METADATA,
     completedStages, hiddenUniverses, isInstalled: isUniverseInstalled, canOpenMission: isOcDlcMissionUnlocked,
     resolvePack: pack => getOcDlcPackByUniverse(pack.universe) || pack });
   const visible = filterOcDlcLibraryEntries(entries, { query, status });
+  useLayoutEffect(() => {
+    const pending = pendingVisibility.current;
+    if (!pending || hiddenUniverses.includes(pending.universe) !== pending.hidden) return;
+    pendingVisibility.current = null;
+    const { trigger, hadFocus } = pending;
+    const doc = trigger.ownerDocument;
+    if (isOpen && hadFocus && !trigger.isConnected && doc.activeElement === doc.body) {
+      focusLibraryControl(statusControl.current);
+    }
+  }, [hiddenUniverses, isOpen]);
+  useLayoutEffect(() => {
+    const origin = briefingOrigin.current;
+    if (!isOpen || !origin) return;
+    briefingOrigin.current = null;
+    const available = origin.isConnected && !origin.disabled && origin.getAttribute('aria-disabled') !== 'true';
+    focusLibraryControl(available ? origin : statusControl.current);
+  }, [isOpen]);
   const reset = () => {
     setQuery(''); setStatus('all');
-    search.current?.focus({ preventScroll: true });
-    search.current?.scrollIntoView({ block: 'center', behavior: 'instant' });
+    focusLibraryControl(search.current);
   };
-  const openMission = mission => onOpenBriefing(getStageByMissionId(mission.id) || mission);
+  const openMission = (mission, trigger) => {
+    briefingOrigin.current = trigger;
+    onOpenBriefing(getStageByMissionId(mission.id) || mission);
+  };
+  const changePackVisibility = (entry, trigger) => {
+    const { pack, active } = entry;
+    pendingVisibility.current = { universe: pack.universe, hidden: active, trigger,
+      hadFocus: trigger.ownerDocument.activeElement === trigger };
+    onSetPackActive(pack.universe, !active);
+  };
 
-  return <section className="oc-act-library" aria-labelledby={`${uid}-title`}>
+  return <section className="oc-act-library" aria-labelledby={`${uid}-title`} hidden={!isOpen}>
     <header className="oc-act-heading">
       <span className="oc-act-kicker">{fr ? 'BIBLIOTHÈQUE / CRÉATIONS ORIGINALES' : 'LIBRARY / ORIGINAL CREATIONS'}</span>
       <h4 id={`${uid}-title`}>{fr ? 'Actes annexes autonomes' : 'Standalone side acts'}</h4>
@@ -41,7 +73,7 @@ export default function OcDlcLibrary({ lang, completedStages, hiddenUniverses, g
         <input ref={search} id={`${uid}-search`} type="search" value={query} aria-controls={`${uid}-results`}
           onChange={event => setQuery(event.target.value)} placeholder={fr ? 'Un titre, un univers…' : 'A title, a universe…'} />
       </label>
-      <label><span>{fr ? 'Afficher' : 'Show'}</span><select value={status} onChange={event => setStatus(event.target.value)}>
+      <label><span>{fr ? 'Afficher' : 'Show'}</span><select ref={statusControl} value={status} onChange={event => setStatus(event.target.value)}>
         {['all', 'active', 'reserve', 'absent', 'completed'].map(key => <option key={key} value={key}>
           {key === 'all' ? (fr ? 'Tous les actes' : 'All acts') : key === 'completed' ? (fr ? 'Actes terminés' : 'Completed acts') : stateLabel(key, fr)}
           {' · '}{entries.filter(entry => key === 'all' || (key === 'completed' ? entry.complete : entry.state === key)).length}
@@ -71,10 +103,10 @@ export default function OcDlcLibrary({ lang, completedStages, hiddenUniverses, g
             {included ? <>
               <div className="oc-act-primary-actions">
                 <button type="button" className="oc-act-button oc-act-next" disabled={!targetUnlocked}
-                  onClick={() => targetUnlocked && openMission(targetMission)} aria-describedby={!targetUnlocked ? `${uid}-${pack.id}-unavailable` : undefined}>
+                  onClick={event => targetUnlocked && openMission(targetMission, event.currentTarget)} aria-describedby={!targetUnlocked ? `${uid}-${pack.id}-unavailable` : undefined}>
                   {complete ? (fr ? 'Revoir le briefing final' : 'Review the final briefing') : (fr ? 'Mission suivante' : 'Next mission')}
                 </button>
-                <button type="button" className="oc-act-button" data-oc-act-reserve onClick={() => onSetPackActive(pack.universe, !active)}>
+                <button type="button" className="oc-act-button" data-oc-act-reserve onClick={event => changePackVisibility(entry, event.currentTarget)}>
                   {active ? (fr ? 'Placer en réserve' : 'Place in reserve') : (fr ? 'Activer cet acte' : 'Activate this act')}
                 </button>
               </div>
@@ -92,7 +124,7 @@ export default function OcDlcLibrary({ lang, completedStages, hiddenUniverses, g
                   return <li key={mission.id}>
                     <button type="button" className="oc-act-button oc-act-mission" aria-disabled={!unlocked}
                       aria-describedby={!unlocked ? reasonId : undefined} data-oc-act-mission={mission.id}
-                      onClick={() => { if (unlocked) openMission(mission); }}>
+                      onClick={event => { if (unlocked) openMission(mission, event.currentTarget); }}>
                       <span className="oc-act-mission-index" aria-hidden="true">{completed ? '✓' : String(index + 1).padStart(2, '0')}</span>
                       <span className="oc-act-mission-title">{text(mission.displayName || mission.name, lang)}</span>
                       <small>{fr && mission.mode === 'Tactics' ? 'Tactique' : mission.mode} · {completed ? (fr ? 'Terminée' : 'Completed') : unlocked ? (fr ? 'Ouverte' : 'Open') : (fr ? 'Scellée' : 'Sealed')}</small>

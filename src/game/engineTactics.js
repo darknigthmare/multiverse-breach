@@ -109,6 +109,7 @@ export class EngineTactics {
     this.protectedArtifact = null;
     this.escortUnit = null;
     this.turnsElapsed = 0;
+    this.alliedTurnsElapsed = 0;
     this.damageDealt = 0;
     this.damageTaken = 0;
     this.reinforcementsCalled = 0;
@@ -154,7 +155,7 @@ export class EngineTactics {
       };
     }
     if (this.battlefield.escortSpawn) {
-      this.escortIdentity = resolveTacticsEscort(stage);
+      this.escortIdentity = resolveTacticsEscort(stage, undefined, this.battlefield.escort);
       this.escortUnit = {
         ...this.escortIdentity.spriteHero,
         name: this.escortIdentity.name.fr,
@@ -2376,6 +2377,7 @@ export class EngineTactics {
     if (this.verticalTerrain && this.activeUnit?.terrainMotion) return false;
     this.actionPhase = 'end';
     this.turnsElapsed++;
+    if (this.activeUnitType === 'hero') this.alliedTurnsElapsed++;
     this.updateTacticsObjective(true);
     this.applyTacticsMissionPressure();
     this.selectedAction = null;
@@ -2504,6 +2506,9 @@ export class EngineTactics {
       const disabled = this.obstacles.filter(item => item.type === 'objective' && item.hp <= 0).length;
       this.objectiveProgress = disabled;
       if (this.objectiveProgress >= this.objectiveTarget) this.completeBattle('victory');
+      else if (this.battlefield.objectiveTurnLimit && this.alliedTurnsElapsed >= this.battlefield.objectiveTurnLimit) {
+        this.completeBattle('defeat');
+      }
       return;
     }
 
@@ -4469,6 +4474,11 @@ export class EngineTactics {
         : (lang === 'en' ? 'Directive: board Scarab at BOARD' : 'Directive: aborder le Scarab sur BOARD');
     }
     const scenarioObjective = this.battlefield.objectiveText?.[this.objective]?.[lang];
+    if (scenarioObjective && this.objective === 'disable' && this.battlefield.objectiveTurnLimit) {
+      const remaining = Math.max(0, this.battlefield.objectiveTurnLimit - this.alliedTurnsElapsed);
+      const deadline = lang === 'en' ? `Closing in ${remaining} allied turns.` : `Clôture dans ${remaining} tours alliés.`;
+      return `${deadline} ${scenarioObjective}`;
+    }
     if (scenarioObjective) return scenarioObjective;
     const lines = {
       rout: {

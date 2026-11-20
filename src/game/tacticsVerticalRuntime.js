@@ -693,7 +693,13 @@ export class TacticsVerticalRuntime {
   runAI(side) {
     const e = this.engine, unit = e.activeUnit;
     if (e.disposed || e.gameOver || !unit || !living(unit) || e.isTacticsControlled(unit)) return;
-    const opponents = side === 'hero' ? e.enemies : [...e.heroes, ...(e.objective === 'protect' && e.protectedArtifact ? [e.protectedArtifact] : []), ...(e.escortUnit ? [e.escortUnit] : [])];
+    if (side === 'hero' && e.objective === 'escort' && living(e.escortUnit) && !e.enemies.some(living)) {
+      this.runEscortAI(unit);
+      return;
+    }
+    const devices = e.objective === 'disable' ? e.obstacles.filter(obstacle => obstacle.type === 'objective' && living(obstacle)) : [];
+    const opponents = side === 'hero' ? [...devices, ...e.enemies]
+      : [...e.heroes, ...(e.objective === 'protect' && e.protectedArtifact ? [e.protectedArtifact] : []), ...(e.escortUnit ? [e.escortUnit] : [])];
     const healingBurst = isValHealingBurstProfile(this.ability(unit, 'special'));
     const phaselock = isTacticsPhaselockProfile(this.ability(unit, 'special'));
     const action = side === 'enemy' && !healingBurst && !phaselock ? 'enemy' : unit.specialCharge >= 100 ? 'special' : unit.cooldown <= 0 ? 'secondary' : 'simple';
@@ -762,15 +768,41 @@ export class TacticsVerticalRuntime {
     const target = this.surface(zone);
     return !!target && this.unitOccupies(unit, target.x, target.y, target.id);
   }
+  getEscortRoute(escort, options) {
+    return (this.engine.battlefield.extractionZone || [])
+      .map(goal => findTerrainPath(this.terrain, escort, goal, options))
+      .filter(Boolean).sort((a, b) => a.cost - b.cost)[0];
+  }
+  runEscortAI(unit) {
+    const e = this.engine, escort = e.escortUnit;
+    const blockers = this.entries().filter(entry => entry.unit !== escort && entry.unit !== unit);
+    const escortOptions = {
+      ...this.pathOptions(escort),
+      isOccupied: surface => blockers.some(entry => this.unitOccupies(entry.unit, surface.x, surface.y, surface.id))
+    };
+    const nextStep = this.getEscortRoute(escort, escortOptions)?.path[1];
+    const adjacent = new Set(getTerrainNeighbors(this.terrain, escort, escortOptions)
+      .filter(neighbor => neighbor.surfaceId !== nextStep).map(neighbor => neighbor.surfaceId));
+    const remaining = Math.max(0, e.movementBudget - e.movementSpent);
+    const plans = this.reachable(unit, Infinity);
+    const route = plans.find(plan => adjacent.has(plan.surfaceId));
+    const allowed = new Set(route?.path || []);
+    const destination = plans.findLast(plan => plan.cost <= remaining && allowed.has(plan.surfaceId));
+    if (!destination || destination.surfaceId === unit.surfaceId) {
+      e.endActiveTurn();
+      return;
+    }
+    e.actionPhase = 'moving';
+    e.movementSpent += destination.cost;
+    this.move(unit, destination.surfaceId, () => e.endActiveTurn());
+  }
   advanceEscort() {
     const e = this.engine, escort = e.escortUnit;
     if (e.objective !== 'escort' || !living(escort) || escort.terrainMotion) return;
     const nearby = e.heroes.some(hero => living(hero) && getTerrainNeighbors(this.terrain, escort, { unit: escort })
       .some(neighbor => neighbor.surfaceId === hero.surfaceId));
     if (!nearby) return;
-    const routes = (e.battlefield.extractionZone || []).map(goal => findTerrainPath(this.terrain, escort, goal, this.pathOptions(escort)))
-      .filter(Boolean).sort((a, b) => a.cost - b.cost);
-    const route = routes[0];
+    const route = this.getEscortRoute(escort, this.pathOptions(escort));
     if (!route) return;
     if (route.path.length <= 1) { e.updateTacticsObjective(); return; }
     this.move(escort, route.path[1], () => { escort.state = 'idle'; e.updateTacticsObjective(); });
