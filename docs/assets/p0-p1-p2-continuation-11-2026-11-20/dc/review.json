@@ -1,0 +1,83 @@
+{
+  "sourceBaseline": "55997b908",
+  "actor": "starfire_tt",
+  "universe": "Teen Titans",
+  "sourceIncarnation": "Teen Titans (2003-2006 animated series) - original Jump City team",
+  "assets": {
+    "path": "/sprites/generated/summon-animations-wave16/starfire.png",
+    "source": "starfire_tt-wave16",
+    "sha256": "372875c8973133979dc0cf22b6f289330b80ee0e9b8ff3bcfec2b96f47176780",
+    "frame": [
+      512,
+      256
+    ],
+    "baseline": 244,
+    "release": {
+      "row": 2,
+      "col": 2,
+      "palm": [
+        339,
+        81
+      ],
+      "clipAtSourceX": 352
+    }
+  },
+  "actions": [
+    "Green Starbolt",
+    "Green Starbolt Volley"
+  ],
+  "context": "Duel",
+  "projectionDistance": 52,
+  "gameplay": {
+    "projectileSimulationChanged": false,
+    "impactsPerCast": 1,
+    "previousRange": 640
+  },
+  "openDcP0": 7,
+  "source1to1Verified": false,
+  "node": {
+    "version": "22.23.5",
+    "command": "node --test --test-concurrency=1 scripts/starfireFighterCast.test.mjs scripts/historicalDcP0SpriteQuarantine.test.mjs",
+    "totals": {
+      "tests": 8,
+      "pass": 8,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0
+    },
+    "tapSha256": "36bc4b426ed09f82ec9dac49e164785918c928d218921b6091cb36d74c4db903"
+  },
+  "browser": "browser.json",
+  "projectileRegression": {
+    "passedCases": [
+      {
+        "actorId": "raven_tt",
+        "side": "player",
+        "damage": 8.6,
+        "maximumRenderedTravel": 433.33333333333326
+      },
+      {
+        "actorId": "raven_tt",
+        "side": "cpu",
+        "damage": 8.6,
+        "maximumRenderedTravel": 433.3333333333328
+      },
+      {
+        "actorId": "starfire_tt",
+        "side": "player",
+        "damage": 9.8,
+        "maximumRenderedTravel": 433.33333333333326
+      },
+      {
+        "actorId": "starfire_tt",
+        "side": "cpu",
+        "damage": 9.8,
+        "maximumRenderedTravel": 433.3333333333328
+      }
+    ],
+    "browserVersion": "151.0.7922.173",
+    "productionInputsStableDuringRun": true,
+    "harnessStableDuringRun": true,
+    "fullReportSha256": "ec0d0b2b26cb99aec1ff59f2cfc382f37e768f9b646129e02997ec7f7e4d2143"
+  }
+}

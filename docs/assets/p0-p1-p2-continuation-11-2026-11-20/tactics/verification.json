@@ -1,0 +1,129 @@
+{
+  "date": "2026-11-20",
+  "baseRevision": "30519b274833959cf992fae1e23a9c5f002541ce",
+  "sourceHashesRecordedAfterScenario": {
+    "src/game/tacticsIronAshlineBattlefield.js": "979b7f940cc0e38a73137e32b4fe8d8a3f0cd7ecd6d9545f75b780e28ce8e970",
+    "src/game/tacticsOriginalBattlefields.js": "2ee00959bde267f36d3e8bd7ad5bacfc0d888a460604286b126ec5a0f8074217",
+    "src/game/tacticsOriginalPresentation.js": "af6214b1532b9417b59b197fb06b67da4f96350c64823bfa309d77e3f1c1a3a6",
+    "src/game/tacticsTerrainRenderer.js": "2e721505957040d0356eb8c6f93883fd0f3ff222a09ab008dc3b06dd75898af3",
+    "scripts/tacticsIronAshline.test.mjs": "375940130f95d3d49f5324eaa167289d95cada1bb9f6525ba9dec3768c8c4ad8",
+    "src/game/tacticsBattlefields.js": "a92d4d1c0025c4cfa34597118f618508df65c36f52e8881da161db0b01374063",
+    "src/game/tacticsTerrain.js": "5ffee10c02751f9bb265da3576dd5b290f32c04088bfceb1b69085556b71b9ea",
+    "src/game/originalUniversesManifest.json": "8fafbd428fb0233fac58661a9bf09d941af4fba6607ceb18e92217b1dc88e234",
+    "docs/assets/p0-p1-p2-continuation-11-2026-11-20/tactics/browser.mjs": "ca4f348c8fd531444cfadcd2cc154122356149c4ce9218f2a1328bdeaa882b77",
+    "docs/assets/p0-p1-p2-continuation-11-2026-11-20/tactics/harness.jsx": "6922ddc97e6bffbdbad4947dbe390d884eda0bda799e22e175045594b6f6571c"
+  },
+  "identity": {
+    "universe": "Iron Tempest",
+    "stageKey": "iron_ashline_trenches",
+    "fieldId": "iron_ashline_radio_ridge_tactics",
+    "sourceReference": "src/game/originalUniversesManifest.json",
+    "settingQuote": "Boue, barbelés, bunkers et radios qui changent les objectifs.",
+    "geometry": "New original Tactics interpretation, not a reconstruction of an existing map.",
+    "source1to1Verified": false
+  },
+  "terrain": {
+    "columns": 14,
+    "rows": 10,
+    "surfaces": 148,
+    "radioElevations": [
+      -1,
+      0,
+      2
+    ],
+    "captureTarget": 6,
+    "materialIds": [
+      "ashline-grass",
+      "ashline-gravel",
+      "ashline-rock",
+      "ashline-planks",
+      "ashline-mud"
+    ],
+    "crossingAP": 13,
+    "detourAP": 19,
+    "comparisonEndpoints": [
+      [
+        0,
+        4
+      ],
+      [
+        11,
+        4
+      ]
+    ],
+    "twoIndependentRidgeAscents": true,
+    "mudAP": 2,
+    "gravelAP": 1,
+    "underBridgeClearance": 1.75,
+    "ordinaryUnitHeight": 1.6,
+    "tallUnitHeight": 3
+  },
+  "node": {
+    "command": [
+      "node",
+      "--test",
+      "--test-concurrency=1",
+      "scripts/tacticsIronAshline.test.mjs",
+      "scripts/tacticsOriginalSectors.test.mjs",
+      "scripts/tacticsNexusHighgrass.test.mjs",
+      "scripts/tacticsTerrainRenderer.test.mjs"
+    ],
+    "exitCode": 0,
+    "tests": 40,
+    "passed": 40,
+    "failed": 0,
+    "newCases": 6,
+    "includesActualCampaignEngineVictory": true,
+    "includesMidMovementPause": true,
+    "autoCustomResolutionTested": true,
+    "fullBuildClaimed": false,
+    "nodeVersion": "v24.19.0"
+  },
+  "previousOriginalBoards": {
+    "count": 4,
+    "deepEqualToBaseRevision": true,
+    "dataSha256": "9ca93b50aaa57e3160db8c409cdfa0c459eac5a730255f103716d1c9c21bc21f",
+    "ids": [
+      "drowned_observatory_angles_tactics",
+      "valedor_free_city_crossroads_tactics",
+      "tawantinsuyu_qhapaq_nan_tactics",
+      "infernum_pit_of_auditors_tactics"
+    ]
+  },
+  "browser": {
+    "report": "browser.json",
+    "reportSha256": "b8a37502e8dfda8a12873f7a5d0bcd9d26af6fcb418c6724973d654d7e021b03",
+    "actualLaunches": 1,
+    "launchChoice": "explicit",
+    "automaticOnlyShownInLobby": true,
+    "automaticLaunchClaimed": false,
+    "viewport": {
+      "width": 1280,
+      "height": 900
+    },
+    "movementSteps": 5,
+    "spentAP": 9,
+    "arrivedZ": -1,
+    "radioTransmissions": 1,
+    "pauseStable": true,
+    "disposed": true,
+    "pageErrors": 0,
+    "missingCheckoutAssets": [],
+    "fullVictoryClaimed": false,
+    "mobileRunClaimed": false,
+    "capture": {
+      "path": "ashline-1280.jpg",
+      "sha256": "e3089f45129c21dddab42b8c31c92873fa6414aa060c96b89b7e96ab6254cf2a",
+      "bytes": 110833,
+      "openedAndReviewed": true
+    }
+  },
+  "limits": [
+    "The campaign identity and Auto selection are exercised in Node; the browser starts a single explicit Custom battle.",
+    "The complete six-transmission victory and mid-motion pause are covered in Node; Chromium reaches one transmission and pauses after arrival.",
+    "The QA bootstrap observes real EngineTactics updates and uses stable configuration references. It does not replace command, damage, pathfinding or objective methods.",
+    "Raw diagnostic attempts are outside repository docs under /tmp/mvb-pass11-tactics-attempts.",
+    "No mobile browser or autonomous-pressure balance validation is claimed."
+  ],
+  "source1to1Verified": false
+}

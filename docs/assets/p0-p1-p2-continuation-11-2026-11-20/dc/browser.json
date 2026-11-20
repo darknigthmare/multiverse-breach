@@ -1,0 +1,325 @@
+{
+  "version": "151.0.7922.173",
+  "cases": [
+    {
+      "side": "player",
+      "command": "light",
+      "key": "f",
+      "viewport": {
+        "width": 1280,
+        "height": 900
+      },
+      "motion": "no-preference",
+      "draws": [
+        {
+          "col": 0,
+          "row": 1,
+          "remoteX": 160,
+          "remoteY": 379,
+          "facing": 1,
+          "body": [
+            284,
+            142
+          ],
+          "elapsed": 0.016666666666666666,
+          "hitAt": 0.168
+        },
+        {
+          "col": 1,
+          "row": 1,
+          "remoteX": 160,
+          "remoteY": 379,
+          "facing": 1,
+          "body": [
+            284,
+            142
+          ],
+          "elapsed": 0.06666666666666667,
+          "hitAt": 0.168
+        },
+        {
+          "col": 1,
+          "row": 2,
+          "remoteX": 160,
+          "remoteY": 379,
+          "facing": 1,
+          "body": [
+            284,
+            142
+          ],
+          "elapsed": 0.11666666666666665,
+          "hitAt": 0.168
+        },
+        {
+          "col": 2,
+          "row": 2,
+          "remoteX": 160,
+          "remoteY": 379,
+          "facing": 1,
+          "body": [
+            284,
+            142
+          ],
+          "elapsed": 0.18333333333333332,
+          "hitAt": 0.168
+        },
+        {
+          "col": 2,
+          "row": 3,
+          "remoteX": 160,
+          "remoteY": 379,
+          "facing": 1,
+          "body": [
+            284,
+            142
+          ],
+          "elapsed": 0.26666666666666666,
+          "hitAt": 0.168
+        },
+        {
+          "col": 3,
+          "row": 3,
+          "remoteX": 160,
+          "remoteY": 379,
+          "facing": 1,
+          "body": [
+            284,
+            142
+          ],
+          "elapsed": 0.35,
+          "hitAt": 0.168
+        }
+      ],
+      "assetSha256": "372875c8973133979dc0cf22b6f289330b80ee0e9b8ff3bcfec2b96f47176780",
+      "missingAssetResponses": [],
+      "casts": [
+        {
+          "side": "player",
+          "owner": "player-0-starfire_tt",
+          "sourceHeroId": "starfire_tt",
+          "kind": "starbolt",
+          "x": 218,
+          "y": 379,
+          "vx": 520,
+          "maxRange": 640,
+          "radius": 13,
+          "starfireLaunch": {
+            "originX": 218,
+            "dx": -11.9609375,
+            "dy": -26.0703125
+          },
+          "canonSourceAbility": true,
+          "authoredAbility": false,
+          "name": "Green Starbolt",
+          "delivery": "projectile",
+          "shape": "single",
+          "maxTargets": 1,
+          "identityAuthored": false,
+          "feedback": {
+            "color": "#63ef72",
+            "sfx": "shoot",
+            "kind": "starbolt"
+          },
+          "elapsed": 0.31666666666666665
+        }
+      ],
+      "contact": {
+        "owner": "player-0-starfire_tt",
+        "target": "cpu-0-cloud_ff7",
+        "side": "player",
+        "damage": 9.8,
+        "canonSourceAbility": true,
+        "delivery": "projectile",
+        "elapsed": 1.1500000000000008
+      },
+      "physicalTravel": 433.33333333333326,
+      "captured": {
+        "file": "starfire-player-release.jpg",
+        "sha256": "7c5ce12edcd6ea69c6bb985267334044ada99d16f108d862ae0d4d6d15c4e9b4"
+      },
+      "initialTargetHp": 234,
+      "finalTargetHp": 224.2,
+      "trustedInput": [
+        {
+          "key": "f",
+          "code": "KeyF",
+          "repeat": false,
+          "trusted": true
+        }
+      ],
+      "pageErrors": [],
+      "fallbackDuringCast": false
+    },
+    {
+      "side": "cpu",
+      "command": "super",
+      "key": "o",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "motion": "reduce",
+      "draws": [
+        {
+          "col": 0,
+          "row": 1,
+          "remoteX": 800,
+          "remoteY": 379,
+          "facing": -1,
+          "body": [
+            284,
+            142
+          ],
+          "elapsed": 0.016666666666666666,
+          "hitAt": 0.451
+        },
+        {
+          "col": 2,
+          "row": 2,
+          "remoteX": 800,
+          "remoteY": 379,
+          "facing": -1,
+          "body": [
+            284,
+            142
+          ],
+          "elapsed": 0.4666666666666666,
+          "hitAt": 0.451
+        },
+        {
+          "col": 2,
+          "row": 3,
+          "remoteX": 800,
+          "remoteY": 379,
+          "facing": -1,
+          "body": [
+            284,
+            142
+          ],
+          "elapsed": 0.7166666666666672,
+          "hitAt": 0.451
+        }
+      ],
+      "assetSha256": "372875c8973133979dc0cf22b6f289330b80ee0e9b8ff3bcfec2b96f47176780",
+      "missingAssetResponses": [],
+      "casts": [
+        {
+          "side": "cpu",
+          "owner": "cpu-0-starfire_tt",
+          "sourceHeroId": "starfire_tt",
+          "kind": "starbolt",
+          "x": 742,
+          "y": 379,
+          "vx": -520,
+          "maxRange": 640,
+          "radius": 22,
+          "starfireLaunch": {
+            "originX": 742,
+            "dx": 11.9609375,
+            "dy": -26.0703125
+          },
+          "name": "Green Starbolt Volley",
+          "delivery": "projectile",
+          "shape": "single",
+          "maxTargets": 1,
+          "identityAuthored": false,
+          "elapsed": 0.6000000000000002
+        }
+      ],
+      "contact": {
+        "owner": "cpu-0-starfire_tt",
+        "target": "player-0-cloud_ff7",
+        "side": "cpu",
+        "damage": 108.8,
+        "delivery": "projectile",
+        "elapsed": 1.4166666666666665
+      },
+      "physicalTravel": 424.6666666666661,
+      "captured": {
+        "file": "starfire-cpu-release.jpg",
+        "sha256": "aa5217abf5c0f950e83105822be4f57a3a7d310d93d25bf473ec3dc136b782bb"
+      },
+      "initialTargetHp": 234,
+      "finalTargetHp": 125.2,
+      "trustedInput": [
+        {
+          "key": "o",
+          "code": "KeyO",
+          "repeat": false,
+          "trusted": true
+        }
+      ],
+      "pageErrors": [],
+      "fallbackDuringCast": false
+    },
+    {
+      "side": "player",
+      "command": "light",
+      "key": "f",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "motion": "reduce",
+      "missing": true,
+      "draws": [],
+      "assetSha256": null,
+      "missingAssetResponses": [
+        404
+      ],
+      "casts": [
+        {
+          "side": "player",
+          "owner": "player-0-starfire_tt",
+          "sourceHeroId": "starfire_tt",
+          "kind": "starbolt",
+          "x": 218,
+          "y": 379,
+          "vx": 520,
+          "maxRange": 640,
+          "radius": 13,
+          "starfireLaunch": {
+            "originX": 218,
+            "dx": -11.9609375,
+            "dy": -26.0703125
+          },
+          "canonSourceAbility": true,
+          "authoredAbility": false,
+          "name": "Green Starbolt",
+          "delivery": "projectile",
+          "shape": "single",
+          "maxTargets": 1,
+          "identityAuthored": false,
+          "feedback": {
+            "color": "#63ef72",
+            "sfx": "shoot",
+            "kind": "starbolt"
+          },
+          "elapsed": 0.3333333333333333
+        }
+      ],
+      "contact": {
+        "owner": "player-0-starfire_tt",
+        "target": "cpu-0-cloud_ff7",
+        "side": "player",
+        "damage": 9.8,
+        "canonSourceAbility": true,
+        "delivery": "projectile",
+        "elapsed": 1.1666666666666674
+      },
+      "physicalTravel": 433.33333333333326,
+      "initialTargetHp": 234,
+      "finalTargetHp": 224.2,
+      "trustedInput": [
+        {
+          "key": "f",
+          "code": "KeyF",
+          "repeat": false,
+          "trusted": true
+        }
+      ],
+      "pageErrors": [],
+      "fallbackDuringCast": true
+    }
+  ]
+}

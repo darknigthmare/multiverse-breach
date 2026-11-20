@@ -1,0 +1,86 @@
+{
+  "passed": true,
+  "cases": [
+    {
+      "width": 1280,
+      "actualLobby": true,
+      "realGameCanvas": true,
+      "canvasMoves": [
+        {
+          "surfaceId": "iron_ashline_radio_ridge_tactics:ground:1:5",
+          "cost": 1,
+          "p": {
+            "x": 213.16049999999998,
+            "y": 286
+          },
+          "budget": 2,
+          "before": "iron_ashline_radio_ridge_tactics:ground:0:5",
+          "input": "native canvas click then Enter",
+          "arrivedZ": 0
+        },
+        {
+          "surfaceId": "iron_ashline_radio_ridge_tactics:ground:2:5",
+          "cost": 2,
+          "p": {
+            "x": 268.94949999999994,
+            "y": 295.62
+          },
+          "budget": 2,
+          "before": "iron_ashline_radio_ridge_tactics:ground:1:5",
+          "input": "focused canvas ArrowRight then Enter",
+          "arrivedZ": -0.5
+        },
+        {
+          "surfaceId": "iron_ashline_radio_ridge_tactics:ground:3:5",
+          "cost": 2,
+          "p": {
+            "x": 324.7385,
+            "y": 305.24
+          },
+          "budget": 2,
+          "before": "iron_ashline_radio_ridge_tactics:ground:2:5",
+          "input": "focused canvas ArrowRight then Enter",
+          "arrivedZ": -1
+        },
+        {
+          "surfaceId": "iron_ashline_radio_ridge_tactics:ground:4:5",
+          "cost": 2,
+          "p": {
+            "x": 380.5275,
+            "y": 305.24
+          },
+          "budget": 2,
+          "before": "iron_ashline_radio_ridge_tactics:ground:3:5",
+          "input": "focused canvas ArrowRight then Enter",
+          "arrivedZ": -1
+        },
+        {
+          "surfaceId": "iron_ashline_radio_ridge_tactics:ground:5:5",
+          "cost": 2,
+          "p": {
+            "x": 436.31649999999996,
+            "y": 305.24
+          },
+          "budget": 2,
+          "before": "iron_ashline_radio_ridge_tactics:ground:4:5",
+          "input": "focused canvas ArrowRight then Enter",
+          "arrivedZ": -1
+        }
+      ],
+      "radioTransmissions": 1,
+      "pauseStable": true,
+      "disposed": true,
+      "pageErrors": [],
+      "missingCheckoutAssets": [],
+      "capture": "ashline-1280.jpg",
+      "passed": true,
+      "automaticShownInLobby": true,
+      "automaticLaunched": false,
+      "launchChoice": "explicit",
+      "height": 900
+    }
+  ],
+  "scope": "One real explicit CustomBattleMode/GameCanvas launch at1280x900. Auto was displayed in the lobby; Auto resolution is covered in Node, not by a second browser launch. Native canvas click then focused-board arrows + Enter,9AP, one radio transmission, external session pause and disposal. Complete six-transmission victory is tested in Node.",
+  "officialSourceFrames": false,
+  "source1to1Verified": false
+}

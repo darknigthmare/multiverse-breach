@@ -1,0 +1,9 @@
+# Starfire dans le Duel
+
+Dans le Duel, l’attaque légère **Green Starbolt** et la super **Green Starbolt Volley** jouent les poses de concentration, de tir et de retour du renfort RPG W16. Le jeu retrouve le même modèle de la série *Teen Titans* de 2003 et l’ancrage du pied déjà mesuré. La cellule de tir apparaît au moment où le moteur émet le projectile. [Revue de la planche et des points d’émission](../../../combat-fidelity-wave16-2026-10-28/summon-provenance.json)
+
+Le dessin du projectile rejoint sa trajectoire physique après 52 pixels logiques. Son départ est aligné sur la paume mesurée dans la cellule de tir, dans les deux orientations. Un cadrage de la cellule retire l’éclair détaché du renfort pour laisser le projectile du Duel lisible. Les points de vie, la portée, la vitesse et la collision suivent le calcul existant. Le mode mouvement réduit conserve une pose stable par phase. En cas d’indisponibilité de la planche, le dessin revient au repère neutre et à la trajectoire ordinaire du projectile. [Parcours et mesures](browser.json) · [Vérification des règles et des cellules](review.json)
+
+Les poses du coup de pied, de la garde, des déplacements et des fins de manche restent au dossier P0 de Starfire. Les sept dossiers d’art DC restent ouverts. [Portée des corrections précédentes](../../p0-p1-p2-continuation-10-2026-11-20/dc/README.md)
+
+Les huit tests Node passent. Chromium vérifie l’attaque légère au clavier en J1, la super J2 avec mouvement réduit et le repli avec une réponse 404. La fixture monte le Duel réel avec des positions préparées. Chaque tir atteint une fois l’adversaire actif. Les quatre parcours de régression des projectiles de Raven et Starfire passent aussi, avec les mêmes entrées de production du début à la fin. [Mesures et contrôles](review.json) · [Lâcher J1](starfire-player-release.jpg) · [Lâcher J2](starfire-cpu-release.jpg)

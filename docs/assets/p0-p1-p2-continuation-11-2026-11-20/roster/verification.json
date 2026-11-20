@@ -1,0 +1,161 @@
+{
+  "sourceBaseline": "55997b90889881a1e51b64e845325f7d222be5ce",
+  "changedScopedSourceSha256": {
+    "src/game/originalMeleeSupers.js": "8ad2550e17093d615be98fef13bdffd0307b436a1496053cc4d50a8b18c5f8af",
+    "src/game/combatIdentity.js": "7dd4840e11854bd094684a9a3b72cb281ee18ba8f9ffef2524c759555b31bb28",
+    "scripts/originalMeleeSupers.test.mjs": "824757736521584ffbe8030aace77a32044b11db2ef5ff14d20b857c92fa321f"
+  },
+  "sharedEngineModule": "src/game/engineSmash.js",
+  "nodeVersion": "v24.19.0",
+  "runtime": {
+    "inputScenariosP1": 40,
+    "inputScenariosP2": 40,
+    "tests": 44,
+    "pass": 44,
+    "fail": 0,
+    "tapSha256": "a439d16b1a8bcda48caa2f797e32fb319db7607a28e8a9b564007337694e57a1"
+  },
+  "browser": {
+    "origin": "Actual GameCanvas in a Vite build. Temporary harness places the existing heroes and test dummies, fills the gauge and records real impact and canvas calls. Keyboard and native touch inputs trigger the unchanged normal controls. Dummy sprite requests can return 404.",
+    "cases": [
+      {
+        "case": "doros",
+        "name": "Forge des Cent Boucliers",
+        "viewport": [
+          1280,
+          840
+        ],
+        "input": "KeyL",
+        "passed": true,
+        "initial": {
+          "mode": "Smash",
+          "range": 152,
+          "heroHp": [
+            158,
+            136,
+            110
+          ],
+          "foeHp": [
+            600,
+            600,
+            600
+          ]
+        },
+        "actual": {
+          "impact": {
+            "name": "Forge des Cent Boucliers",
+            "before": [
+              600,
+              600,
+              600
+            ],
+            "after": [
+              600,
+              600,
+              600
+            ],
+            "hits": 2,
+            "support": [
+              0.44,
+              0.44,
+              0
+            ],
+            "meter": 0,
+            "confirmed": false
+          },
+          "outlines": 40,
+          "draws": [
+            "/sprites/generated/heroes/aegea-war-of-the-moirai/doros-bronzehand-v2-fidelity-wave9-2026-10-25.png"
+          ],
+          "action": "super"
+        },
+        "errors": [],
+        "missing": [
+          "/images/oc-worlds/v2/aegea_moirai/items/greek_ambrosia_drop.png",
+          "/images/oc-worlds/v2/aegea_moirai/items/greek_argos_crew.png",
+          "/images/oc-worlds/v2/aegea_moirai/items/greek_fourth_choice.png",
+          "/images/oc-worlds/v2/aegea_moirai/items/greek_labyrinth_chalk.png",
+          "/images/oc-worlds/v2/aegea_moirai/items/greek_thunder_splinter.png",
+          "/sprites/generated/bosses/aegea-war-of-the-moirai/arriere.png",
+          "/sprites/generated/bosses/aegea-war-of-the-moirai/avant.png",
+          "/sprites/generated/bosses/aegea-war-of-the-moirai/hors-de-portee.png"
+        ]
+      },
+      {
+        "case": "brokk",
+        "name": "Enclume des Sept Serments",
+        "viewport": [
+          390,
+          844
+        ],
+        "input": "touch",
+        "passed": true,
+        "initial": {
+          "mode": "Smash",
+          "range": 126,
+          "heroHp": [
+            168,
+            116,
+            154
+          ],
+          "foeHp": [
+            600,
+            600,
+            600
+          ]
+        },
+        "actual": {
+          "impact": {
+            "name": "Enclume des Sept Serments",
+            "before": [
+              600,
+              600,
+              600
+            ],
+            "after": [
+              530,
+              529,
+              600
+            ],
+            "hits": 2,
+            "support": [
+              0,
+              0,
+              0
+            ],
+            "meter": 0,
+            "confirmed": true
+          },
+          "outlines": 1,
+          "draws": [
+            "/sprites/generated/heroes/valedor-the-shattered-crown/brokk-embervein.png"
+          ],
+          "action": "super"
+        },
+        "errors": [],
+        "missing": [
+          "/images/oc-worlds/v2/valedor_shattered_crown/items/fantasy_free_company.png",
+          "/images/oc-worlds/v2/valedor_shattered_crown/items/fantasy_healing_draught.png",
+          "/images/oc-worlds/v2/valedor_shattered_crown/items/fantasy_runic_bomb.png",
+          "/images/oc-worlds/v2/valedor_shattered_crown/items/fantasy_seven_oaths_united.png",
+          "/images/oc-worlds/v2/valedor_shattered_crown/items/fantasy_waystone.png",
+          "/sprites/generated/bosses/valedor-the-shattered-crown/arriere.png",
+          "/sprites/generated/bosses/valedor-the-shattered-crown/avant.png",
+          "/sprites/generated/bosses/valedor-the-shattered-crown/hors-de-portee.png"
+        ]
+      }
+    ]
+  },
+  "scope": "Gameplay and Canvas dispatch for this roster. No added raster, source animation certification or blanket P0/P1/P2 closures.",
+  "adjacentTests": {
+    "files": [
+      "scripts/engineSmashSuper.test.mjs",
+      "scripts/combatAbilityRuntime.test.mjs",
+      "scripts/rpgSummon.test.mjs"
+    ],
+    "tests": 52,
+    "pass": 52,
+    "fail": 0,
+    "tapSha256": "5262874eac442b57f78ecf3a1b8cfd0d7a3ae56dc36a2b76dfe0cf8bba7e92d9"
+  }
+}

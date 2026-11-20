@@ -1,0 +1,216 @@
+{
+  "runtimeCommit": "30519b274833959cf992fae1e23a9c5f002541ce",
+  "baseCommit": "55997b90889881a1e51b64e845325f7d222be5ce",
+  "node": "22.23.5",
+  "suites": [
+    {
+      "name": "Contrats de source",
+      "command": "npm run test:source-contracts",
+      "totals": {
+        "tests": 349,
+        "pass": 349,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      },
+      "tapSha256": "ed398e525b8085dc7bd5a11bf5279e8a615d035f5c518c332add10d52863bcfe"
+    },
+    {
+      "name": "Dossiers Rift avec médias vérifiés",
+      "command": "RIFT_DOSSIER_MEDIA_ROOT=/tmp/mvb-pass10-rift/verified-overlay/public npm run test:rift",
+      "totals": {
+        "tests": 93,
+        "pass": 93,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      },
+      "tapSha256": "3bc4becc680a76cbbd886d7bf99d384aefcbd152aa5247fba16459e334b28763"
+    },
+    {
+      "name": "P0 visuels et Duel",
+      "command": "npm run test:p0-visuals",
+      "totals": {
+        "tests": 42,
+        "pass": 42,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      },
+      "tapSha256": "ada8b2c10775e816565e0233ecec17bb736be34a845be5505164d288a96f16c1"
+    },
+    {
+      "name": "Terrains Tactics",
+      "command": "npm run test:tactics-verticality",
+      "totals": {
+        "tests": 298,
+        "pass": 296,
+        "fail": 2,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      },
+      "tapSha256": "14497c9257327332c223839f9835536f89832602f033890c7f13f8f580cb7956",
+      "serialRetries": [
+        {
+          "file": "scripts/tacticsVerticalEffects.test.mjs",
+          "command": "node --test --test-concurrency=1 scripts/tacticsVerticalEffects.test.mjs",
+          "initialFailure": "SIGKILL",
+          "totals": {
+            "tests": 10,
+            "pass": 10,
+            "fail": 0,
+            "cancelled": 0,
+            "skipped": 0,
+            "todo": 0
+          },
+          "tapSha256": "5c92c26a5e12083c1793659503cb5a5f0068c9367115581611fc36d132b48847"
+        },
+        {
+          "file": "scripts/tacticsVerticalIntegration.test.mjs",
+          "command": "node --test --test-concurrency=1 scripts/tacticsVerticalIntegration.test.mjs",
+          "initialFailure": "SIGKILL",
+          "totals": {
+            "tests": 22,
+            "pass": 22,
+            "fail": 0,
+            "cancelled": 0,
+            "skipped": 0,
+            "todo": 0
+          },
+          "tapSha256": "e3b46c943ab8ebe888eb279affbf97e8a44d82b77889068ae86ba80919fad94d"
+        }
+      ],
+      "passedAfterRetries": true,
+      "outcome": "All interrupted files passed when rerun in sequence. Initial counts include any assertions recorded before interruption."
+    },
+    {
+      "name": "Interface immersive",
+      "command": "npm run test:ui-immersion",
+      "totals": {
+        "tests": 582,
+        "pass": 581,
+        "fail": 1,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      },
+      "tapSha256": "7d6b871cb394b0149f29f42713a34e2a929d533a6d2340edada0df401d07e49c",
+      "serialRetries": [
+        {
+          "file": "scripts/nexusFieldOperation.test.mjs",
+          "command": "node --test --test-concurrency=1 scripts/nexusFieldOperation.test.mjs",
+          "initialFailure": "SIGKILL",
+          "totals": {
+            "tests": 14,
+            "pass": 14,
+            "fail": 0,
+            "cancelled": 0,
+            "skipped": 0,
+            "todo": 0
+          },
+          "tapSha256": "20cb74e9212bf58b5c0cccc7268dfe41c75701f27fa85941d8063f661dd5ecb9"
+        }
+      ],
+      "passedAfterRetries": true,
+      "outcome": "All interrupted files passed when rerun in sequence. Initial counts include any assertions recorded before interruption."
+    },
+    {
+      "name": "Présentations de combat",
+      "command": "npm run test:combat-presentation",
+      "totals": {
+        "tests": 396,
+        "pass": 395,
+        "fail": 1,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      },
+      "tapSha256": "796264c72450a66029bc755fed3b36be61ee83b1b17d3fc76e9dcc73309d0750",
+      "serialRetries": [
+        {
+          "file": "scripts/engineSmashSuper.test.mjs",
+          "command": "node --test --test-concurrency=1 scripts/engineSmashSuper.test.mjs",
+          "initialFailure": "SIGKILL",
+          "totals": {
+            "tests": 8,
+            "pass": 8,
+            "fail": 0,
+            "cancelled": 0,
+            "skipped": 0,
+            "todo": 0
+          },
+          "tapSha256": "75b9bd9c7c1000ed39c39c1d4fcc350b30afbc516a040c1c7d48e39370027b2d"
+        }
+      ],
+      "passedAfterRetries": true,
+      "outcome": "All interrupted files passed when rerun in sequence. Initial counts include any assertions recorded before interruption."
+    }
+  ],
+  "lint": {
+    "command": "oxlint --deny-warnings on the 30 JavaScript and JSX files changed in the runtime commit",
+    "files": 30,
+    "exitCode": 0
+  },
+  "compilation": {
+    "commands": [
+      "node scripts/checkDlcProfileBundle.mjs --profile config/dlc-profiles/base.json",
+      "node scripts/checkDlcProfileBundle.mjs --profile config/dlc-profiles/all.json"
+    ],
+    "scope": "Compilation Vite de l’application et des dépendances des packs. Les médias et les distributions exportées sont contrôlés séparément.",
+    "profiles": [
+      {
+        "schemaVersion": 1,
+        "passed": true,
+        "profile": {
+          "schemaVersion": 1,
+          "mode": "base",
+          "packIds": [],
+          "sharedPolicy": "preserve-all"
+        },
+        "selectedPacks": 0,
+        "modules": 857,
+        "dlcModules": 0,
+        "javascriptBytes": 49918755,
+        "scope": "Full executable application compile and selected-DLC module closure. No exported edition, media hydration/copy, production prebuild, or artwork approval.",
+        "emittedFiles": 0
+      },
+      {
+        "schemaVersion": 1,
+        "passed": true,
+        "profile": {
+          "schemaVersion": 1,
+          "mode": "all",
+          "packIds": [],
+          "sharedPolicy": "preserve-all"
+        },
+        "selectedPacks": 505,
+        "modules": 2894,
+        "dlcModules": 2038,
+        "javascriptBytes": 53197890,
+        "scope": "Full executable application compile and selected-DLC module closure. No exported edition, media hydration/copy, production prebuild, or artwork approval.",
+        "emittedFiles": 0
+      }
+    ]
+  },
+  "riftAudit": {
+    "command": "RIFT_DOSSIER_MEDIA_ROOT=/tmp/mvb-pass10-rift/verified-overlay/public npm run rift:audit",
+    "verifiedSupplementalPng": 60,
+    "registered": 3199,
+    "available": 1017,
+    "pending": 2182,
+    "stdoutSha256": "e7fbce16cd4962e861223dfdb827a062ca7b707790b3203e9302e28adaf1f0e8",
+    "corruptionCheckLogSha256": "428481fe4227accf94dbe25ce948cda6b170b076fa63053e22eea70a1089f5f0"
+  },
+  "relatedReceipts": [
+    "../roster/verification.json",
+    "../dc/review.json",
+    "../motion/verification.json",
+    "../tactics/README.md",
+    "../star-wars/review.json",
+    "../dlc/coverage.json"
+  ]
+}

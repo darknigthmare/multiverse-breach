@@ -1,0 +1,758 @@
+{
+  "baseline": "55997b908",
+  "scope": "Actual EngineTactics, EngineFighter and browser Canvas particle renderer. No match UI or artist approval.",
+  "chromium": "151.0.7922.173",
+  "fighter": {
+    "name": "Taille au sabre rouge de Vador",
+    "delivery": "melee",
+    "range": 180,
+    "meterCost": 100,
+    "quarantine": []
+  },
+  "scenarios": [
+    {
+      "side": "hero",
+      "slot": "secondary",
+      "shielded": false,
+      "id": "vader",
+      "sameCoordinates": true,
+      "projection": [
+        {
+          "surfaceId": "bridge:7:3",
+          "z": 3,
+          "x": 751.6600000000001,
+          "y": 195.48000000000002
+        },
+        {
+          "surfaceId": "ground:7:3",
+          "z": 0,
+          "x": 751.6600000000001,
+          "y": 286.5
+        }
+      ],
+      "names": {
+        "simple": "Red Lightsaber Cut",
+        "secondary": "Bespin Debris Telekinesis",
+        "special": "Force Choke",
+        "defense": "Lightsaber Parry"
+      },
+      "selected": true,
+      "attackRange": [
+        "bridge:7:3"
+      ],
+      "handled": true,
+      "profile": {
+        "delivery": "ranged",
+        "shape": "single",
+        "range": 3,
+        "multiplier": 1.8,
+        "maxTargets": 1
+      },
+      "before": [
+        600,
+        600
+      ],
+      "after": [
+        577,
+        600
+      ],
+      "effects": [
+        {
+          "x": 743.6600000000001,
+          "y": 170.48000000000002,
+          "vx": -0.7,
+          "vy": -0.4,
+          "color": "#aeb4b9",
+          "size": 5,
+          "life": 18,
+          "type": "thrown_prop"
+        },
+        {
+          "x": 759.6600000000001,
+          "y": 177.48000000000002,
+          "vx": 0.6,
+          "vy": -0.3,
+          "color": "#aeb4b9",
+          "size": 3,
+          "life": 18,
+          "type": "thrown_prop"
+        }
+      ],
+      "colorPixels": [
+        [
+          742,
+          168
+        ],
+        [
+          743,
+          168
+        ],
+        [
+          744,
+          168
+        ],
+        [
+          745,
+          168
+        ],
+        [
+          742,
+          169
+        ],
+        [
+          743,
+          169
+        ],
+        [
+          744,
+          169
+        ],
+        [
+          745,
+          169
+        ],
+        [
+          742,
+          170
+        ],
+        [
+          743,
+          170
+        ],
+        [
+          744,
+          170
+        ],
+        [
+          745,
+          170
+        ],
+        [
+          742,
+          171
+        ],
+        [
+          743,
+          171
+        ],
+        [
+          744,
+          171
+        ],
+        [
+          745,
+          171
+        ],
+        [
+          742,
+          172
+        ],
+        [
+          743,
+          172
+        ],
+        [
+          744,
+          172
+        ],
+        [
+          745,
+          172
+        ],
+        [
+          759,
+          176
+        ],
+        [
+          760,
+          176
+        ],
+        [
+          759,
+          177
+        ],
+        [
+          760,
+          177
+        ],
+        [
+          759,
+          178
+        ],
+        [
+          760,
+          178
+        ]
+      ],
+      "sounds": [
+        "shield",
+        "hit"
+      ],
+      "emittedTypes": [
+        "text",
+        "spark",
+        "thrown_prop"
+      ]
+    },
+    {
+      "side": "hero",
+      "slot": "secondary",
+      "shielded": true,
+      "id": "vader",
+      "sameCoordinates": true,
+      "projection": [
+        {
+          "surfaceId": "bridge:7:3",
+          "z": 3,
+          "x": 751.6600000000001,
+          "y": 195.48000000000002
+        },
+        {
+          "surfaceId": "ground:7:3",
+          "z": 0,
+          "x": 751.6600000000001,
+          "y": 286.5
+        }
+      ],
+      "names": {
+        "simple": "Red Lightsaber Cut",
+        "secondary": "Bespin Debris Telekinesis",
+        "special": "Force Choke",
+        "defense": "Lightsaber Parry"
+      },
+      "selected": true,
+      "attackRange": [
+        "bridge:7:3"
+      ],
+      "handled": true,
+      "profile": {
+        "delivery": "ranged",
+        "shape": "single",
+        "range": 3,
+        "multiplier": 1.8,
+        "maxTargets": 1
+      },
+      "before": [
+        600,
+        600
+      ],
+      "after": [
+        600,
+        600
+      ],
+      "effects": [],
+      "colorPixels": [],
+      "sounds": [
+        "shield",
+        "hit"
+      ],
+      "emittedTypes": [
+        "text",
+        "spark"
+      ]
+    },
+    {
+      "side": "hero",
+      "slot": "special",
+      "shielded": false,
+      "id": "vader",
+      "sameCoordinates": true,
+      "projection": [
+        {
+          "surfaceId": "bridge:7:3",
+          "z": 3,
+          "x": 751.6600000000001,
+          "y": 195.48000000000002
+        },
+        {
+          "surfaceId": "ground:7:3",
+          "z": 0,
+          "x": 751.6600000000001,
+          "y": 286.5
+        }
+      ],
+      "names": {
+        "simple": "Red Lightsaber Cut",
+        "secondary": "Bespin Debris Telekinesis",
+        "special": "Force Choke",
+        "defense": "Lightsaber Parry"
+      },
+      "selected": true,
+      "attackRange": [
+        "bridge:7:3"
+      ],
+      "handled": true,
+      "profile": {
+        "delivery": "ranged",
+        "shape": "single",
+        "range": 5,
+        "multiplier": 4.6,
+        "maxTargets": 1
+      },
+      "before": [
+        600,
+        600
+      ],
+      "after": [
+        544,
+        600
+      ],
+      "effects": [
+        {
+          "x": 751.6600000000001,
+          "y": 165.48000000000002,
+          "vx": 0,
+          "vy": -0.15,
+          "color": "#aeb4b9",
+          "size": 2,
+          "life": 18,
+          "type": "spark"
+        }
+      ],
+      "colorPixels": [
+        [
+          751,
+          165
+        ]
+      ],
+      "sounds": [
+        "shield",
+        "hit"
+      ],
+      "emittedTypes": [
+        "text",
+        "spark"
+      ]
+    },
+    {
+      "side": "hero",
+      "slot": "special",
+      "shielded": true,
+      "id": "vader",
+      "sameCoordinates": true,
+      "projection": [
+        {
+          "surfaceId": "bridge:7:3",
+          "z": 3,
+          "x": 751.6600000000001,
+          "y": 195.48000000000002
+        },
+        {
+          "surfaceId": "ground:7:3",
+          "z": 0,
+          "x": 751.6600000000001,
+          "y": 286.5
+        }
+      ],
+      "names": {
+        "simple": "Red Lightsaber Cut",
+        "secondary": "Bespin Debris Telekinesis",
+        "special": "Force Choke",
+        "defense": "Lightsaber Parry"
+      },
+      "selected": true,
+      "attackRange": [
+        "bridge:7:3"
+      ],
+      "handled": true,
+      "profile": {
+        "delivery": "ranged",
+        "shape": "single",
+        "range": 5,
+        "multiplier": 4.6,
+        "maxTargets": 1
+      },
+      "before": [
+        600,
+        600
+      ],
+      "after": [
+        600,
+        600
+      ],
+      "effects": [],
+      "colorPixels": [],
+      "sounds": [
+        "shield",
+        "hit"
+      ],
+      "emittedTypes": [
+        "text",
+        "spark"
+      ]
+    },
+    {
+      "side": "enemy",
+      "slot": "secondary",
+      "shielded": false,
+      "id": "vader",
+      "sameCoordinates": true,
+      "projection": [
+        {
+          "surfaceId": "bridge:7:3",
+          "z": 3,
+          "x": 751.6600000000001,
+          "y": 195.48000000000002
+        },
+        {
+          "surfaceId": "ground:7:3",
+          "z": 0,
+          "x": 751.6600000000001,
+          "y": 286.5
+        }
+      ],
+      "names": {
+        "simple": "Red Lightsaber Cut",
+        "secondary": "Bespin Debris Telekinesis",
+        "special": "Force Choke",
+        "defense": "Lightsaber Parry"
+      },
+      "selected": true,
+      "attackRange": [
+        "bridge:7:3"
+      ],
+      "handled": true,
+      "profile": {
+        "delivery": "ranged",
+        "shape": "single",
+        "range": 3,
+        "multiplier": 1.8,
+        "maxTargets": 1
+      },
+      "before": [
+        600,
+        600
+      ],
+      "after": [
+        569,
+        600
+      ],
+      "effects": [
+        {
+          "x": 743.6600000000001,
+          "y": 170.48000000000002,
+          "vx": -0.7,
+          "vy": -0.4,
+          "color": "#aeb4b9",
+          "size": 5,
+          "life": 18,
+          "type": "thrown_prop"
+        },
+        {
+          "x": 759.6600000000001,
+          "y": 177.48000000000002,
+          "vx": 0.6,
+          "vy": -0.3,
+          "color": "#aeb4b9",
+          "size": 3,
+          "life": 18,
+          "type": "thrown_prop"
+        }
+      ],
+      "colorPixels": [
+        [
+          742,
+          168
+        ],
+        [
+          743,
+          168
+        ],
+        [
+          744,
+          168
+        ],
+        [
+          745,
+          168
+        ],
+        [
+          742,
+          169
+        ],
+        [
+          743,
+          169
+        ],
+        [
+          744,
+          169
+        ],
+        [
+          745,
+          169
+        ],
+        [
+          742,
+          170
+        ],
+        [
+          743,
+          170
+        ],
+        [
+          744,
+          170
+        ],
+        [
+          745,
+          170
+        ],
+        [
+          742,
+          171
+        ],
+        [
+          743,
+          171
+        ],
+        [
+          744,
+          171
+        ],
+        [
+          745,
+          171
+        ],
+        [
+          742,
+          172
+        ],
+        [
+          743,
+          172
+        ],
+        [
+          744,
+          172
+        ],
+        [
+          745,
+          172
+        ],
+        [
+          759,
+          176
+        ],
+        [
+          760,
+          176
+        ],
+        [
+          759,
+          177
+        ],
+        [
+          760,
+          177
+        ],
+        [
+          759,
+          178
+        ],
+        [
+          760,
+          178
+        ]
+      ],
+      "sounds": [
+        "shield",
+        "hit"
+      ],
+      "emittedTypes": [
+        "text",
+        "spark",
+        "thrown_prop"
+      ]
+    },
+    {
+      "side": "enemy",
+      "slot": "secondary",
+      "shielded": true,
+      "id": "vader",
+      "sameCoordinates": true,
+      "projection": [
+        {
+          "surfaceId": "bridge:7:3",
+          "z": 3,
+          "x": 751.6600000000001,
+          "y": 195.48000000000002
+        },
+        {
+          "surfaceId": "ground:7:3",
+          "z": 0,
+          "x": 751.6600000000001,
+          "y": 286.5
+        }
+      ],
+      "names": {
+        "simple": "Red Lightsaber Cut",
+        "secondary": "Bespin Debris Telekinesis",
+        "special": "Force Choke",
+        "defense": "Lightsaber Parry"
+      },
+      "selected": true,
+      "attackRange": [
+        "bridge:7:3"
+      ],
+      "handled": true,
+      "profile": {
+        "delivery": "ranged",
+        "shape": "single",
+        "range": 3,
+        "multiplier": 1.8,
+        "maxTargets": 1
+      },
+      "before": [
+        600,
+        600
+      ],
+      "after": [
+        600,
+        600
+      ],
+      "effects": [],
+      "colorPixels": [],
+      "sounds": [
+        "shield",
+        "hit"
+      ],
+      "emittedTypes": [
+        "text",
+        "spark"
+      ]
+    },
+    {
+      "side": "enemy",
+      "slot": "special",
+      "shielded": false,
+      "id": "vader",
+      "sameCoordinates": true,
+      "projection": [
+        {
+          "surfaceId": "bridge:7:3",
+          "z": 3,
+          "x": 751.6600000000001,
+          "y": 195.48000000000002
+        },
+        {
+          "surfaceId": "ground:7:3",
+          "z": 0,
+          "x": 751.6600000000001,
+          "y": 286.5
+        }
+      ],
+      "names": {
+        "simple": "Red Lightsaber Cut",
+        "secondary": "Bespin Debris Telekinesis",
+        "special": "Force Choke",
+        "defense": "Lightsaber Parry"
+      },
+      "selected": true,
+      "attackRange": [
+        "bridge:7:3"
+      ],
+      "handled": true,
+      "profile": {
+        "delivery": "ranged",
+        "shape": "single",
+        "range": 5,
+        "multiplier": 4.6,
+        "maxTargets": 1
+      },
+      "before": [
+        600,
+        600
+      ],
+      "after": [
+        545,
+        600
+      ],
+      "effects": [
+        {
+          "x": 751.6600000000001,
+          "y": 165.48000000000002,
+          "vx": 0,
+          "vy": -0.15,
+          "color": "#aeb4b9",
+          "size": 2,
+          "life": 18,
+          "type": "spark"
+        }
+      ],
+      "colorPixels": [
+        [
+          751,
+          165
+        ]
+      ],
+      "sounds": [
+        "shield",
+        "hit"
+      ],
+      "emittedTypes": [
+        "text",
+        "spark"
+      ]
+    },
+    {
+      "side": "enemy",
+      "slot": "special",
+      "shielded": true,
+      "id": "vader",
+      "sameCoordinates": true,
+      "projection": [
+        {
+          "surfaceId": "bridge:7:3",
+          "z": 3,
+          "x": 751.6600000000001,
+          "y": 195.48000000000002
+        },
+        {
+          "surfaceId": "ground:7:3",
+          "z": 0,
+          "x": 751.6600000000001,
+          "y": 286.5
+        }
+      ],
+      "names": {
+        "simple": "Red Lightsaber Cut",
+        "secondary": "Bespin Debris Telekinesis",
+        "special": "Force Choke",
+        "defense": "Lightsaber Parry"
+      },
+      "selected": true,
+      "attackRange": [
+        "bridge:7:3"
+      ],
+      "handled": true,
+      "profile": {
+        "delivery": "ranged",
+        "shape": "single",
+        "range": 5,
+        "multiplier": 4.6,
+        "maxTargets": 1
+      },
+      "before": [
+        600,
+        600
+      ],
+      "after": [
+        600,
+        600
+      ],
+      "effects": [],
+      "colorPixels": [],
+      "sounds": [
+        "shield",
+        "hit"
+      ],
+      "emittedTypes": [
+        "text",
+        "spark"
+      ]
+    }
+  ],
+  "errors": [],
+  "httpErrors": []
+}

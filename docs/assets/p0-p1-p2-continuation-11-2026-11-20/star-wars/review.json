@@ -1,0 +1,47 @@
+{
+  "baseline": "55997b908",
+  "node": "22.23.5",
+  "before": {
+    "totals": {
+      "tests": 4,
+      "pass": 0,
+      "fail": 4,
+      "cancelled": 0,
+      "skipped": 0
+    },
+    "tapSha256": "4d05f742b9d293f690f0b0c9c8f398b3e1b33f477763558fbec2f39f17476341",
+    "failures": [
+      "Two vertical Tactics cases switched to the W13 melee kit",
+      "Two melee cases drew a false contact despite a full battle shield"
+    ]
+  },
+  "after": {
+    "totals": {
+      "tests": 33,
+      "pass": 33,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0
+    },
+    "tapSha256": "60b050028d0f942c6786093bb7725562b504ae6f70ee62493544dc3fedfd2a8b"
+  },
+  "sourceCommand": "node --loader ./scripts/sourceSceneTestLoader.mjs --test --test-concurrency=1 scripts/canonSourceKitRuntime.test.mjs scripts/smashCanonAbilityProfiles.test.mjs",
+  "productionCode": [
+    "src/game/starWarsBespinVader.js",
+    "src/game/canonHeroAttackEffects.js",
+    "src/game/engineTactics.js",
+    "src/game/tacticsVerticalRuntime.js",
+    "src/game/engineSmash.js",
+    "src/game/engineRpg.js"
+  ],
+  "browserCases": 8,
+  "verified": [
+    "Selected elevated slab with another target underneath at identical grid coordinates",
+    "Both local combat sides",
+    "Three- and five-cell single-target geometry",
+    "No contact-specific effect through a full battle shield in raw Mêlée or Tactics",
+    "The distinct W13 Duel profile is retained",
+    "RPG and Han/Luke source-kit regressions pass"
+  ],
+  "historicalArtP0Open": true
+}

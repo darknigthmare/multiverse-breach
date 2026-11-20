@@ -1,0 +1,316 @@
+{
+  "runtime": "Chromium / GameCanvas / EngineRpg",
+  "actor": "ilyr_concordat:cuirasse_nul_oblique",
+  "universe": "Ilyr Concordat",
+  "stage": "alien_pale_lattice",
+  "input": [
+    "Digit7",
+    "KeyI",
+    "Confirmer les cibles"
+  ],
+  "fixtureAdjustments": [
+    "placement for ally range boundary",
+    "full ATB and special charge",
+    "manual native engine ticks"
+  ],
+  "viewports": [
+    {
+      "size": [
+        1280,
+        800
+      ],
+      "engineDisposed": true,
+      "pageErrors": [],
+      "httpErrors": []
+    },
+    {
+      "size": [
+        390,
+        844
+      ],
+      "engineDisposed": true,
+      "pageErrors": [],
+      "httpErrors": []
+    }
+  ],
+  "sprite": {
+    "path": "/sprites/generated/bosses/ilyr-concordat/cuirasse-nul-oblique.png",
+    "layout": [
+      1,
+      1
+    ],
+    "dimensions": [
+      1024,
+      1024
+    ],
+    "http": 200,
+    "sha256": "d8fc3b1c20506f0b246f63b0bf48c11d4a33a713d57bc141eb07a6186256f1dd",
+    "sourceRects": [
+      [
+        0,
+        0,
+        1024,
+        1024
+      ],
+      [
+        246,
+        152,
+        169,
+        234
+      ],
+      [
+        480,
+        259,
+        139,
+        80
+      ]
+    ],
+    "hinges": [
+      [
+        [
+          263,
+          386
+        ],
+        [
+          402,
+          386
+        ]
+      ],
+      [
+        [
+          480,
+          339
+        ],
+        [
+          599,
+          309
+        ]
+      ]
+    ]
+  },
+  "targeting": {
+    "abilityName": "Écrans obliques",
+    "effect": "guard",
+    "targetIds": [
+      "enemy:custom:0:ilyr_concordat:cuirasse_nul_oblique",
+      "enemy:custom:1:ilyr_concordat:drone_nul_paleen"
+    ],
+    "remaining": [
+      100,
+      100
+    ],
+    "remainingAfterConfirmation": [
+      0,
+      0
+    ]
+  },
+  "hpInOrderSeyraObliqueDroneArchonte": [
+    124,
+    640,
+    126,
+    500
+  ],
+  "impactTick": 18,
+  "phases": {
+    "rest": {
+      "guardTicks": [
+        0,
+        0,
+        0
+      ],
+      "state": "idle",
+      "pending": false,
+      "matrices": [
+        [
+          1,
+          0,
+          0,
+          1,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0,
+          1,
+          0,
+          0
+        ]
+      ]
+    },
+    "charging": {
+      "guardTicks": [
+        0,
+        0,
+        0
+      ],
+      "state": "special",
+      "pending": true,
+      "matrices": [
+        [
+          1,
+          0,
+          -0.2115556,
+          1.0466666,
+          81.6604462,
+          -18.0133343
+        ],
+        [
+          1.0486732,
+          0.0349839,
+          0.1930703,
+          1.1387693,
+          -88.8139801,
+          -63.8350449
+        ]
+      ]
+    },
+    "preImpact": {
+      "guardTicks": [
+        0,
+        0,
+        0
+      ],
+      "state": "special",
+      "pending": true,
+      "matrices": [
+        [
+          1,
+          0,
+          -0.2830535,
+          1.0624382,
+          109.2586517,
+          -24.1011734
+        ],
+        [
+          1.065123,
+          0.0468071,
+          0.258321,
+          1.1856682,
+          -118.8298111,
+          -85.4089279
+        ]
+      ]
+    },
+    "deployed": {
+      "guardTicks": [
+        179,
+        179,
+        0
+      ],
+      "state": "special",
+      "pending": false,
+      "matrices": [
+        [
+          1,
+          0,
+          -0.34,
+          1.075,
+          131.2400055,
+          -28.9500008
+        ],
+        [
+          1.0782248,
+          0.0562241,
+          0.3102916,
+          1.2230221,
+          -142.7367554,
+          -102.592041
+        ]
+      ]
+    },
+    "sustained": {
+      "guardTicks": [
+        30,
+        30,
+        0
+      ],
+      "state": "idle",
+      "pending": false,
+      "matrices": [
+        [
+          1,
+          0,
+          -0.34,
+          1.075,
+          131.2400055,
+          -28.9500008
+        ],
+        [
+          1.0782248,
+          0.0562241,
+          0.3102916,
+          1.2230221,
+          -142.7367554,
+          -102.592041
+        ]
+      ]
+    },
+    "folding": {
+      "guardTicks": [
+        15,
+        15,
+        0
+      ],
+      "state": "idle",
+      "pending": false,
+      "matrices": [
+        [
+          1,
+          0,
+          -0.17,
+          1.0375,
+          65.6200027,
+          -14.4750004
+        ],
+        [
+          1.0391123,
+          0.028112,
+          0.1551458,
+          1.111511,
+          -71.3683777,
+          -51.2960205
+        ]
+      ]
+    },
+    "folded": {
+      "guardTicks": [
+        0,
+        0,
+        0
+      ],
+      "state": "idle",
+      "pending": false,
+      "matrices": [
+        [
+          1,
+          0,
+          0,
+          1,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0,
+          1,
+          0,
+          0
+        ]
+      ]
+    }
+  },
+  "dynamicMotion": {
+    "normal": 3,
+    "gameReduced": 1,
+    "systemNormal": 3,
+    "osReduced": 1,
+    "osNormal": 3
+  },
+  "nodeTests": {
+    "passed": 24,
+    "failed": 0
+  }
+}
