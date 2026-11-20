@@ -666,7 +666,7 @@ export default function FighterMode({
             elapsedSeconds: visualElapsedSeconds,
             reducedMotion
           });
-          engine.draw(ctx, visualElapsedSeconds * 60);
+          engine.draw(ctx, visualElapsedSeconds * 60, { reducedMotion });
           particles.draw(ctx);
         }
         snapshotClock += dt;

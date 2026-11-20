@@ -282,11 +282,18 @@ test('the real Hub renders the operation locked when the report or the owned com
       heroTalents: {}, heroSkins: {}, activityProgress: {}, portalCollection: {}, disabledAssets: {},
       audioSettings: { muted: true }, onGoToPortal() {}, onLaunchStage() {} };
     const render = changes => renderToStaticMarkup(React.createElement(HubScreen, { ...props, ...changes }));
-    for (const changes of [{}, { unlockedHeroes: [], activityProgress: { mosaicReconnaissance: earnedReport() } }]) {
+    for (const [changes, reason] of [
+      [{}, 'Complete the Nexus district reconnaissance and submit its report at the local anchor.'],
+      [{ unlockedHeroes: [], activityProgress: { mosaicReconnaissance: earnedReport() } }, 'Unlock a combat signature to deploy.']
+    ]) {
       const html = render(changes);
       assert.match(html, /<input[^>]*data-field-operation="true"[^>]*disabled=""/);
       assert.match(html, /OPERATION LOCKED/);
       assert.doesNotMatch(html, /<input[^>]*data-field-operation="true"[^>]*checked=""/);
+      const describedBy = html.match(/<input[^>]*data-field-operation="true"[^>]*aria-describedby="([^"]+)"/);
+      assert.ok(describedBy, 'the locked operation has an accessible explanation');
+      assert.ok(html.includes(`<p id="${describedBy[1]}" class="nexus-field-status" role="status">${reason}</p>`),
+        'the explanation identifies the actual blocking prerequisite');
     }
     const ready = render({ activityProgress: { mosaicReconnaissance: earnedReport() } });
     assert.match(ready, /data-field-access="available"/);

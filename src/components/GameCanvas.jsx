@@ -2401,7 +2401,7 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
       <header className="combat-hud-header">
         <div className="combat-mission-heading">
           <span>{stage.mode === 'Smash' ? (lang === 'fr' ? 'MÊLÉE' : 'MELEE') : stage.mode.toUpperCase()} / {stage.universe}</span>
-          <h1>{stage.name}</h1>
+          <h1>{(stage.isCustomBattle && stage.mode === 'Tactics' && tacticsTerrainState?.battlefieldInfo?.label?.[lang]) || stage.name}</h1>
           <p>{battleObjective}</p>
         </div>
         <nav className="combat-hud-tools" aria-label={lang === 'fr' ? 'Menu du combat' : 'Combat menu'}>

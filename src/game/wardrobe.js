@@ -11,6 +11,7 @@ import { ORIGINAL_COLLECTIONS, SIGNATURE_DESIGNS } from './wardrobeOriginals.js'
 import { OFFICIAL_COSTUME_EXTENSION, ORIGINAL_COLLECTION_EXTENSION, SIGNATURE_DESIGN_EXTENSION, WARDROBE_RESEARCH_TARGETS } from './wardrobeExpansion.js';
 import { getCostumeProductionContract, assertUniqueWardrobeEntries } from './wardrobeProduction.js';
 import { resolveDisciplineCostume } from './disciplineSprites.js';
+import { getNexusActorDesign } from './nexusActorDesigns.js';
 
 const L = (fr,en) => Object.freeze({fr,en});
 export const WARDROBE_VERSION = 9;
@@ -65,7 +66,7 @@ export function getOfficialCostumes(actor) {
 }
 export function getOriginalCostumes(actor) {
   const key=wardrobeActorKey(actor); if(!key)return [];
-  const anchor=String(actor.visualAnchor || actor.incarnation || '').slice(0,2400);
+  const anchor=String(actor.visualAnchor || getNexusActorDesign(actor)?.visualAnchor || actor.incarnation || '').slice(0,2400);
   const base = {actorKey:key,origin:'ORIGINAL',nature:'original-design-brief',artworkStatus:'NOT_PRODUCED',
     artApproval:'NOT_REVIEWED',equippable:false,fitStatus:'MORPHOLOGY_REVIEW_REQUIRED',
     sourceAnchor:anchor,sourceUrl:'',colors:{},

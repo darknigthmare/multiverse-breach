@@ -4,12 +4,13 @@ import fs from 'node:fs';
 import childProcess from 'node:child_process';
 import { syncBuiltinESMExports } from 'node:module';
 import { execFileSync, spawnSync } from 'node:child_process';
-import { existsSync, mkdirSync, mkdtempSync, readFileSync, readdirSync, rmSync, writeFileSync } from 'node:fs';
+import { existsSync, mkdirSync, mkdtempSync, readFileSync, readdirSync, rmSync, symlinkSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import path from 'node:path';
 import test from 'node:test';
 import { fileURLToPath } from 'node:url';
 import { createDlcAssetBatchPlan, DLC_BATCH_MIB, validateDlcAssetBatch, validateDlcAssetBatches, verifyDlcAssetBatchPlan } from './dlcAssetBatches.mjs';
+import { auditDlcAssetBatchExport, exportDlcAssetBatch } from './exportDlcAssetBatch.mjs';
 
 const PNG = Buffer.from('iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAYAAABytg0kAAAAFUlEQVR4nGN023LnPwMDAwMTAxQAACryAtmZNLxsAAAAAElFTkSuQmCC', 'base64');
 const hash = value => createHash('sha256').update(value).digest('hex');
@@ -108,6 +109,9 @@ test('size and decode failures are explicit UNAVAILABLE results with no permanen
   assert.ok(!Object.hasOwn(result, 'ready'));
   const capped = JSON.parse(readFileSync(path.join(f.receipts, 'batch-00001.json')));
   assert.equal(capped.assets[0].code, 'MAX_ASSET_BYTES_EXCEEDED');
+  const out = path.join(f.parent, 'oversized-export');
+  await assert.rejects(exportDlcAssetBatch({ root: f.root, plan, batchId: 1, out }), /unavailable or oversized assets/);
+  assert.deepEqual(readdirSync(f.parent).sort(), ['receipts', 'source']);
 });
 
 test('tampered manifests and receipts, changed options and unowned receipt files fail before cleanup', async t => {
@@ -183,4 +187,79 @@ test('CLI plans and validates a real canonical PNG batch then resumes without ma
   assert.equal(JSON.parse(again.stdout).attemptedBatches, 0);
   const receipt = JSON.parse(readFileSync(path.join(f.receipts, 'batch-00000.json')));
   assert.equal(receipt.assets[0].sha256, hash(PNG));
+});
+
+test('CLI exports canonical private and shared assets when they are missing from the checkout', async t => {
+  const f = fixture(t);
+  const plan = await createDlcAssetBatchPlan({ root: f.root, revision: f.revision, profile: profile(['halo']) });
+  const planPath = path.join(f.parent, 'plan.json');
+  writeFileSync(planPath, JSON.stringify(plan));
+  const privateAsset = 'DLC/Halo/assets/images/halo.png';
+  rmSync(path.join(f.root, privateAsset));
+  const out = path.join(f.parent, 'portable-batch');
+  const exporter = fileURLToPath(new URL('./exportDlcAssetBatch.mjs', import.meta.url));
+  const run = args => spawnSync(process.execPath, [exporter, ...args], { cwd: f.root, encoding: 'utf8' });
+  const exported = run(['--plan', planPath, '--batch', '00000', '--out', out]);
+  assert.equal(exported.status, 0, exported.stderr);
+  const { receiptSha256, assets, payloadBytes } = JSON.parse(exported.stdout);
+  assert.equal(assets, 2);
+  assert.equal(payloadBytes, 2 * PNG.length);
+  assert.deepEqual(readFileSync(path.join(out, privateAsset)), PNG);
+  assert.deepEqual(readFileSync(path.join(out, 'public/images/common.png')), PNG);
+  assert.equal(existsSync(path.join(out, 'public/images/halo.png')), false, 'private payload is exported once');
+  assert.equal(existsSync(path.join(f.root, privateAsset)), false);
+  const checked = run(['--check', out, '--expected-receipt-sha256', receiptSha256]);
+  assert.equal(checked.status, 0, checked.stderr);
+  assert.equal(JSON.parse(checked.stdout).receiptSha256, receiptSha256);
+  const receipt = JSON.parse(readFileSync(path.join(out, 'batch-export.json')));
+  assert.deepEqual(receipt.assets.map(asset => [asset.sourcePath, asset.publicPath, asset.decode.status, asset.sha256]), [
+    ['public/images/common.png', '/images/common.png', 'PASSED', hash(PNG)],
+    [privateAsset, '/images/halo.png', 'PASSED', hash(PNG)],
+  ]);
+});
+
+test('unavailable LFS aborts batch export without a partial delivery and a verified cache allows retry', async t => {
+  const f = fixture(t, { lfs: true });
+  const plan = await createDlcAssetBatchPlan({ root: f.root, revision: f.revision, profile: profile() });
+  const out = path.join(f.parent, 'portable-batch');
+  const options = { root: f.root, plan, batchId: 0, out };
+  await assert.rejects(exportDlcAssetBatch(options), { code: 'LFS_UNAVAILABLE' });
+  assert.deepEqual(readdirSync(f.parent), ['source']);
+  const cache = path.join(f.root, '.git/lfs/objects', f.lfsOid.slice(0, 2), f.lfsOid.slice(2, 4), f.lfsOid);
+  mkdirSync(path.dirname(cache), { recursive: true }); writeFileSync(cache, PNG);
+  assert.equal((await exportDlcAssetBatch(options)).assets, 2);
+  const receipt = JSON.parse(readFileSync(path.join(out, 'batch-export.json')));
+  assert.equal(receipt.assets.find(asset => asset.publicPath === '/images/lfs.png').sourceKind, 'core-lfs-cache');
+  assert.deepEqual(readFileSync(path.join(out, 'public/images/lfs.png')), PNG);
+  assert.deepEqual(readFileSync(cache), PNG);
+  assert.match(readFileSync(path.join(f.root, 'public/images/lfs.png'), 'utf8'), /^version https:\/\/git-lfs/);
+});
+
+test('batch output commits once under concurrency and portable audits detect tampering', async t => {
+  const f = fixture(t);
+  const plan = await createDlcAssetBatchPlan({ root: f.root, revision: f.revision, profile: profile() });
+  const out = path.join(f.parent, 'portable-batch');
+  const options = { root: f.root, plan, batchId: 0, out };
+  const outcomes = await Promise.allSettled([exportDlcAssetBatch(options), exportDlcAssetBatch(options)]);
+  const delivered = outcomes.filter(result => result.status === 'fulfilled');
+  assert.equal(delivered.length, 1);
+  assert.deepEqual(readdirSync(f.parent).sort(), ['portable-batch', 'source']);
+  const expectedReceiptSha256 = delivered[0].value.receiptSha256;
+  const media = path.join(out, 'public/images/common.png');
+  const receipt = path.join(out, 'batch-export.json');
+  const original = readFileSync(receipt);
+  writeFileSync(receipt, Buffer.concat([original, Buffer.from('\n')]));
+  await assert.rejects(auditDlcAssetBatchExport({ directory: out, expectedReceiptSha256 }), /receipt hash differs/);
+  writeFileSync(receipt, JSON.stringify({ ...JSON.parse(original), batchId: 12345 }));
+  await assert.rejects(auditDlcAssetBatchExport({ directory: out }), /Invalid batch export receipt/);
+  writeFileSync(receipt, original);
+  writeFileSync(media, Buffer.alloc(PNG.length));
+  await assert.rejects(auditDlcAssetBatchExport({ directory: out, expectedReceiptSha256 }), /payload differs/);
+  rmSync(media);
+  symlinkSync(path.join(f.root, 'public/images/common.png'), media);
+  await assert.rejects(auditDlcAssetBatchExport({ directory: out, expectedReceiptSha256 }), /refuses a symlink/);
+  rmSync(media);
+  writeFileSync(media, PNG);
+  writeFileSync(path.join(out, 'unrecorded.png'), PNG);
+  await assert.rejects(auditDlcAssetBatchExport({ directory: out, expectedReceiptSha256 }), /file inventory differs/);
 });

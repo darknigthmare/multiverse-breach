@@ -68,6 +68,7 @@ import * as dlcOliverTree from '../../DLC/OliverTree/data/renderer.js';
 import { drawWardrobeEffect } from './wardrobeEffects.js';
 import { drawFallbackEnergyBlades } from './energyBladeFallback.js';
 import { getQuarantinedCanonSprite } from './canonicalSpriteQuarantine.js';
+import { drawPachakutiFallback } from './pachakutiWorldBossArt.js';
 
 // Pixel Art Renderer and Particle System for Multiverse Breach
 
@@ -1110,6 +1111,7 @@ export const drawPixelEnemy = (ctx, x, y, enemy, animTime, facing = -1, targetHe
   if (generatedStatus !== 'missing') {
     return;
   }
+  if (drawPachakutiFallback(ctx, x, y, enemy, targetHeight, facing)) return;
 
   const { name, color, state } = enemy;
   const scaleFactor = targetHeight / 68;
@@ -1225,6 +1227,7 @@ export const drawBoss = (ctx, x, y, boss, animTime, facing = -1) => {
   if (generatedStatus !== 'missing') {
     return;
   }
+  if (drawPachakutiFallback(ctx, x, y, boss, targetHeight, facing)) return;
 
   const { name, color, state } = boss;
   ctx.save();

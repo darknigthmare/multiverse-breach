@@ -427,6 +427,8 @@ export default function CustomBattleMode({
     cosmetics: selectedCustomCosmetics,
     nonce: runtimeNonce
   }), [enemyData, preset, runtimeNonce, selectedArchive, selectedBattleMusic, selectedCustomCosmetics, selectedFieldSuper, selectedStageMusic]);
+  const tacticalTerrain = runtimeStage.tacticsBattlefieldId ? TACTICS_BATTLEFIELDS[runtimeStage.tacticsBattlefieldId] : null;
+  const tacticalTerrainLabel = tacticalTerrain?.label?.[lang] || tacticalTerrain?.label?.fr;
 
   const endDedicatedSession = (report) => {
     if (!sessionActiveRef.current) return;
@@ -663,9 +665,9 @@ export default function CustomBattleMode({
                 ))}
               </select>
               <small id="custom-tactics-terrain-help" style={{ color: '#a7c8cf', lineHeight: 1.5 }}>
-                {lang === 'fr'
+                {tacticalTerrain?.scenario?.[lang] || (lang === 'fr'
                   ? 'Les terrains à plusieurs hauteurs permettent de passer sur et sous les ponts. Les escaliers et les rampes relient les niveaux.'
-                  : 'Multi-height terrains let units pass over and under bridges. Stairs and ramps connect their levels.'}
+                  : 'Multi-height terrains let units pass over and under bridges. Stairs and ramps connect their levels.')}
               </small>
             </label>
           )}
@@ -758,7 +760,7 @@ export default function CustomBattleMode({
             </div>
           </fieldset>
         )}
-        {lobbyStep === 2 && selectedArchive?.image && (
+        {lobbyStep === 2 && !tacticalTerrain && selectedArchive?.image && (
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(180px, 100%), 1fr))', gap: 12, alignItems: 'center', padding: 10, border: '1px solid rgba(57,197,187,0.18)', background: 'rgba(57,197,187,0.04)' }}>
             <img src={selectedArchive.image} alt="" style={{ width: 180, maxWidth: '100%', maxHeight: 110, objectFit: 'cover', border: '1px solid #31545a', boxSizing: 'border-box' }} />
             <div>
@@ -789,7 +791,7 @@ export default function CustomBattleMode({
           <span>{preset.opponentControl === 'p2' ? 'P2' : 'CPU'} : {(preset.mode === 'Fighter'
             ? preset.opponentTeamIds.map(id => availableHeroes.find(hero => hero.id === id)?.name || id)
             : enemyData.customRoster.map(entry => entry.name)).join(' / ')}</span>
-          <span>{lang === 'fr' ? 'Arène' : 'Arena'} : {selectedArchive ? localized(selectedArchive, lang, selectedArchive.universe) : 'Nexus'}</span>
+          <span>{lang === 'fr' ? 'Arène' : 'Arena'} : {tacticalTerrainLabel || (selectedArchive ? localized(selectedArchive, lang, selectedArchive.universe) : 'Nexus')}</span>
         </div>
         <div className="custom-lobby-actions">
           {lobbyStep > 0 && <button type="button" className="btn-retro" onClick={() => changeLobbyStep(lobbyStep - 1, 'panel')}>{lang === 'fr' ? 'PRÉCÉDENT' : 'PREVIOUS'}</button>}

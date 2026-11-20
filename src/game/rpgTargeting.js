@@ -6,6 +6,7 @@ import { getRpgCleansableStatuses, getRpgReviveHp } from './rpgSupport.js';
 import { previewBattleItemDamage } from './battleItemShield.js';
 import { getEffectiveCombatDefense } from './combatStatPreparation.js';
 import { resolveCombatAbility, resolveUniverseSummon } from './combatIdentity.js';
+import { getNexusActorDesign } from './nexusActorDesigns.js';
 import { isPhaselockProfile, isPhaselockTargetEligible } from './combat/combatControlWave15.js';
 import { isSourceControlProfileWave16 } from './combat/combatControlWave16.js';
 import { canSourceControlTargetWave16, getPossessedSligActionWave16 } from './combat/sourceCombatRuntimeWave16.js';
@@ -58,9 +59,14 @@ export function getRpgActionProfile(actor, abilityType, side = 'player', arena =
   // secondary or special, including their medical and defensive semantics.
   const summon = abilityType === 'summon' ? resolveUniverseSummon(actor) : null;
   const possessedAction = getPossessedSligActionWave16(actor, abilityType);
-  const action = suppliedAction || (possessedAction ? { ...possessedAction, sourceSligRifle: true } : abilityType === 'summon' ? summon?.action
+  const supplied = suppliedAction || (possessedAction ? { ...possessedAction, sourceSligRifle: true } : abilityType === 'summon' ? summon?.action
     : getRpgCombatantAbility(actor, abilityType) || (side === 'enemy' ? enemyFallbacks[abilityType] : null));
-  if (!action) return null;
+  if (!supplied) return null;
+  // Nexus encounter records supply a display name only. Keep their default
+  // damage and targeting, and leave other legacy catalogs on their old path.
+  const nexusDesign = side === 'enemy' && abilityType === 'special' && typeof supplied === 'string'
+    ? getNexusActorDesign(actor) : null;
+  const action = nexusDesign && nexusDesign.kind !== 'hero' ? { name: supplied } : supplied;
   const explicit = Object.assign({},
     typeof action.targeting === 'object' ? action.targeting : null,
     action.attackProfile,

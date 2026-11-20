@@ -22,16 +22,16 @@ const cue = (id, universe, entityName, actionName, sourceReference, motion) => O
 const entries = [
   cue('nexus-barricade', 'Nexus de Convergence', 'Balise Barricade', 'Balise Barricade',
     'Bastion’s beacon defines a safe route: deployment, alignment and protective planes, never an explosion.',
-    { path: 'floor-deploy', arrival: 0.42, travelTicks: 22, holdTicks: 30, scale: 0.82, offsetX: 72, preparation: 'barricade-align', attack: 'barricade-shields', recovery: 'beacon-retract', muzzle: [0.1, -0.5] }),
+    { path: 'floor-deploy', arrival: 0.42, travelTicks: 22, holdTicks: 30, scale: 0.82, offsetX: 72, preparation: 'barricade-align', attack: 'barricade-shields', recovery: 'beacon-retract', muzzle: [0.1, -0.5], confirmedEffect: true }),
   cue('nexus-suture-drone', 'Nexus de Convergence', 'Drone de Suture', 'Drone de Suture',
     'Loom’s drone maintains an ally’s signature: hover, medical link, stabilization and return to the caller.',
-    { path: 'ally-hover', arrival: 0.38, travelTicks: 28, holdTicks: 38, scale: 0.7, offsetX: 30, preparation: 'medical-lock', attack: 'medical-tether', recovery: 'medical-return', muzzle: [0, -0.4] }),
+    { path: 'ally-hover', arrival: 0.38, travelTicks: 28, holdTicks: 38, scale: 0.7, offsetX: 30, preparation: 'medical-lock', attack: 'medical-tether', recovery: 'medical-return', muzzle: [0, -0.4], confirmedEffect: true }),
   cue('nexus-tessera-reflection', 'Nexus de Convergence', 'Reflet Non Remplace', 'Reflet Non Remplace',
     'Tessera manifests a possible reflection without replacing a person: a mirrored arrival and refracted proof, then dissolution.',
-    { path: 'reflection-step', arrival: 0.34, travelTicks: 23, holdTicks: 25, scale: 0.93, offsetX: 96, preparation: 'reflection-align', attack: 'reflection-rays', recovery: 'reflection-dissolve', muzzle: [0.18, -0.48] }),
+    { path: 'reflection-step', arrival: 0.34, travelTicks: 23, holdTicks: 25, scale: 0.93, offsetX: 96, preparation: 'reflection-align', attack: 'reflection-rays', recovery: 'reflection-dissolve', muzzle: [0.18, -0.48], confirmedEffect: true }),
   cue('nexus-return-probe', 'Nexus de Convergence', 'Sonde de Retour', 'Sonde de Retour',
     'Nadir’s probe verifies a route in both directions: outbound scan, measured contact and a visible retraced return.',
-    { path: 'probe-route', arrival: 0.3, travelTicks: 34, holdTicks: 18, scale: 0.65, offsetX: 55, preparation: 'probe-route', attack: 'probe-scan', recovery: 'probe-retrace', muzzle: [0.22, -0.38] }),
+    { path: 'probe-route', arrival: 0.3, travelTicks: 34, holdTicks: 18, scale: 0.65, offsetX: 55, preparation: 'probe-route', attack: 'probe-scan', recovery: 'probe-retrace', muzzle: [0.22, -0.38], confirmedEffect: true }),
   cue('halo-pelican', 'Halo', 'D77-TC Pelican', 'Tir de couverture Pelican',
     'Halo Pelican gunship support: heavy approach, undercarriage firing pass and continued flight out of the arena.',
     { path: 'heavy-flyby', arrival: 0.36, travelTicks: 24, holdTicks: 24, scale: 1.17, flightY: 0.53, bank: 0.045, preparation: 'gunship-lock', attack: 'pelican-ballistics', recovery: 'engine-wake', muzzle: [0.28, -0.23] }),
@@ -120,6 +120,11 @@ const lerp = (a, b, progress) => a + (b - a) * progress;
 const ease = progress => 1 - (1 - unit(progress)) ** 3;
 const point = (x, y) => ({ x, y });
 const average = (items, key, fallback) => items.length ? items.reduce((sum, item) => sum + (Number(item[key]) || 0), 0) / items.length : fallback;
+const projectTarget = (target, height) => ({
+  id: target.battleId || target.runtimeId || target.id,
+  x: Number(target.x) || 0, y: Number(target.y) || 0,
+  centerY: (Number(target.y) || 0) - height * 0.095
+});
 
 export function getSummonChoreographyState(scene, arena = {}) {
   const spec = scene?.choreography || resolveSummonChoreography(scene?.descriptor);
@@ -144,11 +149,11 @@ export function getSummonChoreographyState(scene, arena = {}) {
   // W9/W10 native weapon partners supply this accepted-hit snapshot.
   // Historical scene geometry and targeting remain byte-for-byte equivalent.
   const visualTargets = Array.isArray(scene.visualContacts) && scene.impacted ? scene.visualContacts : scene.targets;
-  const targets = (visualTargets || []).map(target => ({
-    id: target.battleId || target.runtimeId || target.id,
-    x: Number(target.x) || 0, y: Number(target.y) || 0,
-    centerY: (Number(target.y) || 0) - height * 0.095
-  }));
+  const targets = (scene.effectRouteTargets || visualTargets || []).map(target => projectTarget(target, height));
+  // The Nexus devices keep their route through the scene. Their visible effect
+  // follows the confirmed recipients at impact, even if the cast had none.
+  const effectTargets = spec.confirmedEffect && scene.impacted
+    ? (scene.effectContacts || []).map(target => projectTarget(target, height)) : targets;
   const caller = point(Number(scene.actor.homeX ?? scene.actor.x) || xFromSide(0.18), Number(scene.actor.homeY ?? scene.actor.y) || height * 0.78);
   const target = point(average(targets, 'x', xFromSide(0.78)), average(targets, 'y', height * 0.78));
   const nearTarget = point(clamp(target.x - side * (Number(spec.contactDistance) || 68), 45, width - 45), target.y);
@@ -287,7 +292,7 @@ export function getSummonChoreographyState(scene, arena = {}) {
     effect: scene.profile?.effect || scene.descriptor?.action?.targeting?.effect || 'damage',
     color: scene.color || scene.descriptor?.color || '#ffffff', side, width, height,
     performer: { x, y, scale, size, alpha: clamp(alpha, 0, 1), facing: side, rotation },
-    origin, caller, target, targets, visuals
+    origin, caller, target, targets: effectTargets, visuals
   }));
 }
 
@@ -473,16 +478,23 @@ function drawCue(ctx, state, cueState) {
       pulseLinks(ctx, state, cueState, '#82f5c1');
       if (kind === 'medical-tether' && stage === 'contact') targets.forEach(target => medicalMark(ctx, target, '#d6ffeb', 7 + Math.sin(tick * 0.1) * 2));
       break;
-    case 'barricade-align': case 'barricade-shields': case 'forge-assembly': case 'forge-shield-line':
+    case 'barricade-align': case 'barricade-shields':
+      if (stage !== 'contact') {
+        targets.forEach(target => ring(ctx, point(target.x, target.y), 9 + progress * 12, '#79e5e7', 1.5));
+        break;
+      }
+      targets.forEach(target => shield(ctx, target, 0.8 + state.attackProgress * 0.2, '#79e5e7'));
+      break;
+    case 'forge-assembly': case 'forge-shield-line':
       targets.forEach((target, index) => {
         const amount = stage === 'preparation' ? 0.5 + progress * 0.5 : 1;
-        shield(ctx, target, amount, kind.startsWith('forge') ? '#c69d67' : '#79e5e7');
+        shield(ctx, target, amount, '#c69d67');
         if (index > 0) line(ctx, point(targets[index - 1].x, targets[index - 1].y - 5), point(target.x, target.y - 5), color, 2);
       });
       break;
     case 'probe-route': case 'probe-scan': case 'probe-retrace':
       pulseLinks(ctx, state, cueState, '#a4e8e9');
-      targets.forEach(target => ring(ctx, targetPoint(target), 18 + ((tick * 0.7) % 25), '#83ccd4', 1.5));
+      if (stage === 'contact') targets.forEach(target => ring(ctx, targetPoint(target), 18 + ((tick * 0.7) % 25), '#83ccd4', 1.5));
       break;
     case 'reflection-align': case 'reflection-rays': case 'reflection-dissolve':
       targets.forEach(target => {

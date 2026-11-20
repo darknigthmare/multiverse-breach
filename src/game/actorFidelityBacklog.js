@@ -1,6 +1,7 @@
 /** Read-only per-actor gaps. Source metadata and file presence are not visual approval. */
 import { wardrobeActorKey, getOfficialCostumes, getOriginalCostumes, getWardrobeResearchTargets } from './wardrobe.js';
 import { getLoreWorldBossOverride } from './loreWorldBossOverrides.js';
+import { getNexusActorDesign } from './nexusActorDesigns.js';
 const text = value => typeof value === 'string' ? value : value?.en || value?.fr || '';
 const httpReference = value => {
   if (typeof value !== 'string') return '';
@@ -39,6 +40,7 @@ export function inspectActorLockedContinuity(actor, kind = 'hero') {
 }
 export function actorSourceScope(actor, originalUniverses = new Set()) {
   if (actor.originalContent === true || actor.contentOrigin === 'oc' || originalUniverses.has(actor.universe)
+    || getNexusActorDesign(actor)
     || /^Multiverse Breach original (?:companion|tribute persona)\b/i.test(text(actor.incarnation))
     || /^Original (?:project companion|tribute persona from the project)[,.;: ]/i.test(text(actor.canonStatus))) return 'ORIGINAL_DESIGN';
   // "original fan-made artwork" never turns a licensed character into an original identity.
@@ -87,16 +89,19 @@ export function buildActorFidelityBacklog(actor, {kind='hero',originalUniverses=
   const scope=actorSourceScope(actor,originalUniverses);
   const official=getOfficialCostumes(actor), originals=getOriginalCostumes(actor), research=getWardrobeResearchTargets(actor);
   const explicitActorIncarnation=text(actor.incarnation)||text(actor.sourceIncarnation)||text(actor.continuity);
+  const internalDesign = getNexusActorDesign(actor);
+  const design = internalDesign?.kind === kind ? internalDesign : null;
   const declaredContinuity=explicitActorIncarnation ? null : inspectActorLockedContinuity(actor,kind);
   const structuredIncarnation=declaredContinuity?.evidence==='ACTOR_LOCKED_CONTINUITY' ? declaredContinuity.label : '';
-  const actorIncarnation=explicitActorIncarnation||structuredIncarnation;
+  const actorIncarnation=explicitActorIncarnation||structuredIncarnation||design?.incarnation;
   const packContinuities=continuityIndex.get(actorKey)||[];
   // An ambiguous actor declaration cannot silently fall back to a broader pack.
   const ambiguousActorContinuity=declaredContinuity?.evidence==='AMBIGUOUS_ACTOR_CONTINUITY';
   const incarnation=actorIncarnation||(!ambiguousActorContinuity&&packContinuities.length===1?packContinuities[0].continuity:'');
   const incarnationEvidence=explicitActorIncarnation?'ACTOR_DECLARED':declaredContinuity?.evidence
+    || (design ? 'ORIGINAL_DESIGN_CONTRACT' : null)
     || (packContinuities.length===1?'EXACT_PACK_BINDING':packContinuities.length>1?'AMBIGUOUS_PACK_BINDING':'UNSPECIFIED');
-  const anchor=text(actor.visualAnchor);
+  const anchor=text(actor.visualAnchor)||design?.visualAnchor||'';
   const declaredSource=text(actor.referenceUrl);
   const reference=httpReference(declaredSource);
   const techniques=readActorTechniques(actor);
@@ -152,6 +157,7 @@ export function buildActorFidelityBacklog(actor, {kind='hero',originalUniverses=
     'Contrôler les états et directions, silhouette, visage, tenue, équipement, proportions et raccords dans chaque mode. Revue séparée des mains FPS et du kart.');
   return {actorKey,actorId:actor.id||'',actorName:actor.name,universe:actor.universe,kind,sourceScope:scope,
     incarnation,incarnationEvidence,declaredContinuity,packContinuities,declaredReference:declaredSource,visualAnchor:anchor,canonStatus:text(actor.canonStatus),
+    ...(design ? { originalDesignSource: design.sourceRecord } : {}),
     sourceRecord:`${kind==='hero'?'HEROES_DB + player anchor':'ENEMIES_DB after overrides'}`,sourceCommit,
     primaryColor:actor.primaryColor||actor.color||'',weapon:actor.weapon||actor.weaponType||'',
     officialCount:official.length,officialNames:official.map(c=>c.name.fr),originalCount:originals.length,

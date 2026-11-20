@@ -29,7 +29,8 @@ import { getRecentUniverseLevelProfile } from './recentUniverseLevels';
 import { drawRecentUniverseTextureCover } from './recentUniverseTextureAssets';
 import { resolveFighterTagEntry } from './fighterTagPlacement.js';
 import { resolveMeleeSuper, resolveCombatAbility, resolveCombatPresentation } from './combatIdentity.js';
-import { resolvePresentationScript, samplePresentationScript, sampleCatastropheMotion, getCatastropheBeamGeometry } from './combat/presentationCatalog.js';
+import { samplePresentationScript, sampleCatastropheMotion, getCatastropheBeamGeometry } from './combat/presentationCatalog.js';
+import { drawOriginalFighterPresentationEffect, resolveOriginalFighterPresentation } from './combat/originalFighterPresentations.js';
 import { hasSelectedCombatSource, prefersCurrentCanonCombatKit } from './combat/sourceKitPriority.js';
 import { resolveCanonHeroAttackEffect } from './canonHeroAttackEffects.js';
 import { drawP0CanonParticle } from './canonP0ParticleRenderer.js';
@@ -162,6 +163,20 @@ const createFighter = (hero, side, index, width, groundY) => {
   };
 };
 
+const createPresentationEntry = (fighter, side, actorPhase) => {
+  const identity = resolveCombatPresentation(fighter, actorPhase);
+  const original = resolveOriginalFighterPresentation(fighter, actorPhase);
+  if (original) {
+    identity.name = original.name;
+    identity.description = fighter.universe;
+    identity.duration = original.duration;
+    identity.presentationScript = original;
+    identity.provenance = { ...identity.provenance, presentationAuthored: true,
+      presentationSourceReference: original.sourceReference, visualFidelity: original.provenance.visualFidelity };
+  }
+  return { side, actorPhase, identity, script: identity.presentationScript };
+};
+
 export class EngineFighter {
   constructor(width, height, playerHeroes, cpuHeroes, particles, playSfx, onComplete, options = {}) {
     this.width = width;
@@ -255,11 +270,7 @@ export class EngineFighter {
       ? clamp(introDurationMs / 1000, 1, 2.8)
       : 0;
     this.introPoseTimer = this.introPoseDuration;
-    this.characterIntros = ['player', 'cpu'].map(side => {
-      const fighter = this.getActive(side);
-      const identity = resolveCombatPresentation(fighter, 'intro');
-      return { side, identity, script: identity.presentationScript || resolvePresentationScript(fighter, 'intro') };
-    });
+    this.characterIntros = ['player', 'cpu'].map(side => createPresentationEntry(this.getActive(side), side, 'intro'));
     this.characterIntroDuration = Math.max(...this.characterIntros.map(entry => entry.identity.duration), this.introPoseDuration, 0.8);
     this.countdown += this.characterIntroDuration;
     this.assistEvent = null;
@@ -1667,8 +1678,7 @@ export class EngineFighter {
           ? (side === winnerSide ? 'victory' : 'defeat')
           : phase === 'outro' && fighter.currentHp <= 0 ? 'defeat'
           : phase;
-      const identity = resolveCombatPresentation(fighter, actorPhase);
-      return { side, actorPhase, identity, script: identity.presentationScript || resolvePresentationScript(fighter, actorPhase) };
+      return createPresentationEntry(fighter, side, actorPhase);
     });
     const duration = Math.max(0.6, ...entries.map(entry => entry.identity.duration));
     this.presentationQueue.push({ phase, entries, duration, remaining: duration });
@@ -1945,7 +1955,7 @@ export class EngineFighter {
     if (!this.finished && !this.roundTransition && this.countdown > 3.2) {
       return {
         phase: 'intro',
-        entries: this.characterIntros.map(entry => ({ ...entry, actorPhase: 'intro' })),
+        entries: this.characterIntros,
         duration: this.characterIntroDuration,
         remaining: this.countdown - 3.2
       };
@@ -1962,11 +1972,11 @@ export class EngineFighter {
     return Math.max(0, presentation.duration - presentation.remaining);
   }
 
-  draw(ctx, animTime) {
+  draw(ctx, animTime, { reducedMotion = false } = {}) {
     this.drawArena(ctx, animTime);
     if (this.getCurrentPresentation()) {
       this.drawHud(ctx);
-      this.drawCharacterPresentation(ctx, animTime);
+      this.drawCharacterPresentation(ctx, animTime, reducedMotion);
       if (this.introPoseTimer > 0) this.drawIntroPoses(ctx);
       if (this.victoryPoseEvent && this.presentation?.phase === 'victory') this.drawVictoryPose(ctx);
       return;
@@ -2114,18 +2124,20 @@ export class EngineFighter {
     ctx.restore();
   }
 
-  drawCharacterPresentation(ctx, animTime) {
+  drawCharacterPresentation(ctx, animTime, reducedMotion = false) {
     const presentation = this.getCurrentPresentation();
     const progress = clamp(1 - presentation.remaining / presentation.duration, 0, 1);
     const finalScene = presentation.phase === 'fatality';
+    const originalFinal = finalScene && presentation.entries[0]?.script?.provenance?.kind === 'original-duel-presentation';
+    const bandTop = originalFinal ? .245 : .28;
     const phases = { intro: 'INTRO', roundResult: `MANCHE ${this.roundNumber}`, fatality: 'FINALE', victory: 'RÉSULTAT DU MATCH', outro: 'OUTRO' };
     ctx.save();
     ctx.fillStyle = finalScene ? 'rgba(0,0,8,0.82)' : 'rgba(0,0,8,0.72)';
-    ctx.fillRect(0, this.height * 0.28, this.width, this.height * 0.61);
+    ctx.fillRect(0, this.height * bandTop, this.width, this.height * (.89 - bandTop));
     ctx.textAlign = 'center';
     ctx.fillStyle = '#ffffff';
     ctx.font = 'bold 18px "Share Tech Mono", monospace';
-    ctx.fillText(`${phases[presentation.phase]} · ${this.roundWins.player} – ${this.roundWins.cpu}`, this.width / 2, this.height * 0.34);
+    ctx.fillText(`${phases[presentation.phase]} · ${this.roundWins.player} – ${this.roundWins.cpu}`, this.width / 2, this.height * (originalFinal ? .29 : .34));
     presentation.entries.forEach(entry => {
       const { side, actorPhase, identity, script } = entry;
       const fighter = this.getActive(side);
@@ -2133,6 +2145,8 @@ export class EngineFighter {
       const anchorX = finalScene ? this.width / 2 : side === 'player' ? this.width * 0.25 : this.width * 0.75;
       const entryElapsed = this.getPresentationEntryElapsed(entry, presentation);
       const sample = script ? samplePresentationScript(script, entryElapsed) : null;
+      const original = script?.provenance?.kind === 'original-duel-presentation';
+      const matchingBody = original && sample?.asset.sheet === script.sourceAsset.sheet;
       const facing = side === 'player' ? 1 : -1;
       const entranceOffset = actorPhase === 'intro' ? (side === 'player' ? -1 : 1) * 60 * (1 - progress) : 0;
       const exitOffset = actorPhase === 'outro' ? (side === 'player' ? -1 : 1) * 100 * progress : 0;
@@ -2140,6 +2154,10 @@ export class EngineFighter {
       const losing = actorPhase === 'roundDefeat' || actorPhase === 'defeat';
       const state = finalScene ? 'special' : losing ? 'hit' : actorPhase === 'intro' || actorPhase === 'outro' ? 'run' : 'idle';
       const lift = losing ? 0 : Math.sin(progress * Math.PI) * (finalScene ? 18 : 5);
+      const bodyHeight = (finalScene ? 208 : 176) * (sample?.scale || 1);
+      // The ordinary four-row renderer anchors 24 pixels above the bottom
+      // of a 256-pixel cell. The inspected clips have a slightly lower anchor.
+      const anchorCorrection = matchingBody ? (232 - script.sourceAsset.footAnchor) * bodyHeight / 256 : 0;
       const feetY = this.height * 0.66 + (sample ? sample.y : -lift);
       ctx.shadowColor = identity.color;
       ctx.shadowBlur = 18;
@@ -2158,8 +2176,10 @@ export class EngineFighter {
       };
       ctx.save();
       ctx.globalAlpha *= sample?.opacity ?? 1;
-      if (sample) this.drawScriptedPresentationEffect(ctx, sample, identity, x, feetY, facing, actorPhase);
-      drawPixelSprite(ctx, x, feetY, presentationFighter, animTime, facing * (sample?.facing || 1), (finalScene ? 208 : 176) * (sample?.scale || 1), 'melee');
+      if (sample && !drawOriginalFighterPresentationEffect(ctx, sample, { x, feetY, facing, phase: actorPhase, reducedMotion })) {
+        this.drawScriptedPresentationEffect(ctx, sample, identity, x, feetY, facing, actorPhase);
+      }
+      drawPixelSprite(ctx, x, feetY + anchorCorrection, presentationFighter, animTime, facing * (sample?.facing || 1), bodyHeight, 'melee');
       ctx.restore();
       if (finalScene && !sample) {
         const spec = this.getPersonalSuperSpec(fighter);
@@ -2178,7 +2198,7 @@ export class EngineFighter {
       ctx.fillText(script?.name || identity.name, anchorX, this.height * 0.75, this.width * 0.44);
       ctx.fillStyle = '#b8c9d0';
       ctx.font = '11px "Share Tech Mono", monospace';
-      ctx.fillText(`${fighter.universe} · ${identity.sourceAbility?.name || ''}`, anchorX, this.height * 0.8, this.width * 0.44);
+      ctx.fillText(original ? fighter.universe : `${fighter.universe} · ${identity.sourceAbility?.name || ''}`, anchorX, this.height * 0.8, this.width * 0.44);
     });
     ctx.restore();
   }

@@ -224,6 +224,85 @@ for (const source of ['arca_loom', 'arca_bastion']) test('RPG catalog deployment
   assert.deepEqual(engine.enemies.map(unit => unit.currentHp), enemyHp);
 });
 
+for (const [source, effect] of [
+  ['arca_bastion', 'guard'], ['arca_loom', 'heal'], ['arca_tessera', 'damage'], ['arca_nadir', 'damage']
+]) test(`Nexus ${source} renders its applied ${effect} for either camp`, () => {
+  for (const side of ['player', 'enemy']) {
+    const caller = hero(source);
+    const engine = side === 'player'
+      ? makeEngine([caller, heroData('ally')])
+      : makeEngine([heroData('opponent')], [{ ...caller, hp: 10000 }, enemyData('ally')]);
+    const party = side === 'player' ? engine.heroes : engine.enemies;
+    const opponents = side === 'player' ? engine.enemies : engine.heroes;
+    const target = effect === 'damage' ? opponents[0] : party[1];
+    if (effect === 'heal') target.currentHp -= 100;
+    const hp = target.currentHp;
+    const actor = party[0];
+    assert.equal(engine.summon(actor, side), true);
+    assert.equal(engine.selectTarget(id(target)), true);
+    assert.equal(engine.confirmTargeting(), true);
+    const scene = engine.activeSummon;
+    tick(engine, scene.impactTick - 1);
+    assert.equal(target.currentHp, hp);
+    assert.equal(Boolean(target.rpgGuardTicks), false);
+    assert.ok(engine.getSummonSceneState().choreography.visuals.every(cue => cue.stage !== 'contact'));
+    const impactPosition = [target.x, target.y];
+    tick(engine);
+    if (effect === 'damage') assert.ok(target.currentHp < hp);
+    else if (effect === 'heal') assert.ok(target.currentHp > hp);
+    else assert.ok(target.rpgGuardTicks > 0);
+    const state = engine.getSummonSceneState().choreography;
+    assert.deepEqual(state.targets.map(({ id, x, y }) => [id, x, y]), [[id(target), ...impactPosition]]);
+    assert.ok(state.visuals.some(cue => cue.stage === 'contact'));
+    target.x += 5;
+    assert.deepEqual(engine.getSummonSceneState().choreography.targets, state.targets);
+    const postImpactHp = target.currentHp;
+    tick(engine, scene.durationTicks - scene.impactTick);
+    assert.equal(target.currentHp, postImpactHp);
+    assert.equal(engine.getSummonSceneState(), null);
+  }
+});
+
+test('Nexus invocation draws no success on fully absorbed, full-HP or replaced targets', () => {
+  for (const [source, failure] of [
+    ['arca_tessera', 'shield'], ['arca_loom', 'full-hp'], ['arca_bastion', 'replacement']
+  ]) {
+    const engine = makeEngine([hero(source), heroData('ally')]);
+    const target = failure === 'shield' ? engine.enemies[0] : engine.heroes[1];
+    if (failure === 'shield') target.battleItemShield = target.maxHp;
+    if (failure === 'full-hp') target.currentHp -= 100;
+    assert.equal(engine.summon(engine.heroes[0]), true);
+    assert.equal(engine.selectTarget(id(target)), true);
+    assert.equal(engine.confirmTargeting(), true);
+    if (failure === 'full-hp') target.currentHp = target.maxHp;
+    if (failure === 'replacement') engine.heroes[1] = { ...target };
+    const hp = target.currentHp;
+    tick(engine, engine.activeSummon.impactTick);
+    assert.equal(target.currentHp, hp);
+    if (failure === 'replacement') assert.ok(!target.rpgGuardTicks && !engine.heroes[1].rpgGuardTicks);
+    if (failure === 'shield') assert.ok(target.battleItemShield < target.maxHp);
+    assert.deepEqual(engine.getSummonSceneState().choreography.targets, []);
+  }
+});
+
+test('Nexus probe keeps its route and visible KO contact at the impact position', () => {
+  const engine = makeEngine([hero('arca_nadir')]);
+  const target = engine.enemies[0];
+  target.x -= 36;
+  target.currentHp = 1;
+  const impactX = target.x;
+  assert.equal(engine.summon(engine.heroes[0]), true);
+  assert.equal(engine.selectTarget(id(target)), true);
+  assert.equal(engine.confirmTargeting(), true);
+  tick(engine, engine.activeSummon.impactTick);
+  assert.equal(target.currentHp, 0);
+  assert.notEqual(target.x, impactX, 'the engine moves the KO back to formation');
+  const choreography = engine.getSummonSceneState().choreography;
+  const contact = choreography.targets.find(entry => entry.id === id(target));
+  assert.equal(contact?.x, impactX);
+  assert.equal(choreography.target.x, impactX);
+});
+
 test('RPG explicit revival, buff and cleansing deployments keep their declared effect', () => {
   for (const effect of ['revive', 'buff', 'cleanse']) {
     const engine = makeEngine([medicalCaller(effect, { reviveRatio: 0.5, cleanses: effect === 'cleanse' }), heroData('patient')]);

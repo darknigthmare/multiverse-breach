@@ -76,6 +76,7 @@ const RPG_FLOOR_LANES = Object.freeze({
 });
 
 const clamp = (value, min, max) => Math.max(min, Math.min(max, value));
+const recordSummonEffect = (contacts, target, { x, y } = target) => contacts?.push({ id: rpgUnitId(target), x, y });
 const sourceDamageImmuneWave16 = actor => actor.sourceProtectionWave16?.active
   && actor.sourceProtectionWave16.kind==='mugman-super-art-ii' && actor.sourceProtectionWave16.remaining>0;
 
@@ -1085,6 +1086,7 @@ export class EngineRpg {
     if(gyroProfileWave17&&!this.heroes.includes(actor)&&!this.enemies.includes(actor)){actor.rpgGyrodiskActionWave17=null;actor.actionPending=false;return;}
     if (this.disposed || this.gameOver || actor.currentHp <= 0 || actor.rpgControlTicks > 0 || isSourceImmobilizedWave16(actor)) return;
     const source = this.getRpgDamageSource(actor, profile);
+    const summon = abilityType === 'summon' && this.activeSummon?.actor === actor ? this.activeSummon : null;
     for (const target of targets) {
       if (commitment && (!commitment.casterValid() || !commitment.accepts(target))) continue;
       if(gyroProfileWave17&&!this.heroes.includes(target)&&!this.enemies.includes(target))continue;
@@ -1125,7 +1127,8 @@ export class EngineRpg {
       else if (profile.effect === 'heal') {
         if (isMediGunProfileWave17(profile)) { startMediGunBeamWave17(actor,target,{allied:this.heroes.includes(actor) === this.heroes.includes(target),range:220}); continue; }
         if (isValHealingBurstProfile(profile) && !healingBurstWithinRange(actor, target, profile)) continue;
-        this.applyHealing(target, profile.healRatio ? target.maxHp * profile.healRatio : amount);
+        const gained = this.applyHealing(target, profile.healRatio ? target.maxHp * profile.healRatio : amount);
+        if (gained > 0) recordSummonEffect(summon?.effectContacts, target);
       }
       else if (isJadeInformationProfileWave17(profile)) {revealPhotographicEvidenceWave17(actor,target,profile,{hostile:this.heroes.includes(actor)!==this.heroes.includes(target)});continue;}
       else if (profile.effect === 'buff') {
@@ -1141,6 +1144,7 @@ export class EngineRpg {
         }
         target.rpgGuardTicks = Math.round(profile.duration * 60);
         target.rpgGuardReduce = profile.guardReduce;
+        if (target.rpgGuardTicks > 0 && target.rpgGuardReduce > 0) recordSummonEffect(summon?.effectContacts, target);
         this.particles.add(target.x, target.y - 20, 0, -1, color, 12, 45, 'text', 'GUARD');
       } else if (profile.effect === 'control') {
         if (isSourceControlProfileWave16(profile)) {
@@ -1195,9 +1199,8 @@ export class EngineRpg {
           actor.rpgPossessedRifleLastReleaseWave16={...muzzle,targetId:rpgUnitId(target),visualOnly:true};
         }
         const visual = abilityType === 'special' && actor.rpgSpecialVisual;
-        const summonVisual = abilityType === 'summon' && this.activeSummon?.actor === actor
-          && Array.isArray(this.activeSummon.visualContacts) ? this.activeSummon : null;
-        const contact = (visual && supportsConfirmedCharacterSuperContact(visual.profile)) || summonVisual
+        const summonVisual = Array.isArray(summon?.visualContacts) ? summon : null;
+        const contact = (visual && supportsConfirmedCharacterSuperContact(visual.profile)) || summonVisual || summon?.effectContacts
           ? { hp: target.currentHp, x: target.x, y: target.y } : null;
         let status = profile.action.statusEffect || profile.action.rpgProfile?.statusEffect || null;
         if (abilityType !== 'summon') {
@@ -1223,6 +1226,7 @@ export class EngineRpg {
           // location. An item shield, removed victim or later KO creates none.
           summonVisual.visualContacts.push({ id: rpgUnitId(target), x: contact.x, y: contact.y });
         }
+        if (contact && target.currentHp < contact.hp) recordSummonEffect(summon?.effectContacts, target, contact);
       }
       if (target.currentHp > 0) cleanseRpgStatuses(target, profile.cleanses);
     }
@@ -1274,6 +1278,7 @@ export class EngineRpg {
     const color = descriptor.color || profile.action.color || actor.secondaryColor || actor.color || '#39c5bb';
     const choreography = resolveSummonChoreography(descriptor);
     this.activeSummon = { descriptor, actor, side, profile, targets, anchor, commitment, color, choreography, tick: 0, durationTicks, impactTick, impacted: false,
+      ...(choreography?.confirmedEffect ? { effectContacts: [] } : {}),
       ...((usesConfirmedSummonContactWave9(nativeAnimation) || usesConfirmedSummonContactWave10(nativeAnimation) || usesConfirmedSummonContactWave11(nativeAnimation) || usesConfirmedSummonContactWave12(nativeAnimation) || usesConfirmedSummonContactWave13(nativeAnimation) || usesConfirmedSummonContactWave14(nativeAnimation) || usesConfirmedSummonContactWave15(nativeAnimation) || usesConfirmedSummonContactWave16(nativeAnimation) || usesConfirmedSummonContactWave17(nativeAnimation)) ? { visualContacts: [] } : {}) };
     if(sourceMedicWave17)this.activeSummon.sourceMedicWave17=sourceMedicWave17;
     if(profile.action?.targeting?.sourceGoldenLuteWave17===true){
@@ -1339,6 +1344,7 @@ export class EngineRpg {
     if (!scene.impacted && scene.tick >= scene.impactTick) {
       // Mark before impact: repeated update/render calls cannot replay damage.
       scene.impacted = true;
+      if (scene.effectContacts) scene.effectRouteTargets = scene.targets.map(target => ({ id: rpgUnitId(target), x: target.x, y: target.y }));
       this.playSfx(scene.profile.effect === 'damage' ? 'special' : 'shield');
       if(!scene.sourceLuteActorWave17)this.applyRpgImpact(scene.actor, scene.profile, scene.targets, scene.color, 'summon', scene.commitment);
       if (!scene.choreography) scene.targets.filter(target => target.currentHp > 0).forEach(target => {

@@ -19,6 +19,7 @@ import { absorbBattleItemDamage, previewBattleItemDamage } from './battleItemShi
 import { drawCharacterSuperVisuals, getCharacterSuperVisualState } from './combat/characterSuperVisuals';
 import { supportsConfirmedCharacterSuperContact } from './combat/characterSuperVisuals.js';
 import { SYNERGIES_DB, getHeroById } from './heroes';
+import { PLAYER_HERO_ID } from './playerHero.js';
 import { getEffectiveCombatDefense, resolveArchetypeCombatStats } from './combatStatPreparation';
 import { resolveCombatAbility, resolveCombatHeroSpriteActor, resolveCombatPresentation, resolveMeleeSuper } from './combatIdentity';
 import { samplePresentationScript } from './combat/presentationCatalog.js';
@@ -99,7 +100,10 @@ const usesTimedPersonalSuper = (actor, profile = resolveMeleeSuper(actor)) => {
   const source = getHeroById(id);
   const knownSource = source && source.universe === (actor?.sourceUniverse || actor?.universe)
     && (!actor?.universe || actor.universe === source.universe);
-  return profile.provenance?.identityAuthored === true || Boolean(knownSource)
+  // The player-owned Anchor is created from the save profile, outside HEROES_DB.
+  const playerAnchor = id === PLAYER_HERO_ID && actor.isPlayer === true && actor.universe === 'Nexus de Convergence'
+    && (!actor.sourceUniverse || actor.sourceUniverse === actor.universe);
+  return profile.provenance?.identityAuthored === true || Boolean(knownSource) || playerAnchor
     || profile.effect !== 'damage'
     || Number.isFinite(actor?.special?.animationDuration) || Number.isFinite(actor?.special?.hitAt);
 };

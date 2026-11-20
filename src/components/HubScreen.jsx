@@ -3463,13 +3463,13 @@ function MosaicCityHub({
               <small>{Object.values(reconnaissance.dossiers).filter(entry => entry.completed).length} {lang === 'fr' ? 'rapport(s) transmis · progression enregistrée' : 'report(s) transmitted · progress saved'}</small>
             </section>
             <MosaicEvidenceLedger entries={reconnaissanceLedger} lang={lang} />
-            <NexusFieldBriefing access={fieldAccess} completion={getNexusFieldCompletion(extinctionCareer)} heroes={safeHeroes} exhibits={EQUIP_ITEMS_DB} lang={lang}>
-              <button type="button" className="btn-retro" data-field-deploy disabled={!fieldAccess.available || typeof onOpenService !== 'function'}
+            <NexusFieldBriefing access={fieldAccess} completion={getNexusFieldCompletion(extinctionCareer)} heroes={safeHeroes} exhibits={EQUIP_ITEMS_DB} lang={lang} renderAction={statusId => (
+              <button type="button" className="btn-retro" data-field-deploy disabled={!fieldAccess.available || typeof onOpenService !== 'function'} aria-describedby={statusId}
                 onClick={() => { if (fieldAccess.available) openCityService(onOpenService, 'battleRoyale', { fieldOperation: NEXUS_FIELD_OPERATION_ID }); }}>
                 {fieldAccess.available ? (lang === 'fr' ? 'OUVRIR LE BRIEFING FPS' : 'OPEN FPS BRIEFING')
                   : (lang === 'fr' ? 'BRIEFING VERROUILLÉ' : 'BRIEFING LOCKED')}
               </button>
-            </NexusFieldBriefing>
+            )} />
           </>,
           guide: <>
             <section ref={guideDetailsRef} tabIndex={-1} className="mosaic-terminal-guide" aria-label={lang === 'fr' ? 'Guide complet de la Cité' : 'Complete City guide'}><strong>{guideCopy.title}</strong><p>{guideCopy.body}</p>
@@ -4880,15 +4880,15 @@ function ExtinctionRoyale({
               <small>{getLocalizedText(EXTINCTION_FIELD_DIRECTIVES[runMode].rule, lang)}</small>
               <small>{lang === 'fr' ? 'Variante facultative. Récompenses ordinaires du mode ; aucun bonus de monnaie ajouté.' : 'Optional variant. Ordinary mode rewards; no additional currency bonus.'}</small></span>
           </label>}
-          {runMode === 'extraction' && <NexusFieldBriefing access={fieldAccess} completion={getNexusFieldCompletion(career)} heroes={safeHeroes} exhibits={EQUIP_ITEMS_DB} lang={lang}>
+          {runMode === 'extraction' && <NexusFieldBriefing access={fieldAccess} completion={getNexusFieldCompletion(career)} heroes={safeHeroes} exhibits={EQUIP_ITEMS_DB} lang={lang} renderAction={statusId => (
             <label className="nexus-field-toggle">
-              <input ref={fieldToggleRef} type="checkbox" data-field-operation checked={fieldSelected} disabled={!fieldAccess.available || runActive || runEnded}
+              <input ref={fieldToggleRef} type="checkbox" data-field-operation checked={fieldSelected} disabled={!fieldAccess.available || runActive || runEnded} aria-describedby={statusId}
                 onChange={event => setFieldEnabled(event.target.checked)} />
               <span>{fieldAccess.available
-                ? (lang === 'fr' ? 'JOUER RETOUR DES TÉMOINS · trois relais et retour au sas requis' : 'PLAY WITNESS RETURN · three relays and airlock return required')
+                ? (lang === 'fr' ? 'JOUER RETOUR DES TÉMOINS' : 'PLAY WITNESS RETURN')
                 : (lang === 'fr' ? 'INTERVENTION VERROUILLÉE' : 'OPERATION LOCKED')}</span>
             </label>
-          </NexusFieldBriefing>}
+          )} />}
           <div className="extinction-pilot-selection">
             <canvas width="150" height="150" aria-hidden="true" ref={canvas => { if (!canvas || !selectedHero) return; const ctx = canvas.getContext('2d'); ctx.clearRect(0, 0, 150, 150); drawPixelSprite(ctx, 75, 110, selectedHero, 0, 1, 104, 'nexus'); }} />
             <div><strong>{selectedHero?.name}</strong><span>{selectedHero?.universe}</span><small>{career.runs || 0} {lang === 'fr' ? 'runs archivées' : 'archived runs'} · {career.wins || 0} {lang === 'fr' ? 'victoires' : 'wins'} · {career.xp || 0} XP Extinction</small></div>

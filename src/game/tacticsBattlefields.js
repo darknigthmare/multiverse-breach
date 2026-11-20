@@ -7,6 +7,7 @@ import { TACTICS_UNIVERSE_BATTLEFIELDS_WAVE15, TACTICS_SOURCE_LOCATION_MATCHERS_
 import { TACTICS_UNIVERSE_BATTLEFIELDS_WAVE16, TACTICS_SOURCE_LOCATION_MATCHERS_WAVE16 } from './tacticsUniverseBattlefieldsWave16.js';
 import { TACTICS_UNIVERSE_BATTLEFIELDS_WAVE17, TACTICS_SOURCE_LOCATION_MATCHERS_WAVE17 } from './tacticsUniverseBattlefieldsWave17.js';
 import { TACTICS_APERTURE_BATTLEFIELD } from './tacticsApertureBattlefield.js';
+import { TACTICS_NEXUS_HIGHGRASS_BATTLEFIELD } from './tacticsNexusHighgrassBattlefield.js';
 
 // Historical wave exports remain bounded; all live selectors use this union.
 export const TACTICS_SOURCE_BATTLEFIELDS = Object.freeze({
@@ -332,6 +333,7 @@ export const TACTICS_BATTLEFIELDS = {
     ]
   },
   ...TACTICS_VERTICAL_BATTLEFIELDS,
+  [TACTICS_NEXUS_HIGHGRASS_BATTLEFIELD.id]: TACTICS_NEXUS_HIGHGRASS_BATTLEFIELD,
   ...TACTICS_SOURCE_BATTLEFIELDS
 };
 
