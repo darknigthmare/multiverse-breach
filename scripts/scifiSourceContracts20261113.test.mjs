@@ -110,6 +110,7 @@ test('legacy enemy signature identities still resolve after source contracts', (
 });
 
 test('catalogue alignment never silently swaps an invocation performer or its delivered sheet', () => {
+  const soldierRelayRestorations = new Set(['garrus', 'liara', 'tali', 'wrex']);
   const view = summon => summon && ({
     id: summon.id, entityName: summon.entityName, sourceHeroId: summon.sourceHeroId,
     performerId: summon.performer?.id, slot: summon.sourceAbility?.slot,
@@ -118,6 +119,13 @@ test('catalogue alignment never silently swaps an invocation performer or its de
   for (const row of fixture.actors.filter(row => row.kind === 'hero')) {
     const old = resolveUniverseSummon(before.get(row.actorKey).actor);
     const current = resolveUniverseSummon(actorFor(row));
+    if (soldierRelayRestorations.has(row.actorId)) {
+      assert.equal(old.action.name, 'Adrenaline Rush', row.actorId);
+      assert.equal(old.sourceAbility.slot, 'secondary', row.actorId);
+      assert.equal(current.action.name, 'Concussive Shot', row.actorId);
+      assert.deepEqual(view(current), { ...view(old), id: `${row.actorId}:reinforcement:shepard:special`, slot: 'special' }, row.actorId);
+      continue;
+    }
     assert.deepEqual(view(current), view(old), row.actorId);
   }
 });

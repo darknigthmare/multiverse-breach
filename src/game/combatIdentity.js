@@ -255,6 +255,26 @@ function canonicalSummon(actor, override) {
   };
 }
 
+const MASS_EFFECT_SOLDIER_CALLER_EDITIONS = Object.freeze({
+  garrus: 'Mass Effect 2 (2010), Garrus after Archangel recruitment',
+  liara: 'Mass Effect 2: Lair of the Shadow Broker (2010)',
+  tali: 'Mass Effect 2 (2010)',
+  wrex: 'Mass Effect (2007)'
+});
+const MASS_EFFECT_SOLDIER_PARTNER = Object.freeze({
+  universe: 'Mass Effect', performerHeroId: 'shepard', slot: 'special', sourceWave: 9,
+  performerIncarnation: 'Mass Effect 2 (2010), male default Shepard, Soldier',
+  requiredActionName: 'Concussive Shot',
+  adaptationNote: 'Nexus relay: Soldier Shepard fires Concussive Shot at one opponent. Adrenaline Rush stays personal. Wrex keeps his Mass Effect (2007) edition.'
+});
+
+function resolveMassEffectSoldierPartner(actor) {
+  const id = identity(actor);
+  if (actor.universe !== MASS_EFFECT_SOLDIER_PARTNER.universe || (actor.sourceUniverse && actor.sourceUniverse !== actor.universe)
+    || !Object.hasOwn(MASS_EFFECT_SOLDIER_CALLER_EDITIONS, id) || actor.incarnation !== MASS_EFFECT_SOLDIER_CALLER_EDITIONS[id]) return null;
+  return MASS_EFFECT_SOLDIER_PARTNER;
+}
+
 export function resolveUniverseSummon(actor) {
   if (!actor?.universe || !identity(actor)) return null;
   // Empty enemy shells do not acquire a made-up special merely by sharing a
@@ -264,12 +284,15 @@ export function resolveUniverseSummon(actor) {
   if (sourceSummon?.universe === actor.universe && hasAbility(sourceSummon.action))
     return attachCombatEntityAsset(canonicalSummon(actor, sourceSummon));
   const selectedPartner = ROSTER_REINFORCEMENTS_WAVE17[identity(actor)] || ROSTER_REINFORCEMENTS_WAVE16[identity(actor)] || ROSTER_PARTNERS_WAVE16[identity(actor)]
-    || ROSTER_REINFORCEMENTS_WAVE15[identity(actor)] || ROSTER_REINFORCEMENTS_WAVE14[identity(actor)] || ROSTER_REINFORCEMENTS_WAVE13[identity(actor)] || ROSTER_REINFORCEMENTS_WAVE12[identity(actor)] || ROSTER_REINFORCEMENTS_WAVE11[identity(actor)] || ROSTER_REINFORCEMENTS_WAVE10[identity(actor)];
+    || ROSTER_REINFORCEMENTS_WAVE15[identity(actor)] || ROSTER_REINFORCEMENTS_WAVE14[identity(actor)] || ROSTER_REINFORCEMENTS_WAVE13[identity(actor)] || ROSTER_REINFORCEMENTS_WAVE12[identity(actor)] || ROSTER_REINFORCEMENTS_WAVE11[identity(actor)] || ROSTER_REINFORCEMENTS_WAVE10[identity(actor)]
+    || resolveMassEffectSoldierPartner(actor);
   if (selectedPartner?.universe === actor.universe) {
     const performer = heroSpriteIdentities.get(selectedPartner.performerHeroId);
     const slot = selectedPartner.slot;
-    const effective = performer?.universe === actor.universe && resolveCombatAbility(performer, slot);
-    if (effective && performer.id !== identity(actor)) {
+    const effective = performer?.universe === actor.universe
+      && (!selectedPartner.performerIncarnation || performer.incarnation === selectedPartner.performerIncarnation)
+      && resolveCombatAbility(performer, slot);
+    if (effective && performer.id !== identity(actor) && (!selectedPartner.requiredActionName || effective.name === selectedPartner.requiredActionName)) {
       const rawAction = selectedPartner.actionOverride
         ? { ...clone(selectedPartner.actionOverride), sourceHeroId: performer.id } : effective.sourceAbility;
       const action = resolvedAction(performer, slot, rawAction);

@@ -303,6 +303,10 @@ test('all four other Mass Effect callers summon Soldier Shepard Concussive Shot 
     assert.equal(descriptor.action.targeting.effect, 'damage');
     assert.equal(descriptor.action.targeting.targetSide, 'enemy');
     assert.equal(descriptor.action.targeting.shape, 'single');
+    assert.equal(descriptor.sourceAbility.slot, 'special');
+    assert.equal(descriptor.performer.incarnation, 'Mass Effect 2 (2010), male default Shepard, Soldier');
+    assert.equal(resolveUniverseSummon({ ...hero(id), incarnation: 'Unreviewed edition' }).action.name, 'Adrenaline Rush');
+    assert.equal(resolveUniverseSummon({ ...hero(id), sourceUniverse: 'Unrelated universe' }).action.name, 'Adrenaline Rush');
     const context = make(id, side), { engine, actor, targets } = context, initialHp = hp(targets);
     let impacts = 0; const apply = engine.applyRpgImpact.bind(engine);
     engine.applyRpgImpact = (...args) => { impacts++; return apply(...args); };
