@@ -16,7 +16,7 @@ import { OFFICIAL_COSTUME_EXTENSION, ORIGINAL_COLLECTION_EXTENSION, SIGNATURE_DE
 import { OFFICIAL_COSTUMES_R7 } from '../src/game/wardrobeOfficialR7.js';
 import { getOfficialCostumes, getWardrobeResearchTargets, wardrobeActorKey, applyActorAppearance, ALL_OFFICIAL_WARDROBE } from '../src/game/wardrobe.js';
 import { getWardrobeUnlockCatalogue, getWardrobeBoosterPool } from '../src/game/wardrobeBoosterRewards.js';
-import { buildActorFidelityBacklog, actorSourceScope, inspectActorRaster, readActorTechniques, indexActorContinuities } from '../src/game/actorFidelityBacklog.js';
+import { buildActorFidelityBacklog, actorSourceScope, inspectActorRaster, inspectQuarantinedActorRaster, readActorTechniques, indexActorContinuities } from '../src/game/actorFidelityBacklog.js';
 const actors=[createPlayerHero(),...HEROES_DB];
 for(const [universe,r] of Object.entries(ENEMIES_DB))for(const a of [...(r.monsters||[]),...(r.bosses||[]),...(r.worldBoss?[r.worldBoss]:[])])actors.push({...a,universe:a.universe||universe});
 const byKey=new Map(actors.map(a=>[wardrobeActorKey(a),a]));
@@ -84,6 +84,22 @@ test('file absence names the exact missing path without alleging a crash',()=>{
 });
 test('unresolved and externally hosted files are not miscounted as missing',()=>{
  for(const src of ['',null,'https://example.com/a.png','//example.com/a.png'])assert.equal(inspectActorRaster(src,'auto','idle',tree).present,null);
+});
+test('a deliberately rejected raster retains its archive evidence and stays open for replacement',()=>{
+ const record={asset:'/sprites/present.png',sha256:'archive-content-sha',reason:'WRONG_EDITION'};
+ const probe=inspectQuarantinedActorRaster(record,'auto','idle',tree);
+ assert.equal(probe.archivedPresent,true);
+ assert.equal(probe.archivedSha256,record.sha256);
+ assert.equal(probe.present,null);
+ const row=buildActorFidelityBacklog(sample,{rasterProbes:[probe]});
+ assert.deepEqual(row.quarantinedRasterPaths,[record.asset]);
+ assert.deepEqual(row.rasterPaths,[]);
+ assert.deepEqual(row.missingRasterPaths,[]);
+ assert.ok(row.tasks.some(t=>t.code==='RASTER_QUARANTINED'&&t.status==='OPEN'&&t.evidence.includes(record.reason)));
+ assert.ok(!row.tasks.some(t=>['RASTER_MISSING','RASTER_SCOPE_UNRESOLVED'].includes(t.code)));
+ const mixed=buildActorFidelityBacklog(sample,{rasterProbes:[probe,inspectActorRaster('','hud','idle',tree)]});
+ assert.ok(mixed.tasks.some(t=>t.code==='RASTER_SCOPE_UNRESOLVED'));
+ assert.equal(mixed.artApproved,false);
 });
 test('encoded traversal is refused',()=>assert.equal(inspectActorRaster('/sprites/%2e%2e/a.png','auto','idle',tree).status,'INVALID_PATH'));
 test('static HUD is not a gameplay animation fault',()=>{

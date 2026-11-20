@@ -189,8 +189,15 @@ test('RPG: known templates and earlier authored kits retain their source actions
   const concrete=hero('masterchief');
   assert.equal(priority.hasSelectedCombatSource(concrete,'secondary'),false);
   const authored=rpgProfiles.getRpgActionProfile(concrete,'secondary','player',{width:760,height:420});
-  assert.equal(authored.name,'Grenade à plasma du Major');assert.equal(authored.range,480);
-  assert.notEqual(authored.action.name,concrete.secondary.name);
+  assert.equal(authored.name,'Grenade à plasma du Major');
+  assert.equal(authored.range,480);
+  assert.equal(authored.shape,'area');
+  assert.equal(authored.areaRadius,80);
+  const legacy=structuredClone(concrete);
+  legacy.secondary.name='Legacy grenade label';
+  const legacyAction=rpgProfiles.getRpgCombatantAbility(legacy,'secondary');
+  assert.deepEqual(legacyAction,authored.action);
+  assert.equal(legacy.secondary.name,'Legacy grenade label');
   const unlisted={id:'explicit-unlisted-regression',universe:'QA',special:{name:'Origin Burst',type:'group',dmg:2}};
   assert.equal(rpgProfiles.getRpgCombatantAbility(unlisted,'special'),unlisted.special);
 });

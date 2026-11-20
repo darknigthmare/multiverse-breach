@@ -1094,6 +1094,7 @@ export class EngineRpg {
     const gyroProfileWave17=isJadeGyrodiskProfileWave17(resolveCombatAbility(actor,abilityType));
     if(gyroProfileWave17&&!this.heroes.includes(actor)&&!this.enemies.includes(actor)){actor.rpgGyrodiskActionWave17=null;actor.actionPending=false;return;}
     if (this.disposed || this.gameOver || actor.currentHp <= 0 || actor.rpgControlTicks > 0 || isSourceImmobilizedWave16(actor)) return;
+    const canonImpact = profile.effect === 'damage' && resolveCanonHeroAttackEffect(actor, profile.action)?.rpgImpact;
     const source = this.getRpgDamageSource(actor, profile);
     const summon = abilityType === 'summon' && this.activeSummon?.actor === actor ? this.activeSummon : null;
     for (const target of targets) {
@@ -1229,6 +1230,9 @@ export class EngineRpg {
           delivery: profile.action?.targeting?.delivery || profile.delivery,
           ...(profile.sequenceParent ? { sequenceParent: profile.sequenceParent, sequenceFraction: profile.sequenceFraction } : {})
         });
+        if (canonImpact && target.currentHp < beforeDamage) {
+          emitCanonHeroAttackEffect(this.particles, actor, target, profile.action);
+        }
         if(sourceBladeContact)sourceBladeContact.acceptedDamage=target.currentHp<beforeDamage;
         if (visual && contact && target.currentHp < contact.hp && !visual.visualConfirmedContact) {
           // Preserve the first accepted hit, even when an earlier area target
@@ -1629,14 +1633,15 @@ export class EngineRpg {
     // Edge clearance can force the approach onto the opposite side. Capture
     // the visual direction only after the real placement has resolved it.
     if (meleeContact) this.positionForMelee(actor, anchor);
-    const visualProfile = abilityType === 'special' ? resolveCombatAbility(actor, 'special') : null;
+    const canonEffect = profile.effect === 'damage' ? resolveCanonHeroAttackEffect(actor, profile.action) : null;
+    // The RPG Force choke owns its confirmed contact, separately from the W13 melee saber super.
+    const visualProfile = abilityType === 'special' && !canonEffect?.rpgImpact ? resolveCombatAbility(actor, 'special') : null;
     const visualAction = { elapsed: 0, duration: durationTicks / 60, hitAt: Math.ceil(impactDelay * 60 / 1000) / 60, facing: actor.facing };
     if (profile.action?.sourceSligRifle) actor.rpgPossessedRifleActionWave16={...visualAction,elapsedTicks:0,sourceSligRifle:true};
     const jadeGyroIdentityWave17=resolveCombatAbility(actor,abilityType);if(isJadeGyrodiskProfileWave17(jadeGyroIdentityWave17)){actor.rpgGyrodiskActionWave17={...visualAction,identity:jadeGyroIdentityWave17,elapsedTicks:0,actionVersion};(this.sourceRpgGyrodiskActorsWave17||=new Set()).add(actor);}
     actor.rpgSpecialVisual = getCharacterSuperVisualState({ actor, profile: visualProfile, action: visualAction, target: anchor })
       ? { profile: visualProfile, target: { x: anchor.x, y: anchor.y }, facing: actor.facing } : null;
     const color = profile.action.color || actor.secondaryColor || actor.color || '#ff9900';
-    const canonEffect = profile.effect === 'damage' ? resolveCanonHeroAttackEffect(actor, profile.action) : null;
     if (encounterKind === 'kryll') {
       this.playSfx('slash');
       for (let index = 0; index < 8; index++) {
@@ -1650,7 +1655,7 @@ export class EngineRpg {
       this.playSfx(canonEffect?.sfx || (profile.effect === 'damage' ? 'shoot' : 'shield'));
       // Source-curated support actions use their pose and accepted status feedback.
       // A radio order, analysis or protection must not launch a generic laser at an ally.
-      if (!actor.rpgGyrodiskActionWave17 && !profile.action?.sourceSligRifle && !actor.rpgSpecialVisual && !sourceSupport && !['radial', 'control'].includes(profile.delivery)) targets.forEach(target => {
+      if (!canonEffect?.rpgImpact && !actor.rpgGyrodiskActionWave17 && !profile.action?.sourceSligRifle && !actor.rpgSpecialVisual && !sourceSupport && !['radial', 'control'].includes(profile.delivery)) targets.forEach(target => {
         if (!emitCanonHeroAttackEffect(this.particles, actor, target, profile.action)) this.emitTargetedProjectile(actor, target, color);
       });
     }

@@ -51,6 +51,16 @@ test('previous Maya Phaselock and Val healing estimates retain their existing la
   const val = targeting({ effect: 'heal' }); val.estimates[0] = { id: 'target', effect: 'heal', amount: 60, min: 60, max: 60 };
   assert.equal(present(val), null); assert.match(render(val), /Soin 60/);
 });
+test('a zero-damage Glitch forecasts the ATB penalty while a damaging Glitch keeps its damage estimate', () => {
+  const action = { statusEffect: 'glitched' };
+  const state = targeting({ effect: 'damage', multiplier: 0, action });
+  const html = render(state);
+  assert.match(html, /Glitch/);
+  assert.match(html, /Recharge de l’ATB à demi-vitesse pendant 5 s\. 0 PV perdus/);
+  assert.doesNotMatch(html, /Dégâts estimés|900–1000/);
+  assert.match(render(state, 'en'), /ATB fills at half speed for 5 s\. 0 HP lost/);
+  assert.match(render(targeting({ effect: 'damage', multiplier: 1.05, action })), /Dégâts estimés 900–1000/);
+});
 test('canvas source status uses runtime remaining time, charges and channel state', () => {
   assert.equal(status({ sourceProtectionWave16: { active: true, kind: 'mugman-super-art-ii', remaining: 4.25 } }), 'INVULNÉRABLE 4,25 s');
   assert.equal(status({ sourceProtectionWave16: { active: true, kind: 'shield-pal-one-hit', charges: 1, remaining: null } }), 'SHIELD PAL · 1 coup');

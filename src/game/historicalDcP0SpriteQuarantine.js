@@ -51,19 +51,30 @@ export const HISTORICAL_DC_P0_SPRITE_QUARANTINES = Object.freeze([
   })
 ]);
 
-// The W16 reinforcement depicts the 2003 design and has a neutral recovery cell.
-// Only the crop of that cell is reused. The movement and hit sheets stay pending.
-const STARFIRE_REVIEWED_BUST = Object.freeze({
-  sheet: '/sprites/generated/summon-animations-wave16/starfire.png',
-  sha256: '372875c8973133979dc0cf22b6f289330b80ee0e9b8ff3bcfec2b96f47176780',
-  width: 2048,
-  height: 1024,
-  crop: Object.freeze({ x: 1226, y: 782, width: 76, height: 80 })
+// Only the reviewed portrait crops are reused across the interface and timeline.
+const reviewedPortraits = Object.freeze({
+  // Starfire's W16 reinforcement has a neutral recovery cell in the 2003 design.
+  starfire_tt: Object.freeze({
+    sheet: '/sprites/generated/summon-animations-wave16/starfire.png',
+    sha256: '372875c8973133979dc0cf22b6f289330b80ee0e9b8ff3bcfec2b96f47176780',
+    width: 2048,
+    height: 1024,
+    crop: Object.freeze({ x: 1226, y: 782, width: 76, height: 80 })
+  }),
+  // The independently reviewed W3 characterSolo CG depicts the 2003 model.
+  raven_tt: Object.freeze({
+    sheet: '/cg/teen-titans/raven-tt/character-solo-wave3-2026-10-20-thumb.webp',
+    sha256: 'fa87e483c34d9aab8fc3e5fe5e08e1684403bf8730090d12259ad36957dc2a78',
+    width: 384,
+    height: 512,
+    smooth: true,
+    crop: Object.freeze({ x: 113, y: 30, width: 91, height: 120 })
+  })
 });
 
 export function getReviewedDcP0Bust(actor, quarantine) {
   const sourceId = actor?.sourceHeroId || actor?.sourceId || actor?.id;
-  if (quarantine?.actorId !== 'starfire_tt' || sourceId !== 'starfire_tt'
-    || [actor?.sourceHeroId, actor?.sourceId].some(id => id !== undefined && id !== '' && id !== 'starfire_tt')) return null;
-  return STARFIRE_REVIEWED_BUST;
+  if (!quarantine || quarantine.actorId !== sourceId || !Object.hasOwn(reviewedPortraits, sourceId)
+    || [actor.sourceHeroId, actor.sourceId].some(id => id !== undefined && id !== '' && id !== sourceId)) return null;
+  return reviewedPortraits[sourceId];
 }

@@ -1,4 +1,5 @@
 import assert from 'node:assert/strict';
+import { readCgRiftDossiers } from './cgHistoricalRiftEvidence.mjs';
 import { createHash } from 'node:crypto';
 import { lstatSync, readFileSync } from 'node:fs';
 import path from 'node:path';
@@ -58,7 +59,7 @@ export function projectCgReviewedAvailabilityAmendment({ root, published, projec
   assert.equal(contract.historicalPlanSha256, historicalSha256);
   assert.equal(contract.subjectCount, 58);
   assert.equal(contract.cases.length, 58);
-  const dossiers = new Map(JSON.parse(readFileSync(path.join(root, 'docs/rift-dossiers/catalog.json'))).entrees.map(item => [item.id, item]));
+  const dossiers = new Map(readCgRiftDossiers(root).map(item => [item.id, item]));
   const p0 = JSON.parse(readFileSync(path.join(root, 'docs/audits/fidelity-p0-wave4-2026-10-01.json'))).entries;
   const result = { ...projected, subjects: projected.subjects.slice(), entries: projected.entries.slice() };
   const negative = [], hydrated = [], verifiedImages = new Map(), seen = new Set();

@@ -5,6 +5,11 @@ import { CANON_FOLLOWUP_SOURCE_KITS } from './canonFollowupSourceKits.js';
 const SOURCE_KITS = new Set([
   'han_solo', 'luke', 'vader', 'bob_minions', 'kevin_minions', 'stuart_minions'
 ]);
+const BESPIN_VADER = 'Star Wars: The Empire Strikes Back (1980) - Bespin Sith Lord';
+const BESPIN_FORCE_ACTIONS = new Map([
+  ['Bespin Debris Telekinesis', 'bespinDebris'],
+  ['Force Choke', 'forceChoke']
+]);
 
 export const getCanonHeroSourceId = getP0HeroSourceId;
 
@@ -13,6 +18,12 @@ export function resolveCanonHeroAttackEffect(actor, actionOrType) {
   if (p0Effect) return p0Effect;
   const sourceId = getCanonHeroSourceId(actor);
   const action = typeof actionOrType === 'string' ? actor?.[actionOrType] : actionOrType;
+  if ((actor?.sourceHeroId || sourceId) === 'vader' && actor.universe === 'Star Wars'
+    && (!actor.sourceUniverse || actor.sourceUniverse === actor.universe)
+    && actor.incarnation === BESPIN_VADER && action?.type === 'gravity') {
+    const kind = BESPIN_FORCE_ACTIONS.get(action.name);
+    if (kind) return { kind, color: '#aeb4b9', sfx: 'shield', rpgImpact: true };
+  }
   // This separate follow-up selection leaves the frozen P0 identities intact.
   const followup = Object.hasOwn(CANON_FOLLOWUP_SOURCE_KITS, sourceId)
     ? CANON_FOLLOWUP_SOURCE_KITS[sourceId] : null;
@@ -46,6 +57,7 @@ export function emitCanonHeroAttackEffect(particles, actor, target, actionOrType
   if (p0Effect) return emitP0CanonAttackEffect(particles, actor, target, p0Effect);
   const effect = resolveCanonHeroAttackEffect(actor, actionOrType);
   if (!effect || !particles?.add) return false;
+  if (effect.rpgImpact && !target) return true;
   const destination = target || { x: actor.x + (actor.facing || 1) * 60, y: actor.y };
   const dx = destination.x - actor.x;
   const dy = destination.y - actor.y;
@@ -58,6 +70,9 @@ export function emitCanonHeroAttackEffect(particles, actor, target, actionOrType
     particles.add(actor.x + ux * 15, actor.y - 12 + uy * 15, ux * 8, uy * 8, effect.color, 12, Math.max(12, Math.ceil(distance / 8)), 'banana');
   } else if (effect.kind === 'music') {
     particles.add(actor.x, actor.y - 24, ux * 4, uy * 4, effect.color, 20, Math.max(18, Math.ceil(distance / 4)), 'music');
+  } else if (effect.kind === 'bespinDebris') {
+    particles.add(destination.x - 8, destination.y - 25, -0.7, -0.4, effect.color, 5, 18, 'thrown_prop');
+    particles.add(destination.x + 8, destination.y - 18, 0.6, -0.3, effect.color, 3, 18, 'thrown_prop');
   } else if (effect.kind === 'telekinesis') {
     // Moving debris near the selected target, without an electrical beam.
     particles.add(destination.x - 10, destination.y - 24, 0.6, -0.5, effect.color, 4, 18, 'spark');

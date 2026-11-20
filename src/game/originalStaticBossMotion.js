@@ -7,10 +7,17 @@ const bosses = new Map([
   ['aether_crown:lord_pneuma', {
     universe: 'The Aether Crown', name: 'Lord Pneuma', weapon: 'magic',
     sheet: '/sprites/generated/bosses/the-aether-crown/lord-pneuma.png',
+    draw: drawPneuma,
   }],
   ['valedor_shattered_crown:vaelgor_premier_wyrm', {
     universe: 'Valedor: The Shattered Crown', name: 'Vaelgor, Premier Wyrm', weapon: 'world_power',
     sheet: '/sprites/generated/bosses/valedor-the-shattered-crown/vaelgor-premier-wyrm.png',
+    draw: drawVaelgor,
+  }],
+  ['yomi_no_kage:amas_des_huit_orochi', {
+    universe: 'Yomi no Kage', name: 'Amas des Huit Orochi', weapon: 'magic',
+    sheet: '/sprites/generated/bosses/yomi-no-kage/amas-des-huit-orochi.png',
+    draw: drawOrochi,
   }],
 ]);
 
@@ -50,6 +57,32 @@ const crystalMotion = {
   run: { rate: 0.14, slide: 10, lift: 15, spread: 5, tilt: 0.12 },
   attack: { rate: 0.18, slide: 9, lift: 22, spread: 22, tilt: 0.20 },
   hit: { rate: 0.24, slide: 12, lift: 8, spread: -9, tilt: 0.24 },
+};
+
+// Only the three upper crests move. Each transform keeps every point on the
+// horizontal base of its cut fixed where the crest joins the original head.
+const orochiCrests = [
+  {
+    rootY: 171, phase: 0,
+    bounds: [403, 26, 185, 145],
+    outline: [[403, 26], [580, 26], [588, 106], [586, 144], [578, 171], [414, 171], [403, 134]],
+  },
+  {
+    rootY: 245, phase: 2.1,
+    bounds: [268, 190, 90, 55],
+    outline: [[281, 190], [352, 190], [358, 223], [344, 245], [268, 245], [271, 215]],
+  },
+  {
+    rootY: 228, phase: 4.2,
+    bounds: [739, 160, 102, 68],
+    outline: [[746, 160], [822, 160], [841, 204], [838, 228], [739, 228]],
+  },
+];
+const orochiMotion = {
+  idle: { rate: 0.055, lean: 0, sway: 0.055, stretch: 0.045 },
+  run: { rate: 0.095, lean: -0.05, sway: 0.09, stretch: 0.06 },
+  attack: { rate: 0.165, lean: 0.12, sway: 0.12, stretch: 0.13 },
+  hit: { rate: 0.245, lean: -0.08, sway: 0.055, stretch: 0.06 },
 };
 
 function outlineSegment(ctx, { outline }) {
@@ -104,6 +137,20 @@ function drawVaelgor(ctx, image, state, time) {
   }
 }
 
+function drawOrochi(ctx, image, state, time) {
+  const profile = Object.hasOwn(orochiMotion, state) ? orochiMotion[state] : orochiMotion.idle;
+  drawFixedBody(ctx, image, orochiCrests);
+  for (const crest of orochiCrests) {
+    const phase = time * profile.rate + crest.phase;
+    const skew = profile.lean + Math.sin(phase) * profile.sway;
+    const stretch = 1 + Math.cos(phase) * profile.stretch;
+    ctx.save();
+    ctx.transform(1, 0, skew, stretch, -crest.rootY * skew, (1 - stretch) * crest.rootY);
+    drawSegment(ctx, image, crest);
+    ctx.restore();
+  }
+}
+
 export function drawOriginalStaticBossMotion(ctx, actor, image, animTime, x, y, width, height) {
   const bossId = getOriginalBossMotionId(actor);
   const boss = bosses.get(bossId);
@@ -118,8 +165,7 @@ export function drawOriginalStaticBossMotion(ctx, actor, image, animTime, x, y, 
   ctx.save();
   ctx.translate(x, y);
   ctx.scale(width / SIZE, height / SIZE);
-  if (bossId === 'aether_crown:lord_pneuma') drawPneuma(ctx, image, state, time);
-  else drawVaelgor(ctx, image, state, time);
+  boss.draw(ctx, image, state, time);
   ctx.restore();
   return true;
 }

@@ -67,6 +67,8 @@ import {
 import { CORRECTED_CANON_HERO_SPRITES, getEnemySpriteSheetSrc, getHeroCompleteSpritePack, getHeroSpriteSheetSrc, getItemSpriteSrc, getSpritePreviewPosition, getSpriteSheetLayout, MIRELLE_COMPLETE_SPRITES } from '../game/spriteAssets';
 import { getBattleItemsForUniverse } from '../game/battleItems';
 import { getQuarantinedCanonSprite } from '../game/runtimeSpriteQuarantine.js';
+import { getReviewedDcP0Bust } from '../game/historicalDcP0SpriteQuarantine.js';
+import ReviewedActorPortrait from './ReviewedActorPortrait.jsx';
 import { getUnlockableById } from '../game/universeUnlockables';
 import { OPENAI_COSMETIC_VISUALS, resolveActiveHudTheme } from '../game/cosmeticVisualAssets';
 import { getEventLoreDescription, getGearLoreDescription, getStageLoreDescription, getUniverseLoreDescription } from '../game/loreDescriptions';
@@ -5266,7 +5268,9 @@ function MultiverseRiftMap({
 }
 
 function MissionRequirementPortrait({ hero, label }) {
-  const artBlocked = Boolean(getQuarantinedCanonSprite(hero));
+  const quarantine = getQuarantinedCanonSprite(hero);
+  const artBlocked = Boolean(quarantine);
+  const reviewedPortrait = getReviewedDcP0Bust(hero, quarantine);
   const src = hero && !artBlocked ? getHeroSpriteSheetSrc(hero, 'melee') : '';
   const layout = getSpriteSheetLayout(src);
   const [loaded, setLoaded] = useState(false);
@@ -5290,19 +5294,21 @@ function MissionRequirementPortrait({ hero, label }) {
     .join('')
     .slice(0, 2)
     .toUpperCase();
+  const fallback = <b>{artBlocked ? '!' : initials}</b>;
 
   return (
     <span
       className="mission-requirement-portrait"
       style={{
-        backgroundImage: loaded ? `url("${src}")` : 'none',
+        position: reviewedPortrait ? 'relative' : undefined,
+        backgroundImage: src && loaded ? `url("${src}")` : 'none',
         backgroundSize: `${layout.columns * 100}% ${layout.rows * 100}%`,
         backgroundPosition: getSpritePreviewPosition(layout),
         color: hero?.secondaryColor || '#39c5bb'
       }}
       aria-hidden="true"
     >
-      {loaded ? null : <b>{artBlocked ? '!' : initials}</b>}
+      {reviewedPortrait ? <ReviewedActorPortrait key={reviewedPortrait.sheet} portrait={reviewedPortrait} fallback={fallback} /> : !loaded && fallback}
     </span>
   );
 }

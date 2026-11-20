@@ -59,6 +59,13 @@ export function getRpgSourceEffectPresentation(targeting, lang = 'fr') {
       : `Eligible Slig only. ${seconds(profile.channelDuration, fr)} s chant, interrupted if Abe is hit. Input control without changing sides.`,
     hideDamageEstimate: true
   };
+  if (profile.effect === 'damage' && profile.multiplier === 0
+    && (profile.action?.statusEffect || profile.action?.rpgProfile?.statusEffect) === 'glitched') return {
+    label: 'Glitch',
+    detail: fr ? 'Recharge de l’ATB à demi-vitesse pendant 5 s. 0 PV perdus.'
+      : 'ATB fills at half speed for 5 s. 0 HP lost.',
+    hideDamageEstimate: true
+  };
   return null;
 }
 

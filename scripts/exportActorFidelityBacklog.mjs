@@ -11,7 +11,8 @@ import { ORIGINAL_UNIVERSE_DEFINITIONS } from '../src/game/originalUniverseWave.
 import { OC_DLC_UNIVERSE_KEYS } from '../src/game/ocDlcPacks.js';
 import { getHeroSpriteSheetSrc, getHeroMeleeSpriteSheetSrcs, getEnemySpriteSheetSrc, getSpriteSheetLayout } from '../src/game/spriteAssets.js';
 import { getWardrobeBoosterRoutes } from '../src/game/wardrobeBoosterRewards.js';
-import { buildActorFidelityBacklog, inspectActorRaster, indexActorContinuities } from '../src/game/actorFidelityBacklog.js';
+import { getQuarantinedCanonSprite } from '../src/game/runtimeSpriteQuarantine.js';
+import { buildActorFidelityBacklog, inspectActorRaster, inspectQuarantinedActorRaster, indexActorContinuities } from '../src/game/actorFidelityBacklog.js';
 import { getBundledRasterPath, projectExportAssetTree } from './exportAssetTree.mjs';
 const [outArg,sourceBaseCommit,treeFile,treeSourceCommit=sourceBaseCommit]=process.argv.slice(2);
 if(!outArg || !/^[a-f0-9]{40}$/.test(sourceBaseCommit||'') || !/^[a-f0-9]{40}$/.test(treeSourceCommit||''))
@@ -42,7 +43,10 @@ const rows=actors.map(({actor,kind})=>{
   .map(([context,state])=>({context,state,src:getHeroSpriteSheetSrc({...actor,state},context)}))
   :[{context:'enemy-sheet',state:'idle',src:getEnemySpriteSheetSrc(actor)}];
  if(kind==='hero')for(const src of getHeroMeleeSpriteSheetSrcs(actor))requests.push({context:'melee-manifest',state:'declared',src});
- const rasterProbes=requests.map(r=>inspectActorRaster(r.src,r.context,r.state,index,getSpriteSheetLayout(r.src),getBundledRasterPath(root,r.src)));
+ const quarantine=kind==='hero'?getQuarantinedCanonSprite(actor):null;
+ const rasterProbes=requests.map(r=>quarantine&&!r.src
+  ? inspectQuarantinedActorRaster(quarantine,r.context,r.state,index)
+  : inspectActorRaster(r.src,r.context,r.state,index,getSpriteSheetLayout(r.src),getBundledRasterPath(root,r.src)));
  const row=buildActorFidelityBacklog(actor,{kind,originalUniverses:originals,rasterProbes,sourceCommit:sourceBaseCommit,continuityIndex});
  return {...row,boosterRoutes:getWardrobeBoosterRoutes(actor)};
 });
@@ -54,6 +58,7 @@ const summary={version:'R14',sourceBaseCommit,assetTreeCommit:treeSourceCommit,
  actors:rows.length,heroes:count(r=>r.kind==='hero'),universes:new Set(rows.map(r=>r.universe)).size,
  originalIdentities:count(r=>r.sourceScope==='ORIGINAL_DESIGN'),externalOrUnresolved:count(r=>r.sourceScope!=='ORIGINAL_DESIGN'),
  actorsWithOfficialVariants:count(r=>r.officialCount>0),actorsWithMissingRaster:count(r=>r.missingRasterPaths.length>0),
+ actorsWithQuarantinedRaster:count(r=>r.quarantinedRasterPaths.length>0),
  actorsWithStaticGameplay:count(r=>r.staticGameplayPaths.length>0),actorsWithGenericTechniqueNames:count(r=>r.techniques.some(t=>t.genericName)),
  continuitiesRecovered:count(r=>r.incarnationEvidence==='EXACT_PACK_BINDING'),
  structuredContinuitiesRecovered:count(r=>r.incarnationEvidence==='ACTOR_LOCKED_CONTINUITY'),
@@ -69,6 +74,6 @@ const cell=value=>{let s=Array.isArray(value)?value.join(' | '):String(value??''
 const csv=(items,keys)=>'\uFEFF'+[keys,...items.map(r=>keys.map(k=>r[k]))].map(r=>r.map(cell).join(';')).join('\r\n')+'\r\n';
 fs.writeFileSync(path.join(out,'actors.json'),JSON.stringify(rows,null,2)+'\n');
 fs.writeFileSync(path.join(out,'summary.json'),JSON.stringify(summary,null,2)+'\n');
-fs.writeFileSync(path.join(out,'actors.csv'),csv(rows,['actorKey','actorId','actorName','universe','kind','sourceScope','incarnation','incarnationEvidence','declaredReference','visualAnchor','officialCount','officialNames','officialResearchStatus','missingRasterPaths','staticGameplayPaths','priority','boosterRoutes','completeness']));
+fs.writeFileSync(path.join(out,'actors.csv'),csv(rows,['actorKey','actorId','actorName','universe','kind','sourceScope','incarnation','incarnationEvidence','declaredReference','visualAnchor','officialCount','officialNames','officialResearchStatus','missingRasterPaths','quarantinedRasterPaths','staticGameplayPaths','priority','boosterRoutes','completeness']));
 fs.writeFileSync(path.join(out,'tasks.csv'),csv(tasks,['actorKey','actorId','actorName','universe','kind','sourceScope','code','priority','status','reason','action','evidence']));
 console.log(JSON.stringify({...summary,taskRows:tasks.length},null,2));

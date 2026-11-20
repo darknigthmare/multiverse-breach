@@ -323,7 +323,7 @@ export const drawCombatantBust = (ctx, x, y, width, height, entity, kind = 'hero
   ctx.clip();
   ctx.translate(x + width / 2, y + height / 2);
   ctx.scale(entity?.facing || (kind === 'hero' ? 1 : -1), 1);
-  ctx.imageSmoothingEnabled = false;
+  ctx.imageSmoothingEnabled = reviewedBust?.smooth === true;
   ctx.drawImage(
     entry.image,
     sourceX,

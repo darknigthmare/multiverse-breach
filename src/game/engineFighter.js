@@ -32,8 +32,9 @@ import { resolveMeleeSuper, resolveCombatAbility, resolveCombatPresentation } fr
 import { samplePresentationScript, sampleCatastropheMotion, getCatastropheBeamGeometry } from './combat/presentationCatalog.js';
 import { drawOriginalFighterPresentationEffect, resolveOriginalFighterPresentation } from './combat/originalFighterPresentations.js';
 import { hasSelectedCombatSource, prefersCurrentCanonCombatKit } from './combat/sourceKitPriority.js';
-import { resolveCanonHeroAttackEffect } from './canonHeroAttackEffects.js';
+import { emitCanonHeroAttackEffect, resolveCanonHeroAttackEffect } from './canonHeroAttackEffects.js';
 import { drawP0CanonParticle } from './canonP0ParticleRenderer.js';
+import { getHistoricalFighterReservedShot, resolveHistoricalIconicP0FighterAction } from './combat/historicalIconicP0FighterActions.js';
 
 // Reviewed source actions own their native scheduling and resource economy.
 // Legacy adapters retain the upstream 100-point super rules for other kits.
@@ -121,11 +122,13 @@ const isRangedHero = (hero) => /gun|rifle|shotgun|card|magic|staff|bow|laser|ray
   hero.secondary?.type
 ].filter(Boolean).join(' '));
 
-const createFighter = (hero, side, index, width, groundY) => {
+const createFighter = (hero, side, index, width, groundY, remainingShot) => {
   const stats = hero.stats || { hp: 120, atk: 12, def: 8, spd: 6 };
   const maxHp = Math.round(clamp(150 + stats.hp * 0.8, 220, 430));
+  const ammunition = getHistoricalFighterReservedShot(hero);
   return {
     ...hero,
+    ...(ammunition ? { sourceAmmoRemaining: remainingShot ?? ammunition.maxShots } : {}),
     runtimeId: `${side}-${index}-${hero.id}`,
     side,
     index,
@@ -661,7 +664,8 @@ export class EngineFighter {
       knockback: 105, delivery: 'projectile', effect: 'damage', authoredAbility: true, meterCost: 0,
       sourceSligRifle: true, identity: { ...rifle, sourceAbility: rifle, universe: 'Oddworld', effect: 'damage', delivery: 'projectile' } }
       : this.getAuthoredActionSpec(fighter, type, Object.hasOwn(specs, type) ? specs[type] : null) || (Object.hasOwn(specs, type) ? specs[type] : null);
-    if (!spec || fighter.meter < (spec.meterCost || 0) || (spec.cooldownSlot && fighter.abilityCooldowns[spec.cooldownSlot] > 0)) return false;
+    if (!spec || fighter.meter < (spec.meterCost || 0) || (spec.cooldownSlot && fighter.abilityCooldowns[spec.cooldownSlot] > 0)
+      || (spec.reservedShot && !(fighter.sourceAmmoRemaining > 0))) return false;
     if (!canBeginSourceProtectionWave16(fighter, spec.identity)) return false;
     // The source beam needs another visible active ally; Fighter has one active
     // actor per side. Do not substitute the legacy self-only super or spend meter.
@@ -718,7 +722,9 @@ export class EngineFighter {
         Math.max(58, ((opponent?.x ?? fighter.x + fighter.facing * spec.range) - fighter.x) * fighter.facing));
     }
     if (melee) this.fighterMelee.bind(melee.meleeSignature, fighter.action);
-    this.playSfx(spec.canonSourceFeedback?.sfx || (spec.effect && spec.effect !== 'damage' ? 'signal' : type === 'light' ? 'slash' : type === 'heavy' ? 'hit' : 'special'));
+    if (!spec.reservedShot && spec.canonSourceFeedback?.kind !== 'cameraFlash') {
+      this.playSfx(spec.canonSourceFeedback?.sfx || (spec.effect && spec.effect !== 'damage' ? 'signal' : type === 'light' ? 'slash' : type === 'heavy' ? 'hit' : 'special'));
+    }
     if (spec.authoredAbility || spec.canonSourceAbility) {
       this.announcement = spec.identity.name;
       this.announcementTimer = 0.8;
@@ -737,28 +743,31 @@ export class EngineFighter {
     if (!slot) return null;
     const identity = resolveCombatAbility(fighter, slot);
     const sourceId = fighter.sourceHeroId || fighter.sourceId || fighter.id;
+    const iconic = resolveHistoricalIconicP0FighterAction(fighter, identity);
     // These two current original-team kits explicitly supersede their W16
     // versions. Keep their supplied damaging basics in the typed action path;
     // other raw kits may require their own resource adapter before admission.
-    const canonSourceAbility = ['raven_tt', 'starfire_tt'].includes(sourceId)
+    const canonSourceAbility = !!iconic || (['raven_tt', 'starfire_tt'].includes(sourceId)
       && prefersCurrentCanonCombatKit(fighter) && !hasSelectedCombatSource(fighter, slot)
       && ['simple', 'secondary'].includes(slot) && identity?.effect === 'damage'
       && identity.sourceAbility?.slot === slot && !!identity.sourceAbility.name
-      && typeof identity.sourceAbility.type === 'string';
+      && typeof identity.sourceAbility.type === 'string');
     if (!identity?.provenance.identityAuthored && !canonSourceAbility) return null;
     const cooldown = Math.max(0, finiteOr(identity.sourceAbility.cd, identity.effect === 'damage' ? 0 : Math.max(0.8, identity.effectDuration)));
+    const profile = iconic ? { ...identity, range: iconic.range, delivery: iconic.delivery } : identity;
     return {
       ...(fallback || { guardDamage: 0, knockback: 0, meterCost: 0 }),
-      identity,
+      identity: profile,
       authoredAbility: identity.provenance.identityAuthored === true,
       ...(canonSourceAbility ? { canonSourceAbility: true,
-        canonSourceFeedback: resolveCanonHeroAttackEffect(fighter, identity.sourceAbility) } : {}),
+        canonSourceFeedback: iconic?.feedback ?? resolveCanonHeroAttackEffect(fighter, identity.sourceAbility) } : {}),
+      ...(iconic ? { iconicCanonAction: true, reservedShot: iconic.reservedShot } : {}),
       duration: jadeHeavy?fallback.duration:identity.duration,
       hitAt: jadeHeavy?fallback.hitAt:identity.hitAt,
       base: identity.effect === 'damage' ? (fallback?.base || 9.5) * identity.multiplier : 0,
-      range: identity.range,
+      range: profile.range,
       areaRadius: identity.areaRadius,
-      delivery: identity.delivery,
+      delivery: profile.delivery,
       effect: identity.effect,
       color: identity.color,
       healRatio: identity.healRatio,
@@ -1085,10 +1094,10 @@ export class EngineFighter {
       }
       if (this.canUseSuper('cpu') && Math.random() < this.difficulty.aggression * 0.5) {
         this.tryAction('cpu', 'super');
-      } else if (fighter.meter >= 30 && distance > 112 && Math.random() < 0.56) {
+      } else if (fighter.meter >= 30 && fighter.sourceAmmoRemaining !== 0 && distance > 112 && Math.random() < 0.56) {
         this.tryAction('cpu', 'special');
       } else if (distance < 100 && Math.random() < this.difficulty.aggression) {
-        this.tryAction('cpu', Math.random() < 0.64 ? 'light' : 'heavy');
+        this.tryAction('cpu', fighter.sourceAmmoRemaining === 0 || Math.random() < 0.64 ? 'light' : 'heavy');
       } else if (distance > 92) {
         this.aiMove = Math.sign(target.x - fighter.x);
       } else {
@@ -1221,6 +1230,15 @@ export class EngineFighter {
     }
     if (isPhaselockProfile(action.identity)) return this.resolveFighterPhaselock(fighter, action);
     if (action.effect && action.effect !== 'damage') return this.resolveSupportSuper(fighter, action);
+    if (action.iconicCanonAction && action.canonSourceFeedback.kind === 'cameraFlash') {
+      const hp = target?.currentHp;
+      const attempted = this.attemptHit(fighter, target, action);
+      const flashTarget = target?.currentHp < hp ? { x: target.x, y: target.y - 40 } : null;
+      const flashActor = { ...fighter, sourceId: action.identity.sourceHeroId, y: fighter.y - 46, facing: action.facing };
+      emitCanonHeroAttackEffect(this.particles, flashActor, flashTarget, action.identity.sourceAbility);
+      this.playSfx(action.canonSourceFeedback.sfx);
+      return attempted;
+    }
     if ((action.authoredAbility || action.canonSourceAbility || action.type === 'super') ? action.delivery === 'projectile' : action.type === 'special' && fighter.ranged)
       return this.spawnProjectile(fighter, action);
     if ((action.authoredAbility || action.canonSourceAbility || action.type === 'super') && action.delivery === 'radial') {
@@ -1299,10 +1317,11 @@ export class EngineFighter {
       || !action || !Number.isFinite(action.base) || action.base <= 0
       || ![-1, 1].includes(action.facing ?? fighter.facing)
       || this.projectiles.length >= MAX_FIGHTER_PROJECTILES) return false;
+    if (action.reservedShot && (fighter.action !== action || !(fighter.sourceAmmoRemaining > 0))) return false;
     const color = action.color || fighter.secondaryColor || fighter.weaponColor || '#39c5bb';
     const direction = action.facing ?? fighter.facing;
     const nativeVisual = action.type === 'super' && supportsTrackedCharacterSuperVisual(action.identity);
-    const radius = action.type === 'super' ? 22 : 13;
+    const radius = action.reservedShot ? 3 : action.type === 'super' ? 22 : 13;
     const target = nativeVisual || action.sourceSligRifle ? this.sourceOpponentWave16(fighter) : null;
     const visual = nativeVisual ? getCharacterSuperVisualState({ actor: fighter, profile: action.identity, action, target, height: 142 }) : null;
     // Authored weapon families launch from their measured native barrel; earlier
@@ -1345,13 +1364,18 @@ export class EngineFighter {
       radius,
       sourceJadeGyrodiskWave17:!!jadeGloveOriginWave17,
       canonParticleType: action.canonSourceFeedback?.kind === 'starbolt' ? 'starbolt'
-        : action.canonSourceFeedback?.kind === 'shadow' ? 'shadow_wisp' : null,
+        : action.canonSourceFeedback?.kind === 'shadow' ? 'shadow_wisp' : action.reservedShot ? 'bullet' : null,
       ...(nativeVisual ? { visualElapsed: 0, visualOriginX: origin.x,
         visualFlightDistance: Math.max(1, Math.min(action.range, ((target?.x ?? fighter.x + direction * action.range) - fighter.x) * direction) - originDistance - radius - 32) } : {}),
       life,
       action: { ...action, range: 34, sourceCommittedSideWave16: this.sourceSideWave16(fighter) },
       color
     });
+    if (action.reservedShot) {
+      fighter.sourceAmmoRemaining -= 1;
+      this.playSfx(action.canonSourceFeedback.sfx);
+      this.particles.add(origin.x, origin.y, direction * 0.5, -0.4, '#b8b4ab', 8, 16, 'smoke');
+    }
     if(!jadeGloveOriginWave17 && !action.canonSourceAbility)this.particles.add(nativeMuzzle ? origin.x : fighter.x, nativeMuzzle ? origin.y : fighter.y - 62, direction * 5, 0, color, 6, 34, 'laser_line');
     return true;
   }
@@ -1507,7 +1531,7 @@ export class EngineFighter {
       target.vx = hitDirection * knockback;
       target.vy = (action.sequenceParent && !action.sequenceFinal) || (action.meleeContact && !action.meleeContact.final) ? 0
         : action.type === 'super' ? -235 : action.type === 'heavy' ? -130 : -60;
-      this.playSfx(projectile ? 'shoot' : 'hit');
+      this.playSfx(projectile && !action.reservedShot ? 'shoot' : 'hit');
       this.spawnBurst(target.x, target.y - 60, attacker.secondaryColor || '#ff5a36', action.type === 'super' ? 26 : 12);
       this.hitStop = action.type === 'super' ? 0.1 : action.type === 'heavy' ? 0.055 : 0.025;
     }
@@ -1517,6 +1541,10 @@ export class EngineFighter {
     // Only HP actually removed feeds score, meters and post-match rewards.
     damage = Math.min(target.currentHp, Math.round(damage * 10) / 10);
     target.currentHp = Math.max(0, target.currentHp - damage);
+    if (damage > 0 && action.iconicCanonAction && action.canonSourceFeedback.kind === 'melee') {
+      const contactActor = { ...attacker, sourceId: action.identity.sourceHeroId };
+      emitCanonHeroAttackEffect(this.particles, contactActor, { x: target.x, y: target.y - 42 }, action.identity.sourceAbility);
+    }
     if (damage > 0) noteSourceDamageWave16(target);
     if (action.identity?.sourceHeroId === 'kirito_sao' && action.sequenceParent) {
       const contact = action.sequenceParent.sourceBladeContactsWave16?.findLast(entry => entry.index === action.sequenceIndex);
@@ -1724,7 +1752,7 @@ export class EngineFighter {
     this.roundNumber += 1;
     this.projectileVisualImpacts = [];
     Object.entries(this.teams).forEach(([side, team]) => {
-      team.fighters = team.fighters.map((fighter, index) => createFighter(fighter, side, index, this.width, this.groundY));
+      team.fighters = team.fighters.map((fighter, index) => createFighter(fighter, side, index, this.width, this.groundY, fighter.sourceAmmoRemaining));
       team.activeIndex = 0;
       team.tagCooldown = 0;
       this.stats[side].currentCombo = 0;
@@ -1856,6 +1884,9 @@ export class EngineFighter {
           personalSuper: resolveMeleeSuper(fighter),
           abilityCooldowns: { ...fighter.abilityCooldowns },
           activeAbility: fighter.action?.identity || null,
+          ...(Number.isFinite(fighter.sourceAmmoRemaining) && getHistoricalFighterReservedShot(fighter) ? {
+            reservedShot: { remaining: fighter.sourceAmmoRemaining, capacity: getHistoricalFighterReservedShot(fighter).maxShots }
+          } : {}),
           active: index === team.activeIndex,
           canTag: this.canTag(side, index),
           ko: !live(fighter)

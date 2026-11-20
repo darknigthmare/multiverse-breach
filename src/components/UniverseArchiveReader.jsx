@@ -2,9 +2,11 @@ import React, { useLayoutEffect, useRef, useState } from 'react';
 import UniverseArchiveDialog from './UniverseArchiveDialog.jsx';
 import UniverseArchiveCatalog from './UniverseArchiveCatalog.jsx';
 import CharacterWardrobe from './CharacterWardrobe.jsx';
+import ReviewedActorPortrait from './ReviewedActorPortrait.jsx';
 import { getCharacterPlaque } from '../game/characterPlaques.js';
 import { getHeroSpriteSheetSrc, getItemSpriteSrc, getSpritePreviewPosition, getSpriteSheetLayout } from '../game/spriteAssets.js';
 import { getQuarantinedCanonSprite } from '../game/runtimeSpriteQuarantine.js';
+import { getReviewedDcP0Bust } from '../game/historicalDcP0SpriteQuarantine.js';
 import { getBattleItemLoreDescription, getEnemyLoreDescription } from '../game/loreDescriptions.js';
 import { archiveSearchText, getArchiveNeighbour } from '../game/universeArchiveView.js';
 import { updateCatalogView } from '../game/catalogPagination.js';
@@ -107,18 +109,22 @@ export default function UniverseArchiveReader({ archive: selectedUniverseArchive
                         const stats = getHeroStats(hero);
                         const plaque = getCharacterPlaque(hero);
                         const rejectedSourceArt = getQuarantinedCanonSprite(hero);
+                        const reviewedPortrait = getReviewedDcP0Bust(hero, rejectedSourceArt);
                         const portraitSrc = rejectedSourceArt ? null : hero.portrait || null;
                         const spriteSrc = rejectedSourceArt ? null : portraitSrc || getHeroSpriteSheetSrc(hero, 'collection');
                         const spriteLayout = getSpriteSheetLayout(spriteSrc || '');
+                        const awaitingPortrait = rejectedSourceArt && !reviewedPortrait;
+                        const fallback = rejectedSourceArt && (fr ? 'ART À REFAIRE' : 'ART PENDING');
                         return (
                           <article className="universe-archive-actor" data-archive-entry={hero.id} key={hero.id} style={{ display: 'grid', gridTemplateColumns: '84px minmax(0, 1fr)', gap: '9px', padding: '8px', border: `1px solid ${hero.primaryColor}55`, background: `${hero.primaryColor}12`, borderRadius: '4px' }}>
                             <div
                               role="img"
-                              aria-label={rejectedSourceArt ? `${hero.name} - art pending review` : `${hero.name} sprite`}
-                              title={rejectedSourceArt ? (lang === 'fr' ? 'Illustration non conforme, remplacement requis' : 'Source art rejected, replacement required') : (lang === 'fr' ? `Plaquette de ${hero.name}` : `${hero.name} sprite sheet`)}
+                              aria-label={awaitingPortrait ? `${hero.name} - ${fr ? 'illustration à remplacer' : 'art pending review'}` : hero.name}
+                              title={awaitingPortrait ? (fr ? 'Illustration non conforme, remplacement requis' : 'Source art rejected, replacement required') : (fr ? `Plaquette de ${hero.name}` : `${hero.name} portrait`)}
                               style={{
                                 width: '84px',
                                 height: '96px',
+                                position: reviewedPortrait ? 'relative' : undefined,
                                 alignSelf: 'start',
                                 border: `1px solid ${hero.primaryColor}66`,
                                 backgroundColor: '#050509',
@@ -134,7 +140,7 @@ export default function UniverseArchiveReader({ archive: selectedUniverseArchive
                                 fontSize: '.75rem'
                               }}
                             >
-                              {rejectedSourceArt && (lang === 'fr' ? 'ART À REFAIRE' : 'ART PENDING')}
+                              {reviewedPortrait ? <ReviewedActorPortrait key={reviewedPortrait.sheet} portrait={reviewedPortrait} fallback={fallback} /> : fallback}
                             </div>
                             <div style={{ minWidth: 0 }}>
                               <div style={{ display: 'flex', justifyContent: 'space-between', gap: '8px' }}>

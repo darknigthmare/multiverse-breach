@@ -19,6 +19,13 @@ const bosses = [
     bytes: '83dc428eb64f01746eaacf2730b8463860c35007a6aacd30b51d5a5b152832fe',
     crops: [[494, 46, 79, 109], [261, 406, 92, 121], [757, 546, 100, 130]],
   },
+  {
+    actor: getBossesForUniverse('Yomi no Kage').find(enemy => enemy.id === 'yomi_no_kage:amas_des_huit_orochi'),
+    path: '/sprites/generated/bosses/yomi-no-kage/amas-des-huit-orochi.png',
+    bytes: 'e3ab279196e0d168d9256c8bffab2b5280c85ba1dfb2d43d6fdfe850d7dcd5cf',
+    crops: [[403, 26, 185, 145], [268, 190, 90, 55], [739, 160, 102, 68]],
+    crestRoots: [171, 245, 228],
+  },
 ];
 const worldRect = [0, 0, 126, 126];
 
@@ -29,7 +36,7 @@ function recordingContext() {
   return { trace, ctx: Object.fromEntries(operations.map(name => [name, (...args) => trace.push([name, ...args])])) };
 }
 
-for (const { actor, path, bytes, crops } of bosses) {
+for (const { actor, path, bytes, crops, crestRoots } of bosses) {
   const image = { src: 'http://localhost' + path, naturalWidth: 1024, naturalHeight: 1024 };
   test(actor.name + ' animates only the exact actor and still serves the original 1×1 bitmap', () => {
     const original = readFileSync(new URL('../public' + path, import.meta.url));
@@ -80,6 +87,15 @@ for (const { actor, path, bytes, crops } of bosses) {
         assert.deepEqual([xx, xy, yy, dy], [1, 0, 1, 0]);
         assert.equal(yx * 247 + dx, 0, 'the seam at the stream root is fixed');
         assert.ok(Math.abs(yx) <= 0.43);
+      } else if (crestRoots) {
+        assert.equal(movement.length, crestRoots.length);
+        for (const [index, [op, xx, xy, yx, yy, dx, dy]] of movement.entries()) {
+          const root = crestRoots[index];
+          assert.equal(op, 'transform');
+          assert.deepEqual([xx, xy], [1, 0]);
+          assert.ok(Math.abs(yx * root + dx) < 1e-9 && Math.abs(yy * root + dy - root) < 1e-9);
+          assert.ok(Math.abs(yx) <= 0.24 && yy >= 0.87 && yy <= 1.13);
+        }
       } else {
         assert.equal(movement.length, 3);
         assert.ok(movement.every(([, angle]) => Math.abs(angle) <= 0.24));

@@ -1,10 +1,13 @@
 import assert from 'node:assert/strict';
+import { register } from 'node:module';
 import test from 'node:test';
 import { getHeroById } from '../src/game/heroes.js';
-import { EngineFighter } from '../src/game/engineFighter.js';
-import { EngineSmash } from '../src/game/engineSmash.js';
 import { samplePresentationScript } from '../src/game/combat/presentationCatalog.js';
 import { REVIEWED_KOTOR_I_REVAN_CORRECTION as reviewed } from '../src/game/canonicalSpriteQuarantine.js';
+
+register('./sourceSceneTestLoader.mjs', import.meta.url);
+const { EngineFighter } = await import('../src/game/engineFighter.js');
+const { EngineSmash } = await import('../src/game/engineSmash.js');
 
 const noop = () => {};
 const particles = { add: noop };

@@ -79,12 +79,46 @@ for (const id of ['luke', 'vader']) test(`RPG ${id} telekinesis damages the chos
 
 test('RPG Vader Force choke damages one identity and produces no laser or group flash', () => {
   const engine = makeEngine('rpg', 'vader');
+  const vader = engine.heroes[0];
+  const target = engine.enemies[2];
   const hp = engine.enemies.map(unit => unit.currentHp);
-  assert.equal(engine.triggerAbility(engine.heroes[0], 'special', [engine.enemies[2].battleId]), true);
+  const restraints = () => engine.calls.filter(call => call[4] === '#aeb4b9' && call[7] === 'spark');
+  assert.equal(engine.triggerAbility(vader, 'special', [target.battleId]), true);
+  assert.equal(vader.rpgSpecialVisual, null, 'the ranged choke does not inherit the W13 melee saber visual');
+  assert.equal(restraints().length, 0);
   assert.ok(!particleKinds(engine).some(kind => ['laser_line', 'glitch', 'music'].includes(kind)));
   assert.ok(!engine.sounds.includes('shoot'));
-  advance(engine);
+  advance(engine, 17);
+  assert.equal(restraints().length, 0);
+  assert.deepEqual(engine.enemies.map(unit => unit.currentHp), hp);
+  advance(engine, 1);
   engine.enemies.forEach((unit, index) => assert.equal(unit.currentHp < hp[index], index === 2));
+  assert.deepEqual(restraints().map(call => call.slice(0, 2)), [[target.x, target.y - 30]]);
+});
+
+test('RPG Vader debris scatters on accepted impact and never on a replacement target', () => {
+  for (const replaced of [false, true]) {
+    const engine = makeEngine('rpg', 'vader');
+    const vader = engine.heroes[0];
+    const target = engine.enemies[2];
+    const debris = () => engine.calls.filter(call => call[4] === '#aeb4b9' && call[7] === 'thrown_prop');
+    assert.equal(engine.triggerAbility(vader, 'secondary', [target.battleId]), true);
+    assert.equal(vader.cooldown, vader.secondary.cd * 60);
+    assert.equal(debris().length, 0);
+    assert.ok(!engine.calls.some(call => call[4] === '#aeb4b9'), 'the impact feedback is not emitted during windup');
+    const replacement = { ...target };
+    if (replaced) engine.enemies[2] = replacement;
+    advance(engine);
+    if (replaced) {
+      assert.equal(replacement.currentHp, target.maxHp);
+      assert.equal(debris().length, 0);
+    } else {
+      assert.ok(target.currentHp < target.maxHp);
+      assert.equal(debris().length, 2);
+      assert.ok(debris().every(call => Math.abs(call[0] - target.x) <= 10));
+    }
+    assert.ok(!particleKinds(engine).some(kind => ['laser_line', 'glitch', 'music'].includes(kind)));
+  }
 });
 
 for (const id of ['bob_minions', 'kevin_minions']) test(`RPG ${id} launches a banana and keeps contact attacks free of guns`, () => {
@@ -193,5 +227,7 @@ test('canonical presentation follows the original identity for custom P2 heroes 
   const vader = getHeroById('vader');
   assert.equal(resolveCanonHeroAttackEffect({ ...vader, id: 'p2:vader', sourceId: 'vader' }, 'special').kind, 'forceChoke');
   assert.equal(resolveCanonHeroAttackEffect({ ...vader, id: 'p2:vader' }, 'special').kind, 'forceChoke');
+  assert.equal(resolveCanonHeroAttackEffect({ ...vader, id: 'temporary:2', sourceHeroId: 'vader' }, 'special').rpgImpact, true);
+  assert.equal(resolveCanonHeroAttackEffect({ ...vader, incarnation: 'Death Star II (1983)' }, 'special').rpgImpact, undefined);
   assert.equal(resolveCanonHeroAttackEffect({ id: 'unrelated', secondary: { type: 'gravity' } }, 'secondary'), null);
 });

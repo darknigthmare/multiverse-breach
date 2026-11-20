@@ -16,6 +16,7 @@ const { getSummonAnimationAssets, resolveSummonAnimationAsset } = await import('
 const hash = bytes => createHash('sha256').update(bytes).digest('hex');
 const sourceBytes = path => readFileSync(new URL(`..${path}`, import.meta.url));
 const starfire = getHeroById('starfire_tt');
+const raven = getHeroById('raven_tt');
 const packNames = { 'Joker New 52': 'JokerNew52', 'Teen Titans': 'TeenTitans', 'The Batman Who Laughs': 'TheBatmanWhoLaughs' };
 
 const canvas = calls => new Proxy({ measureText: () => ({ width: 40 }) }, {
@@ -60,14 +61,34 @@ test('Starfire reuses only the inspected recovery crop for the Canvas bust and r
   assert.deepEqual(getHeroSpriteSheetSources(starfire, 'tactics'), [], 'the special-use portrait cannot become a base sheet');
 });
 
+test('Raven reuses only the portrait crop from its shipped 2003 characterSolo CG', () => {
+  const bust = getReviewedDcP0Bust(raven, getQuarantinedCanonSprite(raven));
+  const evidence = JSON.parse(sourceBytes('/docs/cg/raven-wave3-2026-10-20.json'));
+  const thumbnail = evidence.entries.find(entry => entry.type === 'characterSolo').assets.thumbnail;
+  const inventory = JSON.parse(sourceBytes('/DLC/TeenTitans/assets.json'));
+  assert.ok(inventory.assets.some(asset => asset.publicPath === thumbnail.path));
+  assert.equal(bust.sheet, thumbnail.path);
+  assert.equal(bust.sha256, thumbnail.sha256);
+  assert.equal(bust.width, thumbnail.width);
+  assert.equal(bust.height, thumbnail.height);
+  assert.deepEqual(bust.crop, { x: 113, y: 30, width: 91, height: 120 });
+  const other = { ...raven, incarnation: 'Teen Titans Go!' };
+  assert.equal(getReviewedDcP0Bust(other, getQuarantinedCanonSprite(other)), null);
+  assert.deepEqual(getHeroSpriteSheetSources(raven, 'tactics'), [], 'the CG crop cannot become a base sheet');
+});
+
 test('runtime Canvas draws the reviewed crop, keeping the body and other quarantined portraits on neutral routes', () => {
   const oldImage = globalThis.Image;
   const requests = [];
   globalThis.Image = class {
     complete = true;
-    naturalWidth = 2048;
-    naturalHeight = 1024;
-    set src(value) { requests.push(value); this.onload(); }
+    set src(value) {
+      const [width, height] = value.startsWith('/cg/') ? [384, 512] : [2048, 1024];
+      this.naturalWidth = width;
+      this.naturalHeight = height;
+      requests.push(value);
+      this.onload();
+    }
   };
   try {
     const calls = [];
@@ -75,15 +96,18 @@ test('runtime Canvas draws the reviewed crop, keeping the body and other quarant
     for (const record of HISTORICAL_DC_P0_SPRITE_QUARANTINES) for (const state of ['idle', 'run', 'attack', 'hit']) {
       drawPixelSprite(ctx, 100, 160, { ...getHeroById(record.actorId), state }, 0, 1, 72, 'rpg');
     }
-    drawCombatantBust(ctx, 0, 0, 64, 64, getHeroById('raven_tt'));
+    drawCombatantBust(ctx, 0, 0, 64, 64, getHeroById('harley_n52'));
     assert.deepEqual(requests, []);
     assert.equal(calls.filter(([name, label]) => name === 'fillText' && label === 'ART PENDING').length, 25);
     assert.equal(calls.filter(([name]) => name === 'drawImage').length, 0);
     drawCombatantBust(ctx, 0, 0, 64, 64, starfire);
+    drawCombatantBust(ctx, 0, 0, 64, 64, raven);
     const crops = calls.filter(([name]) => name === 'drawImage');
-    assert.equal(crops.length, 1);
-    assert.deepEqual(crops[0].slice(2, 6), [1226, 782, 76, 80]);
-    assert.deepEqual(requests, ['/sprites/generated/summon-animations-wave16/starfire.png']);
+    assert.deepEqual(crops.map(crop => crop.slice(2, 6)), [[1226, 782, 76, 80], [113, 30, 91, 120]]);
+    assert.deepEqual(requests, [
+      '/sprites/generated/summon-animations-wave16/starfire.png',
+      '/cg/teen-titans/raven-tt/character-solo-wave3-2026-10-20-thumb.webp'
+    ]);
   } finally {
     if (oldImage === undefined) delete globalThis.Image;
     else globalThis.Image = oldImage;

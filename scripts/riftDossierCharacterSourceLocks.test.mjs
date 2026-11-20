@@ -1,12 +1,21 @@
 import assert from 'node:assert/strict';
+import { createHash } from 'node:crypto';
 import { readFileSync } from 'node:fs';
 import test from 'node:test';
 import path from 'node:path';
 import { HEROES_DB } from '../src/game/heroes.js';
-import { getQuarantinedCanonSprite, QUARANTINED_CANON_SPRITES } from '../src/game/canonicalSpriteQuarantine.js';
+import { QUARANTINED_CANON_SPRITES } from '../src/game/canonicalSpriteQuarantine.js';
+import { getQuarantinedCanonSprite, HISTORICAL_P0_SPRITE_QUARANTINES } from '../src/game/runtimeSpriteQuarantine.js';
 
 const catalog = JSON.parse(readFileSync(new URL('../docs/rift-dossiers/catalog.json', import.meta.url), 'utf8'));
-const remediation = JSON.parse(readFileSync(new URL('../docs/rift-dossiers/canon-remediation-2026-10-01.json', import.meta.url), 'utf8'));
+const remediationBytes = readFileSync(new URL('../docs/rift-dossiers/canon-remediation-2026-10-01.json', import.meta.url));
+const remediation = JSON.parse(remediationBytes);
+const sourceFollowup = JSON.parse(readFileSync(new URL('../docs/rift-dossiers/character-source-followup-2026-11-20.json', import.meta.url)));
+const sha256 = value => createHash('sha256').update(value).digest('hex');
+const quarantines = new Map([
+  ...Object.entries(QUARANTINED_CANON_SPRITES),
+  ...HISTORICAL_P0_SPRITE_QUARANTINES.map(record => [record.actorId, record])
+]);
 const sourceIds = new Map([
   ['freeman', 9202], ['ripley', 9204], ['predator', 9205], ['ripley_aliens', 9648],
   ['luke', 9325], ['vader', 9530], ['han_solo', 9531],
@@ -29,7 +38,7 @@ const selection = (hero, current, manifest, fileExists = true) => selectLocalCan
 const candidates = (...args) => selection(...args).localReferenceCandidatePaths;
 
 test('Rift selection carries the explicit reviewed quarantine policy without approving its artwork', () => {
-  for (const [id, record] of Object.entries(QUARANTINED_CANON_SPRITES)) {
+  for (const [id, record] of quarantines) {
     const hero = HEROES_DB.find(actor => actor.id === id && actor.universe === record.universe);
     assert.deepEqual(selection(hero, null, record.asset).sourceSpriteQuarantine,
       { heroId: id, ...record, artApproved: false });
@@ -39,7 +48,7 @@ test('Rift selection carries the explicit reviewed quarantine policy without app
 });
 
 test('quarantined source editions cannot return through the Rift manifest fallback', () => {
-  for (const [id, record] of Object.entries(QUARANTINED_CANON_SPRITES)) {
+  for (const [id, record] of quarantines) {
     const hero = HEROES_DB.find(actor => actor.id === id && actor.universe === record.universe);
     assert.ok(hero && getQuarantinedCanonSprite(hero), id);
     assert.deepEqual(candidates(hero, null, record.asset), [], `${id}: empty public getter`);
@@ -48,7 +57,7 @@ test('quarantined source editions cannot return through the Rift manifest fallba
 });
 
 test('Rift quarantine matching preserves other incarnations and other universes', () => {
-  for (const [id, record] of Object.entries(QUARANTINED_CANON_SPRITES)) {
+  for (const [id, record] of quarantines) {
     const hero = HEROES_DB.find(actor => actor.id === id && actor.universe === record.universe);
     assert.deepEqual(candidates({ ...hero, incarnation: `${record.incarnation} - other edition` }, null, record.asset), [record.asset]);
     assert.deepEqual(candidates({ ...hero, universe: 'Custom fixture' }, null, record.asset), [record.asset]);
@@ -98,10 +107,28 @@ test('pending visual review does not turn a technically present sprite into an a
     const hero = HEROES_DB.find(hero => hero.id === heroId);
     const entry = catalog.entrees.find(entry => entry.id === stageId);
     assert.equal(hero.visualReviewStatus, 'pending', heroId);
-    assert.ok(entry.candidatsReferencesLocalesAudit.length > 0, heroId);
+    const rejected = getQuarantinedCanonSprite(hero);
+    if (rejected) {
+      assert.deepEqual(entry.sourceSpriteQuarantine, { heroId, ...rejected, artApproved: false }, heroId);
+      assert.deepEqual(entry.candidatsReferencesLocalesAudit, [], heroId);
+    } else {
+      assert.ok(entry.candidatsReferencesLocalesAudit.length > 0, heroId);
+    }
     assert.deepEqual(entry.referencesLocalesOpenAI, [], heroId);
     assert.ok(entry.promptOpenAI.includes('No local character bitmap is supplied.'), heroId);
     assert.doesNotMatch(entry.promptOpenAI, /Approved local character reference supplied:/, heroId);
+  }
+});
+
+test('the current dossier catalog records each rejected sheet without supplying it to generation', () => {
+  const rejectedEntries = catalog.entrees.filter(entry => entry.sourceSpriteQuarantine);
+  assert.deepEqual(rejectedEntries.map(entry => entry.sourceSpriteQuarantine.heroId).sort(), [...quarantines.keys()].sort());
+  for (const entry of rejectedEntries) {
+    const { heroId } = entry.sourceSpriteQuarantine;
+    assert.deepEqual(entry.sourceSpriteQuarantine, { heroId, ...quarantines.get(heroId), artApproved: false }, heroId);
+    assert.deepEqual(entry.candidatsReferencesLocalesAudit, [], heroId);
+    assert.deepEqual(entry.referencesLocalesOpenAI, [], heroId);
+    assert.ok(entry.promptOpenAI.includes('No local character bitmap is supplied.'), heroId);
   }
 });
 
@@ -118,13 +145,25 @@ test('characters without a source lock keep semantic descriptors without invente
 });
 
 test('source-lock remediations retain current source metadata alongside historical image evidence', () => {
+  assert.equal(sourceFollowup.historicalReport, 'canon-remediation-2026-10-01.json');
+  assert.equal(sourceFollowup.historicalReportSha256, sha256(remediationBytes));
+  assert.equal(sourceFollowup.stageId, 9202);
+  assert.equal(sourceFollowup.heroId, 'freeman');
   for (const [heroId, stageId] of sourceIds) {
     const hero = HEROES_DB.find(hero => hero.id === heroId);
     const affected = remediation.affectedStages.find(entry => entry.stageId === stageId);
     assert.ok(affected, heroId);
     assert.equal(affected.currentIncarnation, hero.incarnation, heroId);
     assert.deepEqual(affected.currentEquipment, hero.equipment, heroId);
-    assert.equal(affected.currentVisualAnchor, hero.visualAnchor, heroId);
-    assert.deepEqual(affected.currentReferenceUrls, catalog.entrees.find(entry => entry.id === stageId).referenceUrls, heroId);
+    const current = catalog.entrees.find(entry => entry.id === stageId);
+    const followup = stageId === sourceFollowup.stageId ? sourceFollowup : null;
+    if (followup) {
+      assert.equal(followup.previousPromptSha256, affected.currentPromptSha256);
+      assert.equal(followup.currentPromptSha256, sha256(current.promptOpenAI));
+      assert.equal(followup.currentRegistryStatus, affected.currentRegistryStatus);
+      assert.equal(followup.currentVisualReviewStatus, hero.visualReviewStatus);
+    }
+    assert.equal((followup ?? affected).currentVisualAnchor, hero.visualAnchor, heroId);
+    assert.deepEqual(affected.currentReferenceUrls, current.referenceUrls, heroId);
   }
 });

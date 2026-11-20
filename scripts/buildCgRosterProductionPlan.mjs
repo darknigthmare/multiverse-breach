@@ -1,4 +1,5 @@
 import assert from 'node:assert/strict';
+import { readCgRiftDossiers } from './cgHistoricalRiftEvidence.mjs';
 import { createHash } from 'node:crypto';
 import { existsSync, readFileSync, readdirSync, writeFileSync } from 'node:fs';
 import path from 'node:path';
@@ -327,10 +328,10 @@ export function makeBackground({ hero, type, universeRank, dossier, researched, 
   };
 }
 
-async function buildCgRosterProductionPlanCore({ deliveryMetadata = null, sourceArcs = null } = {}) {
+async function buildCgRosterProductionPlanCore({ deliveryMetadata = null, sourceArcs = null, historicalRiftEvidence = true } = {}) {
   const arcs = sourceArcs || await loadArcs();
   const arcByHero = new Map(arcs.map(arc => [arc.heroId, arc]));
-  const dossierById = new Map(readJson('docs/rift-dossiers/catalog.json').entrees.filter(entry => entry.famille === 'arc-personnage').map(entry => [entry.id, entry]));
+  const dossierById = new Map(readCgRiftDossiers(ROOT, historicalRiftEvidence).filter(entry => entry.famille === 'arc-personnage').map(entry => [entry.id, entry]));
   const p0Entries = readJson(P0_AUDIT).entries;
   const p0ByHero = new Map(p0Entries.map(entry => [entry.id, entry]));
   const authored = readJson(BACKGROUND_BRIEFS);
@@ -628,8 +629,8 @@ async function buildCgRosterProductionPlanCore({ deliveryMetadata = null, source
 
 
 /** Full production validation: real CG files, SHA-256 and Sharp remain required. */
-export async function buildCgRosterProductionPlan() {
-  return buildCgRosterProductionPlanCore();
+export async function buildCgRosterProductionPlan(options) {
+  return buildCgRosterProductionPlanCore(options);
 }
 
 /**
@@ -679,7 +680,7 @@ async function main() {
       summary: envelope.plan.summary, snapshotValidation }, null, 2));
     return;
   }
-  const plan = await buildCgRosterProductionPlan();
+  const plan = await buildCgRosterProductionPlan({ historicalRiftEvidence: mode === 'check' });
   const files = [[JSON_OUTPUT, serializeCgRosterProductionPlan(plan)], [REPORT_OUTPUT, buildCgRosterProductionReport(plan)]];
   if (mode === 'check') {
     const snapshotValidation = validateCgRosterProductionSnapshot({ root: ROOT, rebuilt: plan,

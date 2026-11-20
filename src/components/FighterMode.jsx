@@ -10,6 +10,7 @@ import { getHeroSpriteSheetSrc, getSpritePreviewPosition, getSpriteSheetLayout }
 import { resolveCharacterAnimationAsset } from '../game/combat/characterAnimationCatalog';
 import { preloadCharacterSuperAssets } from '../game/combat/characterSuperVisuals';
 import { getQuarantinedCanonSprite } from '../game/runtimeSpriteQuarantine.js';
+import { getReviewedDcP0Bust } from '../game/historicalDcP0SpriteQuarantine.js';
 import { getUnlockableById } from '../game/universeUnlockables';
 import { resolveActiveHudTheme } from '../game/cosmeticVisualAssets';
 import sound from '../game/soundEngine';
@@ -17,6 +18,7 @@ import GameHudThemeLayer from './GameHudThemeLayer';
 import CombatDrawer from './CombatDrawer.jsx';
 import CombatResultDialog from './CombatResultDialog.jsx';
 import GameDisplaySettings from './GameDisplaySettings.jsx';
+import ReviewedActorPortrait from './ReviewedActorPortrait.jsx';
 import './combat-immersion.css';
 
 const CONTROL_KEYS = new Set([
@@ -108,7 +110,9 @@ const scaleHeroForFight = (hero, level = 1) => {
 };
 
 function FighterPortrait({ hero, active = false, ko = false }) {
-  const artBlocked = Boolean(getQuarantinedCanonSprite(hero));
+  const quarantine = getQuarantinedCanonSprite(hero);
+  const artBlocked = Boolean(quarantine);
+  const reviewedPortrait = getReviewedDcP0Bust(hero, quarantine);
   const src = artBlocked ? '' : getHeroSpriteSheetSrc(hero, 'melee');
   const layout = getSpriteSheetLayout(src);
   const [loaded, setLoaded] = useState(false);
@@ -125,18 +129,20 @@ function FighterPortrait({ hero, active = false, ko = false }) {
     return () => { cancelled = true; };
   }, [src]);
   const initials = String(hero?.name || '?').split(/\s+/).map(part => part[0]).join('').slice(0, 2).toUpperCase();
+  const fallback = <b title={artBlocked ? 'Known noncanonical sprite quarantined for art review' : undefined}>{artBlocked ? 'ART' : initials}</b>;
   return (
     <span
       className={`fighter-portrait ${active ? 'active' : ''} ${ko ? 'ko' : ''}`}
       style={{
-        backgroundImage: loaded ? `url("${src}")` : 'none',
+        position: reviewedPortrait ? 'relative' : undefined,
+        backgroundImage: src && loaded ? `url("${src}")` : 'none',
         backgroundSize: `${layout.columns * 100}% ${layout.rows * 100}%`,
         backgroundPosition: getSpritePreviewPosition(layout),
         color: hero?.secondaryColor || '#39c5bb'
       }}
       aria-hidden="true"
     >
-      {!loaded && <b title={artBlocked ? 'Known noncanonical sprite quarantined for art review' : undefined}>{artBlocked ? 'ART' : initials}</b>}
+      {reviewedPortrait ? <ReviewedActorPortrait key={reviewedPortrait.sheet} portrait={reviewedPortrait} fallback={fallback} /> : !loaded && fallback}
     </span>
   );
 }
@@ -861,6 +867,12 @@ export default function FighterMode({
 
   const playerSnapshot = snapshot.player || emptySnapshot.player;
   const cpuSnapshot = snapshot.cpu || emptySnapshot.cpu;
+  const playerShot = playerSnapshot.fighters[playerSnapshot.activeIndex]?.reservedShot;
+  const opponentShot = cpuSnapshot.fighters[cpuSnapshot.activeIndex]?.reservedShot;
+  const flintlockLabel = lang === 'fr' ? 'Tir à silex' : 'Flintlock shot';
+  const shotStatus = shot => shot && <div className="fighter-side-heading" role="status">
+    <span>{lang === 'fr' ? 'Silex' : 'Flintlock'} {shot.remaining}/{shot.capacity}</span>
+  </div>;
   const phaseLabels = lang === 'fr'
     ? { intro: 'ENTRÉES', countdown: 'PRÉPARATION', running: 'DUEL ACTIF', roundResult: 'RÉSULTAT DE MANCHE', fatality: 'FINALE', victory: 'VICTOIRE', defeat: 'DÉFAITE', outro: 'SORTIES' }
     : { intro: 'ENTRANCES', countdown: 'READY', running: 'LIVE FIGHT', roundResult: 'ROUND RESULT', fatality: 'FINISHER', victory: 'VICTORY', defeat: 'DEFEAT', outro: 'EXITS' };
@@ -1192,6 +1204,7 @@ export default function FighterMode({
                 : !sessionPaused && playerSnapshot.fighters.some(fighter => fighter.canTag) ? (lang === 'fr' ? 'PRÊT' : 'READY')
                   : (lang === 'fr' ? 'INDISPONIBLE' : 'UNAVAILABLE')}</b>
             </div>
+            {shotStatus(playerShot)}
             <Lineup lang={lang} heroes={playerHeroes} side="player" snapshot={playerSnapshot} interactive={snapshot.phase === 'running'} locked={sessionPaused} onTag={index => triggerTag(index)} />
           </section>
           <section>
@@ -1199,6 +1212,7 @@ export default function FighterMode({
               <span>{lang === 'fr' ? 'CELLULE ADVERSE' : 'OPPONENT CELL'}</span>
               <b>{cpuSnapshot.fighters.filter(fighter => !fighter.ko).length}/{cpuSnapshot.fighters.length}</b>
             </div>
+            {shotStatus(opponentShot)}
             <Lineup
               lang={lang}
               heroes={opponentHeroes}
@@ -1232,8 +1246,8 @@ export default function FighterMode({
             {lang === 'fr' ? 'ACTIONS J1' : 'P1 ACTIONS'}
           </span>
           <button type="button" title={lang === 'fr' ? 'Attaque legere [F]' : 'Light attack [F]'} onClick={() => triggerAction('light')}>F</button>
-          <button type="button" title={lang === 'fr' ? 'Attaque lourde [G]' : 'Heavy attack [G]'} onClick={() => triggerAction('heavy')}>G</button>
-          <button type="button" title={lang === 'fr' ? 'Special [H]' : 'Special [H]'} onClick={() => triggerAction('special')}>H</button>
+          <button type="button" title={playerShot ? `${flintlockLabel} [G]` : lang === 'fr' ? 'Attaque lourde [G]' : 'Heavy attack [G]'} disabled={playerShot?.remaining === 0} onClick={() => triggerAction('heavy')}>G</button>
+          <button type="button" title={playerShot ? `${flintlockLabel} [H]` : 'Special [H]'} disabled={playerShot?.remaining === 0} onClick={() => triggerAction('special')}>H</button>
           <button type="button" title={`${playerSnapshot.superName || 'Rupture'} [R]`} disabled={sessionPaused || !playerSnapshot.superReady} onClick={() => triggerAction('super')}>R</button>
           <button type="button" title={lang === 'fr' ? 'Super de terrain [T]' : 'Field super [T]'} disabled={!fieldSuperReady} onClick={() => triggerFieldSuper('player')}>T</button>
           {playerAssist && <button type="button" title={lang === 'fr' ? 'Assist PNJ [Y]' : 'NPC assist [Y]'} disabled={!playerAssistReady} onClick={() => triggerAssist('player')}>Y</button>}
@@ -1256,8 +1270,8 @@ export default function FighterMode({
                 {lang === 'fr' ? 'ACTIONS J2' : 'P2 ACTIONS'}
               </span>
               <button type="button" title={lang === 'fr' ? 'Attaque legere J2 [P]' : 'P2 light attack [P]'} onClick={() => triggerAction('light', 'cpu')}>P</button>
-              <button type="button" title={lang === 'fr' ? 'Attaque lourde J2 [M]' : 'P2 heavy attack [M]'} onClick={() => triggerAction('heavy', 'cpu')}>M</button>
-              <button type="button" title={lang === 'fr' ? 'Special J2 [L]' : 'P2 special [L]'} onClick={() => triggerAction('special', 'cpu')}>L</button>
+              <button type="button" title={opponentShot ? `${flintlockLabel} [M]` : lang === 'fr' ? 'Attaque lourde J2 [M]' : 'P2 heavy attack [M]'} disabled={opponentShot?.remaining === 0} onClick={() => triggerAction('heavy', 'cpu')}>M</button>
+              <button type="button" title={opponentShot ? `${flintlockLabel} [L]` : lang === 'fr' ? 'Special J2 [L]' : 'P2 special [L]'} disabled={opponentShot?.remaining === 0} onClick={() => triggerAction('special', 'cpu')}>L</button>
               <button type="button" title={`${cpuSnapshot.superName || (lang === 'fr' ? 'Rupture J2' : 'P2 rupture')} [O]`} disabled={sessionPaused || !cpuSnapshot.superReady} onClick={() => triggerAction('super', 'cpu')}>O</button>
               <button type="button" title={lang === 'fr' ? 'Super de terrain J2 [I]' : 'P2 field super [I]'} disabled={!opponentFieldSuperReady} onClick={() => triggerFieldSuper('cpu')}>I</button>
               {opponentAssist && <button type="button" title={lang === 'fr' ? 'Assist PNJ J2 [K]' : 'P2 NPC assist [K]'} disabled={!opponentAssistReady} onClick={() => triggerAssist('cpu')}>K</button>}

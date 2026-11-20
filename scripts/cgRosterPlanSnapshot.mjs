@@ -1,4 +1,5 @@
 import assert from 'node:assert/strict';
+import { readCgRiftDossiers } from './cgHistoricalRiftEvidence.mjs';
 import { projectCgReviewedRuntimeAmendment } from './cgReviewedRuntimeAmendment.mjs';
 import { projectCgSource64Amendment } from './cgSource64Amendment.mjs';
 import { projectCgReviewedAvailabilityAmendment } from './cgReviewedAvailabilityAmendment.mjs';
@@ -55,7 +56,7 @@ function projectCgCandidateEntries({ root, rebuilt, published, entries }) {
   const projected = structuredClone(rebuilt);
   const indices = new Map(published.subjects.map((subject, index) => [subject.characterId, index]));
   assert.equal(indices.size, published.subjects.length, 'Duplicate historical CG subject');
-  const dossiers = new Map(readJson(path.join(root, 'docs/rift-dossiers/catalog.json')).entrees
+  const dossiers = new Map(readCgRiftDossiers(root)
     .filter(entry => entry.famille === 'arc-personnage').map(entry => [entry.id, entry]));
   const nativeRegistries = new Map(), subjectIds = [];
   for (const entry of entries) {
@@ -152,7 +153,7 @@ function validateCurrentDescriptorAmendment({ root, rebuilt, published, projecte
   const historicalSubjects = new Map(published.subjects.map(subject => [subject.characterId, subject]));
   const projectedSubjects = new Map(projected.subjects.map(subject => [subject.characterId, subject]));
   const byHero = new Map(heroes.map(hero => [hero.id, hero]));
-  const dossiers = new Map(readJson(path.join(root, 'docs/rift-dossiers/catalog.json')).entrees
+  const dossiers = new Map(readCgRiftDossiers(root)
     .filter(entry => entry.famille === 'arc-personnage').map(entry => [entry.id, entry]));
   const riftPins = new Map();
   for (const pin of amendment.currentRiftSourcePins) {
@@ -308,7 +309,7 @@ export function validateCgRosterProductionSnapshot({ root, rebuilt, heroes: HERO
     'Unqualified fallback contract changed; review its readable values and source inputs explicitly');
   const fallbacks = JSON.parse(fallbackBytes);
   assert.equal(fallbacks.notIdentityAuthority, true);
-  const dossiers = JSON.parse(readFileSync(path.join(ROOT, 'docs/rift-dossiers/catalog.json'), 'utf8')).entrees;
+  const dossiers = readCgRiftDossiers(ROOT);
   const p0 = JSON.parse(readFileSync(path.join(ROOT, 'docs/audits/fidelity-p0-wave4-2026-10-01.json'), 'utf8')).entries;
   const pick = (object, fields) => Object.fromEntries(fields.filter(key => Object.hasOwn(object, key))
     .map(key => [key, object[key]]));

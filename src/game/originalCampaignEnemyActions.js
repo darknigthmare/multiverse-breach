@@ -18,7 +18,7 @@ const line = (name, lineWidth, delivery = 'projectile') => secondary(name, deliv
 const cone = (name, coneAngle) => secondary(name, 'spray', {
   delivery: 'projectile', shape: 'cone', coneAngle
 }, 1);
-const disruption = name => secondary(name, 'glitch', { delivery: 'ranged', shape: 'single' }, 1.05, 'glitched');
+const disruption = (name, dmg = 1.05) => secondary(name, 'glitch', { delivery: 'ranged', shape: 'single' }, dmg, 'glitched');
 const guard = (name, targetSide, shape, reduce, range, excludeSelf = false) => secondary(name, 'shield', {
   effect: 'guard', targetSide, shape, reduce, ...(range ? { range } : {}), duration: 2.5, excludeSelf
 }, 0);
@@ -28,6 +28,9 @@ const allyGuard = (name, reduce, range) => guard(name, 'ally', 'single', reduce,
 const repair = (name, healRatio, range, shape = 'single') => secondary(name, 'heal', {
   effect: 'heal', targetSide: 'ally', shape, healRatio, range, excludeSelf: true
 }, 0);
+const selfHeal = (name, healRatio) => secondary(name, 'heal', {
+  effect: 'heal', targetSide: 'self', shape: 'single', healRatio
+}, 0);
 const alliesBuff = (name, buffMultiplier, range) => secondary(name, 'buff', {
   effect: 'buff', targetSide: 'ally', shape: 'group', buffMultiplier, range, duration: 3, excludeSelf: true
 }, 0);
@@ -35,6 +38,7 @@ const selfBuff = (name, buffMultiplier) => secondary(name, 'buff', {
   effect: 'buff', targetSide: 'self', shape: 'single', buffMultiplier, duration: 3
 }, 0);
 const record = (name, weapon, signature, action) => ({ name, weapon, signature, action });
+const loreRecord = (name, weapon, special, lore, action, scope) => ({ name, weapon, special, lore, action, ...scope });
 
 const byUniverse = new Map(Object.entries({
   'The Aether Crown': {
@@ -228,14 +232,169 @@ const byUniverse = new Map(Object.entries({
       'Traque les héros portant une dette ou une marque de péché.', contact('Morsure de braise')),
     'infernum_nine_pits:coquille_penitente': record('Coquille pénitente', 'magic',
       'Absorbe les voix des âmes et réduit la puissance des soins.', cone('Onde pénitentielle', 53))
+  },
+  'Neon Requiem': {
+    'neon_requiem:helix_warden': record('Helix Warden', 'shield_bash',
+      'Bouclier corporatif et fusil à impulsion.', selfGuard('Bouclier corporatif', 0.39)),
+    'neon_requiem:debt_repossession_drone': record('Debt Repossession Drone', 'staff',
+      'Désactive temporairement l’équipement d’un héros.', disruption('Saisie de l’équipement', 0)),
+    'neon_requiem:neuro_hound': record('Neuro-Hound', 'claws',
+      'Traque la cible dont la jauge spéciale est la plus élevée.', contact('Morsure de traque neurale')),
+    'neon_requiem:ad_skin_assassin': record('Ad-Skin Assassin', 'blade',
+      'Se camoufle derrière des panneaux publicitaires dynamiques.', contact('Entaille sous publicité')),
+    'neon_requiem:memory_husk': record('Memory Husk', 'magic',
+      'Copie la dernière compétence utilisée contre lui.', line('Écho de compétence', 48, 'beam'))
+  },
+  'Ilyr Concordat': {
+    'ilyr_concordat:corsaire_du_vide_velari': record('Corsaire du Vide velari', 'blade',
+      'Utilise des micro-sauts et vole les cellules de propulsion.', contact('Coup de lame en micro-saut')),
+    'ilyr_concordat:aberration_du_culte_genetique': record('Aberration du Culte génétique', 'heavy_melee',
+      'Adapte son corps au dernier type de dégâts subi.', selfGuard('Adaptation du Culte', 0.37)),
+    'ilyr_concordat:drone_nul_paleen': record('Drone Nul paléen', 'shield_bash',
+      'Supprime les projectiles et construit une géométrie défensive.', groupGuard('Géométrie nulle', 0.32, 205)),
+    'ilyr_concordat:parasite_de_voie_resonante': record('Parasite de voie résonante', 'claws',
+      'S’attache aux portails et attaque les unités qui les empruntent.', contact('Morsure de voie résonante')),
+    'ilyr_concordat:deserteur_du_concordat': record('Déserteur du Concordat', 'staff',
+      'Utilise les doctrines des cinq espèces contre leurs propres héros.', alliesBuff('Doctrine des cinq espèces', 1.19, 200))
+  },
+  'Valedor: The Shattered Crown': {
+    'valedor_shattered_crown:sapeur_gobelin_mercenaire': record('Sapeur gobelin mercenaire', 'blade',
+      'Pose des charges sur les obstacles mais peut changer de camp si son contrat est brisé.', zone('Charge de siège gobeline', 102)),
+    'valedor_shattered_crown:chevalier_creux': record('Chevalier creux', 'shield_bash',
+      'Armure animée par un serment sans porteur; vulnérable aux attaques qui restaurent un nom.', selfGuard('Garde du serment vide', 0.43)),
+    'valedor_shattered_crown:brute_troll_des_ponts': record('Brute troll des ponts', 'heavy_melee',
+      'Régénère tant que le pont ou territoire qu’il garde reste contesté.', selfHeal('Régénération du pont contesté', 0.16)),
+    'valedor_shattered_crown:matriarche_araignee_des_ruines': record('Matriarche araignée des ruines', 'magic',
+      'Relie les cases par des toiles et protège ses œufs plutôt qu’un maître maléfique.', zone('Toile des ruines', 107, 'glitched')),
+    'valedor_shattered_crown:archer_spectre_de_l_ancienne_cour': record('Archer spectre de l’ancienne cour', 'claws',
+      'Tire depuis les bannières de royaumes disparus.', line('Flèche des bannières disparues', 50))
+  },
+  'Aevum Fracture': {
+    'aevum_fracture:constable_de_chronologie': record('Constable de chronologie', 'shield_bash',
+      'Arrête les unités qui portent un objet provenant d’une autre ligne temporelle.', disruption('Arrêt chronologique', 0)),
+    'aevum_fracture:soldat_anachrone': record('Soldat anachrone', 'blade',
+      'Change d’arme et de doctrine selon la capitale actuellement dominante.', contact('Frappe d’arme anachrone')),
+    'aevum_fracture:doppelganger_de_propagande': record('Doppelgänger de propagande', 'magic',
+      'Copie un héros puis modifie son nom, son portrait et sa citation de victoire.', zone('Propagande du double', 98, 'glitched')),
+    'aevum_fracture:molosse_chronal': record('Molosse chronal', 'claws',
+      'Suit les traces de retour en arrière et punit les déplacements répétés.', contact('Crocs de la trace chronale')),
+    'aevum_fracture:citoyen_efface_automatise': record('Citoyen effacé automatisé', 'staff',
+      'Silhouette forcée au combat; peut être restaurée comme témoin plutôt que tuée.', selfGuard('Réflexe du témoin effacé', 0.35))
+  },
+  'Thalassa Mnémique': {
+    'rature_de_corail': loreRecord('Rature de Corail', 'coral_scrape', 'Mémoire abrasée',
+      {
+        en: 'A reef grown around a censored memory. It scrapes names from armor before adding their colors to its branches.',
+        fr: 'Un récif poussé autour d’un souvenir censuré. Il gratte les noms sur les armures avant d’ajouter leurs couleurs à ses branches.'
+      },
+      contactDisruption('Grattage du corail'), { contentPackId: 'oc-dlc-drowned-dawn' }),
+    'nageur_sans_nom': loreRecord('Nageur Sans-Nom', 'undertow_claws', 'Appel presque familier',
+      {
+        en: 'A drowned citizen whose identity was traded for passage. It follows any voice that sounds almost familiar.',
+        fr: 'Citoyen noyé dont l’identité fut échangée contre un passage. Il suit toute voix qui lui semble presque familière.'
+      },
+      contact('Griffes du ressac'), { contentPackId: 'oc-dlc-drowned-dawn' }),
+    'archiviste_de_sel': loreRecord('Archiviste de Sel', 'salt_tablets', 'Témoignage tranchant',
+      {
+        en: 'A walking shelf of crystallized testimonies. Breaking one tablet releases a truth sharp enough to wound both sides.',
+        fr: 'Rayonnage ambulant de témoignages cristallisés. Briser une tablette libère une vérité assez coupante pour blesser les deux camps.'
+      },
+      line('Tablette de sel brisée', 54), { contentPackId: 'oc-dlc-drowned-dawn' })
+  },
+  'Méridien Creux': {
+    'huissier_instant': loreRecord('Huissier d’Instant', 'foreclosure_pendulum', 'Saisie immédiate',
+      {
+        en: 'A faceless enforcement clerk that confiscates the pause between a warning and its punishment.',
+        fr: 'Agent d’exécution sans visage qui confisque la pause entre un avertissement et sa sanction.'
+      },
+      disruption('Confiscation du sursis', 0), { contentPackId: 'oc-dlc-borrowed-hours' }),
+    'mite_horlogere': loreRecord('Mite Horlogère', 'rust_bite', 'Vieillissement différé',
+      {
+        en: 'A brass parasite that eats maintenance time until bridges and bodies age all at once.',
+        fr: 'Parasite de laiton qui dévore le temps d’entretien jusqu’à ce que ponts et corps vieillissent d’un seul coup.'
+      },
+      contactDisruption('Morsure de rouille'), { contentPackId: 'oc-dlc-borrowed-hours' }),
+    'voleur_vieillesse': loreRecord('Voleur de Vieillesse', 'age_vials', 'Échange d’années',
+      {
+        en: 'A market phantom that sells youthful faces while the stolen years scream from jars under its coat.',
+        fr: 'Fantôme de marché qui vend des visages jeunes tandis que les années volées hurlent dans des bocaux sous son manteau.'
+      },
+      zone('Années libérées', 103, 'glitched'), { contentPackId: 'oc-dlc-borrowed-hours' })
+  },
+  'Viridienne Ultime': {
+    'pollen_du_vide': loreRecord('Pollen du Vide', 'void_spores', 'Germination négative',
+      {
+        en: 'A cloud of seeds from futures that never received light. It germinates inside abandoned plans.',
+        fr: 'Nuage de graines issues de futurs qui n’ont jamais reçu de lumière. Il germe dans les projets abandonnés.'
+      },
+      zone('Nuage de graines sans lumière', 120, 'glitched'), { contentPackId: 'oc-dlc-star-garden' }),
+    'cerf_cometaire': loreRecord('Cerf Cométaire', 'orbital_antlers', 'Charge de périhélie',
+      {
+        en: 'A migratory grazer that carries young orbits in its antlers and panics when they are pruned too early.',
+        fr: 'Herbivore migrateur qui porte de jeunes orbites dans ses bois et panique lorsqu’elles sont taillées trop tôt.'
+      },
+      contact('Encornement orbital'), { contentPackId: 'oc-dlc-star-garden' }),
+    'liane_orpheline': loreRecord('Liane Orpheline', 'root_coils', 'Étreinte d’adoption',
+      {
+        en: 'A severed world-root seeking any sun to call parent, crushing habitats with desperate affection.',
+        fr: 'Racine-monde sectionnée qui cherche n’importe quel soleil à appeler parent et broie les habitats dans son affection désespérée.'
+      },
+      cone('Étreinte des racines-mondes', 63), { contentPackId: 'oc-dlc-star-garden' })
+  },
+  'Nexus de Convergence': {
+    'name:Matrice de Substitution': loreRecord('Matrice de Substitution', 'identity_copy_beam', 'Copie de doctrine',
+      'Gyroscope de la Fonderie construit autour d un Eclat d Origine contamine. Il observe la derniere competence employee, imprime une version sans contexte puis la greffe au prochain double ideal.',
+      alliesBuff('Greffe de doctrine', 1.18, 220), { role: 'support', visualStyle: 'origin_forge_matrix' }),
+    'oc_act1_reflet_vie_possible': loreRecord('Reflet de Vie Possible', 'possible_life_mirror', 'Memoire empruntee',
+      'Le Sans-Auteur extrait un choix regrette et lui donne un corps provisoire. Le Reflet combat avec les gestes que sa cible aurait appris dans cette autre vie, mais ne peut expliquer aucun de ses souvenirs.',
+      contact('Geste de l’autre vie'), { role: 'mimic', actId: 'arrivals' }),
+    'oc_act1_courtier_regret': loreRecord('Courtier du Regret', 'regret_hook', 'Offre sans consequence',
+      'Messager faconne dans les marges du Nexus, il promet a chaque membre de la cellule une victoire dont le prix aurait deja ete paye par une autre version de lui-meme.',
+      disruption('Offre piégée du Regret', 0), { role: 'skirmisher', actId: 'arrivals' }),
+    'oc_act2_scribe_registre_noir': loreRecord('Scribe du Registre Noir', 'black_index_quill', 'Dette reclassee',
+      'Protocole A.R.C.A. corrompu qui transforme les pertes nominatives en simples couts techniques. Chaque ligne qu il rature renforce la pression causale du Sans-Auteur.',
+      zone('Ratures du Registre Noir', 106, 'glitched'), { role: 'debuffer', actId: 'anchors' }),
+    'oc_act2_porte_verrou_endeuille': loreRecord('Porte-Verrou Endeuille', 'mourning_lock_ram', 'Ancrage de deuil',
+      'Carcasse de maintenance soudee a un ancien Verrou d Origine. Elle repousse les temoins du sacrifice afin que le premier ancrage continue de fonctionner sans jamais nommer ceux qui l ont alimente.',
+      selfGuard('Garde du Verrou d’Origine', 0.44), { role: 'guardian', actId: 'anchors' }),
+    'oc_act3_indexeur_contradictions': loreRecord('Indexeur des Contradictions', 'contradiction_shear', 'Cohérence forcee',
+      'Automate d archive qui coupe tout souvenir incompatible avec la version dominante. Une Trame rendue parfaitement coherente devient plus facile a traverser, mais cesse d appartenir a ceux qui l ont vecue.',
+      line('Cisaille des contradictions', 52), { role: 'controller', actId: 'archives' }),
+    'oc_act3_guide_issue_parfaite': loreRecord('Guide de l Issue Parfaite', 'perfect_exit_lure', 'Itineraire sans perte',
+      'Silhouette hospitaliere qui indique toujours le chemin le plus court. Ses portails retirent les echecs, les deuils et les noms necessaires pour comprendre comment la destination fut atteinte.',
+      disruption('Leurre du chemin court', 0), { role: 'displacer', actId: 'archives' }),
+    'oc_act4_rature_seuil_blanc': loreRecord('Rature du Seuil Blanc', 'white_margin_claw', 'Marge devorante',
+      'Trait mobile detache de la marge du Sans-Auteur. Il ne blesse pas le corps: il efface le lien entre une action et la raison pour laquelle elle devait etre accomplie.',
+      disruption('Effacement de l’intention', 0), { role: 'assassin', actId: 'white-void' }),
+    'oc_act4_simulacre_sans_choix': loreRecord('Simulacre Sans Choix', 'consent_nullifier', 'Paix obligatoire',
+      'Gardien d une Cite ideale ou aucun conflit ne subsiste parce que les habitants ne peuvent plus se rappeler avoir prefere une voie a une autre.',
+      selfGuard('Garde de la Cité idéale', 0.4), { role: 'tank', actId: 'white-void' }),
+    'oc_act5_vigie_coordonnee_x': loreRecord('Vigie de la Coordonnee X', 'coordinate_x_beacon', 'Position interdite',
+      'Ancienne balise A.R.C.A. retournee contre les explorateurs. Elle brouille la coordonnee restauree de Route X pour empecher ses habitants de redevenir des temoins consultables.',
+      zone('Brouillage de Route X', 112, 'glitched'), { role: 'artillery', actId: 'primordial' }),
+    'oc_act5_contre_temoin_veyr': loreRecord('Contre-Temoin de Veyr', 'testimony_redactor', 'Deposition tronquee',
+      'Contrefacon produite par le Sans-Auteur pour remplacer le temoignage integral de Veyr. Elle transforme deux responsabilites distinctes en une accusation simple, donc facile a effacer.',
+      disruption('Censure du témoignage intégral', 0), { role: 'silencer', actId: 'primordial' })
   }
 }));
 
 export function getOriginalCampaignEnemySecondary(actor) {
   if (!actor || actor.isBoss || actor.isWorldBoss || (actor.sourceUniverse && actor.sourceUniverse !== actor.universe)) return null;
   const entries = byUniverse.get(actor.universe);
-  const source = entries && Object.hasOwn(entries, actor.id) ? entries[actor.id] : null;
-  if (!source || actor.name !== source.name || actor.weapon !== source.weapon
-    || actor.signature?.fr !== source.signature || actor.signature?.en !== source.signature) return null;
+  // The Foundry matrix has a stable catalog name, but no serialized actor ID.
+  const key = actor.id ?? `name:${actor.name}`;
+  if (typeof key !== 'string' || (actor.id != null && key.startsWith('name:'))) return null;
+  const source = entries && Object.hasOwn(entries, key) ? entries[key] : null;
+  if (!source || actor.name !== source.name || actor.weapon !== source.weapon) return null;
+  if (source.signature) {
+    return actor.signature?.fr === source.signature && actor.signature?.en === source.signature ? source.action : null;
+  }
+  if (actor.special !== source.special || actor.role !== source.role
+    || actor.actId !== source.actId || actor.visualStyle !== source.visualStyle) return null;
+  if (source.contentPackId) {
+    return actor.contentPackId === source.contentPackId && actor.contentOrigin === 'oc' && actor.originalContent === true
+      && actor.lore?.fr === source.lore.fr && actor.lore?.en === source.lore.en ? source.action : null;
+  }
+  if (actor.contentPackId !== undefined || actor.lore !== source.lore) return null;
   return source.action;
 }

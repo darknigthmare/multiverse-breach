@@ -7,6 +7,7 @@ import { createServer } from 'vite';
 import { HEROES_DB } from '../src/game/heroes.js';
 import { CANON_P0_SOURCE_KIT_IDS } from '../src/game/canonP0SourceKits.js';
 import { getHeroSpriteSheetSrc } from '../src/game/spriteAssets.js';
+import { getQuarantinedCanonSprite } from '../src/game/runtimeSpriteQuarantine.js';
 
 const readJson = relative => JSON.parse(readFileSync(new URL(relative, import.meta.url), 'utf8'));
 const sha256 = value => createHash('sha256').update(value).digest('hex');
@@ -61,13 +62,22 @@ test('the dedicated dossiers use source references, props and anchors from the s
   }
 });
 
-test('present hero sprites remain audit candidates and do not approve the nineteen missing dossier images', () => {
+test('reviewed candidate exclusions do not approve the nineteen missing dossier images', () => {
   for (const affected of remediation.affectedStages) {
     const hero = heroes.get(affected.heroId);
     const entry = catalog.entrees.find(entry => entry.id === affected.stageId);
     const sprite = getHeroSpriteSheetSrc(hero);
-    assert.equal(existsSync(new URL(`../public${sprite}`, import.meta.url)), true, hero.id);
-    assert.ok(entry.candidatsReferencesLocalesAudit.length > 0, hero.id);
+    const rejected = getQuarantinedCanonSprite(hero);
+    if (rejected) {
+      assert.equal(sprite, '', hero.id);
+      assert.equal(existsSync(new URL(`../public${rejected.asset}`, import.meta.url)), true, hero.id);
+      assert.equal(entry.sourceSpriteQuarantine.sha256, rejected.sha256, hero.id);
+      assert.deepEqual(entry.candidatsReferencesLocalesAudit, [], hero.id);
+    } else {
+      assert.ok(sprite, hero.id);
+      assert.equal(existsSync(new URL(`../public${sprite}`, import.meta.url)), true, hero.id);
+      assert.ok(entry.candidatsReferencesLocalesAudit.length > 0, hero.id);
+    }
     assert.deepEqual(entry.referencesLocalesOpenAI, [], hero.id);
     assert.ok(entry.promptOpenAI.includes('No local character bitmap is supplied.'), hero.id);
     assert.doesNotMatch(entry.promptOpenAI, /Approved local character reference supplied:/, hero.id);

@@ -89,6 +89,11 @@ export function inspectActorRaster(src, context, state, treeIndex, layout = {}, 
   return {...result,path:local,status:file?'PRESENT_IN_GIT':'MISSING_IN_GIT',present:Boolean(file),
     gitBlob:file?.sha||'',bytes:file?.size??null};
 }
+export function inspectQuarantinedActorRaster(quarantine, context, state, treeIndex) {
+  const archived = inspectActorRaster(quarantine.asset, context, state, treeIndex);
+  return { ...archived, status: 'QUARANTINED', present: null, archivedPresent: archived.present,
+    archivedSha256: quarantine.sha256, quarantineReason: quarantine.reason };
+}
 export function buildActorFidelityBacklog(actor, {kind='hero',originalUniverses=new Set(),rasterProbes=[],sourceCommit='',continuityIndex=new Map()}={}) {
   const actorKey=wardrobeActorKey(actor);
   if(!actorKey) throw new TypeError('Exact actor identity and universe required.');
@@ -113,6 +118,7 @@ export function buildActorFidelityBacklog(actor, {kind='hero',originalUniverses=
   const techniques=readActorTechniques(actor);
   const distinct=[...new Map(rasterProbes.map(p=>[p.path,p])).values()];
   const missing=distinct.filter(p=>p.status==='MISSING_IN_GIT');
+  const quarantined=distinct.filter(p=>p.status==='QUARANTINED');
   const staticGameplay=[...new Map(rasterProbes.filter(p=>p.present&&p.columns===1&&p.rows===1&&!['hud','collection'].includes(p.context)).map(p=>[p.path,p])).values()];
   const tasks=[];
   const add=(code,priority,reason,action,evidence='')=>tasks.push({id:`${actorKey}::${code}`,code,priority,status:'OPEN',reason,action,evidence,artApproved:false});
@@ -143,7 +149,10 @@ export function buildActorFidelityBacklog(actor, {kind='hero',originalUniverses=
     'Arbitrer cette consigne avec l’objectif 1:1 ; documenter le visage du personnage cible au lieu d’approuver une substitution.',anchor);
   if(missing.length)add('RASTER_MISSING','P1',`${missing.length} fichier(s) résolu(s) absent(s) de l’arbre Git contrôlé.`,
     'Produire ou raccorder ces fichiers puis rejouer le rendu. Un affichage de secours éventuel n’est pas une réparation 1:1.',missing.map(p=>p.path).join(' | '));
-  if(!rasterProbes.length||rasterProbes.some(p=>p.present===null))add('RASTER_SCOPE_UNRESOLVED','P1',
+  if(quarantined.length)add('RASTER_QUARANTINED','P1',
+    'Les planches identifiées ont été écartées du rendu après inspection.',
+    'Vérifier une planche de remplacement pour l’incarnation associée, puis rejouer le rendu.',quarantined.map(p=>`${p.path} (${p.quarantineReason})`).join(' | '));
+  if(!rasterProbes.length||rasterProbes.some(p=>p.present===null&&p.status!=='QUARANTINED'))add('RASTER_SCOPE_UNRESOLVED','P1',
     'Au moins un contexte ne dispose pas de preuve de fichier locale exploitable.','Résoudre le chemin et vérifier l’asset sans assimiler inconnue et absence.');
   if(staticGameplay.length)add('STATIC_GAMEPLAY_REVIEW','P1',
     `${staticGameplay.length} planche(s) de jeu déclarée(s) 1×1.`,
@@ -169,7 +178,8 @@ export function buildActorFidelityBacklog(actor, {kind='hero',originalUniverses=
     officialCount:official.length,officialNames:official.map(c=>c.name.fr),originalCount:originals.length,
     personalConcepts:originals.filter(c=>c.designMethod==='CHARACTER_SPECIFIC_BRIEF').map(c=>c.name.fr),
     officialResearchStatus:scope==='ORIGINAL_DESIGN'?'EXTERNAL_NOT_APPLICABLE':official.length?'PARTIAL_DOCUMENTED':'NOT_RESEARCHED',
-    rasterPaths:distinct.map(p=>p.path),missingRasterPaths:missing.map(p=>p.path),staticGameplayPaths:staticGameplay.map(p=>p.path),
+    rasterPaths:distinct.filter(p=>p.status!=='QUARANTINED').map(p=>p.path),missingRasterPaths:missing.map(p=>p.path),
+    quarantinedRasterPaths:quarantined.map(p=>p.path),staticGameplayPaths:staticGameplay.map(p=>p.path),
     techniques,rasterProbes,tasks,priority:tasks.some(t=>t.priority==='P1')?'P1':'P2',
     completeness:'OPEN_NOT_EXHAUSTIVE',artApproved:false};
 }

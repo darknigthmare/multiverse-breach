@@ -9,6 +9,7 @@ const read = path => readFileSync(new URL(`../${path}`, import.meta.url), 'utf8'
 const hash = value => createHash('sha256').update(value).digest('hex');
 const hubSource = read('src/components/HubScreen.jsx');
 const catalog = JSON.parse(read('docs/rift-dossiers/catalog.json'));
+const characterSourceFollowup = JSON.parse(read('docs/rift-dossiers/character-source-followup-2026-11-20.json'));
 const registry = JSON.parse(read('src/game/riftDossierAssets.json'));
 const remediation = JSON.parse(read('docs/rift-dossiers/canon-remediation-2026-10-01.json'));
 const ledger = read('public/images/rift-dossiers/openai/openai-prompts.jsonl').trim().split('\n').map(line => JSON.parse(line));
@@ -89,7 +90,8 @@ test('changed dossiers retain historical generation proof and cannot certify sta
     assert.match(affected.previousPromptSha256, /^[a-f0-9]{64}$/);
     assert.equal(Object.hasOwn(affected, 'historicalPrompt'), false);
     assert.equal(Object.hasOwn(affected, 'historicalGenerationId'), false);
-    const currentPromptSha256 = effectivePromptHash(affected);
+    const currentPromptSha256 = affected.stageId === characterSourceFollowup.stageId
+      ? characterSourceFollowup.currentPromptSha256 : effectivePromptHash(affected);
     assert.equal(hash(current.promptOpenAI), currentPromptSha256);
     assert.notEqual(affected.previousPromptSha256, currentPromptSha256);
     assert.equal(asset.assetPath, current.cheminCibleDedie);

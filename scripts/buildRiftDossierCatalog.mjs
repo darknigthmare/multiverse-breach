@@ -11,7 +11,7 @@ import { createServer } from 'vite';
 import { applyWave6ProductionPromptOverrides } from './riftDossierWave6PromptOverrides.mjs';
 import { resolveCatalogOutputPath, writeCatalogAtomically } from './riftDossierCatalogOutput.mjs';
 import { readStaticStages } from './riftDossierStaticStages.mjs';
-import { getQuarantinedCanonSprite } from '../src/game/canonicalSpriteQuarantine.js';
+import { getQuarantinedCanonSprite } from '../src/game/runtimeSpriteQuarantine.js';
 
 const scriptDirectory = path.dirname(fileURLToPath(import.meta.url));
 const projectRoot = path.resolve(scriptDirectory, '..');
@@ -1103,8 +1103,11 @@ const buildCatalog = async () => {
             reportedEntry,
             `Character arc ${arc.stageId} is missing from the character-reference report`
           );
+          const archivedPath = quarantinedSourceSprite && normalizePublicAssetPath(quarantinedSourceSprite.asset);
+          const reportedCandidates = uniqueStrings((reportedEntry.localReferences || []).map(normalizePublicAssetPath))
+            .filter(candidate => candidate !== archivedPath);
           assert.deepEqual(
-            uniqueStrings((reportedEntry.localReferences || []).map(normalizePublicAssetPath)),
+            reportedCandidates,
             localReferenceCandidatePaths,
             `Character arc ${arc.stageId} local-reference candidates drifted; refresh the quality audit`
           );

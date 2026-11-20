@@ -66,6 +66,40 @@ const currentCompletedEditions = new Map(masterRaw.actors.filter(actor => Object
 assert.equal(currentCompletedEditions.size, 23);
 assert.deepEqual(sorted(masterRaw.actors.filter(actor => completedIdentities.some(row => row.id === actor.id)).map(actor => actor.id)), sorted(currentCompletedEditions.keys()));
 const assertCurrentCompletionActor = actor => assert.deepEqual(actor, currentCompletedEditions.get(actor.id), actor.id + ': exact current master actor');
+// These published source contracts also replace their original generic value
+// on the roster. Old completion records and the 1,089-identity baseline remain pinned.
+const authoredRosterSpecials = Object.freeze({
+  baird: 'Maintenance du matériel COG',
+  anya_stroud: 'Rafale du Lancer d’Anya',
+  hoffman_cog: 'Ordre de mise en défense de Hoffman',
+  carmine_cog: 'Rafale du Lancer de Clayton Carmine',
+  kait_diaz: 'Rafale du Lancer de Kait',
+  cortana: 'Guidage tactique de Cortana',
+  buck_odst: 'Rafale du M7S de Buck',
+  kelly_087: 'Tir du fusil Oathsworn de Kelly',
+  linda_058: 'Tir du Nornfang de Linda',
+  eli_vance: 'Coordination de Black Mesa East',
+  kleiner: 'Calibration du téléporteur',
+  vortigaunt_ally: 'Décharge du Vortigaunt libre',
+  dog_hl2: 'Coup du bras mécanique de Dog',
+  glados: 'Consigne de test de GLaDOS',
+  wheatley: 'Avertissement de Wheatley',
+  cave_johnson: "Consignes enregistrées d'Aperture",
+  caroline_portal: 'Coordination administrative de Caroline',
+  tali: 'Drone de combat de Tali',
+  wrex: 'Barrière biotique de Wrex',
+  ashley_williams: 'Rafale du M8 Avenger d’Ashley',
+  mordin: 'Incinération du omni-outil de Mordin',
+  nicole_brennan: 'Consignes médicales de Nicole',
+  zach_hammond: 'Rafale du Pulse Rifle de Hammond',
+  kendra_daniels: 'Relais technique de Kendra Daniels',
+  zoey_l4d: 'Tir de précision de Zoey',
+  bill_l4d: 'Couverture du vétéran Bill',
+  ellis_l4d: 'Remise en route par Ellis',
+  coach_l4d: 'Consignes de Coach',
+  rochelle_l4d: 'Repérage du trajet d’extraction',
+  nick_l4d: 'Double pistolet de Nick'
+});
 function assertCurrentCompletionProfile(id, profile) {
   const actor = roster.get(id), pinned = currentCompletedEditions.get(id);
   assert.ok(pinned, id);assertCurrentCompletionActor(actor);
@@ -1591,7 +1625,8 @@ test('completion covers every exact identity in the independent 1089-character b
     if (currentCompletedEditions.has(entry.id)) assertCurrentCompletionActor(hero);
     else {
       assert.equal(hero.name, entry.name, entry.id);
-      assert.equal(hero.special.name, entry.originalSpecial, `${entry.id}: completion must preserve the original catalog record`);
+      assert.equal(hero.special.name, authoredRosterSpecials[entry.id] ?? entry.originalSpecial,
+        `${entry.id}: exact roster technique for the selected edition`);
     }
     assert.match(entry.originalSpecial, /Origin Burst$/i, entry.id);
     assert.equal(COMBAT_CAPABILITY_COMPLETION[entry.id].universe, entry.universe, entry.id);
@@ -1818,6 +1853,16 @@ test('every completed action carries an explicit identity basis and source scene
         assert.equal(entry.sourceWork, revision.historicalWork, id + ': immutable historical source');
         if (revision.historicalReference) assert.equal(entry.sourceReference, revision.historicalReference, id + ': immutable historical reference');
       }
+    } else if (id === 'feral_predator') {
+      assert.equal(entry.sourceWork, 'Prey (2022)', id);
+      assert.equal(profile.provenance.kind, 'explicit-source-loadout-adaptation', id);
+      assert.equal(profile.provenance.sourceLoadoutKey, 'prey-2022-feral-masked-wrist-shield-20261113', id);
+      assert.equal(profile.provenance.identityBasis, 'explicit-source-loadout-adaptation', id);
+      assert.equal(profile.provenance.identityAuthored, true, id);
+      assert.equal(profile.provenance.sourceWork, 'Prey (2022) - masked Feral Predator, intact default appearance', id);
+      assert.match(profile.provenance.sourceReference, /right-wrist twin blades and left-forearm folding shield/, id);
+      assert.equal(profile.provenance.sourceUrl, 'https://www.20thcenturystudios.com/movies/prey', id);
+      assert.equal(profile.name, 'Assaut des lames du poignet droit', id);
     } else {
       assert.equal(profile.provenance.identityAuthored, true, id);
     if (revision) {
@@ -1849,7 +1894,7 @@ test('every completed action carries an explicit identity basis and source scene
     assert.equal(profile.provenance.canonicalVerified, false, id);
     assert.equal(profile.provenance.networkVerified, false, id);
     assert.equal(profile.provenance.gameplayAdaptation, true, id);
-    assert.equal(profile.name, current?.special.name || revision?.name || entry.special.name, id);
+    if (id !== 'feral_predator') assert.equal(profile.name, current?.special.name || revision?.name || entry.special.name, id);
     assert.doesNotMatch(profile.name, genericName, id);
   }
 });
@@ -2053,7 +2098,7 @@ test('the 28 entity sheets cover the exact 82 caller profiles from the independe
   }
 });
 
-test('the82 historical entity bindings retain their assets while W10/W13/W15 and the one W16 caller select real partners', () => {
+test('all 82 historical entity bindings retain their assets alongside the current summons and real partners', () => {
   const before = JSON.stringify(HEROES_DB);
   const expectedCallers = new Set(), activeLegacyCallers = new Set();
   const selectedW10 = { freeman: 'alyx_vance', barney: 'alyx_vance', alyx_vance: 'barney', eli_vance: 'alyx_vance', kleiner: 'alyx_vance', dallas: 'chains_pd', wolf_pd: 'chains_pd', hoxton: 'chains_pd', chains_pd: 'dallas', clover_pd: 'chains_pd' };
@@ -2066,7 +2111,8 @@ test('the82 historical entity bindings retain their assets while W10/W13/W15 and
   assert.deepEqual(sorted(Object.keys(selectedW15)), sorted(baseline.entities.flatMap(entry => entry.callers).filter(id => WAVE15_PRESENTATION_IDS.has(id))));
   const selectedW16 = { houston_pd: 'dallas' };
   assert.deepEqual(sorted(Object.keys(selectedW16)), sorted(baseline.entities.flatMap(entry => entry.callers).filter(id => WAVE16_PRESENTATION_IDS.has(id))));
-  const selectedPartners = { ...selectedW10, ...selectedW13, ...selectedW15, ...selectedW16 };
+  const portalArchives = { cave_johnson: 'chell', caroline_portal: 'chell', glados_core: 'chell', cave_johnson_echo: 'chell' };
+  const selectedPartners = { ...selectedW10, ...selectedW13, ...selectedW15, ...selectedW16, ...portalArchives };
   const revisedCallers = new Set();
   for (const expected of baseline.entities) {
     const registered = entityRegistry.entries.find(entry => entry.key === expected.key);
@@ -2105,7 +2151,8 @@ test('the82 historical entity bindings retain their assets while W10/W13/W15 and
       assert.equal(adversarial.entityRender.asset.id, registered.id, id);
     }
   }
-  assert.equal(expectedCallers.size, 82); assert.equal(activeLegacyCallers.size, 62);
+  assert.equal(expectedCallers.size, 82);
+  assert.equal(activeLegacyCallers.size, 58);
   assert.deepEqual(sorted(revisedCallers), sorted(Object.keys(selectedPartners)));
   const resolved = HEROES_DB.map(hero => ({ hero, descriptor: resolveUniverseSummon(hero) }));
   assert.equal(resolved.filter(({ descriptor }) => descriptor.entityRender?.assetMissing === true).length, 0);
