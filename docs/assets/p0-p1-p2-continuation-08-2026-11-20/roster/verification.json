@@ -1,0 +1,143 @@
+{
+  "sourceBaseline": "867da0ace7f9939e250494b4ce9de40ac5425315",
+  "patchSha256": "f61413aee7e49119d873ef4bad7dac8953156bbcbb20ed5a5ed518fe4a89d73b",
+  "changedSourceSha256": {
+    "src/game/originalCampaignEnemyActions.js": "3a59ea6f4e8c750d15654d3d32846a1dd1c120338f4c0c7d723d56a978a7c6f2",
+    "scripts/originalCampaignEnemyActions.test.mjs": "1e416b5c188ea86579e7dade0e07ff9a2f8edf6bfd85d2a29503c1dd242d9690"
+  },
+  "nodeVersion": "22.23.5",
+  "runtimeTest": {
+    "mode": "Original checkout module URLs, with the two patched modules provided by a temporary Node loader. Engine and imported data are from the normal repository.",
+    "individualP2EngineCases": 80,
+    "newCases": 40,
+    "allRuntimeAndAdjacentTests": {
+      "tests": 101,
+      "pass": 101,
+      "fail": 0,
+      "skipped": 0
+    },
+    "tapSha256": "c2066c04365be663ac7a471dc0d1137e739e689e08fe9b1d13e4f3563024bd60"
+  },
+  "checkedInOriginalAssetChangesForThisLot": 0,
+  "browser": {
+    "origin": "Actual GameCanvas bundle, patched action module supplied by a local Vite plugin, original stage sprites. Coordinates and ready ATB set by test fixture, actual controls and engine use.",
+    "cases": [
+      {
+        "case": "oni",
+        "name": "Colère du péage",
+        "viewport": [
+          1280,
+          840
+        ],
+        "touch": false,
+        "errors": [],
+        "missing": [
+          "/images/oc-worlds/v2/yomi_no_kage/items/japan_foxfire_lantern.png",
+          "/images/oc-worlds/v2/yomi_no_kage/items/japan_night_parade.png",
+          "/images/oc-worlds/v2/yomi_no_kage/items/japan_purifying_salt.png",
+          "/images/oc-worlds/v2/yomi_no_kage/items/japan_sake_offering.png",
+          "/images/oc-worlds/v2/yomi_no_kage/items/japan_seal_yomi.png"
+        ],
+        "passed": true,
+        "initial": {
+          "heroIds": [
+            "hero:0:rei_kagetsu",
+            "hero:1:aoi_mikazuki",
+            "hero:2:daichi_kurogane"
+          ],
+          "heroHp": [
+            114,
+            138,
+            160
+          ],
+          "foeId": "enemy:custom:0:yomi_no_kage:oni_du_peage_rouge"
+        },
+        "preview": {
+          "targets": [
+            "enemy:custom:0:yomi_no_kage:oni_du_peage_rouge"
+          ],
+          "shape": "single",
+          "delivery": "self",
+          "effect": "buff"
+        },
+        "after": {
+          "heroHp": [
+            114,
+            138,
+            160
+          ],
+          "heroDisruption": [
+            0,
+            0,
+            0
+          ],
+          "sourceBuffMultiplier": 1.22,
+          "sourceBuffTicks": 178,
+          "cooldown": 161,
+          "draws": [
+            "/sprites/generated/bosses/yomi-no-kage/oni-du-peage-rouge.png"
+          ]
+        }
+      },
+      {
+        "case": "gorgon",
+        "name": "Regard annoncé de la Sentinelle",
+        "viewport": [
+          390,
+          844
+        ],
+        "touch": true,
+        "errors": [],
+        "missing": [
+          "/images/oc-worlds/v2/aegea_moirai/items/greek_ambrosia_drop.png",
+          "/images/oc-worlds/v2/aegea_moirai/items/greek_argos_crew.png",
+          "/images/oc-worlds/v2/aegea_moirai/items/greek_fourth_choice.png",
+          "/images/oc-worlds/v2/aegea_moirai/items/greek_labyrinth_chalk.png",
+          "/images/oc-worlds/v2/aegea_moirai/items/greek_thunder_splinter.png"
+        ],
+        "passed": true,
+        "initial": {
+          "heroIds": [
+            "hero:0:thaleia_naxos",
+            "hero:1:melantho_seer",
+            "hero:2:doros_bronzehand"
+          ],
+          "heroHp": [
+            136,
+            110,
+            158
+          ],
+          "foeId": "enemy:custom:0:aegea_moirai:sentinelle_gorgone"
+        },
+        "preview": {
+          "targets": [
+            "hero:0:thaleia_naxos",
+            "hero:1:melantho_seer"
+          ],
+          "shape": "area",
+          "delivery": "ranged",
+          "effect": "damage"
+        },
+        "after": {
+          "heroHp": [
+            126,
+            99,
+            158
+          ],
+          "heroDisruption": [
+            299,
+            299,
+            0
+          ],
+          "sourceBuffMultiplier": null,
+          "sourceBuffTicks": 0,
+          "cooldown": 162,
+          "draws": [
+            "/sprites/generated/bosses/aegea-war-of-the-moirai/sentinelle-gorgone.png"
+          ]
+        }
+      }
+    ]
+  },
+  "scope": "Secondaires RPG joués. Les données visuelles, phasages avancés et animations hors RPG relèvent de revues distinctes."
+}

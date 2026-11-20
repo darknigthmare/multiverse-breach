@@ -1,0 +1,974 @@
+{
+  "sourceCommit": "867da0ace",
+  "scope": "Forty RPG-runtime secondaries, disjoint from the previous forty runtime secondaries. Actor keys may be present in earlier visual or source reviews.",
+  "actorCount": 40,
+  "overlapWithPreviousSecondaryBatch": 0,
+  "worlds": {
+    "Aegea: War of the Moirai": 5,
+    "Nine Realms: Last Twilight": 5,
+    "Tawantinsuyu: The Split Sun": 5,
+    "Yomi no Kage": 5,
+    "Mandate of Nine Heavens": 5,
+    "Mythos Primordia": 5,
+    "Aetherion: Seven Laws of Magic": 5,
+    "Infernum: Nine Pits": 5
+  },
+  "previousGenericSecondaries": 40,
+  "runtimeSecondariesChanged": 40,
+  "otherProfilesComparedAndIdentical": 160,
+  "beforeProfileExportSha256": "2b29994866174be7341084befb695c930ee3eb703e19d8f127379b355ea9b172",
+  "afterProfileExportSha256": "008b836d3af745166f968cebc961740d1a3e00e974e593b9ac4ba52ca6627b02",
+  "effects": {
+    "damage": 30,
+    "guard": 6,
+    "buff": 4
+  },
+  "actors": [
+    {
+      "actorKey": "[\"Aegea: War of the Moirai\",\"id:aegea_moirai:harpie_des_vents_contraires\"]",
+      "actorId": "aegea_moirai:harpie_des_vents_contraires",
+      "universe": "Aegea: War of the Moirai",
+      "actorName": "Harpie des vents contraires",
+      "kind": "enemy",
+      "weapon": "blade",
+      "sourceSignature": "Déplace les héros et vole les objets non ramassés.",
+      "action": {
+        "name": "Serres du vent contraire",
+        "type": "melee",
+        "targeting": {
+          "delivery": "melee",
+          "shape": "single"
+        },
+        "dmg": 1.45,
+        "cd": 3
+      },
+      "effect": "damage",
+      "delivery": "melee",
+      "shape": "single"
+    },
+    {
+      "actorKey": "[\"Aegea: War of the Moirai\",\"id:aegea_moirai:myrmidon_d_ombre\"]",
+      "actorId": "aegea_moirai:myrmidon_d_ombre",
+      "universe": "Aegea: War of the Moirai",
+      "actorName": "Myrmidon d’ombre",
+      "kind": "enemy",
+      "weapon": "shield_bash",
+      "sourceSignature": "Gagne de la puissance en formation avec d’autres Myrmidons.",
+      "action": {
+        "name": "Formation des boucliers",
+        "type": "shield",
+        "targeting": {
+          "effect": "guard",
+          "targetSide": "ally",
+          "shape": "group",
+          "reduce": 0.33,
+          "range": 170,
+          "duration": 2.5,
+          "excludeSelf": false
+        },
+        "dmg": 0,
+        "cd": 3
+      },
+      "effect": "guard",
+      "delivery": "support",
+      "shape": "group"
+    },
+    {
+      "actorKey": "[\"Aegea: War of the Moirai\",\"id:aegea_moirai:sentinelle_gorgone\"]",
+      "actorId": "aegea_moirai:sentinelle_gorgone",
+      "universe": "Aegea: War of the Moirai",
+      "actorName": "Sentinelle gorgone",
+      "kind": "enemy",
+      "weapon": "magic",
+      "sourceSignature": "Pétrifie une case annoncée un tour à l’avance.",
+      "action": {
+        "name": "Regard annoncé de la Sentinelle",
+        "type": "blast_aoe",
+        "targeting": {
+          "delivery": "area",
+          "shape": "area",
+          "areaRadius": 88
+        },
+        "dmg": 1,
+        "cd": 3,
+        "statusEffect": "glitched"
+      },
+      "effect": "damage",
+      "delivery": "ranged",
+      "shape": "area"
+    },
+    {
+      "actorKey": "[\"Aegea: War of the Moirai\",\"id:aegea_moirai:fragment_de_talos\"]",
+      "actorId": "aegea_moirai:fragment_de_talos",
+      "universe": "Aegea: War of the Moirai",
+      "actorName": "Fragment de Talos",
+      "kind": "enemy",
+      "weapon": "heavy_melee",
+      "sourceSignature": "Automate de bronze dont le talon est la seule zone vulnérable.",
+      "action": {
+        "name": "Frappe du bronze",
+        "type": "melee",
+        "targeting": {
+          "delivery": "melee",
+          "shape": "single"
+        },
+        "dmg": 1.45,
+        "cd": 3
+      },
+      "effect": "damage",
+      "delivery": "melee",
+      "shape": "single"
+    },
+    {
+      "actorKey": "[\"Aegea: War of the Moirai\",\"id:aegea_moirai:bete_du_labyrinthe_mobile\"]",
+      "actorId": "aegea_moirai:bete_du_labyrinthe_mobile",
+      "universe": "Aegea: War of the Moirai",
+      "actorName": "Bête du Labyrinthe mobile",
+      "kind": "enemy",
+      "weapon": "claws",
+      "sourceSignature": "Change les couloirs autour de sa cible avant de charger.",
+      "action": {
+        "name": "Charge du Labyrinthe",
+        "type": "spray",
+        "targeting": {
+          "delivery": "projectile",
+          "shape": "cone",
+          "coneAngle": 44
+        },
+        "dmg": 1,
+        "cd": 3
+      },
+      "effect": "damage",
+      "delivery": "ranged",
+      "shape": "cone"
+    },
+    {
+      "actorKey": "[\"Nine Realms: Last Twilight\",\"id:nine_realms_last_twilight:draugr_du_tertre_ouvert\"]",
+      "actorId": "nine_realms_last_twilight:draugr_du_tertre_ouvert",
+      "universe": "Nine Realms: Last Twilight",
+      "actorName": "Draugr du tertre ouvert",
+      "kind": "enemy",
+      "weapon": "shield_bash",
+      "sourceSignature": "Revient avec une armure plus lourde si son sceau funéraire n’est pas détruit.",
+      "action": {
+        "name": "Carapace du tertre",
+        "type": "shield",
+        "targeting": {
+          "effect": "guard",
+          "targetSide": "self",
+          "shape": "single",
+          "reduce": 0.43,
+          "duration": 2.5,
+          "excludeSelf": false
+        },
+        "dmg": 0,
+        "cd": 3
+      },
+      "effect": "guard",
+      "delivery": "self",
+      "shape": "single"
+    },
+    {
+      "actorKey": "[\"Nine Realms: Last Twilight\",\"id:nine_realms_last_twilight:eclaireur_jotunn_de_givre\"]",
+      "actorId": "nine_realms_last_twilight:eclaireur_jotunn_de_givre",
+      "universe": "Nine Realms: Last Twilight",
+      "actorName": "Éclaireur jötunn de givre",
+      "kind": "enemy",
+      "weapon": "magic",
+      "sourceSignature": "Gèle des lignes de déplacement et repousse les unités trop proches.",
+      "action": {
+        "name": "Ligne de givre",
+        "type": "beam",
+        "targeting": {
+          "delivery": "beam",
+          "shape": "line",
+          "lineWidth": 55
+        },
+        "dmg": 1.05,
+        "cd": 3
+      },
+      "effect": "damage",
+      "delivery": "ranged",
+      "shape": "line"
+    },
+    {
+      "actorKey": "[\"Nine Realms: Last Twilight\",\"id:nine_realms_last_twilight:chien_de_hel\"]",
+      "actorId": "nine_realms_last_twilight:chien_de_hel",
+      "universe": "Nine Realms: Last Twilight",
+      "actorName": "Chien de Hel",
+      "kind": "enemy",
+      "weapon": "claws",
+      "sourceSignature": "Suit les héros ressuscités et inflige davantage de dégâts aux faibles PV.",
+      "action": {
+        "name": "Crocs du chien de Hel",
+        "type": "melee",
+        "targeting": {
+          "delivery": "melee",
+          "shape": "single"
+        },
+        "dmg": 1.45,
+        "cd": 3
+      },
+      "effect": "damage",
+      "delivery": "melee",
+      "shape": "single"
+    },
+    {
+      "actorKey": "[\"Nine Realms: Last Twilight\",\"id:nine_realms_last_twilight:rejeton_de_ni_hoggr\"]",
+      "actorId": "nine_realms_last_twilight:rejeton_de_ni_hoggr",
+      "universe": "Nine Realms: Last Twilight",
+      "actorName": "Rejeton de Níðhöggr",
+      "kind": "enemy",
+      "weapon": "blade",
+      "sourceSignature": "Ronge les objectifs, obstacles et racines protectrices plutôt que les héros.",
+      "action": {
+        "name": "Morsure des racines",
+        "type": "melee",
+        "targeting": {
+          "delivery": "melee",
+          "shape": "single"
+        },
+        "dmg": 1.45,
+        "cd": 3
+      },
+      "effect": "damage",
+      "delivery": "melee",
+      "shape": "single"
+    },
+    {
+      "actorKey": "[\"Nine Realms: Last Twilight\",\"id:nine_realms_last_twilight:pillard_maudit_par_le_sei_r\"]",
+      "actorId": "nine_realms_last_twilight:pillard_maudit_par_le_sei_r",
+      "universe": "Nine Realms: Last Twilight",
+      "actorName": "Pillard maudit par le seiðr",
+      "kind": "enemy",
+      "weapon": "staff",
+      "sourceSignature": "Copie une rune alliée et la retourne contre l’escouade.",
+      "action": {
+        "name": "Runes retournées",
+        "type": "glitch",
+        "targeting": {
+          "delivery": "ranged",
+          "shape": "single"
+        },
+        "dmg": 1.05,
+        "cd": 3,
+        "statusEffect": "glitched"
+      },
+      "effect": "damage",
+      "delivery": "ranged",
+      "shape": "single"
+    },
+    {
+      "actorKey": "[\"Tawantinsuyu: The Split Sun\",\"id:tawantinsuyu_split_sun:ombre_d_uku_pacha\"]",
+      "actorId": "tawantinsuyu_split_sun:ombre_d_uku_pacha",
+      "universe": "Tawantinsuyu: The Split Sun",
+      "actorName": "Ombre d’Uku Pacha",
+      "kind": "enemy",
+      "weapon": "magic",
+      "sourceSignature": "Éteint les balises solaires et attire une unité vers les niveaux inférieurs.",
+      "action": {
+        "name": "Faille d’Uku Pacha",
+        "type": "blast_aoe",
+        "targeting": {
+          "delivery": "radial",
+          "shape": "area",
+          "range": 140,
+          "areaRadius": 140
+        },
+        "dmg": 0.95,
+        "cd": 3
+      },
+      "effect": "damage",
+      "delivery": "radial",
+      "shape": "area"
+    },
+    {
+      "actorKey": "[\"Tawantinsuyu: The Split Sun\",\"id:tawantinsuyu_split_sun:chasqui_corrompu\"]",
+      "actorId": "tawantinsuyu_split_sun:chasqui_corrompu",
+      "universe": "Tawantinsuyu: The Split Sun",
+      "actorName": "Chasqui corrompu",
+      "kind": "enemy",
+      "weapon": "blade",
+      "sourceSignature": "Transporte des renforts entre deux portails tant que sa route reste ouverte.",
+      "action": {
+        "name": "Signal du Chasqui",
+        "type": "buff",
+        "targeting": {
+          "effect": "buff",
+          "targetSide": "ally",
+          "shape": "group",
+          "buffMultiplier": 1.18,
+          "range": 220,
+          "duration": 3,
+          "excludeSelf": true
+        },
+        "dmg": 0,
+        "cd": 3
+      },
+      "effect": "buff",
+      "delivery": "support",
+      "shape": "group"
+    },
+    {
+      "actorKey": "[\"Tawantinsuyu: The Split Sun\",\"id:tawantinsuyu_split_sun:gardien_puma_de_pierre\"]",
+      "actorId": "tawantinsuyu_split_sun:gardien_puma_de_pierre",
+      "universe": "Tawantinsuyu: The Split Sun",
+      "actorName": "Gardien puma de pierre",
+      "kind": "enemy",
+      "weapon": "shield_bash",
+      "sourceSignature": "Devient presque invulnérable lorsqu’il tient un carrefour de route.",
+      "action": {
+        "name": "Ancrage du puma",
+        "type": "shield",
+        "targeting": {
+          "effect": "guard",
+          "targetSide": "self",
+          "shape": "single",
+          "reduce": 0.46,
+          "duration": 2.5,
+          "excludeSelf": false
+        },
+        "dmg": 0,
+        "cd": 3
+      },
+      "effect": "guard",
+      "delivery": "self",
+      "shape": "single"
+    },
+    {
+      "actorKey": "[\"Tawantinsuyu: The Split Sun\",\"id:tawantinsuyu_split_sun:jeune_amaru_de_tempete\"]",
+      "actorId": "tawantinsuyu_split_sun:jeune_amaru_de_tempete",
+      "universe": "Tawantinsuyu: The Split Sun",
+      "actorName": "Jeune Amaru de tempête",
+      "kind": "enemy",
+      "weapon": "claws",
+      "sourceSignature": "Passe du sol au ciel et frappe depuis une altitude différente.",
+      "action": {
+        "name": "Plongée d’Amaru",
+        "type": "melee",
+        "targeting": {
+          "delivery": "melee",
+          "shape": "single"
+        },
+        "dmg": 1.45,
+        "cd": 3
+      },
+      "effect": "damage",
+      "delivery": "melee",
+      "shape": "single"
+    },
+    {
+      "actorKey": "[\"Tawantinsuyu: The Split Sun\",\"id:tawantinsuyu_split_sun:masque_du_monde_renverse\"]",
+      "actorId": "tawantinsuyu_split_sun:masque_du_monde_renverse",
+      "universe": "Tawantinsuyu: The Split Sun",
+      "actorName": "Masque du monde renversé",
+      "kind": "enemy",
+      "weapon": "staff",
+      "sourceSignature": "Échange les effets positifs et négatifs de deux cases.",
+      "action": {
+        "name": "Onde du masque renversé",
+        "type": "blast_aoe",
+        "targeting": {
+          "delivery": "area",
+          "shape": "area",
+          "areaRadius": 95
+        },
+        "dmg": 1,
+        "cd": 3,
+        "statusEffect": "glitched"
+      },
+      "effect": "damage",
+      "delivery": "ranged",
+      "shape": "area"
+    },
+    {
+      "actorKey": "[\"Yomi no Kage\",\"id:yomi_no_kage:oni_du_peage_rouge\"]",
+      "actorId": "yomi_no_kage:oni_du_peage_rouge",
+      "universe": "Yomi no Kage",
+      "actorName": "Oni du péage rouge",
+      "kind": "enemy",
+      "weapon": "heavy_melee",
+      "sourceSignature": "Exige un tribut d’objet avant d’ouvrir le passage et devient furieux si on attaque sans négocier.",
+      "action": {
+        "name": "Colère du péage",
+        "type": "buff",
+        "targeting": {
+          "effect": "buff",
+          "targetSide": "self",
+          "shape": "single",
+          "buffMultiplier": 1.22,
+          "duration": 3
+        },
+        "dmg": 0,
+        "cd": 3
+      },
+      "effect": "buff",
+      "delivery": "self",
+      "shape": "single"
+    },
+    {
+      "actorKey": "[\"Yomi no Kage\",\"id:yomi_no_kage:yurei_sans_tablette\"]",
+      "actorId": "yomi_no_kage:yurei_sans_tablette",
+      "universe": "Yomi no Kage",
+      "actorName": "Yūrei sans tablette",
+      "kind": "enemy",
+      "weapon": "magic",
+      "sourceSignature": "Efface le nom d’une compétence et la rend inutilisable jusqu’à restauration du mémorial.",
+      "action": {
+        "name": "Entrave du mémorial",
+        "type": "glitch",
+        "targeting": {
+          "delivery": "ranged",
+          "shape": "single"
+        },
+        "dmg": 1.05,
+        "cd": 3,
+        "statusEffect": "glitched"
+      },
+      "effect": "damage",
+      "delivery": "ranged",
+      "shape": "single"
+    },
+    {
+      "actorKey": "[\"Yomi no Kage\",\"id:yomi_no_kage:tsukumogami_affole\"]",
+      "actorId": "yomi_no_kage:tsukumogami_affole",
+      "universe": "Yomi no Kage",
+      "actorName": "Tsukumogami affolé",
+      "kind": "enemy",
+      "weapon": "blade",
+      "sourceSignature": "Change de forme selon l’objet de décor le plus proche.",
+      "action": {
+        "name": "Ruée de l’objet animé",
+        "type": "melee",
+        "targeting": {
+          "delivery": "melee",
+          "shape": "single"
+        },
+        "dmg": 1.45,
+        "cd": 3
+      },
+      "effect": "damage",
+      "delivery": "melee",
+      "shape": "single"
+    },
+    {
+      "actorKey": "[\"Yomi no Kage\",\"id:yomi_no_kage:tengu_du_sentier_ferme\"]",
+      "actorId": "yomi_no_kage:tengu_du_sentier_ferme",
+      "universe": "Yomi no Kage",
+      "actorName": "Tengu du sentier fermé",
+      "kind": "enemy",
+      "weapon": "claws",
+      "sourceSignature": "Attaque depuis les hauteurs puis déplace la cible hors de sa route.",
+      "action": {
+        "name": "Serres du sentier fermé",
+        "type": "melee",
+        "targeting": {
+          "delivery": "melee",
+          "shape": "single"
+        },
+        "dmg": 1.45,
+        "cd": 3
+      },
+      "effect": "damage",
+      "delivery": "melee",
+      "shape": "single"
+    },
+    {
+      "actorKey": "[\"Yomi no Kage\",\"id:yomi_no_kage:kappa_du_canal_sec\"]",
+      "actorId": "yomi_no_kage:kappa_du_canal_sec",
+      "universe": "Yomi no Kage",
+      "actorName": "Kappa du canal sec",
+      "kind": "enemy",
+      "weapon": "staff",
+      "sourceSignature": "Vole l’eau des zones de soin; peut être neutralisé en restaurant le bassin.",
+      "action": {
+        "name": "Siphon du canal",
+        "type": "blast_aoe",
+        "targeting": {
+          "delivery": "area",
+          "shape": "area",
+          "areaRadius": 96
+        },
+        "dmg": 1,
+        "cd": 3
+      },
+      "effect": "damage",
+      "delivery": "ranged",
+      "shape": "area"
+    },
+    {
+      "actorKey": "[\"Mandate of Nine Heavens\",\"id:mandate_nine_heavens:garde_jiangshi_sous_sceau\"]",
+      "actorId": "mandate_nine_heavens:garde_jiangshi_sous_sceau",
+      "universe": "Mandate of Nine Heavens",
+      "actorName": "Garde jiangshi sous sceau",
+      "kind": "enemy",
+      "weapon": "shield_bash",
+      "sourceSignature": "Saute entre les cases marquées et s’arrête si son talisman est restauré.",
+      "action": {
+        "name": "Bond sous sceau",
+        "type": "melee",
+        "targeting": {
+          "delivery": "melee",
+          "shape": "single"
+        },
+        "dmg": 1.45,
+        "cd": 3
+      },
+      "effect": "damage",
+      "delivery": "melee",
+      "shape": "single"
+    },
+    {
+      "actorKey": "[\"Mandate of Nine Heavens\",\"id:mandate_nine_heavens:bete_de_papier_talismanique\"]",
+      "actorId": "mandate_nine_heavens:bete_de_papier_talismanique",
+      "universe": "Mandate of Nine Heavens",
+      "actorName": "Bête de papier talismanique",
+      "kind": "enemy",
+      "weapon": "blade",
+      "sourceSignature": "Se replie en feuille puis se redéploie derrière l’escouade.",
+      "action": {
+        "name": "Déploiement du talisman",
+        "type": "melee",
+        "targeting": {
+          "delivery": "melee",
+          "shape": "single"
+        },
+        "dmg": 1.45,
+        "cd": 3
+      },
+      "effect": "damage",
+      "delivery": "melee",
+      "shape": "single"
+    },
+    {
+      "actorKey": "[\"Mandate of Nine Heavens\",\"id:mandate_nine_heavens:yaoguai_renard_aux_faux_decrets\"]",
+      "actorId": "mandate_nine_heavens:yaoguai_renard_aux_faux_decrets",
+      "universe": "Mandate of Nine Heavens",
+      "actorName": "Yaoguai renard aux faux décrets",
+      "kind": "enemy",
+      "weapon": "magic",
+      "sourceSignature": "Crée une copie illusoire d’un objectif et détourne les unités automatiques.",
+      "action": {
+        "name": "Faux décret",
+        "type": "glitch",
+        "targeting": {
+          "delivery": "ranged",
+          "shape": "single"
+        },
+        "dmg": 1.05,
+        "cd": 3,
+        "statusEffect": "glitched"
+      },
+      "effect": "damage",
+      "delivery": "ranged",
+      "shape": "single"
+    },
+    {
+      "actorKey": "[\"Mandate of Nine Heavens\",\"id:mandate_nine_heavens:rejeton_de_bronze_taotie\"]",
+      "actorId": "mandate_nine_heavens:rejeton_de_bronze_taotie",
+      "universe": "Mandate of Nine Heavens",
+      "actorName": "Rejeton de bronze taotie",
+      "kind": "enemy",
+      "weapon": "heavy_melee",
+      "sourceSignature": "Dévore les objets de terrain et convertit leurs effets en armure.",
+      "action": {
+        "name": "Armure taotie",
+        "type": "shield",
+        "targeting": {
+          "effect": "guard",
+          "targetSide": "self",
+          "shape": "single",
+          "reduce": 0.43,
+          "duration": 2.5,
+          "excludeSelf": false
+        },
+        "dmg": 0,
+        "cd": 3
+      },
+      "effect": "guard",
+      "delivery": "self",
+      "shape": "single"
+    },
+    {
+      "actorKey": "[\"Mandate of Nine Heavens\",\"id:mandate_nine_heavens:bandit_des_nuages\"]",
+      "actorId": "mandate_nine_heavens:bandit_des_nuages",
+      "universe": "Mandate of Nine Heavens",
+      "actorName": "Bandit des nuages",
+      "kind": "enemy",
+      "weapon": "claws",
+      "sourceSignature": "Descend d’une plateforme céleste pour voler la jauge de la cible la plus rapide.",
+      "action": {
+        "name": "Descente du nuage",
+        "type": "melee",
+        "targeting": {
+          "delivery": "melee",
+          "shape": "single"
+        },
+        "dmg": 1.45,
+        "cd": 3
+      },
+      "effect": "damage",
+      "delivery": "melee",
+      "shape": "single"
+    },
+    {
+      "actorKey": "[\"Mythos Primordia\",\"id:mythos_primordia:chimere_sans_nom\"]",
+      "actorId": "mythos_primordia:chimere_sans_nom",
+      "universe": "Mythos Primordia",
+      "actorName": "Chimère sans nom",
+      "kind": "enemy",
+      "weapon": "blade",
+      "sourceSignature": "Change de capacités dès qu’un joueur tente de la classer.",
+      "action": {
+        "name": "Entaille de la Chimère",
+        "type": "spray",
+        "targeting": {
+          "delivery": "projectile",
+          "shape": "cone",
+          "coneAngle": 58
+        },
+        "dmg": 1,
+        "cd": 3
+      },
+      "effect": "damage",
+      "delivery": "ranged",
+      "shape": "cone"
+    },
+    {
+      "actorKey": "[\"Mythos Primordia\",\"id:mythos_primordia:colosse_idole\"]",
+      "actorId": "mythos_primordia:colosse_idole",
+      "universe": "Mythos Primordia",
+      "actorName": "Colosse-idole",
+      "kind": "enemy",
+      "weapon": "shield_bash",
+      "sourceSignature": "Devient plus lourd à chaque archive qui le décrit comme invincible.",
+      "action": {
+        "name": "Poids de l’idole",
+        "type": "shield",
+        "targeting": {
+          "effect": "guard",
+          "targetSide": "self",
+          "shape": "single",
+          "reduce": 0.45,
+          "duration": 2.5,
+          "excludeSelf": false
+        },
+        "dmg": 0,
+        "cd": 3
+      },
+      "effect": "guard",
+      "delivery": "self",
+      "shape": "single"
+    },
+    {
+      "actorKey": "[\"Mythos Primordia\",\"id:mythos_primordia:oracle_d_os\"]",
+      "actorId": "mythos_primordia:oracle_d_os",
+      "universe": "Mythos Primordia",
+      "actorName": "Oracle d’os",
+      "kind": "enemy",
+      "weapon": "staff",
+      "sourceSignature": "Prévoit une action puis gagne de la puissance si le joueur la confirme.",
+      "action": {
+        "name": "Présage d’os",
+        "type": "buff",
+        "targeting": {
+          "effect": "buff",
+          "targetSide": "self",
+          "shape": "single",
+          "buffMultiplier": 1.18,
+          "duration": 3
+        },
+        "dmg": 0,
+        "cd": 3
+      },
+      "effect": "buff",
+      "delivery": "self",
+      "shape": "single"
+    },
+    {
+      "actorKey": "[\"Mythos Primordia\",\"id:mythos_primordia:rejeton_mange_etoile\"]",
+      "actorId": "mythos_primordia:rejeton_mange_etoile",
+      "universe": "Mythos Primordia",
+      "actorName": "Rejeton mange-étoile",
+      "kind": "enemy",
+      "weapon": "claws",
+      "sourceSignature": "Éteint les balises et dévore les projectiles lumineux.",
+      "action": {
+        "name": "Rafale du Mange-Étoile",
+        "type": "blast_aoe",
+        "targeting": {
+          "delivery": "radial",
+          "shape": "area",
+          "range": 124,
+          "areaRadius": 124
+        },
+        "dmg": 0.95,
+        "cd": 3
+      },
+      "effect": "damage",
+      "delivery": "radial",
+      "shape": "area"
+    },
+    {
+      "actorKey": "[\"Mythos Primordia\",\"id:mythos_primordia:titan_au_masque_vierge\"]",
+      "actorId": "mythos_primordia:titan_au_masque_vierge",
+      "universe": "Mythos Primordia",
+      "actorName": "Titan au masque vierge",
+      "kind": "enemy",
+      "weapon": "magic",
+      "sourceSignature": "Copie le rôle du dernier héros actif sans copier son identité.",
+      "action": {
+        "name": "Écho du masque vierge",
+        "type": "projectile",
+        "targeting": {
+          "delivery": "projectile",
+          "shape": "line",
+          "lineWidth": 47
+        },
+        "dmg": 1.05,
+        "cd": 3
+      },
+      "effect": "damage",
+      "delivery": "ranged",
+      "shape": "line"
+    },
+    {
+      "actorKey": "[\"Aetherion: Seven Laws of Magic\",\"id:aetherion_seven_laws:sort_vivant_echappe\"]",
+      "actorId": "aetherion_seven_laws:sort_vivant_echappe",
+      "universe": "Aetherion: Seven Laws of Magic",
+      "actorName": "Sort vivant échappé",
+      "kind": "enemy",
+      "weapon": "blade",
+      "sourceSignature": "Change de type élémentaire après chaque attaque reçue.",
+      "action": {
+        "name": "Éclat du sort vivant",
+        "type": "blast_aoe",
+        "targeting": {
+          "delivery": "radial",
+          "shape": "area",
+          "range": 132,
+          "areaRadius": 132
+        },
+        "dmg": 0.95,
+        "cd": 3
+      },
+      "effect": "damage",
+      "delivery": "radial",
+      "shape": "area"
+    },
+    {
+      "actorKey": "[\"Aetherion: Seven Laws of Magic\",\"id:aetherion_seven_laws:sangsue_de_mana\"]",
+      "actorId": "aetherion_seven_laws:sangsue_de_mana",
+      "universe": "Aetherion: Seven Laws of Magic",
+      "actorName": "Sangsue de mana",
+      "kind": "enemy",
+      "weapon": "claws",
+      "sourceSignature": "S’accroche à la cible ayant la plus forte charge spéciale.",
+      "action": {
+        "name": "Emprise de mana",
+        "type": "melee",
+        "targeting": {
+          "delivery": "melee",
+          "shape": "single"
+        },
+        "dmg": 1.05,
+        "cd": 3,
+        "statusEffect": "glitched"
+      },
+      "effect": "damage",
+      "delivery": "melee",
+      "shape": "single"
+    },
+    {
+      "actorKey": "[\"Aetherion: Seven Laws of Magic\",\"id:aetherion_seven_laws:null_knight_loyaliste\"]",
+      "actorId": "aetherion_seven_laws:null_knight_loyaliste",
+      "universe": "Aetherion: Seven Laws of Magic",
+      "actorName": "Null-Knight loyaliste",
+      "kind": "enemy",
+      "weapon": "shield_bash",
+      "sourceSignature": "Réduit les dégâts magiques mais expose son noyau aux attaques physiques.",
+      "action": {
+        "name": "Garde des lois",
+        "type": "shield",
+        "targeting": {
+          "effect": "guard",
+          "targetSide": "self",
+          "shape": "single",
+          "reduce": 0.44,
+          "duration": 2.5,
+          "excludeSelf": false
+        },
+        "dmg": 0,
+        "cd": 3
+      },
+      "effect": "guard",
+      "delivery": "self",
+      "shape": "single"
+    },
+    {
+      "actorKey": "[\"Aetherion: Seven Laws of Magic\",\"id:aetherion_seven_laws:gargouille_runique\"]",
+      "actorId": "aetherion_seven_laws:gargouille_runique",
+      "universe": "Aetherion: Seven Laws of Magic",
+      "actorName": "Gargouille runique",
+      "kind": "enemy",
+      "weapon": "heavy_melee",
+      "sourceSignature": "S’active uniquement lorsque deux glyphes voisins correspondent.",
+      "action": {
+        "name": "Choc runique",
+        "type": "blast_aoe",
+        "targeting": {
+          "delivery": "radial",
+          "shape": "area",
+          "range": 135,
+          "areaRadius": 135
+        },
+        "dmg": 0.95,
+        "cd": 3
+      },
+      "effect": "damage",
+      "delivery": "radial",
+      "shape": "area"
+    },
+    {
+      "actorKey": "[\"Aetherion: Seven Laws of Magic\",\"id:aetherion_seven_laws:feu_follet_de_memoire\"]",
+      "actorId": "aetherion_seven_laws:feu_follet_de_memoire",
+      "universe": "Aetherion: Seven Laws of Magic",
+      "actorName": "Feu follet de mémoire",
+      "kind": "enemy",
+      "weapon": "staff",
+      "sourceSignature": "Répète le dernier sort allié sous une forme affaiblie ou corrompue.",
+      "action": {
+        "name": "Lueur de mémoire",
+        "type": "beam",
+        "targeting": {
+          "delivery": "beam",
+          "shape": "line",
+          "lineWidth": 48
+        },
+        "dmg": 1.05,
+        "cd": 3
+      },
+      "effect": "damage",
+      "delivery": "ranged",
+      "shape": "line"
+    },
+    {
+      "actorKey": "[\"Infernum: Nine Pits\",\"id:infernum_nine_pits:diablotin_de_cendre\"]",
+      "actorId": "infernum_nine_pits:diablotin_de_cendre",
+      "universe": "Infernum: Nine Pits",
+      "actorName": "Diablotin de cendre",
+      "kind": "enemy",
+      "weapon": "blade",
+      "sourceSignature": "Met le feu aux objets et fuit vers le prochain brasier.",
+      "action": {
+        "name": "Braise du diablotin",
+        "type": "blast_aoe",
+        "targeting": {
+          "delivery": "area",
+          "shape": "area",
+          "areaRadius": 84
+        },
+        "dmg": 1,
+        "cd": 3
+      },
+      "effect": "damage",
+      "delivery": "ranged",
+      "shape": "area"
+    },
+    {
+      "actorKey": "[\"Infernum: Nine Pits\",\"id:infernum_nine_pits:templier_des_chaines\"]",
+      "actorId": "infernum_nine_pits:templier_des_chaines",
+      "universe": "Infernum: Nine Pits",
+      "actorName": "Templier des chaînes",
+      "kind": "enemy",
+      "weapon": "shield_bash",
+      "sourceSignature": "Lie deux unités; les dégâts subis par l’une se transmettent à l’autre.",
+      "action": {
+        "name": "Balayage des chaînes",
+        "type": "projectile",
+        "targeting": {
+          "delivery": "projectile",
+          "shape": "line",
+          "lineWidth": 50
+        },
+        "dmg": 1.05,
+        "cd": 3
+      },
+      "effect": "damage",
+      "delivery": "ranged",
+      "shape": "line"
+    },
+    {
+      "actorKey": "[\"Infernum: Nine Pits\",\"id:infernum_nine_pits:fielon_contractuel\"]",
+      "actorId": "infernum_nine_pits:fielon_contractuel",
+      "universe": "Infernum: Nine Pits",
+      "actorName": "Fiélon contractuel",
+      "kind": "enemy",
+      "weapon": "staff",
+      "sourceSignature": "Propose un buff immédiat contre une pénalité différée clairement affichée.",
+      "action": {
+        "name": "Offre du Fiélon",
+        "type": "buff",
+        "targeting": {
+          "effect": "buff",
+          "targetSide": "ally",
+          "shape": "group",
+          "buffMultiplier": 1.22,
+          "range": 210,
+          "duration": 3,
+          "excludeSelf": true
+        },
+        "dmg": 0,
+        "cd": 3
+      },
+      "effect": "buff",
+      "delivery": "support",
+      "shape": "group"
+    },
+    {
+      "actorKey": "[\"Infernum: Nine Pits\",\"id:infernum_nine_pits:molosse_de_braise\"]",
+      "actorId": "infernum_nine_pits:molosse_de_braise",
+      "universe": "Infernum: Nine Pits",
+      "actorName": "Molosse de braise",
+      "kind": "enemy",
+      "weapon": "claws",
+      "sourceSignature": "Traque les héros portant une dette ou une marque de péché.",
+      "action": {
+        "name": "Morsure de braise",
+        "type": "melee",
+        "targeting": {
+          "delivery": "melee",
+          "shape": "single"
+        },
+        "dmg": 1.45,
+        "cd": 3
+      },
+      "effect": "damage",
+      "delivery": "melee",
+      "shape": "single"
+    },
+    {
+      "actorKey": "[\"Infernum: Nine Pits\",\"id:infernum_nine_pits:coquille_penitente\"]",
+      "actorId": "infernum_nine_pits:coquille_penitente",
+      "universe": "Infernum: Nine Pits",
+      "actorName": "Coquille pénitente",
+      "kind": "enemy",
+      "weapon": "magic",
+      "sourceSignature": "Absorbe les voix des âmes et réduit la puissance des soins.",
+      "action": {
+        "name": "Onde pénitentielle",
+        "type": "spray",
+        "targeting": {
+          "delivery": "projectile",
+          "shape": "cone",
+          "coneAngle": 53
+        },
+        "dmg": 1,
+        "cd": 3
+      },
+      "effect": "damage",
+      "delivery": "ranged",
+      "shape": "cone"
+    }
+  ]
+}

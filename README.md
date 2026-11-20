@@ -14,7 +14,9 @@ Une autre passe couvre **deux lots de 40 acteurs** et retire **80 P1** suppléme
 
 La passe suivante retire **142 P1** avec 70 contrats d’acteurs et les atlas animés du Phare et du Kraken. Dix-huit héros disposent de **126 séquences de duel**. L’Observatoire et le Carrefour rejoignent les terrains Tactics jouables. Le HUD RPG J2 et la pause A.R.C.A. sont corrigés. L’assemblage Doom atteint **124 lots sur 317**. [Bilan, captures et reçus](docs/assets/p0-p1-p2-continuation-06-2026-11-20/README.md).
 
-La dernière passe donne un secondaire propre à **40 adversaires RPG** et ajoute le Qhapaq Ñan des Falaises et le Gouffre des Auditeurs au Tactics. La Bibliothèque des actes annexes retrouve son état et le bon élément au retour d’un briefing. Doom atteint **152 lots sur 317**. [Parcours, captures et reçus](docs/assets/p0-p1-p2-continuation-07-2026-11-20/README.md).
+La passe suivante donne un secondaire propre à **40 adversaires RPG** et ajoute le Qhapaq Ñan des Falaises et le Gouffre des Auditeurs au Tactics. La Bibliothèque des actes annexes retrouve son état et le bon élément au retour d’un briefing. Doom atteint alors **152 lots sur 317**. [Parcours, captures et reçus](docs/assets/p0-p1-p2-continuation-07-2026-11-20/README.md).
+
+La dernière passe porte à **80** le nombre d’adversaires RPG dont le secondaire a été revu. Le témoin du khipu reçoit une planche dédiée de seize poses. Les tirs Tactics tiennent compte de toute l’empreinte des grandes unités. Trois boss retrouvent leurs animations en Mêlée personnalisée et la pagination des packs DLC ramène le focus sur la première fiche visible. Doom atteint **172 lots sur 317**. [Bilan et vérifications](docs/assets/p0-p1-p2-continuation-08-2026-11-20/README.md).
 
 Les travaux sur Gears/Dead Space, Portal/Left 4 Dead, Revan, Imp et Mancubus sont détaillés dans la [reprise du 13 novembre](docs/assets/p0-p1-p2-continuation-02-2026-11-13/README.md). La [première passe](docs/assets/p0-p1-p2-continuation-2026-11-13/README.md) et les [sept espaces du Hub](docs/assets/p0-p1-menu-continuation-2026-11-13/README.md) conservent leurs résultats datés.
 
@@ -62,7 +64,7 @@ Pour conserver et transférer les médias d’un lot, utiliser `node scripts/exp
 
 Un assemblage complet peut alimenter directement `dlc:export:runtime` avec `--media-assembly`, `--media-plan` et `--media-plan-sha256`. Le checkout fournit le code et le dossier assemblé fournit les médias vérifiés. La destination doit avoir la place pour l’édition exportée. [Commande complète et validation](docs/development/corrections-2026-11-20/dlc-distribution-from-assembly/README.md).
 
-L’assemblage temporaire Doom contient désormais **4 808 médias vérifiés**. La dernière reprise a ajouté 28 lots et contrôlé la réutilisation des lots déjà validés. Il reste 165 lots et 5,35 Go à assembler. [État du plan Doom](docs/assets/p0-p1-p2-continuation-07-2026-11-20/dlc/README.md).
+L’assemblage temporaire Doom contient désormais **5 173 médias vérifiés sur 7 693**, répartis en **172 lots sur 317**. La dernière reprise a ajouté 20 lots et vérifié les empreintes de tous les fichiers assemblés. Il reste 145 lots et 4,73 Go à assembler selon la révision gelée du plan. [État du plan Doom](docs/assets/p0-p1-p2-continuation-08-2026-11-20/dlc/README.md).
 
 ## Jouer
 
@@ -195,7 +197,7 @@ Les **73 matières configurées** couvrent les secteurs d’univers et les arèn
 
 Dans l’Observatoire, deux cartes partagent une coordonnée horizontale et se ramassent depuis leurs étages respectifs. Des passages d’angle relient la crypte à la galerie pour deux points d’action. Au Carrefour, des rampes et escaliers joignent les quatre quartiers. Chaque place de l’objectif porte son matériau et sa hauteur. Ces plateaux utilisent une géométrie propre au Tactics et sont accessibles depuis la campagne originale ou le combat custom. [Parcours des deux secteurs](docs/assets/p0-p1-p2-continuation-06-2026-11-20/tactics/README.md)
 
-Au Qhapaq Ñan, le témoin suit les terrasses jusqu’au support d’extraction. Dans le Gouffre, les registres occupent trois hauteurs et la clôture compte les fins de tour alliées. Les matériaux et les trajets rendent les deux missions lisibles par étage. [Parcours et matières des deux nouveaux secteurs](docs/assets/p0-p1-p2-continuation-07-2026-11-20/tactics/README.md)
+Au Qhapaq Ñan, le témoin suit les terrasses jusqu’au support d’extraction. Sa planche d’animation couvre l’attente, le déplacement, le coup reçu et le départ. Dans le Gouffre, les registres occupent trois hauteurs et la clôture compte les fins de tour alliées. Les tirs qui s’arrêtent au contact tiennent compte de chaque case occupée par un boss 2×2, y compris au bord du plateau. [Secteurs et matières](docs/assets/p0-p1-p2-continuation-07-2026-11-20/tactics/README.md) · [Escorte et animations](docs/assets/p0-p1-p2-continuation-08-2026-11-20/witness/README.md) · [Ligne de vue](docs/assets/p0-p1-p2-continuation-08-2026-11-20/tactics/README.md)
 
 Chaque niveau Tactics utilise un environnement propre à ce mode, y compris les anciennes cartes. Les atlas de tuiles Tactics sont distincts de ceux des autres moteurs ; leurs images d’arène ne servent plus de fond Tactics.
 

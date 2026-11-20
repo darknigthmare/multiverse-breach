@@ -1,0 +1,61 @@
+{
+  "baseRevision": "867da0ace",
+  "scope": "Vertical Tactics line of sight for an actor footprint wider or deeper than one cell. The physical occupation rectangle is reused and the intended target can be selected on a secondary covered support.",
+  "patchSha256": "f1ff8898408dbf9b3b27b72726991c5d08f0f223c4d18e271d29670d2456b65f",
+  "files": {
+    "src/game/tacticsTerrain.js": "5ffee10c02751f9bb265da3576dd5b290f32c04088bfceb1b69085556b71b9ea",
+    "scripts/tacticsTerrain.test.mjs": "9c326a68a669fc4e4d44a5191bd58e253038e8e75a7e0c9441406f5c3998cbe5",
+    "scripts/tacticsOriginalSectors.test.mjs": "20c6bc954cc809b8b9f43ff1ea07ff2fa32bce9b63f0f0ad8bd59ac4e1ed3977"
+  },
+  "runScope": "Independent /tmp code-only mirror with project media and node_modules symlinked. Node.js 22.23.5 and source scene loader.",
+  "suiteCommand": "node --preserve-symlinks --preserve-symlinks-main --test --test-concurrency=1 scripts/tacticsTerrain.test.mjs scripts/tacticsOriginalSectors.test.mjs scripts/tacticsNexusHighgrass.test.mjs scripts/tacticsTerrainRenderer.test.mjs",
+  "beforeFocused": {
+    "tests": 2,
+    "pass": 0,
+    "fail": 2,
+    "skipped": 0,
+    "tapSha256": "4cdd7ccf14274470caa655469ae115754dae2a47be2452325bf4d6b9411e81f8"
+  },
+  "afterRelated": {
+    "tests": 51,
+    "pass": 51,
+    "fail": 0,
+    "skipped": 0,
+    "tapSha256": "ced124fa4675b3e2c999fd86ee5e83003441dd5cb6088f30064c7cdfa27d54eb"
+  },
+  "freeCityScenario": {
+    "stage": "fantasy_crossroads_free_city",
+    "archer": "aelwen_starbough",
+    "interveningActor": "Last Engineer",
+    "actorSourceUniverse": "Prometheus",
+    "occupiedCells": [
+      [
+        2,
+        6
+      ],
+      [
+        3,
+        6
+      ],
+      [
+        2,
+        7
+      ],
+      [
+        3,
+        7
+      ]
+    ],
+    "nonPiercingRay": [
+      [
+        0,
+        7
+      ],
+      [
+        6,
+        7
+      ]
+    ],
+    "after": "Standard confirmation refuses the shot behind the boss without altering HP, accepts the boss on its second row, and a penetrating probe keeps a clear route."
+  }
+}

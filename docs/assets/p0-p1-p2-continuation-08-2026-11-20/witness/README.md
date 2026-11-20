@@ -1,0 +1,5 @@
+# Escorte du témoin du khipu
+
+Le témoin du khipu possède sa première planche propre dans la mission du Qhapaq Ñan des Falaises. Sa silhouette porte le khipu et reprend les matières du secteur original de Tawantinsuyu. La planche 1 024 × 1 024 regroupe seize poses sur quatre lignes. Le moteur utilise les lignes dans l’ordre pour l’attente, le déplacement, la réaction à l’impact et l’extraction. La réaction sert aussi lorsque l’escorte est perdue. Les poses partagent le même point d’appui pour suivre la pente sans saut entre cellules. [Atlas livré](../../../../src/game/assets/khipu-witness.png) · [Empreintes et cellules](atlas.json) · [Départ de l’escorte](falaises-depart.jpg)
+
+Deux sessions Chromium ont lancé la mission depuis Combat custom, actionné les commandes au clavier et à l’écran, passé les trois lacets jusqu’à une hauteur de 3,5 et validé l’extraction. Les relevés Canvas confirment les rangées effectivement dessinées pour l’attente, la marche et l’extraction, à 1 280 × 900 et 390 × 844. Les deux parcours se terminent sans erreur JavaScript ni échec HTTP. Vite a servi les octets du PNG livré. [Relevés d’escorte](browser.json)

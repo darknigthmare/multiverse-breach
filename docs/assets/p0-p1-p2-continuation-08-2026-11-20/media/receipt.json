@@ -1,0 +1,280 @@
+{
+  "baseCommit": "867da0ace",
+  "assets": {
+    "bigChap": {
+      "actor": "Big Chap Stalker",
+      "source": "public/sprites/generated/bosses/alien-1979/kane-s-son-big-chap.png",
+      "oid": "2b42f38e3c5061104703e999afd014a3af44885b",
+      "sha256": "5d7c1306d97b2b71fbd903c5adc23bd6955644cc2bcaf3e5b93169c569693822",
+      "previousOid": "bf9e87daabfb0544fb6ce2698c9ea1fa77052d0a"
+    },
+    "falconer": {
+      "actor": "Falconer Drone",
+      "source": "DLC/Predators/data/falconer-drone-2010.png",
+      "previousSource": "DLC/Predator/assets/sprites/generated/bosses/predator/falconer-drone.png",
+      "bothOid": "a20656acd2de2597b3fe137a3fa829ab36ff573e",
+      "sha256": "649aee37f1a42fe652ae06217be0a6025e455ca1269b7b3197426650e71bc544",
+      "bytes": 741263
+    }
+  },
+  "runtimeTests": {
+    "passed": 9,
+    "failed": 0,
+    "tapSha256": "aed3bb8f014967f054d1a22263c321e9041bd2379845f9ba44a62cacc7594356"
+  },
+  "browser": [
+    {
+      "case": "narcissus",
+      "width": 1280,
+      "height": 800,
+      "view": {
+        "name": "Big Chap Stalker",
+        "hp": 560,
+        "state": "idle",
+        "incarnation": "Alien (1979)",
+        "goal": [
+          "suit",
+          "grappleGun",
+          "harness",
+          "flush",
+          "hatch",
+          "harpoon",
+          "close",
+          "thrust"
+        ],
+        "stage": 50102,
+        "mode": "Tactics"
+      },
+      "sources": [
+        [
+          "/sprites/generated/bosses/alien-1979/kane-s-son-big-chap.png",
+          200,
+          "5d7c1306d97b2b71fbd903c5adc23bd6955644cc2bcaf3e5b93169c569693822"
+        ]
+      ],
+      "draws": [
+        {
+          "source": "/sprites/generated/bosses/alien-1979/kane-s-son-big-chap.png",
+          "rect": [
+            512,
+            0,
+            256,
+            256
+          ],
+          "draw": [
+            -38,
+            -68.875,
+            76,
+            76
+          ]
+        },
+        {
+          "source": "/sprites/generated/bosses/alien-1979/kane-s-son-big-chap.png",
+          "rect": [
+            512,
+            256,
+            256,
+            256
+          ],
+          "draw": [
+            -38,
+            -68.875,
+            76,
+            76
+          ]
+        },
+        {
+          "source": "/sprites/generated/bosses/alien-1979/kane-s-son-big-chap.png",
+          "rect": [
+            512,
+            512,
+            256,
+            256
+          ],
+          "draw": [
+            -38,
+            -68.875,
+            76,
+            76
+          ]
+        },
+        {
+          "source": "/sprites/generated/bosses/alien-1979/kane-s-son-big-chap.png",
+          "rect": [
+            512,
+            768,
+            256,
+            256
+          ],
+          "draw": [
+            -38,
+            -68.875,
+            76,
+            76
+          ]
+        }
+      ],
+      "unrelatedHttpErrors": [],
+      "pageErrors": [],
+      "disposed": true
+    },
+    {
+      "case": "falconer",
+      "width": 390,
+      "height": 844,
+      "view": {
+        "name": "Falconer Drone",
+        "hp": 133,
+        "state": "idle",
+        "incarnation": "Predators (2010) - Falconer's reconnaissance drone",
+        "goal": [],
+        "stage": 50,
+        "mode": "Tactics"
+      },
+      "sources": [
+        [
+          "/assets/falconer-drone-2010-W6DUftvX.png",
+          200,
+          "649aee37f1a42fe652ae06217be0a6025e455ca1269b7b3197426650e71bc544"
+        ]
+      ],
+      "draws": [
+        {
+          "source": "/assets/falconer-drone-2010-W6DUftvX.png",
+          "rect": [
+            512,
+            0,
+            256,
+            256
+          ],
+          "draw": [
+            -29.75,
+            -53.921875,
+            59.5,
+            59.5
+          ]
+        },
+        {
+          "source": "/assets/falconer-drone-2010-W6DUftvX.png",
+          "rect": [
+            512,
+            256,
+            256,
+            256
+          ],
+          "draw": [
+            -29.75,
+            -53.921875,
+            59.5,
+            59.5
+          ]
+        },
+        {
+          "source": "/assets/falconer-drone-2010-W6DUftvX.png",
+          "rect": [
+            512,
+            512,
+            256,
+            256
+          ],
+          "draw": [
+            -29.75,
+            -53.921875,
+            59.5,
+            59.5
+          ]
+        },
+        {
+          "source": "/assets/falconer-drone-2010-W6DUftvX.png",
+          "rect": [
+            512,
+            768,
+            256,
+            256
+          ],
+          "draw": [
+            -29.75,
+            -53.921875,
+            59.5,
+            59.5
+          ]
+        }
+      ],
+      "unrelatedHttpErrors": [
+        "/sprites/generated/items/predators/evt-predators-preserve.png",
+        "/sprites/generated/items/predators/predators-summon.png",
+        "/sprites/generated/items/predators/predators-yakuza-blade.png"
+      ],
+      "pageErrors": [],
+      "disposed": true
+    }
+  ],
+  "viteBundle": [
+    {
+      "profile": {
+        "schemaVersion": 1,
+        "mode": "selected",
+        "packIds": [
+          "predators"
+        ],
+        "sharedPolicy": "preserve-all"
+      },
+      "modules": 848,
+      "payload": {
+        "file": "assets/falconer-drone-2010-W6DUftvX.png",
+        "bytes": 741263,
+        "sha256": "649aee37f1a42fe652ae06217be0a6025e455ca1269b7b3197426650e71bc544"
+      },
+      "isolated": true
+    },
+    {
+      "profile": {
+        "schemaVersion": 1,
+        "mode": "base",
+        "packIds": [],
+        "sharedPolicy": "preserve-all"
+      },
+      "modules": 842,
+      "payload": null,
+      "isolated": true
+    }
+  ],
+  "sourceExportClosure": {
+    "proof": [
+      {
+        "mode": "selected",
+        "packIds": [
+          "predators"
+        ],
+        "sourceFileCount": 1918,
+        "containsFalconerSource": true
+      },
+      {
+        "mode": "base",
+        "packIds": [],
+        "sourceFileCount": 1908,
+        "containsFalconerSource": false
+      }
+    ],
+    "pinnedDoomInputs": 1142,
+    "pinnedDoomAssetInputs": 1011,
+    "changedPaths": [
+      "src/App.jsx",
+      "src/components/CampaignPauseMenu.jsx",
+      "src/components/CustomBattleMode.jsx",
+      "src/components/DlcInstallationPanel.jsx",
+      "src/components/FighterMode.jsx",
+      "src/components/GameCanvas.jsx",
+      "src/components/HubScreen.jsx",
+      "src/components/NexusFieldBriefing.css",
+      "src/components/NexusFieldBriefing.jsx",
+      "src/components/OcDlcLibrary.jsx",
+      "src/components/RpgTargetingPanel.jsx",
+      "src/components/UniverseArchiveReader.jsx",
+      "src/components/collection/modalIsolation.js",
+      "src/components/combat-immersion.css",
+      "src/components/game-system.css"
+    ]
+  },
+  "scope": "Recovered project assets only. No new raster art, no visual 1:1 exhaustiveness verification. Vite and source closure checks do not export the full media distribution."
+}

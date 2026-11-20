@@ -1,0 +1,90 @@
+{
+  "sourceCommit": "0f405438be685bf798bcc5c1daa103496edbfcc2",
+  "node": "22.23.5",
+  "checks": [
+    {
+      "name": "Tactics vertical",
+      "command": "npm run test:tactics-verticality",
+      "totals": {
+        "tests": 322,
+        "pass": 322,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "tapSha256": "bc9be773669fa3c4ac93838eeb7d0492320e5d425ff0b179f42ddc1e9c02945d"
+    },
+    {
+      "name": "Interface immersive",
+      "command": "npm run test:ui-immersion",
+      "totals": {
+        "tests": 582,
+        "pass": 582,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "tapSha256": "fb185cd454c1f418a90dc8215a65cd783ed03ac9852a96360636dadeb8104514"
+    },
+    {
+      "name": "Contrats de source",
+      "command": "npm run test:source-contracts",
+      "totals": {
+        "tests": 261,
+        "pass": 261,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "tapSha256": "0f5d2b1d275386dd5944a09a44e1fdb8e53c795f9769077c2791676b1baa57cf"
+    },
+    {
+      "name": "Chemins DLC et animations ciblées",
+      "command": "node --test --test-concurrency=1 scripts/exportDlcAssetPaths.test.mjs scripts/falconerDroneSprite.test.mjs scripts/twelveBellJudgesMotion.test.mjs scripts/originalStaticBossMotion.test.mjs",
+      "totals": {
+        "tests": 21,
+        "pass": 21,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "tapSha256": "d4dc61be6ad94c087a04003c99d219bc615ef3567a2dff84c9bc03ebc41452b4"
+    }
+  ],
+  "lint": {
+    "command": "node_modules/.bin/oxlint --deny-warnings FILES",
+    "checkedFiles": 26,
+    "exitCode": 0
+  },
+  "focusedEvidence": [
+    {
+      "name": "Secondaires RPG",
+      "path": "../roster/verification.json"
+    },
+    {
+      "name": "Ligne de vue Tactics",
+      "path": "../tactics/verification.json"
+    },
+    {
+      "name": "Atlas et parcours du témoin",
+      "path": "../witness/browser.json"
+    },
+    {
+      "name": "Mouvement des boss",
+      "path": "../motion/verification.json"
+    },
+    {
+      "name": "Planches retrouvées",
+      "path": "../media/receipt.json"
+    },
+    {
+      "name": "Registre d’installation DLC",
+      "path": "../menus/verification.json"
+    },
+    {
+      "name": "Assemblage Doom",
+      "path": "../dlc/coverage.json"
+    }
+  ],
+  "scope": "Chaque suite conserve son propre décompte, y compris les tests communs à plusieurs suites."
+}

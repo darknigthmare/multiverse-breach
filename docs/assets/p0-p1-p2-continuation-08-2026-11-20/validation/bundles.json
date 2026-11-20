@@ -1,0 +1,79 @@
+{
+  "sourceCommit": "0f405438be685bf798bcc5c1daa103496edbfcc2",
+  "script": "../../../../scripts/checkDlcProfileBundle.mjs",
+  "scope": "Compilation du code et fermeture des dépendances des modules sélectionnés en mémoire. Les preuves des rasters émis proviennent des essais ciblés du témoin et de Predators.",
+  "profiles": [
+    {
+      "label": "all",
+      "schemaVersion": 1,
+      "passed": true,
+      "profile": {
+        "schemaVersion": 1,
+        "mode": "all",
+        "packIds": [],
+        "sharedPolicy": "preserve-all"
+      },
+      "selectedPacks": 505,
+      "modules": 2879,
+      "dlcModules": 2038,
+      "javascriptBytes": 53157001,
+      "scope": "Full executable application compile and selected-DLC module closure. No exported edition, media hydration/copy, production prebuild, or artwork approval.",
+      "emittedFiles": 0
+    },
+    {
+      "label": "base",
+      "schemaVersion": 1,
+      "passed": true,
+      "profile": {
+        "schemaVersion": 1,
+        "mode": "base",
+        "packIds": [],
+        "sharedPolicy": "preserve-all"
+      },
+      "selectedPacks": 0,
+      "modules": 842,
+      "dlcModules": 0,
+      "javascriptBytes": 49877937,
+      "scope": "Full executable application compile and selected-DLC module closure. No exported edition, media hydration/copy, production prebuild, or artwork approval.",
+      "emittedFiles": 0
+    },
+    {
+      "label": "mass-effect",
+      "schemaVersion": 1,
+      "passed": true,
+      "profile": {
+        "schemaVersion": 1,
+        "mode": "selected",
+        "packIds": [
+          "mass-effect"
+        ],
+        "sharedPolicy": "preserve-all"
+      },
+      "selectedPacks": 1,
+      "modules": 853,
+      "dlcModules": 11,
+      "javascriptBytes": 49899981,
+      "scope": "Full executable application compile and selected-DLC module closure. No exported edition, media hydration/copy, production prebuild, or artwork approval.",
+      "emittedFiles": 0
+    },
+    {
+      "label": "predators",
+      "schemaVersion": 1,
+      "passed": true,
+      "profile": {
+        "schemaVersion": 1,
+        "mode": "selected",
+        "packIds": [
+          "predators"
+        ],
+        "sharedPolicy": "preserve-all"
+      },
+      "selectedPacks": 1,
+      "modules": 848,
+      "dlcModules": 6,
+      "javascriptBytes": 49881595,
+      "scope": "Full executable application compile and selected-DLC module closure. No exported edition, media hydration/copy, production prebuild, or artwork approval.",
+      "emittedFiles": 0
+    }
+  ]
+}
