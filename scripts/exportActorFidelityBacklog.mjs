@@ -12,7 +12,7 @@ import { OC_DLC_UNIVERSE_KEYS } from '../src/game/ocDlcPacks.js';
 import { getHeroSpriteSheetSrc, getHeroMeleeSpriteSheetSrcs, getEnemySpriteSheetSrc, getSpriteSheetLayout } from '../src/game/spriteAssets.js';
 import { getWardrobeBoosterRoutes } from '../src/game/wardrobeBoosterRewards.js';
 import { buildActorFidelityBacklog, inspectActorRaster, indexActorContinuities } from '../src/game/actorFidelityBacklog.js';
-import { projectExportAssetTree } from './exportAssetTree.mjs';
+import { getBundledRasterPath, projectExportAssetTree } from './exportAssetTree.mjs';
 const [outArg,sourceBaseCommit,treeFile,treeSourceCommit=sourceBaseCommit]=process.argv.slice(2);
 if(!outArg || !/^[a-f0-9]{40}$/.test(sourceBaseCommit||'') || !/^[a-f0-9]{40}$/.test(treeSourceCommit||''))
   throw new Error('Usage: exportActorFidelityBacklog.mjs OUT BASE_COMMIT [TREE_JSON TREE_COMMIT]');
@@ -42,7 +42,7 @@ const rows=actors.map(({actor,kind})=>{
   .map(([context,state])=>({context,state,src:getHeroSpriteSheetSrc({...actor,state},context)}))
   :[{context:'enemy-sheet',state:'idle',src:getEnemySpriteSheetSrc(actor)}];
  if(kind==='hero')for(const src of getHeroMeleeSpriteSheetSrcs(actor))requests.push({context:'melee-manifest',state:'declared',src});
- const rasterProbes=requests.map(r=>inspectActorRaster(r.src,r.context,r.state,index,getSpriteSheetLayout(r.src)));
+ const rasterProbes=requests.map(r=>inspectActorRaster(r.src,r.context,r.state,index,getSpriteSheetLayout(r.src),getBundledRasterPath(root,r.src)));
  const row=buildActorFidelityBacklog(actor,{kind,originalUniverses:originals,rasterProbes,sourceCommit:sourceBaseCommit,continuityIndex});
  return {...row,boosterRoutes:getWardrobeBoosterRoutes(actor)};
 });

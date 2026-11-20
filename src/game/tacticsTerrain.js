@@ -312,10 +312,15 @@ export function terrainLineOfSight(terrain, from, to, options = {}) {
     for (const unit of options.units || []) {
       if (unit === from || unit === to || unit === from?._tacticsSourceUnit || unit.currentHp <= 0) continue;
       const support = getTerrainSurface(terrain, unit);
-      if (!support || support.id === target.id || support.id === origin.id) continue;
-      const width = Math.max(0.5, number(unit.tacticsFootprint?.width, 1) - 0.2);
-      const depth = Math.max(0.5, number(unit.tacticsFootprint?.height, 1) - 0.2);
-      if (rayHitsBox(start, delta, { x: support.x + 0.5 - width / 2, y: support.y + 0.5 - depth / 2, z: support.z, width, depth, height: bodyHeight(unit) })) return false;
+      if (!support) continue;
+      const footprint = footprintSurfaces(terrain, support, unit) || [support];
+      if (footprint.some(surface => surface.id === target.id || surface.id === origin.id)) continue;
+      // Supports are ordered row by row and already clamped to the board.
+      const first = footprint[0], last = footprint.at(-1);
+      if (rayHitsBox(start, delta, {
+        x: first.x + 0.1, y: first.y + 0.1, z: support.z,
+        width: last.x - first.x + 0.8, depth: last.y - first.y + 0.8, height: bodyHeight(unit)
+      })) return false;
     }
   }
   return true;

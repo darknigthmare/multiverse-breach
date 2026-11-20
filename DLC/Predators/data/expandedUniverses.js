@@ -20,7 +20,16 @@ export function createExpandedUniverses() {
       { id: 'berserker_predator', name: 'Berserker Predator', cat: 'slayer', color: '#4a1f1f' },
       { id: 'hanzo_predators', name: 'Hanzo', cat: 'slayer', color: '#2f3536' }
     ],
-    monsters: ['Tracker Hound', 'Falconer Drone', 'Preserve Trap'],
+    monsters: [
+      'Tracker Hound',
+      {
+        name: 'Falconer Drone',
+        incarnation: "Predators (2010) - Falconer's reconnaissance drone",
+        // Bundle the 2010 sheet in this edition even when Predator is excluded.
+        spriteSource: new URL('./falconer-drone-2010.png', import.meta.url).href
+      },
+      'Preserve Trap'
+    ],
     bosses: ['Falconer Predator', 'Tracker Predator'],
     worldBoss: 'Berserker Predator',
     gear: [

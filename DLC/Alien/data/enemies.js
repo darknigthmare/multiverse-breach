@@ -33,7 +33,7 @@ export function createCanonEnemyExpansion() {
       { name: 'Synthetic Ash Protocol', hp: 115, atk: 12, spd: 5, color: '#e8e8df', weapon: 'corporate_override', incarnation: 'Alien (1979)' }
     ],
     bosses: [
-      { name: 'Big Chap Stalker', hp: 560, atk: 22, spd: 7, color: '#05070a', weapon: 'tail', special: 'Vent Shaft Ambush' },
+      { name: 'Big Chap Stalker', hp: 560, atk: 22, spd: 7, color: '#05070a', weapon: 'tail', special: 'Vent Shaft Ambush', incarnation: 'Alien (1979)' },
       { name: 'Weyland-Yutani Retrieval Team', hp: 510, atk: 19, spd: 5, color: '#2f3f46', weapon: 'containment_rifles', special: 'Specimen Recovery Order' }
     ]
   });

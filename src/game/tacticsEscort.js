@@ -1,5 +1,6 @@
 import { HEROES_DB } from './heroes.js';
 import { getHeroSpriteSheetSrc, getSpriteSheetLayout } from './spriteAssets.js';
+import { KHIPU_WITNESS_ACTOR, KHIPU_WITNESS_ID } from './tacticsKhipuWitness.js';
 
 const localized = (value, fallback) => {
   if (typeof value === 'string' && value.trim()) return { fr: value.trim(), en: value.trim() };
@@ -29,16 +30,19 @@ export const resolveTacticsEscort = (stage = {}, roster = HEROES_DB, battlefield
   const universe = authored.universe || stage.universe || 'Nexus de Convergence';
   const profile = ROLE_PROFILES.find(entry => entry.match.test(universe));
   const role = localized(authored.role, profile?.role || { fr: 'Personne a evacuer', en: 'Person to evacuate' });
+  const originalWitness = authored.id === KHIPU_WITNESS_ID && universe === KHIPU_WITNESS_ACTOR.universe;
   const explicitHero = roster.find(hero => hero.id === authored.heroId);
   const universeRoster = roster.filter(hero => hero.universe === universe);
-  const spriteHero = explicitHero
+  const spriteHero = (originalWitness ? KHIPU_WITNESS_ACTOR : explicitHero)
     || universeRoster.find(hero => profile?.preferred.test(`${hero.id} ${hero.name}`))
     || universeRoster[0]
     || roster.find(hero => hero.id === 'arca_mirelle')
     || HEROES_DB.find(hero => hero.id === 'arca_mirelle');
   const name = localized(authored.name, explicitHero ? { fr: explicitHero.name, en: explicitHero.name } : role);
-  const provisional = !explicitHero || name.fr !== explicitHero.name || name.en !== explicitHero.name;
-  const representation = provisional
+  const provisional = !originalWitness && (!explicitHero || name.fr !== explicitHero.name || name.en !== explicitHero.name);
+  const representation = originalWitness
+    ? { fr: 'Personnage original de la mission.', en: 'Original mission character.' }
+    : provisional
     ? {
         fr: `Representation provisoire : sprite de ${spriteHero.name} (${spriteHero.universe}).`,
         en: `Provisional representation: ${spriteHero.name} sprite (${spriteHero.universe}).`
@@ -50,7 +54,7 @@ export const resolveTacticsEscort = (stage = {}, roster = HEROES_DB, battlefield
     name,
     role,
     provisional,
-    identitySource: explicitHero ? 'mission' : authored.name ? 'mission-role' : 'universe-role',
+    identitySource: originalWitness || explicitHero ? 'mission' : authored.name ? 'mission-role' : 'universe-role',
     sourceHeroId: spriteHero.id,
     sourceHeroName: spriteHero.name,
     sourceUniverse: spriteHero.universe,

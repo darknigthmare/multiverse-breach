@@ -5,6 +5,7 @@ import RegulationImagePreview from '../../src/components/RegulationImagePreview.
 import PortalLab from '../../src/components/admin/PortalLab.jsx';
 import ImmersiveDrawer from '../../src/components/ImmersiveDrawer.jsx';
 import MosaicGuidePanel from '../../src/components/MosaicGuidePanel.jsx';
+import GameSystemMenu from '../../src/components/GameSystemMenu.jsx';
 import GameDisplaySettings, { GameDisplayPreferencesSync } from '../../src/components/GameDisplaySettings.jsx';
 import '../../src/index.css';
 import '../../src/components/MosaicCityHub.css';
@@ -32,6 +33,7 @@ export function Menus() {
   qa.closeAll = () => flushSync(() => { setImage(false); setLab(false); setTerminal(false); });
   return <main style={{ padding: 24 }}>
     <h1>{fr ? 'Contrats des menus' : 'Menu contracts'}</h1>
+    <GameSystemMenu lang={lang} />
     <button type="button" data-testid="open-terminal" onClick={() => setTerminal(true)}>{fr ? 'Ouvrir le terminal' : 'Open terminal'}</button>
     <button type="button" data-testid="background-action">{fr ? 'Action de fond' : 'Background action'}</button>
     <ImmersiveDrawer open={terminal} title={fr ? 'Terminal de contrôle' : 'Control terminal'} lang={lang} onClose={() => { qa.terminalsClosed += 1; setTerminal(false); }}>

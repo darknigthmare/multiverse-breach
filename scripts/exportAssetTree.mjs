@@ -1,4 +1,17 @@
 import { projectAssetPath } from './dlcAssetPaths.mjs';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+
+/** Node evaluates statically bundled sprite URLs as file URLs before Vite builds. */
+export function getBundledRasterPath(root, src) {
+  if (typeof src !== 'string' || !src.startsWith('file:')) return null;
+  try {
+    const relative = path.relative(root, fileURLToPath(src)).split(path.sep).join('/');
+    return /^(?:src\/|DLC\/[^/]+\/data\/).+\.(?:png|webp|jpe?g)$/i.test(relative) ? relative : null;
+  } catch {
+    return null;
+  }
+}
 
 /**
  * Project a supplied Git tree, never the current checkout or its manifests.

@@ -17,6 +17,7 @@ const { EngineTactics } = await import('../src/game/engineTactics.js');
 const { getTacticsBattlefield, getTacticsPickupPositions, getUniverseTacticsBattlefield } = await import('../src/game/tacticsBattlefields.js');
 const { buildCustomRuntimeStage, normalizeCustomBattlePreset } = await import('../src/game/customBattle.js');
 const { getTacticsEscortBriefing } = await import('../src/game/tacticsEscort.js');
+const { getHeroSpriteSheetSrc, getSpriteFrameForLayout, getSpriteSheetLayout } = await import('../src/game/spriteAssets.js');
 
 const observatory = TACTICS_ORIGINAL_BATTLEFIELDS.drowned_observatory_angles_tactics;
 const crossroads = TACTICS_ORIGINAL_BATTLEFIELDS.valedor_free_city_crossroads_tactics;
@@ -238,7 +239,7 @@ test('the cliff route uses three paired switchbacks and the witness briefing use
     assert.ok(inclines[0].y > inclines[1].y && inclines[1].y < inclines[2].y);
     assert.deepEqual(inclines.map(surface => surface.shape), ['ramp', 'stairs', 'ramp']);
   }
-  assert.match(getTacticsEscortBriefing(campaignStage(cliffs), 'en', cliffs.escort), /Khipu witness .*memory khipu.*Provisional representation: Sumaq Khipu/);
+  assert.match(getTacticsEscortBriefing(campaignStage(cliffs), 'en', cliffs.escort), /Khipu witness .*memory khipu.*Original mission character/);
 });
 
 test('three ledgers occupy three heights, and the basalt channel is isolated from the catwalk', () => {
@@ -266,7 +267,14 @@ test('the witness climbs all three cliffs alongside the squad and completes extr
   try {
     const escort = engine.escortUnit;
     assert.equal(escort.runtimeId, cliffs.escort.id);
-    assert.equal(engine.escortIdentity.provisional, true);
+    assert.equal(engine.escortIdentity.provisional, false);
+    assert.equal(engine.escortIdentity.sourceHeroId, 'tactics_khipu_witness');
+    const sprite = getHeroSpriteSheetSrc(escort, 'tactics');
+    assert.match(sprite, /\/khipu-witness\.png$/);
+    assert.equal(sprite, engine.escortIdentity.spritePath);
+    const layout = getSpriteSheetLayout(sprite);
+    assert.equal(layout.baseline, 240);
+    assert.deepEqual(['idle', 'run', 'hit', 'extract'].map(state => getSpriteFrameForLayout(state, 10, layout).row), [0, 1, 2, 3]);
     const traveled = new Set([escort.surfaceId]);
     let sawExtractionReserved = false;
     for (let turn = 0; turn < 90 && !engine.gameOver; turn++) {
@@ -294,6 +302,7 @@ test('the witness climbs all three cliffs alongside the squad and completes extr
     assert.equal(escort.gridZ, 3.5);
     assert.equal(engine.objectiveProgress, 1);
     assert.equal(escort.extracted, true);
+    assert.equal(escort.state, 'extract');
     assert.deepEqual([0, 1, 2.5, 3.5], [...new Set([...traveled].map(id => engine.terrain.byId.get(id).z))]
       .filter(z => [0, 1, 2.5, 3.5].includes(z)));
     assertVictoryOnce(engine, outcomes);
@@ -402,6 +411,45 @@ test('the vertical Auto escort continues up the cliffs when the last hostile is 
     }
     assert.equal(engine.escortUnit.extracted, true, engine.escortUnit.surfaceId);
     assertVictoryOnce(engine, outcomes);
+  } finally {
+    engine.dispose();
+  }
+});
+
+test('an intervening 2×2 boss in the Free City blocks a shot through its second row', () => {
+  const stage = campaignStage(crossroads);
+  const hero = HEROES_DB.find(unit => unit.id === 'aelwen_starbough');
+  const template = { ...hero, tacticsAttacks: { ...hero.tacticsAttacks,
+    simple: { range: 8, shape: 'single', blocksOnUnits: true } } };
+  const roster = [ENEMIES_DB[stage.universe].monsters[0], ENEMIES_DB.Prometheus.worldBoss];
+  const engine = new EngineTactics(1040, 560, [template],
+    { monsters: roster, bosses: [], customRoster: roster }, { add: noop }, noop, noop,
+    { ...stage, customBattle: { singleRoster: true, opponentControl: 'p2' } });
+  try {
+    const [archer] = engine.heroes;
+    const [target, boss] = engine.enemies;
+    const support = (x, y) => engine.terrain.byId.get(`${crossroads.id}:ground:${x}:${y}`);
+    for (const [unit, x, y] of [[archer, 0, 7], [boss, 2, 6], [target, 6, 7]]) {
+      const tile = support(x, y);
+      Object.assign(unit, { gridX: x, gridY: y, gridZ: tile.z, surfaceId: tile.id });
+    }
+    const secondRow = support(2, 7);
+    assert.deepEqual([boss.tacticsFootprint.width, boss.tacticsFootprint.height], [2, 2]);
+    assert.equal(engine.unitOccupiesCell(boss, 2, 7, secondRow.id), true);
+    const profile = engine.getAttackProfile(archer, 'simple');
+    assert.equal(profile.blocksOnUnits, true);
+    assert.equal(engine.canAttackCell(archer, target, profile), false);
+    assert.equal(engine.canAttackCell(archer, target, { ...profile, pierceUnits: true }), true);
+
+    if (engine.activeUnit !== archer) runTurn(engine);
+    assert.equal(engine.activeUnit, archer);
+    engine.calculateMovementRange();
+    assert.equal(engine.handleSurfaceClick(archer.surfaceId).handled, true);
+    const targetHp = target.currentHp, bossHp = boss.currentHp;
+    assert.equal(engine.handleSurfaceClick(target.surfaceId).handled, false);
+    assert.equal(target.currentHp, targetHp);
+    assert.equal(engine.handleSurfaceClick(secondRow.id).handled, true);
+    assert.ok(boss.currentHp < bossHp);
   } finally {
     engine.dispose();
   }

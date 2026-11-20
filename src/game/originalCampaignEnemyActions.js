@@ -31,6 +31,9 @@ const repair = (name, healRatio, range, shape = 'single') => secondary(name, 'he
 const alliesBuff = (name, buffMultiplier, range) => secondary(name, 'buff', {
   effect: 'buff', targetSide: 'ally', shape: 'group', buffMultiplier, range, duration: 3, excludeSelf: true
 }, 0);
+const selfBuff = (name, buffMultiplier) => secondary(name, 'buff', {
+  effect: 'buff', targetSide: 'self', shape: 'single', buffMultiplier, duration: 3
+}, 0);
 const record = (name, weapon, signature, action) => ({ name, weapon, signature, action });
 
 const byUniverse = new Map(Object.entries({
@@ -129,6 +132,102 @@ const byUniverse = new Map(Object.entries({
       'Se déplace entre deux coins non adjacents sans traverser l’espace.', contact('Entaille d’angle')),
     'drowned_testament:coquille_couverte_de_balanes': record('Coquille couverte de balanes', 'shield_bash',
       'Ancien habitant vidé de sa voix; l’armure tombe lorsque son nom est retrouvé.', selfGuard('Carapace de balanes', 0.4))
+  },
+  'Aegea: War of the Moirai': {
+    'aegea_moirai:harpie_des_vents_contraires': record('Harpie des vents contraires', 'blade',
+      'Déplace les héros et vole les objets non ramassés.', contact('Serres du vent contraire')),
+    'aegea_moirai:myrmidon_d_ombre': record('Myrmidon d’ombre', 'shield_bash',
+      'Gagne de la puissance en formation avec d’autres Myrmidons.', groupGuard('Formation des boucliers', 0.33, 170)),
+    'aegea_moirai:sentinelle_gorgone': record('Sentinelle gorgone', 'magic',
+      'Pétrifie une case annoncée un tour à l’avance.', zone('Regard annoncé de la Sentinelle', 88, 'glitched')),
+    'aegea_moirai:fragment_de_talos': record('Fragment de Talos', 'heavy_melee',
+      'Automate de bronze dont le talon est la seule zone vulnérable.', contact('Frappe du bronze')),
+    'aegea_moirai:bete_du_labyrinthe_mobile': record('Bête du Labyrinthe mobile', 'claws',
+      'Change les couloirs autour de sa cible avant de charger.', cone('Charge du Labyrinthe', 44))
+  },
+  'Nine Realms: Last Twilight': {
+    'nine_realms_last_twilight:draugr_du_tertre_ouvert': record('Draugr du tertre ouvert', 'shield_bash',
+      'Revient avec une armure plus lourde si son sceau funéraire n’est pas détruit.', selfGuard('Carapace du tertre', 0.43)),
+    'nine_realms_last_twilight:eclaireur_jotunn_de_givre': record('Éclaireur jötunn de givre', 'magic',
+      'Gèle des lignes de déplacement et repousse les unités trop proches.', line('Ligne de givre', 55, 'beam')),
+    'nine_realms_last_twilight:chien_de_hel': record('Chien de Hel', 'claws',
+      'Suit les héros ressuscités et inflige davantage de dégâts aux faibles PV.', contact('Crocs du chien de Hel')),
+    'nine_realms_last_twilight:rejeton_de_ni_hoggr': record('Rejeton de Níðhöggr', 'blade',
+      'Ronge les objectifs, obstacles et racines protectrices plutôt que les héros.', contact('Morsure des racines')),
+    'nine_realms_last_twilight:pillard_maudit_par_le_sei_r': record('Pillard maudit par le seiðr', 'staff',
+      'Copie une rune alliée et la retourne contre l’escouade.', disruption('Runes retournées'))
+  },
+  'Tawantinsuyu: The Split Sun': {
+    'tawantinsuyu_split_sun:ombre_d_uku_pacha': record('Ombre d’Uku Pacha', 'magic',
+      'Éteint les balises solaires et attire une unité vers les niveaux inférieurs.', radial('Faille d’Uku Pacha', 140)),
+    'tawantinsuyu_split_sun:chasqui_corrompu': record('Chasqui corrompu', 'blade',
+      'Transporte des renforts entre deux portails tant que sa route reste ouverte.', alliesBuff('Signal du Chasqui', 1.18, 220)),
+    'tawantinsuyu_split_sun:gardien_puma_de_pierre': record('Gardien puma de pierre', 'shield_bash',
+      'Devient presque invulnérable lorsqu’il tient un carrefour de route.', selfGuard('Ancrage du puma', 0.46)),
+    'tawantinsuyu_split_sun:jeune_amaru_de_tempete': record('Jeune Amaru de tempête', 'claws',
+      'Passe du sol au ciel et frappe depuis une altitude différente.', contact('Plongée d’Amaru')),
+    'tawantinsuyu_split_sun:masque_du_monde_renverse': record('Masque du monde renversé', 'staff',
+      'Échange les effets positifs et négatifs de deux cases.', zone('Onde du masque renversé', 95, 'glitched'))
+  },
+  'Yomi no Kage': {
+    'yomi_no_kage:oni_du_peage_rouge': record('Oni du péage rouge', 'heavy_melee',
+      'Exige un tribut d’objet avant d’ouvrir le passage et devient furieux si on attaque sans négocier.', selfBuff('Colère du péage', 1.22)),
+    'yomi_no_kage:yurei_sans_tablette': record('Yūrei sans tablette', 'magic',
+      'Efface le nom d’une compétence et la rend inutilisable jusqu’à restauration du mémorial.', disruption('Entrave du mémorial')),
+    'yomi_no_kage:tsukumogami_affole': record('Tsukumogami affolé', 'blade',
+      'Change de forme selon l’objet de décor le plus proche.', contact('Ruée de l’objet animé')),
+    'yomi_no_kage:tengu_du_sentier_ferme': record('Tengu du sentier fermé', 'claws',
+      'Attaque depuis les hauteurs puis déplace la cible hors de sa route.', contact('Serres du sentier fermé')),
+    'yomi_no_kage:kappa_du_canal_sec': record('Kappa du canal sec', 'staff',
+      'Vole l’eau des zones de soin; peut être neutralisé en restaurant le bassin.', zone('Siphon du canal', 96))
+  },
+  'Mandate of Nine Heavens': {
+    'mandate_nine_heavens:garde_jiangshi_sous_sceau': record('Garde jiangshi sous sceau', 'shield_bash',
+      'Saute entre les cases marquées et s’arrête si son talisman est restauré.', contact('Bond sous sceau')),
+    'mandate_nine_heavens:bete_de_papier_talismanique': record('Bête de papier talismanique', 'blade',
+      'Se replie en feuille puis se redéploie derrière l’escouade.', contact('Déploiement du talisman')),
+    'mandate_nine_heavens:yaoguai_renard_aux_faux_decrets': record('Yaoguai renard aux faux décrets', 'magic',
+      'Crée une copie illusoire d’un objectif et détourne les unités automatiques.', disruption('Faux décret')),
+    'mandate_nine_heavens:rejeton_de_bronze_taotie': record('Rejeton de bronze taotie', 'heavy_melee',
+      'Dévore les objets de terrain et convertit leurs effets en armure.', selfGuard('Armure taotie', 0.43)),
+    'mandate_nine_heavens:bandit_des_nuages': record('Bandit des nuages', 'claws',
+      'Descend d’une plateforme céleste pour voler la jauge de la cible la plus rapide.', contact('Descente du nuage'))
+  },
+  'Mythos Primordia': {
+    'mythos_primordia:chimere_sans_nom': record('Chimère sans nom', 'blade',
+      'Change de capacités dès qu’un joueur tente de la classer.', cone('Entaille de la Chimère', 58)),
+    'mythos_primordia:colosse_idole': record('Colosse-idole', 'shield_bash',
+      'Devient plus lourd à chaque archive qui le décrit comme invincible.', selfGuard('Poids de l’idole', 0.45)),
+    'mythos_primordia:oracle_d_os': record('Oracle d’os', 'staff',
+      'Prévoit une action puis gagne de la puissance si le joueur la confirme.', selfBuff('Présage d’os', 1.18)),
+    'mythos_primordia:rejeton_mange_etoile': record('Rejeton mange-étoile', 'claws',
+      'Éteint les balises et dévore les projectiles lumineux.', radial('Rafale du Mange-Étoile', 124)),
+    'mythos_primordia:titan_au_masque_vierge': record('Titan au masque vierge', 'magic',
+      'Copie le rôle du dernier héros actif sans copier son identité.', line('Écho du masque vierge', 47))
+  },
+  'Aetherion: Seven Laws of Magic': {
+    'aetherion_seven_laws:sort_vivant_echappe': record('Sort vivant échappé', 'blade',
+      'Change de type élémentaire après chaque attaque reçue.', radial('Éclat du sort vivant', 132)),
+    'aetherion_seven_laws:sangsue_de_mana': record('Sangsue de mana', 'claws',
+      'S’accroche à la cible ayant la plus forte charge spéciale.', contactDisruption('Emprise de mana')),
+    'aetherion_seven_laws:null_knight_loyaliste': record('Null-Knight loyaliste', 'shield_bash',
+      'Réduit les dégâts magiques mais expose son noyau aux attaques physiques.', selfGuard('Garde des lois', 0.44)),
+    'aetherion_seven_laws:gargouille_runique': record('Gargouille runique', 'heavy_melee',
+      'S’active uniquement lorsque deux glyphes voisins correspondent.', radial('Choc runique', 135)),
+    'aetherion_seven_laws:feu_follet_de_memoire': record('Feu follet de mémoire', 'staff',
+      'Répète le dernier sort allié sous une forme affaiblie ou corrompue.', line('Lueur de mémoire', 48, 'beam'))
+  },
+  'Infernum: Nine Pits': {
+    'infernum_nine_pits:diablotin_de_cendre': record('Diablotin de cendre', 'blade',
+      'Met le feu aux objets et fuit vers le prochain brasier.', zone('Braise du diablotin', 84)),
+    'infernum_nine_pits:templier_des_chaines': record('Templier des chaînes', 'shield_bash',
+      'Lie deux unités; les dégâts subis par l’une se transmettent à l’autre.', line('Balayage des chaînes', 50)),
+    'infernum_nine_pits:fielon_contractuel': record('Fiélon contractuel', 'staff',
+      'Propose un buff immédiat contre une pénalité différée clairement affichée.', alliesBuff('Offre du Fiélon', 1.22, 210)),
+    'infernum_nine_pits:molosse_de_braise': record('Molosse de braise', 'claws',
+      'Traque les héros portant une dette ou une marque de péché.', contact('Morsure de braise')),
+    'infernum_nine_pits:coquille_penitente': record('Coquille pénitente', 'magic',
+      'Absorbe les voix des âmes et réduit la puissance des soins.', cone('Onde pénitentielle', 53))
   }
 }));
 

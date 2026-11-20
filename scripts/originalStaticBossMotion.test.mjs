@@ -47,6 +47,18 @@ for (const { actor, path, bytes, crops } of bosses) {
     assert.deepEqual(trace, []);
     const projected = { ...actor, name: 'Echo', universe: 'Nexus de Convergence', sourceUniverse: actor.universe, spriteSource: path };
     assert.equal(drawOriginalStaticBossMotion(ctx, projected, image, 20, ...worldRect), true);
+    for (const side of ['p2', 'cpu-custom']) {
+      trace.length = 0;
+      const slot = { ...actor, id: `${side}:${actor.id}:0`, sourceId: actor.id };
+      assert.equal(drawOriginalStaticBossMotion(ctx, slot, image, 20, ...worldRect), true);
+      assert.equal(trace.filter(([op]) => op === 'drawImage').length, 1 + crops.length);
+      assert.deepEqual(trace.filter(([op]) => op === 'drawImage').slice(1).map(([, , ...args]) => args.slice(0, 4)), crops);
+      trace.length = 0;
+      const replacement = { ...slot, id: `${side}:other:0` };
+      assert.equal(drawOriginalStaticBossMotion(ctx, replacement, image, 20, ...worldRect), false);
+      assert.equal(drawOriginalStaticBossMotion(ctx, { ...slot, sourceId: 'other' }, image, 20, ...worldRect), false);
+      assert.deepEqual(trace, []);
+    }
   });
 
   test(actor.name + ' preserves the body and gives the measured source regions distinct state motion', () => {

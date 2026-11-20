@@ -5,7 +5,8 @@ import { register } from 'node:module';
 import { tmpdir } from 'node:os';
 import { dirname, join } from 'node:path';
 import test from 'node:test';
-import { projectExportAssetTree } from './exportAssetTree.mjs';
+import { pathToFileURL } from 'node:url';
+import { getBundledRasterPath, projectExportAssetTree } from './exportAssetTree.mjs';
 
 // Load the real catalog probes using the existing Vite-compatible Node loader.
 register('./sourceSceneTestLoader.mjs', import.meta.url);
@@ -91,6 +92,25 @@ test('DLC catalog modules and manifests remain source entries, not public assets
     ['DLC/Halo/manifest.json', blob()], ['DLC/_registry.js', blob()]
   ]);
   assert.deepEqual(projectExportAssetTree(tree), tree);
+});
+
+test('bundled sprite URL probes resolve the Git blob inside source without projecting a public alias', () => {
+  const root = join(tmpdir(), 'multiverse-bundled-raster');
+  const source = 'DLC/Predators/data/falconer-drone-2010.png';
+  const url = pathToFileURL(join(root, source)).href;
+  const media = blob();
+  const index = projectExportAssetTree(new Map([[source, media]]));
+  const lookup = getBundledRasterPath(root, url);
+  assert.equal(lookup, source);
+  const probe = inspectActorRaster(url, 'enemy-sheet', 'idle', index, { columns: 4, rows: 4 }, lookup);
+  assert.deepEqual(probe, { path: source, context: 'enemy-sheet', state: 'idle', columns: 4, rows: 4,
+    status: 'PRESENT_IN_GIT', present: true, artApproved: false, gitBlob: media.sha, bytes: media.size });
+  assert.equal(inspectActorRaster(url, 'enemy-sheet', 'idle', new Map(), {}, lookup).status, 'MISSING_IN_GIT');
+  const symbolic = new Map([[source, { ...media, mode: '120000' }]]);
+  assert.equal(inspectActorRaster(url, 'enemy-sheet', 'idle', symbolic, {}, lookup).status, 'MISSING_IN_GIT');
+  assert.equal(getBundledRasterPath(root, pathToFileURL(join(root, '../outside.png')).href), null);
+  assert.equal(getBundledRasterPath(root, pathToFileURL(join(root, 'DLC/Predators/assets/sprite.png')).href), null);
+  assert.equal(getBundledRasterPath(root, '/sprites/falconer-drone.png'), null);
 });
 
 const sourceFixture = (t, extras = {}) => {

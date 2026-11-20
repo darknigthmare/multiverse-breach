@@ -1,4 +1,5 @@
 import { createReducedMotionReader } from './reducedMotion.js';
+import { getOriginalBossMotionId } from './originalBossMotionIdentity.js';
 
 const SIZE = 1024;
 const reducedMotion = createReducedMotionReader();
@@ -104,7 +105,8 @@ function drawVaelgor(ctx, image, state, time) {
 }
 
 export function drawOriginalStaticBossMotion(ctx, actor, image, animTime, x, y, width, height) {
-  const boss = bosses.get(actor?.id);
+  const bossId = getOriginalBossMotionId(actor);
+  const boss = bosses.get(bossId);
   if (!boss || reducedMotion() || actor.state === 'dead' || actor.weapon !== boss.weapon
     || image.naturalWidth !== SIZE || image.naturalHeight !== SIZE) return false;
   const native = actor.universe === boss.universe && actor.name === boss.name && (!actor.sourceUniverse || actor.sourceUniverse === boss.universe);
@@ -116,7 +118,7 @@ export function drawOriginalStaticBossMotion(ctx, actor, image, animTime, x, y, 
   ctx.save();
   ctx.translate(x, y);
   ctx.scale(width / SIZE, height / SIZE);
-  if (actor.id === 'aether_crown:lord_pneuma') drawPneuma(ctx, image, state, time);
+  if (bossId === 'aether_crown:lord_pneuma') drawPneuma(ctx, image, state, time);
   else drawVaelgor(ctx, image, state, time);
   ctx.restore();
   return true;

@@ -9,7 +9,10 @@ import { getCombatHealingAmount } from '../src/game/combatHealing.js';
 
 const universes = [
   'The Aether Crown', 'Meridian Clockwork', 'Iron Tempest', 'Helios 56',
-  'Kemet: The Devoured Sun', 'Imperium Aeternum', 'The Crownless Sea', 'The Drowned Testament'
+  'Kemet: The Devoured Sun', 'Imperium Aeternum', 'The Crownless Sea', 'The Drowned Testament',
+  'Aegea: War of the Moirai', 'Nine Realms: Last Twilight', 'Tawantinsuyu: The Split Sun',
+  'Yomi no Kage', 'Mandate of Nine Heavens', 'Mythos Primordia',
+  'Aetherion: Seven Laws of Magic', 'Infernum: Nine Pits'
 ];
 const roster = universes.flatMap(universe => ENEMIES_DB[universe].monsters);
 const catalog = buildCustomEnemyCatalog();
@@ -42,9 +45,9 @@ function makeBattle(actor, opponentControl = 'p2', campaign = false) {
   return engine;
 }
 
-test('the eight original worlds contribute forty different regular actors and forty named commands', () => {
-  assert.equal(roster.length, 40);
-  assert.equal(new Set(roster.map(actor => actor.id)).size, 40);
+test('sixteen original worlds contribute eighty different regular actors and eighty named commands', () => {
+  assert.equal(roster.length, 80);
+  assert.equal(new Set(roster.map(actor => actor.id)).size, 80);
   const names = new Set();
   for (const actor of roster) {
     const action = getRpgCombatantAbility(actor, 'secondary');
@@ -56,7 +59,7 @@ test('the eight original worlds contribute forty different regular actors and fo
       assert.deepEqual(getRpgActionProfile(actor, slot, 'enemy'), getRpgActionProfile(unauthored, slot, 'enemy'));
     }
   }
-  assert.equal(names.size, 40);
+  assert.equal(names.size, 80);
 });
 
 for (const actor of roster) test(`the live P2 command prepares, previews and resolves the secondary of ${actor.name}`, () => {
@@ -148,6 +151,27 @@ test('a CPU repair unit heals an eligible ally and falls back when the radiation
     } finally {
       engine.dispose();
     }
+  }
+});
+
+test('the CPU uses the Oni’s self-directed fury in the campaign with no opponent damage', () => {
+  const actor = ENEMIES_DB['Yomi no Kage'].monsters[0];
+  const engine = makeBattle(actor, 'cpu', true);
+  try {
+    const [source] = engine.enemies;
+    const initial = engine.heroes.map(unit => unit.currentHp);
+    assert.equal(source.id, 'yomi_no_kage:oni_du_peage_rouge');
+    engine.update();
+    assert.equal(source.cooldown, 180);
+    ticks(engine, 18);
+    assert.ok(source.rpgBuffTicks > 0);
+    assert.equal(source.rpgBuffMultiplier, 1.22);
+    assert.deepEqual(engine.heroes.map(unit => unit.currentHp), initial);
+    assert.ok(engine.enemies.slice(1).every(unit => !unit.rpgBuffTicks));
+    ticks(engine, 180);
+    assert.equal(source.rpgBuffTicks, 0);
+  } finally {
+    engine.dispose();
   }
 });
 

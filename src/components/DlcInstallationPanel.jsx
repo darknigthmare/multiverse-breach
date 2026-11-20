@@ -1,4 +1,4 @@
-import React, { useId, useRef, useState } from 'react';
+import React, { useId, useLayoutEffect, useRef, useState } from 'react';
 import { DLC_PACK_MANIFESTS } from '../../DLC/index.js';
 import { getDlcInstallationSummary, isDlcPackInstalled } from '../game/dlcInstallation.js';
 import { getDlcInstallationCatalogPage, getDlcPackContentKinds } from '../game/dlcInstallationCatalog.js';
@@ -49,11 +49,24 @@ export default function DlcInstallationPanel({ lang = 'fr' }) {
   const searchId = useId();
   const filterId = useId();
   const searchRef = useRef(null);
+  const listRef = useRef(null);
+  const pageRequested = useRef(false);
   const [query, setQuery] = useState('');
   const [filter, setFilter] = useState('all');
   const [page, setPage] = useState(0);
   const summary = getDlcInstallationSummary();
   const catalog = getDlcInstallationCatalogPage(DLC_PACK_MANIFESTS, { query, filter, page, isPackIncluded: isDlcPackInstalled });
+  useLayoutEffect(() => {
+    if (!pageRequested.current) return;
+    pageRequested.current = false;
+    const firstRecord = listRef.current?.querySelector('summary');
+    firstRecord?.focus({ preventScroll: true });
+    firstRecord?.scrollIntoView({ block: 'center', behavior: 'instant' });
+  }, [catalog.page]);
+  const changePage = next => {
+    pageRequested.current = true;
+    setPage(next);
+  };
   const editionName = summary.mode === 'all' ? (fr ? 'Édition complète' : 'Complete edition')
     : summary.mode === 'base' ? (fr ? 'Édition de base' : 'Base edition')
       : (fr ? 'Édition sélectionnée' : 'Selected edition');
@@ -101,11 +114,11 @@ export default function DlcInstallationPanel({ lang = 'fr' }) {
           : (fr ? 'Essayez un autre nom ou réinitialisez la recherche et les filtres.' : 'Try another name or reset the search and filters.')}</p>
       <button type="button" className="dlc-installation-action" onClick={reset}>{fr ? 'Voir tous les packs' : 'Show all packs'}</button>
     </div> : <>
-      <ul className="system-pack-list dlc-installation-list">{catalog.items.map(pack => <PackRecord key={pack.id} pack={pack} included={isDlcPackInstalled(pack.id)} lang={lang} />)}</ul>
+      <ul ref={listRef} className="system-pack-list dlc-installation-list">{catalog.items.map(pack => <PackRecord key={pack.id} pack={pack} included={isDlcPackInstalled(pack.id)} lang={lang} />)}</ul>
       <nav className="system-pack-pagination dlc-installation-pagination" aria-label={fr ? 'Pages des packs' : 'Pack pages'}>
         <span aria-hidden="true">{fr ? 'Page' : 'Page'} {catalog.page + 1} / {catalog.pageCount}</span>
-        <button type="button" className="dlc-installation-action" disabled={catalog.page === 0} onClick={() => setPage(catalog.page - 1)}>{fr ? 'Précédent' : 'Previous'}</button>
-        <button type="button" className="dlc-installation-action" disabled={catalog.page + 1 >= catalog.pageCount} onClick={() => setPage(catalog.page + 1)}>{fr ? 'Suivant' : 'Next'}</button>
+        <button type="button" className="dlc-installation-action" disabled={catalog.page === 0} onClick={() => changePage(catalog.page - 1)}>{fr ? 'Précédent' : 'Previous'}</button>
+        <button type="button" className="dlc-installation-action" disabled={catalog.page + 1 >= catalog.pageCount} onClick={() => changePage(catalog.page + 1)}>{fr ? 'Suivant' : 'Next'}</button>
       </nav>
     </>}
     <p className="dlc-installation-delivery-note">{fr ? 'Ce registre décrit les packs livrés avec l’édition. Il ne télécharge ni n’installe de contenu pendant une partie.' : 'This registry describes the packs delivered with the edition. It does not download or install content during a run.'}</p>

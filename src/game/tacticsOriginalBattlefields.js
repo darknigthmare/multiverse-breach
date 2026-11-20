@@ -1,6 +1,8 @@
 // Squares, heights and routes authored for the original campaign's Tactics mode.
 // The campaign manifest supplies the setting and objective. The board is a
 // playable interpretation of that setting with its own geometry and materials.
+import { KHIPU_WITNESS_ACTOR, KHIPU_WITNESS_ID } from './tacticsKhipuWitness.js';
+
 const frEn = (fr, en) => ({ fr, en });
 const reference = 'src/game/originalUniversesManifest.json';
 
@@ -210,10 +212,10 @@ function qhapaqNan() {
     },
     tacticsPresentation: { biome: 'qhapaq-terraces', skyline: 'Andean cliff terraces' },
     escort: {
-      id: 'tawantinsuyu:khipu-witness',
+      id: KHIPU_WITNESS_ID,
+      universe: KHIPU_WITNESS_ACTOR.universe,
       name: frEn('Témoin du khipu', 'Khipu witness'),
-      role: frEn('Porte le khipu de mémoire au passage haut', 'Carries the memory khipu to the high pass'),
-      heroId: 'sumaq_khipu'
+      role: frEn('Porte le khipu de mémoire au passage haut', 'Carries the memory khipu to the high pass')
     },
     extractionZone, escortSpawn: b.ref(1, 7),
     heroSpawns: refs(b, [[0, 7], [0, 5], [0, 8]]),

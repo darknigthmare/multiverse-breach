@@ -71,10 +71,16 @@ export function readActorTechniques(actor) {
     return { slot, name, type: typeof value === 'object' ? value?.type || '' : '', genericName: generic };
   });
 }
-export function inspectActorRaster(src, context, state, treeIndex, layout = {}) {
+export function inspectActorRaster(src, context, state, treeIndex, layout = {}, bundledPath = null) {
   const result = { path: typeof src === 'string' ? src : '', context, state,
     columns: layout.columns ?? null, rows: layout.rows ?? null, artApproved: false };
   if (!src || typeof src !== 'string') return {...result, status:'UNRESOLVED', present:null};
+  if (bundledPath) {
+    const entry = treeIndex.get(bundledPath);
+    const blob = entry?.mode === '120000' ? null : entry;
+    return { ...result, path: bundledPath, status: blob ? 'PRESENT_IN_GIT' : 'MISSING_IN_GIT', present: Boolean(blob),
+      gitBlob: blob?.sha || '', bytes: blob?.size ?? null };
+  }
   if (!src.startsWith('/') || src.startsWith('//')) return {...result, status:'EXTERNAL_OR_UNSUPPORTED', present:null};
   let local;
   try { local=decodeURIComponent(src.split(/[?#]/,1)[0]); } catch { return {...result,status:'INVALID_PATH',present:null}; }

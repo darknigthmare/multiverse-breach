@@ -52,3 +52,45 @@ test('rest, movement, ringing and impact transform exactly two independent bells
   }
   assert.equal(angles.size, 4);
 });
+
+test('Twelve Bell Judges keeps both bell cutouts in exact custom Melee slots', () => {
+  const { ctx, traces } = canvas();
+  for (const side of ['p2', 'cpu-custom']) {
+    const actor = { ...judge, id: `${side}:${judge.id}:1`, sourceId: judge.id };
+    assert.equal(drawTwelveBellJudgesMotion(ctx, actor, image, 20, ...size), true);
+    assert.equal(traces.filter(([op]) => op === 'drawImage').length, 3);
+    traces.length = 0;
+    for (const changes of [{ id: 'unrelated' }, { sourceId: 'meridian:other' }, { name: 'Other Boss' }]) {
+      assert.equal(drawTwelveBellJudgesMotion(ctx, { ...actor, ...changes }, image, 20, ...size), false);
+    }
+    assert.deepEqual(traces, []);
+  }
+});
+
+test('the applied game and OS motion choices are both live on the same boss', async () => {
+  const previousWindow = Object.getOwnPropertyDescriptor(globalThis, 'window');
+  const previousDocument = Object.getOwnPropertyDescriptor(globalThis, 'document');
+  const query = { matches: false };
+  const root = { dataset: { gameMotion: 'system' } };
+  Object.defineProperty(globalThis, 'window', { configurable: true, value: { matchMedia: () => query } });
+  Object.defineProperty(globalThis, 'document', { configurable: true, value: { documentElement: root } });
+  try {
+    const { drawTwelveBellJudgesMotion: draw } = await import('../src/game/twelveBellJudgesMotion.js?live-motion');
+    const { ctx, traces } = canvas();
+    assert.equal(draw(ctx, judge, image, 20, ...size), true);
+    traces.length = 0;
+    root.dataset.gameMotion = 'reduced';
+    assert.equal(draw(ctx, judge, image, 20, ...size), false);
+    root.dataset.gameMotion = 'system';
+    query.matches = true;
+    assert.equal(draw(ctx, judge, image, 20, ...size), false);
+    assert.deepEqual(traces, []);
+    query.matches = false;
+    assert.equal(draw(ctx, judge, image, 20, ...size), true);
+  } finally {
+    if (previousWindow) Object.defineProperty(globalThis, 'window', previousWindow);
+    else delete globalThis.window;
+    if (previousDocument) Object.defineProperty(globalThis, 'document', previousDocument);
+    else delete globalThis.document;
+  }
+});

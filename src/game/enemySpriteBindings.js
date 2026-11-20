@@ -10,6 +10,14 @@ export const ENEMY_SPRITE_BINDINGS = Object.freeze({
     sha256: '8d990dd806e32e5dc82ebd4c9fc21ac8e7b1216d488b2f9ee74aba0243c896eb',
     visualFidelityApproved: false
   }),
+  'Big Chap Stalker': Object.freeze({
+    universe: 'Alien',
+    incarnation: 'Alien (1979)',
+    weapon: 'tail',
+    sheet: '/sprites/generated/bosses/alien-1979/kane-s-son-big-chap.png',
+    sha256: '5d7c1306d97b2b71fbd903c5adc23bd6955644cc2bcaf3e5b93169c569693822',
+    visualFidelityApproved: false
+  }),
   'Synthetic Ash Protocol': Object.freeze({
     universe: 'Alien',
     incarnation: 'Alien (1979)',

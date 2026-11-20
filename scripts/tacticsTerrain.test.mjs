@@ -122,6 +122,16 @@ test('obstacles and intervening units block only the height occupied by their re
   assert.equal(terrainLineOfSight(terrain, source, target, { units: [unit], blocksOnUnits: true, pierceUnits: true }), true);
 });
 
+test('sight follows a boss footprint clamped at the east edge rather than its anchor center', () => {
+  const terrain = normalizeTacticsTerrain({ cols: 6, rows: 6 });
+  const unit = { ...giant, surfaceId: 'legacy:5:2', currentHp: 100 };
+  assert.deepEqual(getTerrainUnitFootprint(terrain, unit, unit).map(surface => surface.id),
+    ['legacy:4:2', 'legacy:5:2', 'legacy:4:3', 'legacy:5:3']);
+  const options = { units: [unit], blocksOnUnits: true };
+  assert.equal(terrainLineOfSight(terrain, 'legacy:4:0', 'legacy:4:5', options), false);
+  assert.equal(terrainLineOfSight(terrain, 'legacy:3:0', 'legacy:3:5', options), true);
+});
+
 test('ramp and stair heights agree with the drawn slope and four physical treads', () => {
   const stairs = getTerrainSurface(skybridge(), 'stairs:1:3');
   assert.equal(getTerrainHeightAt(stairs, 1, 3.5), 0);

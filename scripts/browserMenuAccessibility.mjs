@@ -190,9 +190,40 @@ try {
         assert.equal(await page.locator('#root').evaluate(element => element.inert), false);
         assert.notEqual(await page.evaluate(() => document.body.style.overflow), 'hidden');
         await expectFocused(trigger);
+
+        const systemTrigger = page.locator('.game-system-trigger');
+        await systemTrigger.focus(); await page.keyboard.press('Enter');
+        const systemDialog = page.getByRole('dialog', { name: fr ? 'SYSTÈME' : 'SYSTEM', exact: true });
+        await systemDialog.getByRole('tab', { name: fr ? 'Système' : 'System', exact: true }).focus();
+        await page.keyboard.press('ArrowRight');
+        const registry = systemDialog.locator('.dlc-installation-panel');
+        const searchPacks = registry.getByRole('searchbox');
+        await searchPacks.fill('dead');
+        const records = registry.locator('.dlc-installation-list > li');
+        for (const [button, packId, count] of [
+          [fr ? 'Suivant' : 'Next', 'ash-vs-evil-dead', 5],
+          [fr ? 'Précédent' : 'Previous', 'dead-space', 12]
+        ]) {
+          const control = registry.getByRole('button', { name: button, exact: true });
+          await control.focus(); await page.keyboard.press('Enter');
+          assert.equal(await records.count(), count);
+          assert.equal(await records.first().getAttribute('data-pack-id'), packId);
+          const firstRecord = records.first().locator('summary');
+          await expectFocused(firstRecord);
+          assert.ok(await firstRecord.evaluate(element => {
+            const rect = element.getBoundingClientRect();
+            return element.contains(document.elementFromPoint(rect.x + rect.width / 2, rect.y + rect.height / 2));
+          }), 'the first dossier remained out of view after paging');
+          await page.keyboard.press('Enter');
+          assert.equal(await records.first().locator('details').evaluate(element => element.open), true);
+        }
+        assert.equal(await searchPacks.inputValue(), 'dead');
+        await page.keyboard.press('Escape');
+        await systemDialog.waitFor({ state: 'detached' });
+        await expectFocused(systemTrigger);
         record.bounds = { preview: previewBounds, gallery: galleryBounds, lab: labBounds };
         record.fonts = { previewBaseFonts, previewLargeFonts, labBaseFonts, labLargeFonts };
-        record.checks = ['native Tab/Shift+Tab', 'one-layer Escape', 'nested inert ownership', 'focus return', 'simultaneous teardown', 'native text slider changes modal copy size', '32px safe area and reachable close controls', 'long catalogue names and full mobile explanations', 'keyboard scrolling through all gallery sheets'];
+        record.checks = ['native Tab/Shift+Tab', 'one-layer Escape', 'nested inert ownership', 'focus return', 'simultaneous teardown', 'native text slider changes modal copy size', '32px safe area and reachable close controls', 'long catalogue names and full mobile explanations', 'keyboard scrolling through all gallery sheets', 'DLC registry paging opens the first visible dossier by keyboard'];
       } else {
         const guide = page.locator('.mosaic-city-guide--collapsible');
         const toggle = guide.locator('.mosaic-city-guide-toggle');

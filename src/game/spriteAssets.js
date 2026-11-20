@@ -1,4 +1,5 @@
 import { HEROES_DB } from './heroes.js';
+import { KHIPU_WITNESS_ACTOR, KHIPU_WITNESS_SPRITE } from './tacticsKhipuWitness.js';
 import characterSpriteCorrectionsWave17A from './combat/characterSpriteCorrectionsWave17PartA.generated.json' with { type: 'json' };
 import characterSpriteCorrectionsWave17B from './combat/characterSpriteCorrectionsWave17PartB.generated.json' with { type: 'json' };
 import characterSpriteCorrectionsWave17C from './combat/characterSpriteCorrectionsWave17PartC.generated.json' with { type: 'json' };
@@ -620,6 +621,10 @@ const originalBossRows = { idle: 0, run: 1, attack: 2, defense: 0, support: 0, s
 
 export const SPRITE_SHEET_LAYOUTS = {
   ...DISCIPLINE_SPRITE_LAYOUTS,
+  [new URL(KHIPU_WITNESS_SPRITE).pathname]: {
+    columns: 4, rows: 4, baseline: 240,
+    rowByState: { idle: 0, run: 1, hit: 2, dead: 2, extract: 3 }
+  },
   '/sprites/generated/bosses/predator/feral-predator.png': {
     // Reuse the existing full-body Prey Feral image as one static figure.
     // No invented animation frames or 4x4 cropping of a single character.
@@ -1021,6 +1026,7 @@ export const getHeroMeleeSpriteSheetSrcs = heroOrId => (
 
 const getOriginalHeroSpriteSheetSrc = (hero, context = 'auto') => {
   if (!hero?.id) return '';
+  if (hero.id === KHIPU_WITNESS_ACTOR.id && hero.universe === KHIPU_WITNESS_ACTOR.universe) return KHIPU_WITNESS_SPRITE;
   const cloudMeadowSprite = getCloudMeadowSpriteSrc(hero);
   if (cloudMeadowSprite) return cloudMeadowSprite;
   const canonicalId = hero.sourceHeroId || hero.sourceId || hero.id;

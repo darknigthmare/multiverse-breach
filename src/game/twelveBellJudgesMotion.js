@@ -1,3 +1,6 @@
+import { createReducedMotionReader } from './reducedMotion.js';
+import { getOriginalBossMotionId } from './originalBossMotionIdentity.js';
+
 const UNIVERSE = 'Meridian Clockwork';
 const ACTOR_ID = 'meridian_clockwork:the_twelve_bell_judges';
 const SHEET = '/sprites/generated/bosses/meridian-clockwork/the-twelve-bell-judges.png';
@@ -27,13 +30,14 @@ const MOTION = {
   attack: { rate: 0.24, swing: 0.31, lift: 26, slide: 12 },
   hit: { rate: 0.21, swing: 0.26, lift: 12, slide: -20 },
 };
-const reducedMotion = typeof matchMedia === 'function' ? matchMedia('(prefers-reduced-motion: reduce)') : null;
+const reducedMotion = createReducedMotionReader();
 
 function isClockworkJudge(actor, url) {
-  if (actor?.id !== ACTOR_ID || actor.weapon !== 'command_staff' || !url?.endsWith(SHEET)) return false;
-  const native = actor.universe === UNIVERSE && (!actor.sourceUniverse || actor.sourceUniverse === UNIVERSE);
+  if (getOriginalBossMotionId(actor) !== ACTOR_ID || actor.weapon !== 'command_staff' || !url) return false;
+  const native = actor.universe === UNIVERSE && actor.name === 'The Twelve Bell Judges'
+    && (!actor.sourceUniverse || actor.sourceUniverse === UNIVERSE);
   const projected = actor.sourceUniverse === UNIVERSE && actor.spriteSource === SHEET;
-  return native || projected;
+  return (native || projected) && new URL(url, 'https://sprite.invalid').pathname === SHEET;
 }
 
 function addCut(ctx, outline) {
@@ -43,7 +47,7 @@ function addCut(ctx, outline) {
 }
 
 export function drawTwelveBellJudgesMotion(ctx, actor, image, animTime, x, y, width, height) {
-  if (reducedMotion?.matches || actor?.state === 'dead' || image.naturalWidth !== SIZE || image.naturalHeight !== SIZE
+  if (reducedMotion() || actor?.state === 'dead' || image.naturalWidth !== SIZE || image.naturalHeight !== SIZE
     || !isClockworkJudge(actor, image.currentSrc || image.src)) return false;
 
   const state = actor.state === 'special' ? 'attack' : actor.state;
