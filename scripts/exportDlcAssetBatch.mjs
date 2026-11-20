@@ -29,13 +29,15 @@ function describeAsset({ sourcePath, publicPath, gitBlobOid, bytes, sha256, sour
 }
 
 /** Hash and bound the copy in the same pass, or hash a previously delivered file. */
-export async function verifyDlcAssetBatchBytes(input, { bytes, sha256, sourcePath }, destination) {
+export async function verifyDlcAssetBatchBytes(input, { bytes, sha256, sourcePath }, destination, nativeGitOid) {
   const hash = createHash('sha256');
+  const gitHash = nativeGitOid ? createHash('sha1').update(`blob ${bytes}\0`) : null;
   let length = 0;
   const verifyChunk = chunk => {
     length += chunk.length;
     if (length > bytes) throw new Error('Batch export payload exceeds expected length: ' + sourcePath);
     hash.update(chunk);
+    gitHash?.update(chunk);
   };
   const stream = createReadStream(input, { flags: readFlags });
   if (destination) {
@@ -47,6 +49,7 @@ export async function verifyDlcAssetBatchBytes(input, { bytes, sha256, sourcePat
     for await (const chunk of stream) verifyChunk(chunk);
   }
   if (length !== bytes || hash.digest('hex') !== sha256) throw new Error('Batch export payload differs: ' + sourcePath);
+  if (gitHash && gitHash.digest('hex') !== nativeGitOid) throw new Error('Assembly payload differs from the planned Git blob: ' + sourcePath);
 }
 
 export function parseDlcAssetBatchExportReceipt(receiptBytes, expectedReceiptSha256) {

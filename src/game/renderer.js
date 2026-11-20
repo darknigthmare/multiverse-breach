@@ -90,7 +90,7 @@ import { getCharacterFormFrame } from './combat/characterFormState';
 import { resolveCharacterFormAsset } from './combat/characterFormCatalog';
 import { drawP0CanonParticle } from './canonP0ParticleRenderer.js';
 import {
-  getEnemySpriteSheetSrc,
+  getEnemySpriteSheetSources,
   getHeroMeleeAnimationFrame,
   getHeroMeleeSpriteSheetSrcs,
   getHeroSpriteSheetSources,
@@ -281,7 +281,7 @@ export const drawCombatantBust = (ctx, x, y, width, height, entity, kind = 'hero
   }
   const sources = kind === 'hero'
     ? getHeroSpriteSheetSources(entity, 'tactics')
-    : getEnemySpriteSheetSrc(entity);
+    : getEnemySpriteSheetSources(entity);
   const entry = getFirstAvailableSpriteSheet(sources);
   if (!entry) return false;
   if (entry.status !== 'ready' || !entry.image.complete || entry.image.naturalWidth === 0) {
@@ -494,15 +494,19 @@ const drawGeneratedSpriteSheet = (ctx, x, y, entity, animTime, facing, targetHei
     return 'loading';
   }
 
-  const layout = entity.sourceSpriteLayoutWave16 || getSpriteSheetLayout(entry.image.currentSrc || entry.image.src);
+  const spriteSource = entry.image.currentSrc || entry.image.src;
+  const layout = entity.sourceSpriteLayoutWave16 || getSpriteSheetLayout(spriteSource);
   const frameWidth = entry.image.naturalWidth / layout.columns;
   const frameHeight = entry.image.naturalHeight / layout.rows;
   const frame = getSpriteFrameForLayout(entity.state, context === 'melee' ? getMeleeElapsedMs(entity, animTime) * 60 / 1000 : animTime, layout);
-  if (entity.presentationFrame && Number.isFinite(entity.presentationFrame.row) && Number.isFinite(entity.presentationFrame.col)) {
+  const pose = entity.presentationFrame;
+  const matchesPoseSheet = !pose?.sheet || (pose.columns === layout.columns && pose.rows === layout.rows
+    && new URL(spriteSource, 'https://sprite.invalid').pathname === pose.sheet);
+  if (matchesPoseSheet && Number.isFinite(pose?.row) && Number.isFinite(pose?.col)) {
     // Blocked native artwork may explicitly reuse an older harmless pose.
     // Preserve that declared row/column instead of exposing an unrelated prop.
-    if (!layout.adaptedLegacyFallback) frame.row = Math.max(0, Math.min(layout.rows - 1, Math.floor(entity.presentationFrame.row)));
-    if (!Number.isInteger(layout.fixedColumn)) frame.col = Math.max(0, Math.min(layout.columns - 1, Math.floor(entity.presentationFrame.col)));
+    if (!layout.adaptedLegacyFallback) frame.row = Math.max(0, Math.min(layout.rows - 1, Math.floor(pose.row)));
+    if (!Number.isInteger(layout.fixedColumn)) frame.col = Math.max(0, Math.min(layout.columns - 1, Math.floor(pose.col)));
     frame.trim = layout?.trimByState?.[entity.state] || layout?.trimByRow?.[frame.row] || layout?.trim || null;
   }
   const trim = frame.trim || {};
@@ -1105,7 +1109,7 @@ export const drawPixelEnemy = (ctx, x, y, enemy, animTime, facing = -1, targetHe
     drawPixelSprite(ctx, x, y, heroActor, animTime, facing, targetHeight);
     return;
   }
-  const generatedStatus = drawGeneratedSpriteSheet(ctx, x, y, enemy, animTime, facing, targetHeight, getEnemySpriteSheetSrc, () => {
+  const generatedStatus = drawGeneratedSpriteSheet(ctx, x, y, enemy, animTime, facing, targetHeight, getEnemySpriteSheetSources, () => {
     drawPixelEnemy(ctx, x, y, enemy, animTime, facing, targetHeight);
   });
   if (generatedStatus !== 'missing') {
@@ -1221,7 +1225,7 @@ export const drawBoss = (ctx, x, y, boss, animTime, facing = -1) => {
   const requestedScale = Number(boss?.tacticsRenderScale);
   const renderScale = Number.isFinite(requestedScale) && requestedScale > 0 ? requestedScale : 1;
   const targetHeight = Math.max(96, Math.min(620, boss.renderHeight || 126)) * renderScale;
-  const generatedStatus = drawGeneratedSpriteSheet(ctx, x, y, boss, animTime, facing, targetHeight, getEnemySpriteSheetSrc, () => {
+  const generatedStatus = drawGeneratedSpriteSheet(ctx, x, y, boss, animTime, facing, targetHeight, getEnemySpriteSheetSources, () => {
     drawBoss(ctx, x, y, boss, animTime, facing);
   });
   if (generatedStatus !== 'missing') {
@@ -1484,8 +1488,7 @@ function withAlpha(hex, alpha) {
   return `rgba(${r}, ${g}, ${b}, ${alpha})`;
 }
 
-function getOpenAiBackdrop(universe, mode) {
-  const src = getOpenAiBackdropSrc(universe, mode);
+function getOpenAiBackdrop(src) {
   if (!src || typeof Image === 'undefined') return null;
 
   let img = backdropCache.get(src);
@@ -1510,8 +1513,8 @@ export function getOpenAiBackdropSrc(universe, mode) {
   return OPENAI_BACKDROPS[mode]?.[universe] || null;
 }
 
-function drawOpenAiBackdrop(ctx, universe, width, height, mode) {
-  const img = getOpenAiBackdrop(universe, mode);
+function drawOpenAiBackdrop(ctx, src, width, height) {
+  const img = getOpenAiBackdrop(src);
   if (!img) return false;
 
   const sourceRatio = img.naturalWidth / img.naturalHeight;
@@ -1899,11 +1902,13 @@ export function drawUniverseBackground(ctx, universe, width, height, mode, optio
   // freezes the scenery, and re-entering cannot jump a wall-clock animation.
   const elapsedSeconds = Math.max(0, Number(options.elapsedSeconds) || 0);
   const time = options.reducedMotion ? 0 : elapsedSeconds * 30;
+  const backdropPath = getOpenAiBackdropSrc(universe, mode);
+  const drewBackdrop = drawOpenAiBackdrop(ctx, backdropPath, width, height);
   const atmosphere = {
     stage: { ...options.stage, universe, mode }, width, height, elapsedSeconds,
-    reducedMotion: Boolean(options.reducedMotion)
+    reducedMotion: Boolean(options.reducedMotion), backdropPath: drewBackdrop ? backdropPath : null
   };
-  if (drawOpenAiBackdrop(ctx, universe, width, height, mode)) {
+  if (drewBackdrop) {
     if (levelProfile && ['RPG', 'Tactics', 'Combat', 'Fighter'].includes(mode)) {
       drawStageFloor(ctx, width, height, mode, getTheme(universe), levelProfile);
     }

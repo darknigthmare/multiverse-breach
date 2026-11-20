@@ -6,9 +6,14 @@ const leads = {
   neris_vale: ['Nom véritable', 'mnemonic-sonar'],
   kael_venn: ['Remboursement total', 'refunded-seconds'],
   eira_solenne: ['Lumière partagée', 'shared-photosphere'],
-  nyra_vale: ['Accès Racine Nadir', 'nadir-lattice']
+  nyra_vale: ['Accès Racine Nadir', 'nadir-lattice'],
+  thaleia_naxos: ['Chemin hors du Labyrinthe', 'labyrinth-thread'],
+  rei_kagetsu: ['Calendrier des Cent Esprits', 'ofuda-calendar'],
+  lin_yue: ['Carte des Neuf Cieux', 'nine-heavens-chart'],
+  seyra_tal: ['Résonance des Cinq Peuples', 'five-mass-concordance']
 };
 let vite, EngineFighter, HEROES_DB, PRESENTATION_PHASES, samplePresentationScript, resolveOriginalFighterPresentation;
+let resolvePresentationScript, getHeroSpriteSheetSrc, drawPixelSprite;
 const noop = () => {};
 const hero = id => HEROES_DB.find(actor => actor.id === id);
 const advance = (engine, seconds) => {
@@ -22,8 +27,10 @@ before(async () => {
   vite = await createServer({ appType: 'custom', logLevel: 'silent', server: { middlewareMode: true } });
   ({ EngineFighter } = await vite.ssrLoadModule('/src/game/engineFighter.js'));
   ({ HEROES_DB } = await vite.ssrLoadModule('/src/game/heroes.js'));
-  ({ PRESENTATION_PHASES, samplePresentationScript } = await vite.ssrLoadModule('/src/game/combat/presentationCatalog.js'));
+  ({ PRESENTATION_PHASES, resolvePresentationScript, samplePresentationScript } = await vite.ssrLoadModule('/src/game/combat/presentationCatalog.js'));
   ({ resolveOriginalFighterPresentation } = await vite.ssrLoadModule('/src/game/combat/originalFighterPresentations.js'));
+  ({ getHeroSpriteSheetSrc } = await vite.ssrLoadModule('/src/game/spriteAssets.js'));
+  ({ drawPixelSprite } = await vite.ssrLoadModule('/src/game/renderer.js'));
 });
 after(async () => { await vite?.close(); });
 
@@ -134,4 +141,59 @@ test('the real draw entry point honors reduced motion for original overlays and 
   assert.ok(normal.labels.includes('Eira veille sur la photosphère'));
   assert.ok(normal.labels.includes('Nyra ouvre une liaison Ghostline'));
   engine.dispose();
+});
+
+function withImageTrace(draw, unavailable = new Set()) {
+  const prior = globalThis.Image;
+  class FixtureImage {
+    complete = true;
+    naturalWidth = 1024;
+    naturalHeight = 1024;
+    set src(path) {
+      this.currentSrc = new URL(path, 'https://fixture.invalid').href;
+      if (unavailable.has(path)) {
+        this.naturalWidth = 0;
+        this.onerror?.();
+      }
+    }
+    get src() { return this.currentSrc; }
+  }
+  globalThis.Image = FixtureImage;
+  const operations = [];
+  const ctx = new Proxy({ globalAlpha: 1,
+    drawImage(image, ...args) { operations.push([new URL(image.src).pathname, ...args]); }
+  }, { get(target, key) { return target[key] ?? noop; } });
+  try { draw(ctx); } finally { globalThis.Image = prior; }
+  return operations;
+}
+
+test('a presentation crops the assigned body sheet and grid only', () => {
+  const actor = hero('thaleia_naxos');
+  const source = getHeroSpriteSheetSrc(actor, 'melee');
+  const other = getHeroSpriteSheetSrc(hero('rei_kagetsu'), 'melee');
+  const crop = (sheet, rows) => withImageTrace(ctx => drawPixelSprite(ctx, 100, 150, {
+    ...actor, state: 'run', stateElapsed: 0, presentationFrame: { sheet, columns: 4, rows, row: 3, col: 2 }
+  }, 0, 1, 96, 'melee'))[0].slice(0, 5);
+  assert.deepEqual(crop(source, 4), [source, 512, 768, 256, 256]);
+  assert.deepEqual(crop(other, 4), [source, 0, 256, 256, 256], 'a pose from another outfit used its row on this body');
+  assert.deepEqual(crop(source, 8), [source, 0, 256, 256, 256], 'a conflicting grid still reduced to a valid-looking crop');
+});
+
+test('a missing phase sheet keeps the runtime body ID rather than its source alias', () => {
+  const base = hero('arca_bastion');
+  const variant = { ...base, id: 'arca_bastion_qa_variant', sourceHeroId: base.id };
+  const variantSheet = getHeroSpriteSheetSrc(variant, 'melee');
+  const baseSheet = getHeroSpriteSheetSrc(base, 'melee');
+  assert.notEqual(variantSheet, baseSheet);
+  const script = resolvePresentationScript(variant, 'intro');
+  assert.equal(script.actor.id, variant.id);
+  const phaseAsset = samplePresentationScript(script, 0).asset;
+  assert.equal(phaseAsset.kind, 'native-generated-character-animation');
+  const fighter = new EngineFighter(960, 540, [variant], [hero('eira_solenne')],
+    { add: noop }, noop, noop, { opponentControl: 'p2' });
+  const drawn = withImageTrace(ctx => fighter.drawCharacterPresentation(ctx, 0), new Set([phaseAsset.sheet]));
+  assert.ok(drawn.some(row => row[0] === variantSheet));
+  assert.ok(drawn.every(row => row[0] !== baseSheet));
+  assert.equal(fighter.getActive('player').id, variant.id);
+  fighter.dispose();
 });

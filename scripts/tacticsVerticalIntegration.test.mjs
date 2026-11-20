@@ -36,7 +36,7 @@ const makeEngine = (id = 'nexus_skybridge', options = {}) => {
     monsters: enemies, bosses: [], worldBoss: null, customRoster: enemies
   }, { add: noop }, noop, noop, {
     id: 'vertical-integration', universe: 'Nexus de Convergence', tacticsBattlefieldId: id,
-    difficulty: 'Medium', customBattle: { singleRoster: true, opponentControl: 'p2' }
+    difficulty: 'Medium', customBattle: { singleRoster: true, opponentControl: options.opponentControl || 'p2' }
   }, options.onManualMoveArrival);
   engines.push(engine);
   return engine;
@@ -214,6 +214,56 @@ test('a capture and extraction require their declared surface rather than an XY 
   assert.equal(extraction.objectiveProgress, 0);
   place(extraction, extraction.heroes[0], 'catwalk:8:5'); extraction.updateTacticsObjective();
   assert.equal(extraction.objectiveProgress, 1);
+});
+
+test('the last required extraction waits for the hero to reach the upper catwalk', () => {
+  const engine = makeEngine('cyber_catwalks', { enemies: [makeEnemy()], opponentControl: 'cpu' });
+  const hero = engine.heroes[0], enemy = engine.enemies[0], goal = 'catwalk:8:4';
+  place(engine, hero, 'catwalk:8:3');
+  place(engine, enemy, 'catwalk:8:5');
+  heroTurn(engine);
+  assert.equal(engine.objectiveTarget, 1);
+  assert.ok(engine.getReachableCells(enemy, 1).some(cell => cell.surfaceId === goal));
+  assert.equal(engine.handleSurfaceClick(goal).handled, true);
+  assert.equal(engine.getReachableCells(enemy, 1).some(cell => cell.surfaceId === goal), false,
+    'the CPU still sees the hero destination as occupied before the arrival');
+  assert.equal(hero.terrainRenderPosition.surfaceId, 'catwalk:8:3');
+  engine.update();
+  assert.equal(engine.objectiveProgress, 0);
+  assert.equal(engine.gameOver, false);
+  assert.ok(hero.terrainMotion);
+  engine.setPaused(true);
+  for (let tick = 0; tick < 20; tick += 1) engine.update();
+  assert.equal(engine.objectiveEvents, 0);
+  assert.ok(hero.terrainMotion);
+  engine.setPaused(false);
+  for (let tick = 0; tick < 30 && !engine.gameOver; tick += 1) engine.update();
+  assert.equal(hero.terrainMotion, undefined);
+  assert.equal(hero.surfaceId, 'catwalk:8:4');
+  assert.deepEqual({ x: hero.x, y: hero.y }, engine.getUnitScreenPosition(8, 4, hero.surfaceId));
+  assert.equal(engine.battleResult, 'victory');
+  assert.equal(engine.objectiveProgress, 1);
+  assert.equal(engine.objectiveEvents, 1);
+  for (let tick = 0; tick < 130; tick += 1) engine.update();
+  assert.equal(engine.objectiveEvents, 1);
+});
+
+test('an extraction in flight does not survive a knockout when an ally is still fighting', () => {
+  const engine = makeEngine('cyber_catwalks', { heroes: [makeHero(), makeHero('reserve')], enemies: [makeEnemy()] });
+  const hero = engine.heroes[0];
+  place(engine, hero, 'catwalk:8:3');
+  heroTurn(engine);
+  assert.equal(engine.objectiveTarget, 2);
+  assert.equal(engine.handleSurfaceClick('catwalk:8:4').handled, true);
+  engine.update();
+  assert.ok(hero.terrainMotion);
+  hero.currentHp = 0;
+  for (let tick = 0; tick < 40; tick += 1) engine.update();
+  assert.equal(hero.terrainMotion, undefined);
+  assert.equal(hero.surfaceId, 'catwalk:8:3');
+  assert.equal(engine.extractedHeroIds.has(hero.id), false);
+  assert.equal(engine.objectiveProgress, 0);
+  assert.equal(engine.gameOver, false);
 });
 
 test('barrel damage keeps its source floor and does not cross the bridge slab', () => {

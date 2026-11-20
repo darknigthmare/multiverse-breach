@@ -307,6 +307,50 @@ test('Nexus probe keeps its route and visible KO contact at the impact position'
   assert.equal(choreography.target.x, impactX);
 });
 
+for (const side of ['player', 'enemy']) test(`RPG keeps the return of a finishing invocation visible for ${side}`, () => {
+  const engine = side === 'player'
+    ? makeEngine([hero('arca_nadir')], [enemyData('last-enemy')])
+    : makeEngine([heroData('last-hero')], [{ ...hero('arca_nadir'), hp: 10000 }]);
+  const [actor, target] = side === 'player'
+    ? [engine.heroes[0], engine.enemies[0]] : [engine.enemies[0], engine.heroes[0]];
+  target.currentHp = 1;
+  const completions = [];
+  engine.onComplete = result => completions.push(result);
+  assert.equal(engine.summon(actor, side), true);
+  assert.equal(engine.selectTarget(id(target)), true);
+  assert.equal(engine.confirmTargeting(), true);
+  const { durationTicks, impactTick } = engine.getSummonSceneState();
+  tick(engine, impactTick);
+  assert.equal(target.currentHp, 0);
+  assert.equal(engine.getSummonSceneState()?.phase, 'attack');
+  assert.deepEqual(engine.getSummonSceneState().choreography.targets.map(entry => entry.id), [id(target)]);
+  assert.deepEqual(completions, []);
+  tick(engine, durationTicks - impactTick - 1);
+  assert.equal(engine.getSummonSceneState()?.phase, 'return');
+  assert.equal(engine.gameOver, false);
+  tick(engine);
+  assert.equal(engine.isSummonSceneActive(), false);
+  assert.equal(actor.actionPending, false);
+  tick(engine, 250);
+  assert.deepEqual(completions, [side === 'player' ? 'victory' : 'defeat']);
+});
+
+test('RPG shows a neutral manifestation when a declared invocation atlas cannot draw', () => {
+  const engine = makeEngine([hero('arca_nadir')]);
+  assert.equal(engine.summon(engine.heroes[0]), true);
+  assert.equal(engine.confirmTargeting(), true);
+  tick(engine, 1);
+  const calls = [];
+  const ctx = Object.fromEntries(['save', 'restore', 'fillRect', 'translate', 'beginPath', 'ellipse', 'stroke', 'drawImage']
+    .map(name => [name, () => calls.push(name)]));
+  const before = engine.getSummonSceneState();
+  assert.equal(before.entityAssetId, 'nexus-return-probe');
+  engine.drawSummonScene(ctx, 'fr', false);
+  assert.equal(calls.filter(name => name === 'ellipse').length, 3);
+  assert.equal(calls.includes('drawImage'), false);
+  assert.deepEqual(engine.getSummonSceneState(), before);
+});
+
 test('RPG explicit revival, buff and cleansing deployments keep their declared effect', () => {
   for (const effect of ['revive', 'buff', 'cleanse']) {
     const engine = makeEngine([medicalCaller(effect, { reviveRatio: 0.5, cleanses: effect === 'cleanse' }), heroData('patient')]);

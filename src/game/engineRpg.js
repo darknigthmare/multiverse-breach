@@ -1321,6 +1321,10 @@ export class EngineRpg {
       this.finishSummon();
       return;
     }
+    if (!scene.impacted && (!this.heroes.some(unit => unit.currentHp > 0) || !this.enemies.some(unit => unit.currentHp > 0))) {
+      this.finishSummon();
+      return;
+    }
     scene.tick++;
     if(scene.sourceMedicWave17&&!findChargedMedicWave17(scene.actor,scene.side==='enemy'?this.enemies:this.heroes)&&!scene.impacted){this.finishSummon();return;}
     if(scene.sourceLuteActorWave17){const step=scene.sourceLuteStepWave17,body=scene.sourceLuteActorWave17;
@@ -1356,9 +1360,9 @@ export class EngineRpg {
         this.particles.add(target.x, target.y - 20, 0, -0.3, scene.color, 18, 30, 'spark');
       });
     }
-    if (scene.tick >= scene.durationTicks
-      || !this.heroes.some(unit => unit.currentHp > 0)
-      || !this.enemies.some(unit => unit.currentHp > 0)) this.finishSummon();
+    // After a finishing blow, the scene still owns the impact and return.
+    // The normal wave/result handling resumes after the performer leaves.
+    if (scene.tick >= scene.durationTicks) this.finishSummon();
   }
 
   canUsePiratesCurseAction(hero = this.getSelectedHero()) {
@@ -2486,6 +2490,7 @@ export class EngineRpg {
     const effectChoreography = projectNativeSummonEffectOriginWave17(projectNativeSummonEffectOriginWave16(choreography, nativeAsset, nativeFrame),nativeAsset,nativeFrame);
     const nativeMegaflare = nativeAsset?.id === 'ff7-bahamut-megaflare';
     let nativeDrawn = false;
+    let entityDrawn = false;
     drawSummonChoreographyEffects(ctx, effectChoreography, 'behind', { nativeMegaflare });
     ctx.save();
     ctx.globalAlpha = alpha;
@@ -2507,17 +2512,18 @@ export class EngineRpg {
       nativeDrawn = nativeFrame && drawCosmeticAtlasFrame(ctx, { ...nativeAsset, row: nativeFrame.row, frames: 4 }, nativeFrame.col,
         0, size / 2 - nativeBaseline / nativeAsset.frameHeight * size, size * nativeAsset.frameWidth / nativeAsset.frameHeight, size,
         { facing: side, glowColor: color, glowBlur: nativeAsset?.sheet?.startsWith('/sprites/generated/summon-animations-wave17/') ? 0 : 8, redrawWhenReady: false });
-      if (!nativeDrawn && entityAsset) drawCosmeticAtlasFrame(ctx, entityAsset, frameIndex,
+      if (!nativeDrawn && entityAsset) entityDrawn = drawCosmeticAtlasFrame(ctx, entityAsset, frameIndex,
         0, -size / 2, size, size,
         { facing: side, glowColor: color, glowBlur: 8, redrawWhenReady: false });
       ctx.restore();
-      if (!nativeDrawn && !entityAsset && performer && descriptor.performerRole === 'reinforcement') drawRosterPerformer();
-    } else if (performer && descriptor.performerRole !== 'caller') {
+    }
+    if (!nativeDrawn && !entityDrawn && performer && !entityAsset
+      && (nativeAsset ? descriptor.performerRole === 'reinforcement' : descriptor.performerRole !== 'caller')) {
       // Use the existing partner identity and its registered sprite renderer.
       drawRosterPerformer();
-    } else {
-      // Canonical entities without a registered sprite are presented through
-      // their ability's fire/ice/energy manifestation, never a borrowed hero.
+    } else if (!nativeDrawn && !entityDrawn) {
+      // A missing or pending atlas uses the existing abstract manifestation.
+      // Only an explicitly roster-backed performer may draw a character body.
       const style = descriptor.entityRender?.style || 'energy';
       const pulse = 1 + Math.sin(tick * 0.16) * 0.12;
       ctx.translate(x, y - 58);

@@ -353,9 +353,9 @@ function drawAtmosphere(ctx, effect, width, height, time) {
 }
 
 /** Draw after the backdrop, before platforms, telegraphs, actors and HUD. */
-export function renderStageAtmosphere(ctx, { stage = {}, width, height, elapsedSeconds = 0, reducedMotion = false } = {}) {
+export function renderStageAtmosphere(ctx, { stage = {}, width, height, elapsedSeconds = 0, reducedMotion = false, backdropPath } = {}) {
   if (getStageAnimationProfile(stage)?.enabled) {
-    return renderStageAnimation(ctx, { stage, width, height, elapsedSeconds, reducedMotion });
+    return renderStageAnimation(ctx, { stage, width, height, elapsedSeconds, reducedMotion, backdropPath });
   }
   const profile = getStageAtmosphereProfile(stage);
   if (!ctx || !profile.enabled || !Number.isFinite(width) || width <= 0 || !Number.isFinite(height) || height <= 0) return false;

@@ -33,8 +33,47 @@ const englishCaptions = {
     roundDefeat: 'Nyra loses the Ghostline signal', fatality: 'Accès Racine Nadir',
     victory: 'The memory keys are secure', defeat: 'Nyra stays down, her link cut',
     outro: 'Nyra disconnects and disappears'
+  },
+  thaleia_naxos: {
+    intro: 'Thaleia follows the first thread', roundVictory: 'The passage is clear',
+    roundDefeat: 'Thaleia drops to one knee', fatality: 'Path out of the Labyrinth',
+    victory: 'Thaleia keeps the way open', defeat: 'Thaleia braces on one knee',
+    outro: 'Thaleia follows the thread home'
+  },
+  rei_kagetsu: {
+    intro: 'Rei reads the paper seals', roundVictory: 'Rei shelters the names',
+    roundDefeat: 'Rei lowers the talisman', fatality: 'Calendar of a Hundred Spirits',
+    victory: 'The spirits keep their names', defeat: 'Rei holds the last seal',
+    outro: 'Rei gathers the scattered seals'
+  },
+  lin_yue: {
+    intro: 'Lin reads the sky map', roundVictory: 'Lin corrects the decree',
+    roundDefeat: 'Lin braces with the brush', fatality: 'Map of the Nine Heavens',
+    victory: 'The stars return to their places', defeat: 'Lin shields the ink',
+    outro: 'Lin rolls up the star chart'
+  },
+  seyra_tal: {
+    intro: 'Seyra balances the masses', roundVictory: 'The lance reaches equilibrium',
+    roundDefeat: 'Seyra absorbs the recoil', fatality: 'Resonance of the Five Peoples',
+    victory: 'The five masses resonate', defeat: 'Seyra braces the lance',
+    outro: 'Seyra gathers the orbiting masses'
   }
 };
+
+function archivePhases({ names, entrance, strike, departure, lowPose, finale }) {
+  const [intro, roundVictory, roundDefeat, fatality, victory, defeat, outro] = names;
+  return {
+    intro: scene(intro, entrance, [run(0, 0, -54), run(.18, 1, -36), run(.36, 2, -18),
+      idle(.54, 0), idle(.76, 1), idle(1, 2)], [.48, .94]),
+    roundVictory: scene(roundVictory, 1.25, [idle(0, 2), idle(.42, 1), idle(1, 0)], [.18, .86]),
+    roundDefeat: scene(roundDefeat, 1.25, [hit(0, 0), hit(.41, lowPose, -9), hit(1, lowPose, -9)]),
+    fatality: scene(fatality, strike, finale, [.26, .91]),
+    victory: scene(victory, 1.8, [idle(0, 2), idle(.28, 1), idle(.64, 3), idle(1, 0)], [.21, .9]),
+    defeat: scene(defeat, 1.8, [hit(0, 0), hit(.46, lowPose, -13), hit(1, lowPose, -13)]),
+    outro: scene(outro, departure, [idle(0, 0), idle(.2, 1), run(.38, 0, -7), run(.53, 1, -39),
+      run(.68, 2, -72), run(.84, 3, -100, 0, .62), run(1, 0, -130, 0, .16)])
+  };
+}
 
 const presentations = {
   neris_vale: {
@@ -96,6 +135,58 @@ const presentations = {
       defeat: scene('Nyra reste au sol, liaison coupée', 1.75, [hit(0, 0), hit(.29, 1, -7), hit(.51, 2, -14), hit(1, 2, -14)]),
       outro: scene('Nyra coupe sa liaison et disparaît', 1.8, [idle(0, 3), idle(.22, 1), run(.39, 0, -6), run(.56, 1, -42), run(.73, 2, -80, 0, .76), run(.86, 3, -108, 0, .44), run(1, 0, -131, 0, .12)])
     }
+  },
+  thaleia_naxos: {
+    universe: 'Aegea: War of the Moirai', weapon: 'xiphos', sourceType: 'original',
+    sheet: '/sprites/generated/heroes/aegea-war-of-the-moirai/thaleia-naxos-v2-fidelity-wave10-2026-10-25.png', footAnchor: 242,
+    sourceReference: 'src/game/originalUniversesManifest.json — navigatrice au xiphos et Chemin hors du Labyrinthe.',
+    effect: 'labyrinth-thread',
+    phases: archivePhases({
+      names: ['Thaleia suit le premier fil', 'Le passage est dégagé', 'Thaleia pose un genou',
+        'Chemin hors du Labyrinthe', 'Thaleia garde le chemin ouvert', 'Thaleia reste à genou', 'Thaleia reprend le fil du retour'],
+      entrance: 1.65, strike: 2.25, departure: 1.75, lowPose: 1,
+      finale: [idle(0, 0), attack(.21, 0), attack(.38, 1, 13), attack(.55, 2, 24),
+        attack(.72, 3, 28), idle(.9, 2, 24), idle(1, 0, 24)]
+    })
+  },
+  rei_kagetsu: {
+    universe: 'Yomi no Kage', weapon: 'ofuda', sourceType: 'original',
+    sheet: '/sprites/generated/heroes/yomi-no-kage/rei-kagetsu-v2-fidelity-wave10-2026-10-25.png', footAnchor: 242,
+    sourceReference: 'src/game/originalUniversesManifest.json — enquête par ofuda et Calendrier des Cent Esprits.',
+    effect: 'ofuda-calendar',
+    phases: archivePhases({
+      names: ['Rei lit les sceaux de papier', 'Rei met les noms à l’abri', 'Rei abaisse le talisman',
+        'Calendrier des Cent Esprits', 'Les esprits gardent leurs noms', 'Rei retient le dernier sceau', 'Rei rassemble les sceaux dispersés'],
+      entrance: 1.8, strike: 2.45, departure: 1.9, lowPose: 1,
+      finale: [idle(0, 1), attack(.24, 0), attack(.42, 1), attack(.59, 2),
+        attack(.76, 3), idle(.92, 2), idle(1, 0)]
+    })
+  },
+  lin_yue: {
+    universe: 'Mandate of Nine Heavens', weapon: 'talisman_brush', sourceType: 'original',
+    sheet: '/sprites/generated/heroes/mandate-of-nine-heavens/lin-yue-v2-fidelity-wave9-2026-10-25.png', footAnchor: 242,
+    sourceReference: 'src/game/originalUniversesManifest.json — Bureau des Constellations, pinceau et Carte des Neuf Cieux.',
+    effect: 'nine-heavens-chart',
+    phases: archivePhases({
+      names: ['Lin relève le ciel', 'Lin corrige le décret', 'Lin prend appui sur le pinceau',
+        'Carte des Neuf Cieux', 'Les astres reprennent leur place', 'Lin protège son encre', 'Lin roule la carte céleste'],
+      entrance: 1.95, strike: 2.5, departure: 2.05, lowPose: 2,
+      finale: [idle(0, 0), attack(.17, 0), attack(.32, 1, 2), attack(.51, 2, 4),
+        attack(.73, 3), idle(.92, 1), idle(1, 0)]
+    })
+  },
+  seyra_tal: {
+    universe: 'Ilyr Concordat', weapon: 'gravity_lance', sourceType: 'original',
+    sheet: '/sprites/generated/heroes/ilyr-concordat/seyra-tal-v2-fidelity-wave7-2026-10-23.png', footAnchor: 242,
+    sourceReference: 'src/game/originalUniversesManifest.json — Auralith, lance gravitationnelle et Résonance des Cinq Peuples.',
+    effect: 'five-mass-concordance',
+    phases: archivePhases({
+      names: ['Seyra équilibre les masses', 'La lance retrouve son équilibre', 'Seyra absorbe le recul',
+        'Résonance des Cinq Peuples', 'Les cinq masses résonnent', 'Seyra retient sa lance', 'Seyra rassemble les masses en orbite'],
+      entrance: 1.7, strike: 2.35, departure: 1.85, lowPose: 1,
+      finale: [idle(0, 1), attack(.2, 0), attack(.38, 1, 8), attack(.56, 2, 11),
+        attack(.77, 3, 5), idle(.91, 1), idle(1, 0)]
+    })
   }
 };
 
@@ -181,6 +272,47 @@ const paintMotif = {
       stroke(ctx, [[-step, top], [-step * .5, top], [-step * .19, top - step * .25],
         [step * .57, top - step * .25], [step, top - step * .55]]);
       ctx.strokeRect(step - 2, top - step * .55 - 2, 4, 4);
+    }
+  },
+  'labyrinth-thread'(ctx, p, size) {
+    const edge = (26 + 18 * p) * size;
+    ctx.strokeStyle = '#b9d6fd';
+    ctx.strokeRect(-edge, -edge, edge * 2, edge * 2);
+    ctx.strokeStyle = '#ffc979';
+    stroke(ctx, [[-edge, edge * .55], [-edge * .3, edge * .55], [-edge * .3, -edge * .5],
+      [edge * .42, -edge * .5], [edge * .42, edge * .22], [edge * (1 + p * .65), edge * .22]]);
+  },
+  'ofuda-calendar'(ctx, p, size) {
+    ctx.strokeStyle = '#91f0e6';
+    for (let index = 0; index < 6; index++) {
+      const angle = index * Math.PI / 3 + p * .46;
+      const x = Math.cos(angle) * (30 + p * 18) * size;
+      const y = Math.sin(angle) * (20 + p * 14) * size;
+      ctx.strokeRect(x - 4 * size, y - 8 * size, 8 * size, 16 * size);
+      stroke(ctx, [[x, y - 4 * size], [x, y + 4 * size]]);
+    }
+  },
+  'nine-heavens-chart'(ctx, p, size) {
+    const axis = (12 + p * 21) * size;
+    ctx.strokeStyle = '#f4ce84';
+    stroke(ctx, [[-axis, -axis], [axis, -axis], [axis, 0], [-axis, 0], [-axis, axis], [axis, axis]]);
+    ctx.fillStyle = '#8bf2ff';
+    for (let x = -1; x <= 1; x++) {
+      for (let y = -1; y <= 1; y++) ctx.fillRect(x * axis - 2, y * axis - 2, 4, 4);
+    }
+  },
+  'five-mass-concordance'(ctx, p, size) {
+    const reach = (22 + p * 33) * size;
+    ctx.strokeStyle = '#9fbcff';
+    ctx.beginPath();
+    ctx.ellipse(0, 0, reach, reach * .5, -.4, 0, Math.PI * 2);
+    ctx.stroke();
+    ctx.fillStyle = '#b1f5ff';
+    for (let index = 0; index < 5; index++) {
+      const angle = index * Math.PI * 2 / 5 + p * 1.2;
+      ctx.beginPath();
+      ctx.arc(Math.cos(angle) * reach, Math.sin(angle) * reach * .45, (2.5 + index * .45) * size, 0, Math.PI * 2);
+      ctx.fill();
     }
   }
 };

@@ -3,6 +3,7 @@ import { readdirSync } from 'node:fs';
 import path from 'node:path';
 import { pathToFileURL } from 'node:url';
 import { parseArgs } from 'node:util';
+import { inspectDlcAssetBatchCoverage } from './dlcAssetBatchCoverage.mjs';
 import { assertDistributionDirectory, inspectDistributionPath, listDistributionFiles, readDistributionFile } from './dlcDistributionFilesystem.mjs';
 import {
   auditDlcAssetBatchExport, DLC_ASSET_BATCH_EXPORT_RECEIPT, parseDlcAssetBatchExportReceipt, verifyDlcAssetBatchBytes,
@@ -75,7 +76,7 @@ function readJournal(root) {
     if (batchEntries.has(id) || !jsonBytes(stateFor(receipt)).equals(jsonBytes(state))) throw new Error('Batch differs from assembly identity: ' + id);
     const done = inspectDistributionPath(journal, doneFile, { optional: true }) !== null;
     if (done && readDistributionFile(journal, doneFile).toString() !== receiptSha256 + '\n') throw new Error('Batch completion marker differs from receipt: ' + id);
-    batchEntries.set(id, { receiptSha256, done });
+    batchEntries.set(id, { receipt, receiptSha256, done });
     for (const asset of receipt.assets) {
       if (sources.has(asset.sourcePath) || publicPaths.has(asset.publicPath)) throw new Error('Batch media collide: ' + asset.publicPath);
       sources.set(asset.sourcePath, { asset, done });
@@ -89,23 +90,24 @@ function readJournal(root) {
 }
 
 /** Read the local assembly and verify all installed files against its retained receipts. */
-export async function auditDlcAssetBatchAssembly({ directory, expectedPlanSha256 } = {}) {
+export async function auditDlcAssetBatchAssembly({ directory, expectedPlanSha256, plan } = {}) {
   directory = assertDistributionDirectory(directory);
   const { state, batchEntries, sources } = readJournal(directory);
   if (expectedPlanSha256 !== undefined && state.planSha256 !== expectedPlanSha256) throw new Error('Assembly plan hash differs from the pinned hash.');
+  const planCheck = plan === undefined ? null : inspectDlcAssetBatchCoverage({ plan, expectedPlanSha256, state, batchEntries });
   const files = listDistributionFiles({ root: directory, ignore: file => file === JOURNAL });
   if (files.some(file => !sources.has(file))) throw new Error('Assembly contains files absent from its batch receipts.');
   let bytes = 0;
   const present = new Set(files);
   for (const [sourcePath, { asset, done }] of sources) {
     if (present.has(sourcePath)) {
-      await verifyDlcAssetBatchBytes(inspectDistributionPath(directory, sourcePath), asset);
+      await verifyDlcAssetBatchBytes(inspectDistributionPath(directory, sourcePath), asset, undefined, planCheck?.nativeGitOids.get(sourcePath));
       bytes += asset.bytes;
     } else if (done) throw new Error('Completed assembly batch file is missing: ' + sourcePath);
   }
   const pendingBatches = [...batchEntries].filter(([, row]) => !row.done).map(([id]) => id).sort();
   return { sourceRevision: state.sourceRevision, planSha256: state.planSha256, appliedBatches: batchEntries.size - pendingBatches.length,
-    pendingBatches, presentAssets: present.size, payloadBytes: bytes };
+    pendingBatches, presentAssets: present.size, payloadBytes: bytes, ...(planCheck && { coverage: planCheck.coverage }) };
 }
 
 /** Apply or resume a transferred batch without rereading Git or LFS. */
@@ -172,16 +174,23 @@ export async function applyDlcAssetBatch({ directory, out, expectedReceiptSha256
 }
 
 const usage = `Usage: node scripts/applyDlcAssetBatch.mjs --batch DIRECTORY --receipt-sha256 SHA256 --out ASSEMBLY_DIRECTORY
-       node scripts/applyDlcAssetBatch.mjs --check ASSEMBLY_DIRECTORY [--expected-plan-sha256 SHA256]`;
+       node scripts/applyDlcAssetBatch.mjs --check ASSEMBLY_DIRECTORY [--expected-plan-sha256 SHA256]
+       node scripts/applyDlcAssetBatch.mjs --check ASSEMBLY_DIRECTORY --plan PLAN.json --expected-plan-sha256 SHA256 [--require-complete]`;
 
 if (process.argv[1] && pathToFileURL(path.resolve(process.argv[1])).href === import.meta.url) {
   try {
     const { values: options } = parseArgs({ options: { batch: { type: 'string' }, 'receipt-sha256': { type: 'string' },
-      out: { type: 'string' }, check: { type: 'string' }, 'expected-plan-sha256': { type: 'string' }, help: { type: 'boolean' } } });
+      out: { type: 'string' }, check: { type: 'string' }, plan: { type: 'string' }, 'expected-plan-sha256': { type: 'string' },
+      'require-complete': { type: 'boolean' }, help: { type: 'boolean' } } });
     if (options.help) console.log(usage);
-    else if (options.check && Object.keys(options).every(key => ['check', 'expected-plan-sha256'].includes(key))) {
-      console.log(JSON.stringify(await auditDlcAssetBatchAssembly({ directory: options.check, expectedPlanSha256: options['expected-plan-sha256'] })));
-    } else if (options.batch && options.out && options['receipt-sha256'] && !options.check && !options['expected-plan-sha256']) {
+    else if (options.check && Object.keys(options).every(key => ['check', 'plan', 'expected-plan-sha256', 'require-complete'].includes(key))) {
+      if (options['require-complete'] && !options.plan) throw new Error('--require-complete needs the original --plan.');
+      const planPath = options.plan && path.resolve(options.plan);
+      const plan = planPath && JSON.parse(readDistributionFile(assertDistributionDirectory(path.dirname(planPath)), path.basename(planPath)));
+      const result = await auditDlcAssetBatchAssembly({ directory: options.check, expectedPlanSha256: options['expected-plan-sha256'], plan });
+      console.log(JSON.stringify(result));
+      if (options['require-complete'] && !result.coverage.mediaPlanComplete) process.exitCode = 1;
+    } else if (options.batch && options.out && options['receipt-sha256'] && Object.keys(options).every(key => ['batch', 'out', 'receipt-sha256'].includes(key))) {
       console.log(JSON.stringify(await applyDlcAssetBatch({ directory: options.batch, out: options.out, expectedReceiptSha256: options['receipt-sha256'] })));
     } else throw new Error(usage);
   } catch (error) { console.error(error.message); process.exitCode = 1; }

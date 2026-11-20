@@ -528,7 +528,7 @@ function drawMechanism(ctx, animation, frame, width, height) {
 }
 
 /** Before actors, collision surfaces, event telegraphs and HUD; no game state. */
-export function renderStageAnimation(ctx, { stage = {}, width, height, elapsedSeconds = 0, reducedMotion = false } = {}) {
+export function renderStageAnimation(ctx, { stage = {}, width, height, elapsedSeconds = 0, reducedMotion = false, backdropPath } = {}) {
   const animation = getStageAnimationProfile(stage);
   if (!ctx || !animation?.enabled || !Number.isFinite(width) || width <= 0 || !Number.isFinite(height) || height <= 0) return false;
   const frame = getStageAnimationFrame(stage, elapsedSeconds, { reducedMotion });
@@ -539,7 +539,12 @@ export function renderStageAnimation(ctx, { stage = {}, width, height, elapsedSe
     ctx.clip();
     ctx.globalCompositeOperation = 'source-over';
     drawMechanism(ctx, animation, frame, width, height);
-    drawBackdropPatch(ctx, animation, frame, width, height);
+    // A cropped region belongs to the bitmap underneath it. A null path
+    // means the renderer used a procedural backdrop. Standalone previews
+    // can still draw the catalog region when no backdrop is supplied.
+    if (backdropPath === undefined || backdropPath === animation.activeLocalBackdrop?.path) {
+      drawBackdropPatch(ctx, animation, frame, width, height);
+    }
     drawLocalAtlas(ctx, animation, frame, width, height);
   } finally {
     ctx.restore();

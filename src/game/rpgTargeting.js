@@ -7,6 +7,7 @@ import { previewBattleItemDamage } from './battleItemShield.js';
 import { getEffectiveCombatDefense } from './combatStatPreparation.js';
 import { resolveCombatAbility, resolveUniverseSummon } from './combatIdentity.js';
 import { getNexusActorDesign } from './nexusActorDesigns.js';
+import { resolveOriginalMachineRpgSpecial } from './originalMachineActorDesigns.js';
 import { isPhaselockProfile, isPhaselockTargetEligible } from './combat/combatControlWave15.js';
 import { isSourceControlProfileWave16 } from './combat/combatControlWave16.js';
 import { canSourceControlTargetWave16, getPossessedSligActionWave16 } from './combat/sourceCombatRuntimeWave16.js';
@@ -41,6 +42,10 @@ const hasCurrentInlineRpgSource = actor => {
 export function getRpgCombatantAbility(actor, abilityType) {
   const supplied = actor?.[abilityType];
   if (supplied && (actor.rpgAttacks?.[abilityType] || supplied.rpgProfile || hasCurrentInlineRpgSource(actor))) return supplied;
+  if (abilityType === 'special') {
+    const originalMachineSpecial = resolveOriginalMachineRpgSpecial(actor, supplied);
+    if (originalMachineSpecial) return originalMachineSpecial;
+  }
   if (['simple', 'secondary', 'defense', 'special'].includes(abilityType)) {
     const authored = resolveCombatAbility(actor, abilityType);
     if (authored?.provenance?.identityAuthored) return authored.sourceAbility;

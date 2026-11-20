@@ -2170,12 +2170,14 @@ export class EngineFighter {
       ctx.fill();
       const presentationFighter = {
         ...fighter,
-        id: sample?.asset.actorId || fighter.id,
         state: sample?.poseState || state,
         stateElapsed: sample?.stateElapsed ?? entryElapsed,
         presentationPhase: actorPhase,
         presentationProgress: sample?.progress ?? progress,
-        presentationFrame: sample ? { row: sample.asset.row, col: sample.asset.col } : null
+        presentationFrame: sample ? {
+          sheet: sample.asset.sheet, columns: sample.asset.columns, rows: sample.asset.rows,
+          row: sample.asset.row, col: sample.asset.col
+        } : null
       };
       ctx.save();
       ctx.globalAlpha *= sample?.opacity ?? 1;

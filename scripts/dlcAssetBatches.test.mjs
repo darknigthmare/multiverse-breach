@@ -4,7 +4,7 @@ import fs from 'node:fs';
 import childProcess from 'node:child_process';
 import { syncBuiltinESMExports } from 'node:module';
 import { execFileSync, spawnSync } from 'node:child_process';
-import { existsSync, mkdirSync, mkdtempSync, readFileSync, readdirSync, rmSync, symlinkSync, writeFileSync } from 'node:fs';
+import { copyFileSync, existsSync, mkdirSync, mkdtempSync, readFileSync, readdirSync, rmSync, symlinkSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import path from 'node:path';
 import test from 'node:test';
@@ -276,10 +276,21 @@ test('portable CLI assembles selected batches, verifies the tree and reuses comp
   const script = fileURLToPath(new URL('./applyDlcAssetBatch.mjs', import.meta.url));
   const run = args => spawnSync(process.execPath, [script, ...args], { cwd: f.parent, encoding: 'utf8' });
   const assemble = delivery => run(['--batch', delivery.out, '--out', out, '--receipt-sha256', delivery.receiptSha256]);
-  for (const delivery of exports) {
+  const planPath = path.join(f.parent, 'plan.json');
+  writeFileSync(planPath, JSON.stringify(plan));
+  const checkComplete = () => run(['--check', out, '--plan', planPath, '--expected-plan-sha256', plan.sha256, '--require-complete']);
+  for (const [i, delivery] of exports.entries()) {
     const applied = assemble(delivery);
     assert.equal(applied.status, 0, applied.stderr);
     assert.equal(JSON.parse(applied.stdout).copiedAssets, 2);
+    if (i === 0) {
+      const blocked = checkComplete();
+      assert.equal(blocked.status, 1, blocked.stderr);
+      const result = JSON.parse(blocked.stdout);
+      assert.deepEqual(result.pendingBatches, []);
+      assert.deepEqual(result.coverage.missingBatchIds, ['00001']);
+      assert.equal(result.coverage.mediaPlanComplete, false);
+    }
   }
   const reapplied = assemble(exports[0]);
   assert.equal(reapplied.status, 0, reapplied.stderr);
@@ -289,6 +300,14 @@ test('portable CLI assembles selected batches, verifies the tree and reuses comp
   assert.equal(checked.status, 0, checked.stderr);
   assert.deepEqual(JSON.parse(checked.stdout), { sourceRevision: f.revision, planSha256: plan.sha256, appliedBatches: 2,
     pendingBatches: [], presentAssets: 4, payloadBytes: 4 * PNG.length });
+  const complete = checkComplete();
+  assert.equal(complete.status, 0, complete.stderr);
+  assert.deepEqual(JSON.parse(complete.stdout).coverage, { plannedBatches: 2, plannedAssets: 4, plannedPayloadBytes: 4 * PNG.length,
+    unavailableAssets: 0, missingBatchIds: [], mediaPlanComplete: true });
+  writeFileSync(planPath, JSON.stringify({ ...plan, assetCount: plan.assetCount - 1 }));
+  const alteredPlan = checkComplete();
+  assert.equal(alteredPlan.status, 1);
+  assert.match(alteredPlan.stderr, /pinned plan hash/);
   assert.deepEqual(readFileSync(path.join(out, 'DLC/Halo/assets/images/halo.png')), PNG);
   assert.equal(existsSync(path.join(out, 'public/images/halo.png')), false);
 });
@@ -353,4 +372,81 @@ test('concurrent appends with different sources for one public URL leave one int
   assert.deepEqual(audit.pendingBatches, []);
   assert.equal(audit.appliedBatches, 1);
   assert.equal(audit.presentAssets, 1);
+});
+
+test('plan coverage compares native bytes and rejects a locally coherent replacement', async t => {
+  const f = fixture(t);
+  const plan = await createDlcAssetBatchPlan({ root: f.root, revision: f.revision, profile: profile() });
+  const lot = await exportDlcAssetBatch({ root: f.root, plan, batchId: 0, out: path.join(f.parent, 'lot') });
+  const out = path.join(f.parent, 'assembly');
+  await applyDlcAssetBatch({ directory: lot.out, expectedReceiptSha256: lot.receiptSha256, out });
+  const options = { directory: out, expectedPlanSha256: plan.sha256, plan };
+  assert.equal((await auditDlcAssetBatchAssembly(options)).coverage.mediaPlanComplete, true);
+  const intentPath = path.join(out, '.dlc-batches/intent-00000.json');
+  const intent = JSON.parse(readFileSync(intentPath));
+  const asset = intent.assets[0];
+  const replacement = Buffer.alloc(PNG.length);
+  writeFileSync(path.join(out, asset.sourcePath), replacement);
+  asset.sha256 = hash(replacement);
+  const changed = JSON.stringify(intent);
+  writeFileSync(intentPath, changed);
+  writeFileSync(path.join(out, '.dlc-batches/batch-00000.done'), hash(changed) + '\n');
+  await assert.rejects(auditDlcAssetBatchAssembly(options), /differs from the planned Git blob/);
+  intent.assets[0].gitBlobOid = '1'.repeat(40);
+  const wrongIdentity = JSON.stringify(intent);
+  writeFileSync(intentPath, wrongIdentity);
+  writeFileSync(path.join(out, '.dlc-batches/batch-00000.done'), hash(wrongIdentity) + '\n');
+  await assert.rejects(auditDlcAssetBatchAssembly(options), /differs from planned media/);
+});
+
+test('the assembled media of a complete compact scope are published by a Vite distribution build', async t => {
+  const f = fixture(t);
+  const selected = profile(['halo']);
+  f.json('package.json', { type: 'module', name: 'compact-dlc-fixture' });
+  f.json('DLC/content-identities.json', { schemaVersion: 1, indexes: { universes: { Halo: 0, Drop: 1 } } });
+  const manifests = ['Halo', 'Drop'].map(universe => {
+    const directory = 'DLC/' + universe;
+    const manifest = JSON.parse(readFileSync(path.join(f.root, directory, 'manifest.json')));
+    manifest.modules = [{ path: 'data/runtime.js', runtimeAdapter: 'src/game/catalog.js' }];
+    f.json(directory + '/manifest.json', manifest);
+    f.write(directory + '/index.js', 'export * from "./data/runtime.js";\n');
+    f.write(directory + '/data/runtime.js', `export const ${universe.toUpperCase()}_MEDIA = ["/images/${manifest.id}.png"];\n`);
+    return manifest;
+  });
+  f.write('DLC/index.js', 'export const DLC_PACK_MANIFESTS=' + JSON.stringify(manifests) + ';\n');
+  f.write('src/game/catalog.js', [
+    'import { HALO_MEDIA } from "../../DLC/Halo/data/runtime.js";',
+    'import { DROP_MEDIA } from "../../DLC/Drop/data/runtime.js";',
+    'export const MEDIA = [...HALO_MEDIA, ...DROP_MEDIA];',
+  ].join('\n') + '\n');
+  f.write('vite.config.js', 'export default {};\n');
+  f.write('index.html', '<link rel="icon" href="/images/common.png"><main></main><script type="module" src="/src/main.js"></script>');
+  f.write('src/main.js', 'import { MEDIA } from "./game/catalog.js";\nfor (const src of MEDIA) {\n'
+    + '  const image = new Image(); image.src = src; document.querySelector("main").append(image);\n}\n');
+  f.git(['add', '.']); f.git(['commit', '-qm', 'Compact distribution fixture']);
+  const revision = f.git(['rev-parse', 'HEAD']);
+  const plan = await createDlcAssetBatchPlan({ root: f.root, revision, profile: selected, limits: { maxAssets: 1 } });
+  const assembly = path.join(f.parent, 'assembly');
+  for (const batch of plan.batches) {
+    const lot = await exportDlcAssetBatch({ root: f.root, plan, batchId: batch.id, out: path.join(f.parent, 'lot-' + batch.id) });
+    await applyDlcAssetBatch({ directory: lot.out, out: assembly, expectedReceiptSha256: lot.receiptSha256 });
+  }
+  const audit = await auditDlcAssetBatchAssembly({ directory: assembly, plan, expectedPlanSha256: plan.sha256 });
+  assert.equal(audit.coverage.mediaPlanComplete, true);
+  for (const { sourcePath } of plan.batches.flatMap(batch => batch.assets)) {
+    const target = path.join(f.root, sourcePath);
+    rmSync(target);
+    copyFileSync(path.join(assembly, sourcePath), target);
+  }
+  const { exportDlcDistribution } = await import('./exportDlcDistribution.mjs');
+  const { buildDlcDistribution } = await import('./buildDlcDistribution.mjs');
+  const distribution = exportDlcDistribution({ root: f.root, profile: selected, sourceRevision: revision,
+    out: path.join(f.parent, 'distribution'), documentation: 'runtime' });
+  const built = await buildDlcDistribution({ root: distribution.out });
+  assert.equal(built.packs, 1);
+  assert.equal(built.media, 2);
+  assert.equal(built.dlcModuleCount, 1);
+  assert.ok(built.javascriptBytes > 0);
+  assert.deepEqual(readFileSync(path.join(distribution.out, 'dist/images/halo.png')), PNG);
+  assert.equal(existsSync(path.join(distribution.out, 'dist/images/drop.png')), false);
 });

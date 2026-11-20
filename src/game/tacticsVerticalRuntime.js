@@ -748,6 +748,8 @@ export class TacticsVerticalRuntime {
     this.move(unit, best.surfaceId, attack);
   }
   objectiveContains(zone, unit) {
+    // A move reserves its destination immediately. Objectives count arrival.
+    if (unit?.terrainMotion) return false;
     const target = this.surface(zone);
     return !!target && this.unitOccupies(unit, target.x, target.y, target.id);
   }

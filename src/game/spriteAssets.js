@@ -1065,16 +1065,26 @@ export const getHeroSpriteSheetSrc = (hero, context = 'auto') => (
   getHeroSpriteSheetSources(hero, context)[0] || ''
 );
 
+const AETHER_MITE_STATIC = '/sprites/generated/bosses/the-aether-crown/aether-mite-swarm.png';
+const AETHER_MITE_ANIMATED = '/sprites/generated/bosses/the-aether-crown/aether-mite-swarm-animated.png';
+
 export const getEnemySpriteSheetSrc = (enemy) => {
   // Exact source identity owns the capture NPC preload before generic boss paths.
   const captureFrame = getSourceCaptureEnemyFrameWave17(enemy);
   if (captureFrame) return captureFrame.asset.sheet;
   if (!enemy?.name) return '';
   if (enemy.spriteSource) return enemy.spriteSource;
+  if (enemy.id === 'aether_crown:aether_mite_swarm' && enemy.universe === 'The Aether Crown'
+    && enemy.name === 'Aether Mite Swarm' && enemy.weapon === 'staff') return AETHER_MITE_ANIMATED;
   const boundSprite = getBoundEnemySpriteSrc(enemy);
   if (boundSprite) return boundSprite;
   const universe = enemy.universe || enemy.sourceUniverse || 'unknown';
   return `/sprites/generated/bosses/${slugifyAsset(universe)}/${slugifyAsset(enemy.name)}.png`;
+};
+
+export const getEnemySpriteSheetSources = (enemy) => {
+  const src = getEnemySpriteSheetSrc(enemy);
+  return src === AETHER_MITE_ANIMATED ? [src, AETHER_MITE_STATIC] : src ? [src] : [];
 };
 
 const ITEM_SPRITE_ALIASES = Object.freeze({

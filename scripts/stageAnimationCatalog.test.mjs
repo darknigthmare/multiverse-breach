@@ -259,6 +259,44 @@ test('actual bitmaps are decoded and cropped by source cell or backdrop region',
   }
 });
 
+test('Melee animates a bitmap region only over the backdrop that supplied it', async () => {
+  register('./sourceSceneTestLoader.mjs', import.meta.url);
+  const { drawUniverseBackground } = await import('../src/game/renderer.js');
+  const { buildCustomRuntimeStage, DEFAULT_CUSTOM_BATTLE_PRESET } = await import('../src/game/customBattle.js');
+  const OriginalImage = globalThis.Image;
+  globalThis.Image = class {
+    complete = true;
+    naturalWidth = 1672;
+    naturalHeight = 941;
+    set src(value) { this.path = value; this.onload?.(); }
+    get src() { return this.path; }
+  };
+  try {
+    const render = (universe, elapsedSeconds) => {
+      const { ctx, operations } = context();
+      ctx.createRadialGradient = () => ({ addColorStop() {} });
+      const stage = buildCustomRuntimeStage({ preset: { ...DEFAULT_CUSTOM_BATTLE_PRESET, mode: 'Smash' }, archive: { universe }, enemyData: {} });
+      const drawn = drawUniverseBackground(ctx, stage.universe, 1040, 460, stage.mode, { stage, elapsedSeconds });
+      const waterfall = operations.findIndex(op => op[0] === 'strokeStyle' && op[1] === '#b7d5dd');
+      assert.notEqual(waterfall, -1);
+      return { drawn, images: operations.filter(op => op[0] === 'drawImage'), waterfall: operations.slice(waterfall) };
+    };
+    const native = render('Naruto', 2);
+    assert.equal(native.drawn, true);
+    const bitmap = '/backgrounds/lore-stages/naruto/melee.webp';
+    assert.deepEqual(native.images.map(op => op[1]), [bitmap, bitmap]);
+    assert.equal(native.images[1][4], 1672 * 0.11);
+
+    const fallback = render('Naruto Shippuden', 2);
+    assert.equal(fallback.drawn, false);
+    assert.deepEqual(fallback.images, []);
+    assert.notDeepEqual(fallback.waterfall, render('Naruto Shippuden', 4).waterfall);
+  } finally {
+    if (OriginalImage === undefined) delete globalThis.Image;
+    else globalThis.Image = OriginalImage;
+  }
+});
+
 test('the second wave adds 24 sourced mechanisms in 12 new universes without inventing animation frames', async () => {
   const originalUniverses = new Set(examples.slice(0, 17).map(([, universe]) => universe));
   const addedUniverses = new Set(waveTwoExamples.map(([, universe]) => universe));

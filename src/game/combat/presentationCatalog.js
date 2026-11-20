@@ -16,6 +16,7 @@ import { WAVE_17_PRESENTATION_DEFINITIONS } from './presentationCatalogWave17.js
 import { getCharacterAnimationFrame } from './characterAnimationCatalog.js';
 import { hasReviewedBasePresentationSource20261113, resolveReviewedBasePresentation20261113, resolveReviewedBasePresentationFrame20261113 } from './reviewedBasePresentations20261113.js';
 import { getQuarantinedCanonSprite } from '../canonicalSpriteQuarantine.js';
+import { getDisciplineSpriteSources } from '../disciplineSprites.js';
 
 export const PRESENTATION_PHASES = Object.freeze(['intro', 'outro', 'fatality', 'victory', 'defeat', 'roundVictory', 'roundDefeat']);
 const durations = { intro: 1.7, outro: 1.9, fatality: 2.4, victory: 1.9, defeat: 1.9, roundVictory: 1.3, roundDefeat: 1.3 };
@@ -176,23 +177,28 @@ export function resolvePresentationScript(actor, phase) {
     effect: { ...record.phases[phase].effect },
     missingAssets: [...record.phases[phase].missingAssets],
     provenance: { ...record.phases[phase].provenance },
-    actor: { ...actor, id: heroId }
+    actor: { ...actor }
   };
 }
 
 function resolveAsset(actor, poseState, col, stateElapsed, phase, progress, reviewedBase = false) {
   const reviewed = reviewedBase ? resolveReviewedBasePresentationFrame20261113(actor, phase, poseState, col) : null;
   if (reviewed) return reviewed;
+  const equippedBody = getDisciplineSpriteSources(actor)[0];
+  if (equippedBody) {
+    return { kind: 'equipped-static-costume', actorId: actor.id, sheet: equippedBody,
+      state: poseState, requestedState: poseState, row: 0, col: 0, columns: 1, rows: 1, dedicatedPhaseAsset: false };
+  }
   const native = getCharacterAnimationFrame(actor, { phase, progress });
   if (native) return {
     kind: 'native-generated-character-animation', actorId: native.asset.heroId, sheet: native.asset.sheet,
     state: poseState, requestedState: poseState, row: native.row, col: native.col,
     columns: native.columns, rows: native.rows, dedicatedPhaseAsset: true
   };
-  const manifest = getMeleeAnimationManifest(actor.id);
+  const manifest = getMeleeAnimationManifest(actor.sourceHeroId || actor.sourceId || actor.id);
   const aliases = { attack: 'attackLight1', defense: 'shieldHold', hit: 'hitStun' };
   const requestedState = aliases[poseState] || poseState;
-  if (manifest?.animations?.[requestedState]) {
+  if ((!manifest?.universe || manifest.universe === actor.universe) && manifest?.animations?.[requestedState]) {
     const entry = manifest.animations[requestedState];
     const absoluteFrame = Math.floor(stateElapsed * entry.fps);
     const frame = entry.loop ? absoluteFrame % entry.frameCount : Math.min(entry.frameCount - 1, absoluteFrame);
