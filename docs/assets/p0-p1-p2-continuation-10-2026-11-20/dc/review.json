@@ -1,0 +1,64 @@
+{
+  "sourceBaseline": "b1ab5783e",
+  "assets": [
+    {
+      "actorId": "starfire_tt",
+      "incarnation": "Teen Titans (2003-2006 animated series) - original Jump City team",
+      "source": "/sprites/generated/summon-animations-wave16/starfire.png",
+      "sha256": "372875c8973133979dc0cf22b6f289330b80ee0e9b8ff3bcfec2b96f47176780",
+      "dimensions": [
+        2048,
+        1024
+      ],
+      "crop": [
+        1226,
+        782,
+        76,
+        80
+      ],
+      "role": "W16 reinforcement, recovery row 3 column 2 starting at zero"
+    },
+    {
+      "actorId": "raven_tt",
+      "incarnation": "Teen Titans (2003-2006 animated series) - original Jump City team",
+      "source": "/cg/teen-titans/raven-tt/character-solo-wave3-2026-10-20-thumb.webp",
+      "sha256": "fa87e483c34d9aab8fc3e5fe5e08e1684403bf8730090d12259ad36957dc2a78",
+      "dimensions": [
+        384,
+        512
+      ],
+      "crop": [
+        113,
+        30,
+        91,
+        120
+      ],
+      "role": "DLC Teen Titans existing W3 characterSolo miniature",
+      "sourceBlobOid": "0a2f82b543d0818b32322c2e7aaf6b3e63475129",
+      "review": "../../../cg/reviews/wave3-2026-10-20/raven-independent-review.json"
+    }
+  ],
+  "productionSurfaces": [
+    "mission briefings",
+    "duel roster",
+    "universe archives",
+    "Tactics timeline"
+  ],
+  "remainingDcP0": 7,
+  "closedDcP0": 0,
+  "source1to1Verified": false,
+  "gameBodySheetsChanged": false,
+  "node": {
+    "version": "22.23.5",
+    "totals": {
+      "tests": 29,
+      "pass": 29,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0
+    },
+    "command": "node --loader ./scripts/sourceSceneTestLoader.mjs --test --test-concurrency=1 scripts/historicalDcP0SpriteQuarantine.test.mjs scripts/batmanReviewedQuarantine20261113.test.mjs scripts/canonicalStarWarsSpriteEvidence.test.mjs scripts/universeArchiveReader.test.mjs",
+    "tapSha256": "1e6167b0d11d3bd1c424d0c04b3590a9688bfbcd4be1c907117c7c7cc2e0240b"
+  },
+  "browser": "browser.json"
+}

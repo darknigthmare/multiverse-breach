@@ -1,0 +1,279 @@
+{
+  "sourceBaseline": "b1ab5783e514f3abc7d0b3b9dc08ef044fcd5366",
+  "changedSourceSha256": {
+    "src/game/originalCampaignEnemyActions.js": "e2c3a504fc79950f7a729c78d499b4331659ecd6f08ca922f3d7aa97574412de",
+    "src/game/rpgTargetingPresentation.js": "aafe137b71a735c6844066cec1a40b48793a3df63c709b807ec5dd57b3573d77",
+    "scripts/originalCampaignEnemyActions.test.mjs": "1073798983d86f416c6f206e7160834890c2e7f47c2994ada5eb2a4f102aa51a",
+    "scripts/rpgSourcePresentationWave16.test.mjs": "da728d2579e80bf0ac202fdeda545da0b31454ef7fdf82baf50781925fb79723"
+  },
+  "nodeVersion": "v24.19.0",
+  "checkedInOriginalAssetChangesForThisLot": 0,
+  "runtime": {
+    "individualP2EngineCases": 120,
+    "newP2EngineCases": 40,
+    "tests": 129,
+    "pass": 129,
+    "fail": 0,
+    "tapSha256": "c734ab2acdf61369e29691936ed4bec949fc108f7f3e627ab69039f071142932"
+  },
+  "targetingPresentation": {
+    "tests": 13,
+    "pass": 13,
+    "fail": 0,
+    "tapSha256": "c20f0e86214e217e380881cb5bc58cccebd01ae29b268e3ad7de068c093b2a35"
+  },
+  "browser": {
+    "origin": "Current checkout GameCanvas loaded by a Vite build. A temporary harness puts real combatants in known positions and sets the initial ATB. Keyboard and touch inputs, target confirmation, simulation and disposal are native.",
+    "cases": [
+      {
+        "case": "troll",
+        "name": "Régénération du pont contesté",
+        "viewport": [
+          1280,
+          840
+        ],
+        "touch": false,
+        "errors": [],
+        "missing": [
+          "/images/oc-worlds/v2/valedor_shattered_crown/items/fantasy_free_company.png",
+          "/images/oc-worlds/v2/valedor_shattered_crown/items/fantasy_healing_draught.png",
+          "/images/oc-worlds/v2/valedor_shattered_crown/items/fantasy_runic_bomb.png",
+          "/images/oc-worlds/v2/valedor_shattered_crown/items/fantasy_seven_oaths_united.png",
+          "/images/oc-worlds/v2/valedor_shattered_crown/items/fantasy_waystone.png"
+        ],
+        "passed": true,
+        "initial": {
+          "heroIds": [
+            "hero:0:aelwen_starbough",
+            "hero:1:brokk_embervein",
+            "hero:2:goruk_ash_tusk"
+          ],
+          "heroNames": [
+            "Aelwen Starbough",
+            "Brokk Embervein",
+            "Goruk Ash-Tusk"
+          ],
+          "heroHp": [
+            116,
+            168,
+            154
+          ],
+          "foeId": "enemy:custom:0:valedor_shattered_crown:brute_troll_des_ponts",
+          "foeHp": 56,
+          "foeMaxHp": 116
+        },
+        "preview": {
+          "targets": [
+            "enemy:custom:0:valedor_shattered_crown:brute_troll_des_ponts"
+          ],
+          "shape": "single",
+          "delivery": "self",
+          "effect": "heal",
+          "estimates": [
+            19
+          ]
+        },
+        "after": {
+          "heroHp": [
+            116,
+            168,
+            154
+          ],
+          "heroDisruption": [
+            0,
+            0,
+            0
+          ],
+          "foeHp": 75,
+          "cooldown": 162,
+          "draws": [
+            "/sprites/generated/heroes/valedor-the-shattered-crown/aelwen-starbough-v2-fidelity-wave7-2026-10-23.png",
+            "/sprites/generated/bosses/valedor-the-shattered-crown/brute-troll-des-ponts.png",
+            "/sprites/generated/heroes/valedor-the-shattered-crown/brokk-embervein.png",
+            "/sprites/generated/heroes/valedor-the-shattered-crown/goruk-ash-tusk.png"
+          ]
+        }
+      },
+      {
+        "case": "rature",
+        "name": "Effacement de l’intention",
+        "viewport": [
+          390,
+          844
+        ],
+        "touch": true,
+        "errors": [],
+        "missing": [],
+        "passed": true,
+        "initial": {
+          "heroIds": [
+            "hero:0:arca_mirelle",
+            "hero:1:arca_bastion",
+            "hero:2:arca_nova",
+            "hero:3:arca_marrow",
+            "hero:4:arca_sable",
+            "hero:5:arca_loom",
+            "hero:6:arca_tessera",
+            "hero:7:arca_quillon",
+            "hero:8:arca_nadir",
+            "hero:9:arca_elyra",
+            "hero:10:arca_oryn"
+          ],
+          "heroNames": [
+            "Mirelle Suture",
+            "Bastion Korr",
+            "Nova Vey",
+            "Marrow Kade",
+            "Sable Orison",
+            "Loom Ivara",
+            "Tessera Vale",
+            "Quillon Rusk",
+            "Nadir Kest",
+            "Elyra Null",
+            "Oryn Xile"
+          ],
+          "heroHp": [
+            127,
+            162,
+            119,
+            143,
+            134,
+            192,
+            136,
+            140,
+            198,
+            117,
+            147
+          ],
+          "foeId": "enemy:custom:0:oc_act4_rature_seuil_blanc",
+          "foeHp": 90,
+          "foeMaxHp": 90
+        },
+        "preview": {
+          "targets": [
+            "hero:0:arca_mirelle"
+          ],
+          "shape": "single",
+          "delivery": "ranged",
+          "effect": "damage",
+          "estimates": [
+            0
+          ]
+        },
+        "after": {
+          "heroHp": [
+            127,
+            162,
+            119,
+            143,
+            134,
+            192,
+            136,
+            140,
+            198,
+            117,
+            147
+          ],
+          "heroDisruption": [
+            299,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "foeHp": 90,
+          "cooldown": 162,
+          "draws": [
+            "/sprites/generated/heroes/nexus-de-convergence/arca-mirelle-complete/arca-mirelle-rpg.png",
+            "/sprites/generated/heroes/nexus-de-convergence/arca-bastion-complete/arca-bastion-universal-v1.png",
+            "/sprites/generated/heroes/nexus-de-convergence/arca-nova-complete/arca-nova-universal-v1.png",
+            "/sprites/generated/heroes/nexus-de-convergence/arca-marrow-complete/arca-marrow-universal-v1.png",
+            "/sprites/generated/heroes/nexus-de-convergence/arca-sable.png",
+            "/sprites/generated/heroes/nexus-de-convergence/arca-loom.png",
+            "/sprites/generated/bosses/nexus-de-convergence/rature-du-seuil-blanc.png",
+            "/sprites/generated/heroes/nexus-de-convergence/arca-tessera.png",
+            "/sprites/generated/heroes/nexus-de-convergence/arca-quillon.png",
+            "/sprites/generated/heroes/nexus-de-convergence/arca-nadir.png",
+            "/sprites/generated/heroes/nexus-de-convergence/arca-elyra-frame-packing-2026-10-20.png",
+            "/sprites/generated/heroes/nexus-de-convergence/arca-oryn.png"
+          ]
+        }
+      },
+      {
+        "case": "pollen",
+        "name": "Nuage de graines sans lumière",
+        "viewport": [
+          390,
+          844
+        ],
+        "touch": true,
+        "errors": [],
+        "missing": [
+          "/sprites/generated/bosses/viridienne-ultime/pollen-du-vide.png",
+          "/sprites/generated/items/viridienne-ultime/evt-viridienne-germination-solaire.png",
+          "/sprites/generated/items/viridienne-ultime/viridienne-ultime-summon.png"
+        ],
+        "passed": true,
+        "initial": {
+          "heroIds": [
+            "hero:0:eira_solenne",
+            "hero:1:cael_rhizome",
+            "hero:2:mousse_noeud"
+          ],
+          "heroNames": [
+            "Eira Solenne",
+            "Cael Rhizome",
+            "Mousse-Nœud"
+          ],
+          "heroHp": [
+            108,
+            116,
+            136
+          ],
+          "foeId": "enemy:custom:0:pollen_du_vide",
+          "foeHp": 103,
+          "foeMaxHp": 103
+        },
+        "preview": {
+          "targets": [
+            "hero:0:eira_solenne",
+            "hero:1:cael_rhizome"
+          ],
+          "shape": "area",
+          "delivery": "ranged",
+          "effect": "damage",
+          "estimates": [
+            12,
+            12
+          ]
+        },
+        "after": {
+          "heroHp": [
+            95,
+            103,
+            136
+          ],
+          "heroDisruption": [
+            299,
+            299,
+            0
+          ],
+          "foeHp": 103,
+          "cooldown": 162,
+          "draws": [
+            "/sprites/generated/heroes/viridienne-ultime/eira-solenne.png",
+            "/sprites/generated/heroes/viridienne-ultime/cael-rhizome.png",
+            "/sprites/generated/heroes/viridienne-ultime/mousse-noeud.png"
+          ]
+        }
+      }
+    ]
+  },
+  "scope": "RPG actions and targeting. No asset approval or blanket P0/P1/P2 closure is inferred from the combat results."
+}

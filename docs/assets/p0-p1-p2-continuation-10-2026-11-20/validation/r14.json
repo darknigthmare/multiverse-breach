@@ -1,0 +1,232 @@
+{
+  "sourceCommit": "0617286bde63d3f10a40b6abfbcd43540fd598fd",
+  "summary": {
+    "version": "R14",
+    "sourceBaseCommit": "0617286bde63d3f10a40b6abfbcd43540fd598fd",
+    "assetTreeCommit": "0617286bde63d3f10a40b6abfbcd43540fd598fd",
+    "scope": "All active runtime actors after overrides; not every character absent from a franchise, nor all NPC contacts/trials. Declared data and sampled paths only.",
+    "actors": 4937,
+    "heroes": 1912,
+    "universes": 525,
+    "originalIdentities": 312,
+    "externalOrUnresolved": 4625,
+    "actorsWithOfficialVariants": 55,
+    "actorsWithMissingRaster": 1469,
+    "actorsWithQuarantinedRaster": 19,
+    "actorsWithStaticGameplay": 8,
+    "actorsWithGenericTechniqueNames": 1309,
+    "continuitiesRecovered": 1401,
+    "structuredContinuitiesRecovered": 60,
+    "actorContinuityAmbiguities": 2,
+    "continuityConflicts": 0,
+    "incarnationsUnspecified": 3026,
+    "visualContractsMissing": 2869,
+    "visualContractsGeneric": 213,
+    "historicalP0": "Not reclassified by this export; see prior fidelity audit. P1/P2 here prioritize newly exported work only.",
+    "newArtApprovals": 0,
+    "newSpriteFiles": 0,
+    "reviewComplete": 0
+  },
+  "taskCounts": {
+    "P2": 13582,
+    "P1": 16363
+  },
+  "rasterQuarantines": [
+    {
+      "id": "harry",
+      "universe": "Harry Potter",
+      "archivedPath": "/sprites/generated/heroes/harry-potter/harry.png",
+      "archivedSha256": "bef3cd1d8f6751c1ca1094b14aca466f506772f5c7bcbb222ad8091407a26243",
+      "reason": "WRONG_NAVY_CAPE_MAP_SATCHEL_AND_GOLD_DEVICE",
+      "gitBlob": "e93bd977ad1a31661e5e4bbd9b6617eadea0223a",
+      "checkedContexts": 8,
+      "openReplacement": true
+    },
+    {
+      "id": "hermione",
+      "universe": "Harry Potter",
+      "archivedPath": "/sprites/generated/heroes/harry-potter/hermione.png",
+      "archivedSha256": "c3fc54f14676e0e9f6692c8b238b3ac99bb1034c201aa04f9ebaa7afc1a5b072",
+      "reason": "WRONG_ORNATE_COAT_AND_BOOK_POSES",
+      "gitBlob": "8f8e4e028be0edc7f47cbda2d7c13cc01e90dfb9",
+      "checkedContexts": 8,
+      "openReplacement": true
+    },
+    {
+      "id": "vader",
+      "universe": "Star Wars",
+      "archivedPath": "/sprites/generated/heroes/star-wars/vader.png",
+      "archivedSha256": "0a234abe4276eae8bdfaa1ff200528dd2673ec1ce09560c6076e1a547dd99464",
+      "reason": "WRONG_BLUE_LIT_HELMET_ORNATE_STAFF_NO_RED_LIGHTSABER",
+      "gitBlob": "a2f526ca5dd9709fabcaddc96470438c834f9e2c",
+      "checkedContexts": 8,
+      "openReplacement": true
+    },
+    {
+      "id": "ahsoka_padawan",
+      "universe": "Star Wars",
+      "archivedPath": "/sprites/generated/heroes/star-wars/ahsoka-padawan.png",
+      "archivedSha256": "1a7f3488717f94d3789982e6acb1f7e961f9298c4b065cbdd3f8af89c9448b3c",
+      "reason": "WRONG_FANTASY_MAGE_STAFF_NO_GREEN_SABER",
+      "gitBlob": "fe528433ae8cce538426449b78c0d5262af7ea56",
+      "checkedContexts": 8,
+      "openReplacement": true
+    },
+    {
+      "id": "ahsoka",
+      "universe": "Star Wars",
+      "archivedPath": "/sprites/generated/heroes/star-wars/ahsoka.png",
+      "archivedSha256": "d5c49fd412868d187aca84241af1a191ffa55337a248982f2e79edd0daff22f3",
+      "reason": "WRONG_FANTASY_ROBES_NO_TWIN_BLUE_SABERS",
+      "gitBlob": "2176925446c568137153dc4b3bc85c4099a6fc4b",
+      "checkedContexts": 8,
+      "openReplacement": true
+    },
+    {
+      "id": "joker_n52",
+      "universe": "Joker New 52",
+      "archivedPath": "/sprites/generated/heroes/joker-new-52/joker-n52.png",
+      "archivedSha256": "257d80c9ec0b67bfec6af226adac703a4288ccc8268f38720451308b8c9952e0",
+      "reason": "WRONG_CARD_MAGE_NO_RESTORED_ENDGAME_FACE",
+      "gitBlob": "03a577b5a3c595cd1468af5834a391766b903b74",
+      "checkedContexts": 8,
+      "openReplacement": true
+    },
+    {
+      "id": "harley_n52",
+      "universe": "Joker New 52",
+      "archivedPath": "/sprites/generated/heroes/joker-new-52/harley-n52.png",
+      "archivedSha256": "ce8fa44d90a8476b902d0b8743c45459e3f77022fd54d465a3d6069e47a86b87",
+      "reason": "WRONG_TECH_ARMOUR_AND_BLOND_PONYTAIL",
+      "gitBlob": "838ce66d4c40bd715fe7c0fd40398a298811562b",
+      "checkedContexts": 8,
+      "openReplacement": true
+    },
+    {
+      "id": "batman_n52",
+      "universe": "Joker New 52",
+      "archivedPath": "/sprites/generated/heroes/joker-new-52/batman-n52.png",
+      "archivedSha256": "22bbec0e8a7a286ccfa413bbaa357973df05154a5354df4791aa03177c61d0d1",
+      "reason": "WRONG_GOGGLED_CIVILIAN_NO_BATSUIT",
+      "gitBlob": "11cd9a190d9c9ad84b87340eb27c9af69a7483fa",
+      "checkedContexts": 8,
+      "openReplacement": true
+    },
+    {
+      "id": "grim_knight",
+      "universe": "The Batman Who Laughs",
+      "archivedPath": "/sprites/generated/heroes/the-batman-who-laughs/grim-knight.png",
+      "archivedSha256": "9eac899dcacd731592c4d90d967c257f56ada3b7f05214433c43a5e889875285",
+      "reason": "WRONG_HOODED_LANTERN_BEARER_NO_BAT_COWL_OR_FIREARMS",
+      "gitBlob": "afc8d062c450812c9b65c5d47417640891b92003",
+      "checkedContexts": 8,
+      "openReplacement": true
+    },
+    {
+      "id": "cyber_spider_kelly",
+      "universe": "Spider: The Video Game",
+      "archivedPath": "/sprites/generated/heroes/spider-the-video-game/cyber-spider-kelly.png",
+      "archivedSha256": "e9900a15304818da848735096550e37d842bd8349fd9707e9dc89c31f82b1707",
+      "reason": "WRONG_ANTENNA_DOME_AND_HOLOGRAMS_WITHOUT_BIOLOGICAL_BODY_OR_SLASHER",
+      "gitBlob": "ad1d2787f76f26be53a64cd7f3aebc0ac389d2f5",
+      "checkedContexts": 8,
+      "openReplacement": true
+    },
+    {
+      "id": "cyber_spider_flamethrower",
+      "universe": "Spider: The Video Game",
+      "archivedPath": "/sprites/generated/heroes/spider-the-video-game/cyber-spider-flamethrower.png",
+      "archivedSha256": "109638923fecb53f7744a123b0f9a1991d15b8e7470e6d84687f48fdec1add4b",
+      "reason": "WRONG_ARMORED_ROBOT_AND_DORSAL_LAMP_WITHOUT_IDENTIFIED_FRONT_LEG_FLAMETHROWER",
+      "gitBlob": "73f50c78019fabfa00b61bad47e45a087259064f",
+      "checkedContexts": 8,
+      "openReplacement": true
+    },
+    {
+      "id": "cyber_spider_electro_beam",
+      "universe": "Spider: The Video Game",
+      "archivedPath": "/sprites/generated/heroes/spider-the-video-game/cyber-spider-electro-beam.png",
+      "archivedSha256": "72849c9c1de5894df6d76ec3fa9a11296486b2a5465720a843df5c8ae6a98c7d",
+      "reason": "WRONG_ARMORED_ROBOT_AND_PROJECTIONS_WITHOUT_IDENTIFIED_FRONT_LEG_BEAM",
+      "gitBlob": "d72508bb0c3fa89d8b3941ec7eb0fdf97da6cc26",
+      "checkedContexts": 8,
+      "openReplacement": true
+    },
+    {
+      "id": "batman_tdk",
+      "universe": "The Dark Knight",
+      "archivedPath": "/sprites/generated/heroes/the-dark-knight/batman-tdk.png",
+      "archivedSha256": "7b47aba5d4ae42586116720a873e09d5611100bc6ad79f93d8c8c4016cef4a11",
+      "reason": "WRONG_UNMASKED_GOGGLED_CIVILIAN_NO_COWL_CAPE_OR_BATSUIT",
+      "gitBlob": "6afdfeb61651db961224fb1ff3e71428601fff97",
+      "checkedContexts": 8,
+      "openReplacement": true
+    },
+    {
+      "id": "kevin_minions",
+      "universe": "Minions",
+      "archivedPath": "/sprites/generated/heroes/minions/kevin-minions.png",
+      "archivedSha256": "8596cedf12484da0ad15b8a5efcdb9f395eb6d7504ef25a5d6903fabb594f19e",
+      "reason": "WRONG_ROBOT_WITHOUT_KEVIN_FACE_AND_OVERALLS",
+      "gitBlob": "1a41d83185caa5f8b649f413658256e714e72605",
+      "checkedContexts": 8,
+      "openReplacement": true
+    },
+    {
+      "id": "stuart_minions",
+      "universe": "Minions",
+      "archivedPath": "/sprites/generated/heroes/minions/stuart-minions.png",
+      "archivedSha256": "0b04ef89c9039baee4441d18fd3adc624adb8feda1c4a5603b86b06154fd82cd",
+      "reason": "WRONG_ROBOT_WITHOUT_STUART_FACE_AND_GUITAR",
+      "gitBlob": "51b557185701a5644eb36428406d44df29d9f7f3",
+      "checkedContexts": 8,
+      "openReplacement": true
+    },
+    {
+      "id": "bob_minions",
+      "universe": "Minions",
+      "archivedPath": "/sprites/generated/heroes/minions/bob-minions.png",
+      "archivedSha256": "d24627706a7d66cc4d3c8f3e90f7580e593e8f31ee9e1362dd5787d6c4288998",
+      "reason": "WRONG_ROBOT_WITHOUT_BOB_FACE_AND_OVERALLS",
+      "gitBlob": "132c792199f989fd49966ceccb1617d259c754fd",
+      "checkedContexts": 8,
+      "openReplacement": true
+    },
+    {
+      "id": "stitch_626",
+      "universe": "Lilo & Stitch",
+      "archivedPath": "/sprites/generated/heroes/lilo-stitch/stitch-626.png",
+      "archivedSha256": "8660d59d99e3b65ffcd48b1b555d45c3bc9992edc419d8cff67f0c27731009b9",
+      "reason": "WRONG_SCI_FI_ARMOR_ANTENNA_AND_EXTRA_ARMS_FOR_EARTH_FORM",
+      "gitBlob": "1225b06b3b09573b517f961af76717ea9747498b",
+      "checkedContexts": 8,
+      "openReplacement": true
+    },
+    {
+      "id": "raven_tt",
+      "universe": "Teen Titans",
+      "archivedPath": "/sprites/generated/heroes/teen-titans/raven-tt.png",
+      "archivedSha256": "f7e41b655e3e6a3110aef1231c2917400729eb27b381d25ca8eb3323e8c7ffce",
+      "reason": "WRONG_ARMOURED_ROBES_AND_LANTERN_FOR_2003_COSTUME",
+      "gitBlob": "5492e062d3d09388096438391a40fbe75deeed53",
+      "checkedContexts": 8,
+      "openReplacement": true
+    },
+    {
+      "id": "starfire_tt",
+      "universe": "Teen Titans",
+      "archivedPath": "/sprites/generated/heroes/teen-titans/starfire-tt.png",
+      "archivedSha256": "1f90eff8352ce94ccf4d569728e9bfbe357f96a07e8c94c8bc4f68363361115d",
+      "reason": "WRONG_ORNATE_COAT_AND_LEG_ARMOUR_FOR_2003_COSTUME",
+      "gitBlob": "2d2903dc7567cd078fb4553c414442ecbe964e5e",
+      "checkedContexts": 8,
+      "openReplacement": true
+    }
+  ],
+  "exportSha256": {
+    "tasks.csv": "cabbf5bacda7838e19f1c8ddd73640b74f1d7db1fdf26ed50ff58faac850b235",
+    "actors.csv": "12530490440963a3a1763666b5f265a2252fd1d909f606591dccc9e5dd57069c",
+    "summary.json": "fbd798e10541e81c5f678cc6e3b1a525c6b75b528b515d1fb3406dd1445df692",
+    "actors.json": "44a04ec54319e551ca90ef65a590f8ad33336af4319f348e2db3112183b23e8f"
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "baseline": "b1ab5783e",
+  "node": "22.23.5",
+  "before": {
+    "totals": {
+      "tests": 2,
+      "pass": 0,
+      "fail": 2,
+      "cancelled": 0,
+      "skipped": 0
+    },
+    "tapSha256": "f9c10e338ae6008c9c5f45679076827c346c0e188906f021b2772011c575f6bb",
+    "failures": [
+      "The empty W13 melee saber visualization overrode the Force Choke cue",
+      "Debris signaled an impact during windup"
+    ]
+  },
+  "after": {
+    "totals": {
+      "tests": 16,
+      "pass": 16,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0
+    },
+    "tapSha256": "b4ac577089cea68471332bb6fefc30a1af2e6853b4f2b57e7132e3ea5fb64c07"
+  },
+  "sourceCommand": "node --loader ./scripts/sourceSceneTestLoader.mjs --test scripts/canonSourceKitRuntime.test.mjs",
+  "notes": "Gameplay, timings and artwork closure are separate. Browser receipt checks the action cues in the real RPG engine and Canvas particle renderer.",
+  "art": {
+    "archivedRevision": "3ce523d7a",
+    "archivedBlob": "26b24d5d3afce68c5f5e3e94c7616932268a1a4b",
+    "archivedSha256": "270bd0bbcb6c1012814ccd185cb74e6bb043d8fe8d5ecd7b2d9ffc0ca04e1fd2",
+    "archivedBytes": 9706,
+    "archivedFinding": "Sixteen gray schematic figures with light-gray weapons and block helmets.",
+    "rejectedRevision": "630666437",
+    "rejectedBlob": "a2f526ca5dd9709fabcaddc96470438c834f9e2c",
+    "rejectedFileSha256": "0a234abe4276eae8bdfaa1ff200528dd2673ec1ce09560c6076e1a547dd99464",
+    "scope": "Vader PNG/WebP paths in local Git history plus CG and W13 evidence. No remote art downloaded.",
+    "activeCorrectSprite": null,
+    "historicalArtP0Open": true
+  }
+}

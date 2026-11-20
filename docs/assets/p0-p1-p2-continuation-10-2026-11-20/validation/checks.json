@@ -1,0 +1,165 @@
+{
+  "runtimeCommit": "0617286bde63d3f10a40b6abfbcd43540fd598fd",
+  "baseCommit": "b1ab5783e514f3abc7d0b3b9dc08ef044fcd5366",
+  "node": "22.23.5",
+  "suites": [
+    {
+      "name": "Présentations de combat",
+      "command": "npm run test:combat-presentation",
+      "totals": {
+        "tests": 403,
+        "pass": 403,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "tapSha256": "cc099997b764af329730ae115da820d56047197b7ee9afdc436c87f40af756f4"
+    },
+    {
+      "name": "Interface immersive",
+      "command": "npm run test:ui-immersion",
+      "totals": {
+        "tests": 582,
+        "pass": 582,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "tapSha256": "9bfc7fdc76afb6f2dcc7b8c9de9f40b2f2b433988105ca6584f2828e03ec3f82"
+    },
+    {
+      "name": "P0 visuels et Duel",
+      "command": "npm run test:p0-visuals",
+      "totals": {
+        "tests": 38,
+        "pass": 38,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "tapSha256": "97cfd43249f9f0a2973cb442786b24d97e8377c25a65d93109a506e938396396"
+    },
+    {
+      "name": "Reconstruction CG historique",
+      "command": "node --test --test-concurrency=1 scripts/cgContinuation02MetadataAmendment.test.mjs",
+      "totals": {
+        "tests": 77,
+        "pass": 77,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "tapSha256": "f71f8d1db69e2f4042b0a115d5639e42e114b57b5a88773a44e857daaa0da71c"
+    },
+    {
+      "name": "Rift avec médias isolés",
+      "command": "NODE_OPTIONS=--import=/tmp/mvb-pass10-rift/rift-test-overlay.mjs npm run test:rift",
+      "totals": {
+        "tests": 92,
+        "pass": 92,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "tapSha256": "0edbe7dfb2453c52883cbfca9139419c8b3503b96c6688e77a206c04591fc578"
+    },
+    {
+      "name": "Contrôles R14 et chemins DLC",
+      "command": "node --test --test-concurrency=1 scripts/actorFidelityR9.test.mjs scripts/exportDlcAssetPaths.test.mjs",
+      "totals": {
+        "tests": 61,
+        "pass": 61,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "tapSha256": "6c8ace7351d61498d18dcb87d178ad0aa6ab0b901438bfc65556afbb1ed6e30d"
+    }
+  ],
+  "lint": {
+    "files": 35,
+    "exitCode": 0
+  },
+  "compilation": {
+    "scope": "Code Vite et dépendances des modules. Les distributions avec médias restent distinctes.",
+    "editions": [
+      {
+        "schemaVersion": 1,
+        "passed": true,
+        "profile": {
+          "schemaVersion": 1,
+          "mode": "all",
+          "packIds": [],
+          "sharedPolicy": "preserve-all"
+        },
+        "selectedPacks": 505,
+        "modules": 2889,
+        "dlcModules": 2038,
+        "javascriptBytes": 53184428,
+        "scope": "Full executable application compile and selected-DLC module closure. No exported edition, media hydration/copy, production prebuild, or artwork approval.",
+        "emittedFiles": 0
+      },
+      {
+        "schemaVersion": 1,
+        "passed": true,
+        "profile": {
+          "schemaVersion": 1,
+          "mode": "base",
+          "packIds": [],
+          "sharedPolicy": "preserve-all"
+        },
+        "selectedPacks": 0,
+        "modules": 852,
+        "dlcModules": 0,
+        "javascriptBytes": 49905325,
+        "scope": "Full executable application compile and selected-DLC module closure. No exported edition, media hydration/copy, production prebuild, or artwork approval.",
+        "emittedFiles": 0
+      }
+    ]
+  },
+  "coverageAudit": {
+    "command": "node scripts/combatCompletionAudit.mjs --check",
+    "sha256": "f8a729f53a4f1c2b408872c67444a98536719cddb9413cb830bfb693b6ee1857",
+    "counts": {
+      "heroes": 1911,
+      "universes": 525,
+      "supers": 1911,
+      "authored": 1588,
+      "genericCapabilities": 0,
+      "profilesWithEntityAssets": 59,
+      "uniqueEntityAssets": 27,
+      "missingEntityProfiles": 0,
+      "unconfiguredAtmospheres": 0,
+      "identityBasis": {
+        "existing-catalog": 323,
+        "canonical-role": 1242,
+        "authored-source-adaptation": 76,
+        "explicit-source-loadout": 3,
+        "canonical-technique": 87,
+        "explicit-source-loadout-adaptation": 1,
+        "authored-universe-canon": 174,
+        "declared-player-configuration": 3,
+        "catalogue-roster-adaptation": 2
+      }
+    }
+  },
+  "rift": {
+    "catalogValidated": 3199,
+    "originalCheckoutMissingRasters": 58,
+    "overlayMissingAvailableRasters": 0,
+    "registryAvailable": 1020,
+    "registryPending": 2179,
+    "receipt": "../rift/portable-verification.json"
+  },
+  "cgReplay": {
+    "replayedCharacterSources": 1912,
+    "fieldsPreserved": 5,
+    "updatedRecords": 112,
+    "fixture": "../../../../scripts/fixtures/cg-rift-evidence-before-p0-rebuild-2026-11-20.json"
+  },
+  "limits": [
+    "Les 20 dossiers artistiques P0 restent ouverts.",
+    "Les deux profils compilés ne constituent pas un export complet des médias.",
+    "Doom compte 108 lots de médias à assembler selon son plan gelé."
+  ]
+}

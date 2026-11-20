@@ -1,0 +1,1167 @@
+{
+  "sourceCommit": "b1ab5783e514f3abc7d0b3b9dc08ef044fcd5366",
+  "scope": "Forty original regular enemy RPG secondary commands; prior actor design reviews may include the same actors.",
+  "actorCount": 40,
+  "worlds": {
+    "Neon Requiem": 5,
+    "Ilyr Concordat": 5,
+    "Valedor: The Shattered Crown": 5,
+    "Aevum Fracture": 5,
+    "Thalassa Mnémique": 3,
+    "Méridien Creux": 3,
+    "Viridienne Ultime": 3,
+    "Nexus de Convergence": 11
+  },
+  "overlapWithPreviousSecondaryBatches": 0,
+  "previousSecondariesIdentical": 80,
+  "currentSecondaries": 120,
+  "previousGenericSecondaries": 40,
+  "runtimeSecondariesChanged": 40,
+  "otherProfilesComparedAndIdentical": 160,
+  "beforeExportSha256": "b3fb7246a2298ff6f97c0d11df3f7afa1590760e0d4817372378c0d1938f176f",
+  "afterExportSha256": "ad6ffeb5dc6defca60be6e3432a32f6688a4a76409445632efc74154d20ed3c3",
+  "effects": {
+    "guard": 7,
+    "glitchOnly": 7,
+    "damage": 23,
+    "buff": 2,
+    "heal": 1
+  },
+  "actors": [
+    {
+      "actorKey": "[\"Neon Requiem\",\"id:neon_requiem:helix_warden\"]",
+      "actorId": "neon_requiem:helix_warden",
+      "actorName": "Helix Warden",
+      "universe": "Neon Requiem",
+      "kind": "enemy",
+      "source": "src/game/originalUniversesManifest.json",
+      "weapon": "shield_bash",
+      "sourceSignature": "Bouclier corporatif et fusil à impulsion.",
+      "before": "Strong attack",
+      "action": {
+        "name": "Bouclier corporatif",
+        "type": "shield",
+        "targeting": {
+          "effect": "guard",
+          "targetSide": "self",
+          "shape": "single",
+          "reduce": 0.39,
+          "duration": 2.5,
+          "excludeSelf": false
+        },
+        "dmg": 0,
+        "cd": 3
+      },
+      "effect": "guard",
+      "runtimeDelivery": "self",
+      "shape": "single",
+      "targetSide": "self"
+    },
+    {
+      "actorKey": "[\"Neon Requiem\",\"id:neon_requiem:debt_repossession_drone\"]",
+      "actorId": "neon_requiem:debt_repossession_drone",
+      "actorName": "Debt Repossession Drone",
+      "universe": "Neon Requiem",
+      "kind": "enemy",
+      "source": "src/game/originalUniversesManifest.json",
+      "weapon": "staff",
+      "sourceSignature": "Désactive temporairement l’équipement d’un héros.",
+      "before": "Strong attack",
+      "action": {
+        "name": "Saisie de l’équipement",
+        "type": "glitch",
+        "targeting": {
+          "delivery": "ranged",
+          "shape": "single"
+        },
+        "dmg": 0,
+        "cd": 3,
+        "statusEffect": "glitched"
+      },
+      "effect": "glitchOnly",
+      "runtimeDelivery": "ranged",
+      "shape": "single",
+      "targetSide": "enemy"
+    },
+    {
+      "actorKey": "[\"Neon Requiem\",\"id:neon_requiem:neuro_hound\"]",
+      "actorId": "neon_requiem:neuro_hound",
+      "actorName": "Neuro-Hound",
+      "universe": "Neon Requiem",
+      "kind": "enemy",
+      "source": "src/game/originalUniversesManifest.json",
+      "weapon": "claws",
+      "sourceSignature": "Traque la cible dont la jauge spéciale est la plus élevée.",
+      "before": "Strong attack",
+      "action": {
+        "name": "Morsure de traque neurale",
+        "type": "melee",
+        "targeting": {
+          "delivery": "melee",
+          "shape": "single"
+        },
+        "dmg": 1.45,
+        "cd": 3
+      },
+      "effect": "damage",
+      "runtimeDelivery": "melee",
+      "shape": "single",
+      "targetSide": "enemy"
+    },
+    {
+      "actorKey": "[\"Neon Requiem\",\"id:neon_requiem:ad_skin_assassin\"]",
+      "actorId": "neon_requiem:ad_skin_assassin",
+      "actorName": "Ad-Skin Assassin",
+      "universe": "Neon Requiem",
+      "kind": "enemy",
+      "source": "src/game/originalUniversesManifest.json",
+      "weapon": "blade",
+      "sourceSignature": "Se camoufle derrière des panneaux publicitaires dynamiques.",
+      "before": "Strong attack",
+      "action": {
+        "name": "Entaille sous publicité",
+        "type": "melee",
+        "targeting": {
+          "delivery": "melee",
+          "shape": "single"
+        },
+        "dmg": 1.45,
+        "cd": 3
+      },
+      "effect": "damage",
+      "runtimeDelivery": "melee",
+      "shape": "single",
+      "targetSide": "enemy"
+    },
+    {
+      "actorKey": "[\"Neon Requiem\",\"id:neon_requiem:memory_husk\"]",
+      "actorId": "neon_requiem:memory_husk",
+      "actorName": "Memory Husk",
+      "universe": "Neon Requiem",
+      "kind": "enemy",
+      "source": "src/game/originalUniversesManifest.json",
+      "weapon": "magic",
+      "sourceSignature": "Copie la dernière compétence utilisée contre lui.",
+      "before": "Strong attack",
+      "action": {
+        "name": "Écho de compétence",
+        "type": "beam",
+        "targeting": {
+          "delivery": "beam",
+          "shape": "line",
+          "lineWidth": 48
+        },
+        "dmg": 1.05,
+        "cd": 3
+      },
+      "effect": "damage",
+      "runtimeDelivery": "ranged",
+      "shape": "line",
+      "targetSide": "enemy"
+    },
+    {
+      "actorKey": "[\"Ilyr Concordat\",\"id:ilyr_concordat:corsaire_du_vide_velari\"]",
+      "actorId": "ilyr_concordat:corsaire_du_vide_velari",
+      "actorName": "Corsaire du Vide velari",
+      "universe": "Ilyr Concordat",
+      "kind": "enemy",
+      "source": "src/game/originalUniversesManifest.json",
+      "weapon": "blade",
+      "sourceSignature": "Utilise des micro-sauts et vole les cellules de propulsion.",
+      "before": "Strong attack",
+      "action": {
+        "name": "Coup de lame en micro-saut",
+        "type": "melee",
+        "targeting": {
+          "delivery": "melee",
+          "shape": "single"
+        },
+        "dmg": 1.45,
+        "cd": 3
+      },
+      "effect": "damage",
+      "runtimeDelivery": "melee",
+      "shape": "single",
+      "targetSide": "enemy"
+    },
+    {
+      "actorKey": "[\"Ilyr Concordat\",\"id:ilyr_concordat:aberration_du_culte_genetique\"]",
+      "actorId": "ilyr_concordat:aberration_du_culte_genetique",
+      "actorName": "Aberration du Culte génétique",
+      "universe": "Ilyr Concordat",
+      "kind": "enemy",
+      "source": "src/game/originalUniversesManifest.json",
+      "weapon": "heavy_melee",
+      "sourceSignature": "Adapte son corps au dernier type de dégâts subi.",
+      "before": "Strong attack",
+      "action": {
+        "name": "Adaptation du Culte",
+        "type": "shield",
+        "targeting": {
+          "effect": "guard",
+          "targetSide": "self",
+          "shape": "single",
+          "reduce": 0.37,
+          "duration": 2.5,
+          "excludeSelf": false
+        },
+        "dmg": 0,
+        "cd": 3
+      },
+      "effect": "guard",
+      "runtimeDelivery": "self",
+      "shape": "single",
+      "targetSide": "self"
+    },
+    {
+      "actorKey": "[\"Ilyr Concordat\",\"id:ilyr_concordat:drone_nul_paleen\"]",
+      "actorId": "ilyr_concordat:drone_nul_paleen",
+      "actorName": "Drone Nul paléen",
+      "universe": "Ilyr Concordat",
+      "kind": "enemy",
+      "source": "src/game/originalUniversesManifest.json",
+      "weapon": "shield_bash",
+      "sourceSignature": "Supprime les projectiles et construit une géométrie défensive.",
+      "before": "Strong attack",
+      "action": {
+        "name": "Géométrie nulle",
+        "type": "shield",
+        "targeting": {
+          "effect": "guard",
+          "targetSide": "ally",
+          "shape": "group",
+          "reduce": 0.32,
+          "range": 205,
+          "duration": 2.5,
+          "excludeSelf": false
+        },
+        "dmg": 0,
+        "cd": 3
+      },
+      "effect": "guard",
+      "runtimeDelivery": "support",
+      "shape": "group",
+      "targetSide": "ally"
+    },
+    {
+      "actorKey": "[\"Ilyr Concordat\",\"id:ilyr_concordat:parasite_de_voie_resonante\"]",
+      "actorId": "ilyr_concordat:parasite_de_voie_resonante",
+      "actorName": "Parasite de voie résonante",
+      "universe": "Ilyr Concordat",
+      "kind": "enemy",
+      "source": "src/game/originalUniversesManifest.json",
+      "weapon": "claws",
+      "sourceSignature": "S’attache aux portails et attaque les unités qui les empruntent.",
+      "before": "Strong attack",
+      "action": {
+        "name": "Morsure de voie résonante",
+        "type": "melee",
+        "targeting": {
+          "delivery": "melee",
+          "shape": "single"
+        },
+        "dmg": 1.45,
+        "cd": 3
+      },
+      "effect": "damage",
+      "runtimeDelivery": "melee",
+      "shape": "single",
+      "targetSide": "enemy"
+    },
+    {
+      "actorKey": "[\"Ilyr Concordat\",\"id:ilyr_concordat:deserteur_du_concordat\"]",
+      "actorId": "ilyr_concordat:deserteur_du_concordat",
+      "actorName": "Déserteur du Concordat",
+      "universe": "Ilyr Concordat",
+      "kind": "enemy",
+      "source": "src/game/originalUniversesManifest.json",
+      "weapon": "staff",
+      "sourceSignature": "Utilise les doctrines des cinq espèces contre leurs propres héros.",
+      "before": "Strong attack",
+      "action": {
+        "name": "Doctrine des cinq espèces",
+        "type": "buff",
+        "targeting": {
+          "effect": "buff",
+          "targetSide": "ally",
+          "shape": "group",
+          "buffMultiplier": 1.19,
+          "range": 200,
+          "duration": 3,
+          "excludeSelf": true
+        },
+        "dmg": 0,
+        "cd": 3
+      },
+      "effect": "buff",
+      "runtimeDelivery": "support",
+      "shape": "group",
+      "targetSide": "ally"
+    },
+    {
+      "actorKey": "[\"Valedor: The Shattered Crown\",\"id:valedor_shattered_crown:sapeur_gobelin_mercenaire\"]",
+      "actorId": "valedor_shattered_crown:sapeur_gobelin_mercenaire",
+      "actorName": "Sapeur gobelin mercenaire",
+      "universe": "Valedor: The Shattered Crown",
+      "kind": "enemy",
+      "source": "src/game/originalUniversesManifest.json",
+      "weapon": "blade",
+      "sourceSignature": "Pose des charges sur les obstacles mais peut changer de camp si son contrat est brisé.",
+      "before": "Strong attack",
+      "action": {
+        "name": "Charge de siège gobeline",
+        "type": "blast_aoe",
+        "targeting": {
+          "delivery": "area",
+          "shape": "area",
+          "areaRadius": 102
+        },
+        "dmg": 1,
+        "cd": 3
+      },
+      "effect": "damage",
+      "runtimeDelivery": "ranged",
+      "shape": "area",
+      "targetSide": "enemy"
+    },
+    {
+      "actorKey": "[\"Valedor: The Shattered Crown\",\"id:valedor_shattered_crown:chevalier_creux\"]",
+      "actorId": "valedor_shattered_crown:chevalier_creux",
+      "actorName": "Chevalier creux",
+      "universe": "Valedor: The Shattered Crown",
+      "kind": "enemy",
+      "source": "src/game/originalUniversesManifest.json",
+      "weapon": "shield_bash",
+      "sourceSignature": "Armure animée par un serment sans porteur; vulnérable aux attaques qui restaurent un nom.",
+      "before": "Strong attack",
+      "action": {
+        "name": "Garde du serment vide",
+        "type": "shield",
+        "targeting": {
+          "effect": "guard",
+          "targetSide": "self",
+          "shape": "single",
+          "reduce": 0.43,
+          "duration": 2.5,
+          "excludeSelf": false
+        },
+        "dmg": 0,
+        "cd": 3
+      },
+      "effect": "guard",
+      "runtimeDelivery": "self",
+      "shape": "single",
+      "targetSide": "self"
+    },
+    {
+      "actorKey": "[\"Valedor: The Shattered Crown\",\"id:valedor_shattered_crown:brute_troll_des_ponts\"]",
+      "actorId": "valedor_shattered_crown:brute_troll_des_ponts",
+      "actorName": "Brute troll des ponts",
+      "universe": "Valedor: The Shattered Crown",
+      "kind": "enemy",
+      "source": "src/game/originalUniversesManifest.json",
+      "weapon": "heavy_melee",
+      "sourceSignature": "Régénère tant que le pont ou territoire qu’il garde reste contesté.",
+      "before": "Strong attack",
+      "action": {
+        "name": "Régénération du pont contesté",
+        "type": "heal",
+        "targeting": {
+          "effect": "heal",
+          "targetSide": "self",
+          "shape": "single",
+          "healRatio": 0.16
+        },
+        "dmg": 0,
+        "cd": 3
+      },
+      "effect": "heal",
+      "runtimeDelivery": "self",
+      "shape": "single",
+      "targetSide": "self"
+    },
+    {
+      "actorKey": "[\"Valedor: The Shattered Crown\",\"id:valedor_shattered_crown:matriarche_araignee_des_ruines\"]",
+      "actorId": "valedor_shattered_crown:matriarche_araignee_des_ruines",
+      "actorName": "Matriarche araignée des ruines",
+      "universe": "Valedor: The Shattered Crown",
+      "kind": "enemy",
+      "source": "src/game/originalUniversesManifest.json",
+      "weapon": "magic",
+      "sourceSignature": "Relie les cases par des toiles et protège ses œufs plutôt qu’un maître maléfique.",
+      "before": "Strong attack",
+      "action": {
+        "name": "Toile des ruines",
+        "type": "blast_aoe",
+        "targeting": {
+          "delivery": "area",
+          "shape": "area",
+          "areaRadius": 107
+        },
+        "dmg": 1,
+        "cd": 3,
+        "statusEffect": "glitched"
+      },
+      "effect": "damage",
+      "runtimeDelivery": "ranged",
+      "shape": "area",
+      "targetSide": "enemy"
+    },
+    {
+      "actorKey": "[\"Valedor: The Shattered Crown\",\"id:valedor_shattered_crown:archer_spectre_de_l_ancienne_cour\"]",
+      "actorId": "valedor_shattered_crown:archer_spectre_de_l_ancienne_cour",
+      "actorName": "Archer spectre de l’ancienne cour",
+      "universe": "Valedor: The Shattered Crown",
+      "kind": "enemy",
+      "source": "src/game/originalUniversesManifest.json",
+      "weapon": "claws",
+      "sourceSignature": "Tire depuis les bannières de royaumes disparus.",
+      "before": "Strong attack",
+      "action": {
+        "name": "Flèche des bannières disparues",
+        "type": "projectile",
+        "targeting": {
+          "delivery": "projectile",
+          "shape": "line",
+          "lineWidth": 50
+        },
+        "dmg": 1.05,
+        "cd": 3
+      },
+      "effect": "damage",
+      "runtimeDelivery": "ranged",
+      "shape": "line",
+      "targetSide": "enemy"
+    },
+    {
+      "actorKey": "[\"Aevum Fracture\",\"id:aevum_fracture:constable_de_chronologie\"]",
+      "actorId": "aevum_fracture:constable_de_chronologie",
+      "actorName": "Constable de chronologie",
+      "universe": "Aevum Fracture",
+      "kind": "enemy",
+      "source": "src/game/originalUniversesManifest.json",
+      "weapon": "shield_bash",
+      "sourceSignature": "Arrête les unités qui portent un objet provenant d’une autre ligne temporelle.",
+      "before": "Strong attack",
+      "action": {
+        "name": "Arrêt chronologique",
+        "type": "glitch",
+        "targeting": {
+          "delivery": "ranged",
+          "shape": "single"
+        },
+        "dmg": 0,
+        "cd": 3,
+        "statusEffect": "glitched"
+      },
+      "effect": "glitchOnly",
+      "runtimeDelivery": "ranged",
+      "shape": "single",
+      "targetSide": "enemy"
+    },
+    {
+      "actorKey": "[\"Aevum Fracture\",\"id:aevum_fracture:soldat_anachrone\"]",
+      "actorId": "aevum_fracture:soldat_anachrone",
+      "actorName": "Soldat anachrone",
+      "universe": "Aevum Fracture",
+      "kind": "enemy",
+      "source": "src/game/originalUniversesManifest.json",
+      "weapon": "blade",
+      "sourceSignature": "Change d’arme et de doctrine selon la capitale actuellement dominante.",
+      "before": "Strong attack",
+      "action": {
+        "name": "Frappe d’arme anachrone",
+        "type": "melee",
+        "targeting": {
+          "delivery": "melee",
+          "shape": "single"
+        },
+        "dmg": 1.45,
+        "cd": 3
+      },
+      "effect": "damage",
+      "runtimeDelivery": "melee",
+      "shape": "single",
+      "targetSide": "enemy"
+    },
+    {
+      "actorKey": "[\"Aevum Fracture\",\"id:aevum_fracture:doppelganger_de_propagande\"]",
+      "actorId": "aevum_fracture:doppelganger_de_propagande",
+      "actorName": "Doppelgänger de propagande",
+      "universe": "Aevum Fracture",
+      "kind": "enemy",
+      "source": "src/game/originalUniversesManifest.json",
+      "weapon": "magic",
+      "sourceSignature": "Copie un héros puis modifie son nom, son portrait et sa citation de victoire.",
+      "before": "Strong attack",
+      "action": {
+        "name": "Propagande du double",
+        "type": "blast_aoe",
+        "targeting": {
+          "delivery": "area",
+          "shape": "area",
+          "areaRadius": 98
+        },
+        "dmg": 1,
+        "cd": 3,
+        "statusEffect": "glitched"
+      },
+      "effect": "damage",
+      "runtimeDelivery": "ranged",
+      "shape": "area",
+      "targetSide": "enemy"
+    },
+    {
+      "actorKey": "[\"Aevum Fracture\",\"id:aevum_fracture:molosse_chronal\"]",
+      "actorId": "aevum_fracture:molosse_chronal",
+      "actorName": "Molosse chronal",
+      "universe": "Aevum Fracture",
+      "kind": "enemy",
+      "source": "src/game/originalUniversesManifest.json",
+      "weapon": "claws",
+      "sourceSignature": "Suit les traces de retour en arrière et punit les déplacements répétés.",
+      "before": "Strong attack",
+      "action": {
+        "name": "Crocs de la trace chronale",
+        "type": "melee",
+        "targeting": {
+          "delivery": "melee",
+          "shape": "single"
+        },
+        "dmg": 1.45,
+        "cd": 3
+      },
+      "effect": "damage",
+      "runtimeDelivery": "melee",
+      "shape": "single",
+      "targetSide": "enemy"
+    },
+    {
+      "actorKey": "[\"Aevum Fracture\",\"id:aevum_fracture:citoyen_efface_automatise\"]",
+      "actorId": "aevum_fracture:citoyen_efface_automatise",
+      "actorName": "Citoyen effacé automatisé",
+      "universe": "Aevum Fracture",
+      "kind": "enemy",
+      "source": "src/game/originalUniversesManifest.json",
+      "weapon": "staff",
+      "sourceSignature": "Silhouette forcée au combat; peut être restaurée comme témoin plutôt que tuée.",
+      "before": "Strong attack",
+      "action": {
+        "name": "Réflexe du témoin effacé",
+        "type": "shield",
+        "targeting": {
+          "effect": "guard",
+          "targetSide": "self",
+          "shape": "single",
+          "reduce": 0.35,
+          "duration": 2.5,
+          "excludeSelf": false
+        },
+        "dmg": 0,
+        "cd": 3
+      },
+      "effect": "guard",
+      "runtimeDelivery": "self",
+      "shape": "single",
+      "targetSide": "self"
+    },
+    {
+      "actorKey": "[\"Thalassa Mnémique\",\"id:rature_de_corail\"]",
+      "actorId": "rature_de_corail",
+      "actorName": "Rature de Corail",
+      "universe": "Thalassa Mnémique",
+      "kind": "enemy",
+      "source": "DLC/ThalassaMnemique/data/ocDlcPacks.js",
+      "weapon": "coral_scrape",
+      "sourceSpecial": "Mémoire abrasée",
+      "sourceLore": {
+        "en": "A reef grown around a censored memory. It scrapes names from armor before adding their colors to its branches.",
+        "fr": "Un récif poussé autour d’un souvenir censuré. Il gratte les noms sur les armures avant d’ajouter leurs couleurs à ses branches."
+      },
+      "contentPackId": "oc-dlc-drowned-dawn",
+      "before": "Strong attack",
+      "action": {
+        "name": "Grattage du corail",
+        "type": "melee",
+        "targeting": {
+          "delivery": "melee",
+          "shape": "single"
+        },
+        "dmg": 1.05,
+        "cd": 3,
+        "statusEffect": "glitched"
+      },
+      "effect": "damage",
+      "runtimeDelivery": "melee",
+      "shape": "single",
+      "targetSide": "enemy"
+    },
+    {
+      "actorKey": "[\"Thalassa Mnémique\",\"id:nageur_sans_nom\"]",
+      "actorId": "nageur_sans_nom",
+      "actorName": "Nageur Sans-Nom",
+      "universe": "Thalassa Mnémique",
+      "kind": "enemy",
+      "source": "DLC/ThalassaMnemique/data/ocDlcPacks.js",
+      "weapon": "undertow_claws",
+      "sourceSpecial": "Appel presque familier",
+      "sourceLore": {
+        "en": "A drowned citizen whose identity was traded for passage. It follows any voice that sounds almost familiar.",
+        "fr": "Citoyen noyé dont l’identité fut échangée contre un passage. Il suit toute voix qui lui semble presque familière."
+      },
+      "contentPackId": "oc-dlc-drowned-dawn",
+      "before": "Strong attack",
+      "action": {
+        "name": "Griffes du ressac",
+        "type": "melee",
+        "targeting": {
+          "delivery": "melee",
+          "shape": "single"
+        },
+        "dmg": 1.45,
+        "cd": 3
+      },
+      "effect": "damage",
+      "runtimeDelivery": "melee",
+      "shape": "single",
+      "targetSide": "enemy"
+    },
+    {
+      "actorKey": "[\"Thalassa Mnémique\",\"id:archiviste_de_sel\"]",
+      "actorId": "archiviste_de_sel",
+      "actorName": "Archiviste de Sel",
+      "universe": "Thalassa Mnémique",
+      "kind": "enemy",
+      "source": "DLC/ThalassaMnemique/data/ocDlcPacks.js",
+      "weapon": "salt_tablets",
+      "sourceSpecial": "Témoignage tranchant",
+      "sourceLore": {
+        "en": "A walking shelf of crystallized testimonies. Breaking one tablet releases a truth sharp enough to wound both sides.",
+        "fr": "Rayonnage ambulant de témoignages cristallisés. Briser une tablette libère une vérité assez coupante pour blesser les deux camps."
+      },
+      "contentPackId": "oc-dlc-drowned-dawn",
+      "before": "Strong attack",
+      "action": {
+        "name": "Tablette de sel brisée",
+        "type": "projectile",
+        "targeting": {
+          "delivery": "projectile",
+          "shape": "line",
+          "lineWidth": 54
+        },
+        "dmg": 1.05,
+        "cd": 3
+      },
+      "effect": "damage",
+      "runtimeDelivery": "ranged",
+      "shape": "line",
+      "targetSide": "enemy"
+    },
+    {
+      "actorKey": "[\"Méridien Creux\",\"id:huissier_instant\"]",
+      "actorId": "huissier_instant",
+      "actorName": "Huissier d’Instant",
+      "universe": "Méridien Creux",
+      "kind": "enemy",
+      "source": "DLC/MeridienCreux/data/ocDlcPacks.js",
+      "weapon": "foreclosure_pendulum",
+      "sourceSpecial": "Saisie immédiate",
+      "sourceLore": {
+        "en": "A faceless enforcement clerk that confiscates the pause between a warning and its punishment.",
+        "fr": "Agent d’exécution sans visage qui confisque la pause entre un avertissement et sa sanction."
+      },
+      "contentPackId": "oc-dlc-borrowed-hours",
+      "before": "Strong attack",
+      "action": {
+        "name": "Confiscation du sursis",
+        "type": "glitch",
+        "targeting": {
+          "delivery": "ranged",
+          "shape": "single"
+        },
+        "dmg": 0,
+        "cd": 3,
+        "statusEffect": "glitched"
+      },
+      "effect": "glitchOnly",
+      "runtimeDelivery": "ranged",
+      "shape": "single",
+      "targetSide": "enemy"
+    },
+    {
+      "actorKey": "[\"Méridien Creux\",\"id:mite_horlogere\"]",
+      "actorId": "mite_horlogere",
+      "actorName": "Mite Horlogère",
+      "universe": "Méridien Creux",
+      "kind": "enemy",
+      "source": "DLC/MeridienCreux/data/ocDlcPacks.js",
+      "weapon": "rust_bite",
+      "sourceSpecial": "Vieillissement différé",
+      "sourceLore": {
+        "en": "A brass parasite that eats maintenance time until bridges and bodies age all at once.",
+        "fr": "Parasite de laiton qui dévore le temps d’entretien jusqu’à ce que ponts et corps vieillissent d’un seul coup."
+      },
+      "contentPackId": "oc-dlc-borrowed-hours",
+      "before": "Strong attack",
+      "action": {
+        "name": "Morsure de rouille",
+        "type": "melee",
+        "targeting": {
+          "delivery": "melee",
+          "shape": "single"
+        },
+        "dmg": 1.05,
+        "cd": 3,
+        "statusEffect": "glitched"
+      },
+      "effect": "damage",
+      "runtimeDelivery": "melee",
+      "shape": "single",
+      "targetSide": "enemy"
+    },
+    {
+      "actorKey": "[\"Méridien Creux\",\"id:voleur_vieillesse\"]",
+      "actorId": "voleur_vieillesse",
+      "actorName": "Voleur de Vieillesse",
+      "universe": "Méridien Creux",
+      "kind": "enemy",
+      "source": "DLC/MeridienCreux/data/ocDlcPacks.js",
+      "weapon": "age_vials",
+      "sourceSpecial": "Échange d’années",
+      "sourceLore": {
+        "en": "A market phantom that sells youthful faces while the stolen years scream from jars under its coat.",
+        "fr": "Fantôme de marché qui vend des visages jeunes tandis que les années volées hurlent dans des bocaux sous son manteau."
+      },
+      "contentPackId": "oc-dlc-borrowed-hours",
+      "before": "Strong attack",
+      "action": {
+        "name": "Années libérées",
+        "type": "blast_aoe",
+        "targeting": {
+          "delivery": "area",
+          "shape": "area",
+          "areaRadius": 103
+        },
+        "dmg": 1,
+        "cd": 3,
+        "statusEffect": "glitched"
+      },
+      "effect": "damage",
+      "runtimeDelivery": "ranged",
+      "shape": "area",
+      "targetSide": "enemy"
+    },
+    {
+      "actorKey": "[\"Viridienne Ultime\",\"id:pollen_du_vide\"]",
+      "actorId": "pollen_du_vide",
+      "actorName": "Pollen du Vide",
+      "universe": "Viridienne Ultime",
+      "kind": "enemy",
+      "source": "DLC/ViridienneUltime/data/ocDlcPacks.js",
+      "weapon": "void_spores",
+      "sourceSpecial": "Germination négative",
+      "sourceLore": {
+        "en": "A cloud of seeds from futures that never received light. It germinates inside abandoned plans.",
+        "fr": "Nuage de graines issues de futurs qui n’ont jamais reçu de lumière. Il germe dans les projets abandonnés."
+      },
+      "contentPackId": "oc-dlc-star-garden",
+      "before": "Strong attack",
+      "action": {
+        "name": "Nuage de graines sans lumière",
+        "type": "blast_aoe",
+        "targeting": {
+          "delivery": "area",
+          "shape": "area",
+          "areaRadius": 120
+        },
+        "dmg": 1,
+        "cd": 3,
+        "statusEffect": "glitched"
+      },
+      "effect": "damage",
+      "runtimeDelivery": "ranged",
+      "shape": "area",
+      "targetSide": "enemy"
+    },
+    {
+      "actorKey": "[\"Viridienne Ultime\",\"id:cerf_cometaire\"]",
+      "actorId": "cerf_cometaire",
+      "actorName": "Cerf Cométaire",
+      "universe": "Viridienne Ultime",
+      "kind": "enemy",
+      "source": "DLC/ViridienneUltime/data/ocDlcPacks.js",
+      "weapon": "orbital_antlers",
+      "sourceSpecial": "Charge de périhélie",
+      "sourceLore": {
+        "en": "A migratory grazer that carries young orbits in its antlers and panics when they are pruned too early.",
+        "fr": "Herbivore migrateur qui porte de jeunes orbites dans ses bois et panique lorsqu’elles sont taillées trop tôt."
+      },
+      "contentPackId": "oc-dlc-star-garden",
+      "before": "Strong attack",
+      "action": {
+        "name": "Encornement orbital",
+        "type": "melee",
+        "targeting": {
+          "delivery": "melee",
+          "shape": "single"
+        },
+        "dmg": 1.45,
+        "cd": 3
+      },
+      "effect": "damage",
+      "runtimeDelivery": "melee",
+      "shape": "single",
+      "targetSide": "enemy"
+    },
+    {
+      "actorKey": "[\"Viridienne Ultime\",\"id:liane_orpheline\"]",
+      "actorId": "liane_orpheline",
+      "actorName": "Liane Orpheline",
+      "universe": "Viridienne Ultime",
+      "kind": "enemy",
+      "source": "DLC/ViridienneUltime/data/ocDlcPacks.js",
+      "weapon": "root_coils",
+      "sourceSpecial": "Étreinte d’adoption",
+      "sourceLore": {
+        "en": "A severed world-root seeking any sun to call parent, crushing habitats with desperate affection.",
+        "fr": "Racine-monde sectionnée qui cherche n’importe quel soleil à appeler parent et broie les habitats dans son affection désespérée."
+      },
+      "contentPackId": "oc-dlc-star-garden",
+      "before": "Strong attack",
+      "action": {
+        "name": "Étreinte des racines-mondes",
+        "type": "spray",
+        "targeting": {
+          "delivery": "projectile",
+          "shape": "cone",
+          "coneAngle": 63
+        },
+        "dmg": 1,
+        "cd": 3
+      },
+      "effect": "damage",
+      "runtimeDelivery": "ranged",
+      "shape": "cone",
+      "targetSide": "enemy"
+    },
+    {
+      "actorKey": "[\"Nexus de Convergence\",\"name:Matrice de Substitution\"]",
+      "actorId": null,
+      "actorName": "Matrice de Substitution",
+      "universe": "Nexus de Convergence",
+      "kind": "enemy",
+      "source": "src/game/enemies.js",
+      "weapon": "identity_copy_beam",
+      "sourceSpecial": "Copie de doctrine",
+      "sourceLore": "Gyroscope de la Fonderie construit autour d un Eclat d Origine contamine. Il observe la derniere competence employee, imprime une version sans contexte puis la greffe au prochain double ideal.",
+      "visualStyle": "origin_forge_matrix",
+      "before": "Strong attack",
+      "action": {
+        "name": "Greffe de doctrine",
+        "type": "buff",
+        "targeting": {
+          "effect": "buff",
+          "targetSide": "ally",
+          "shape": "group",
+          "buffMultiplier": 1.18,
+          "range": 220,
+          "duration": 3,
+          "excludeSelf": true
+        },
+        "dmg": 0,
+        "cd": 3
+      },
+      "effect": "buff",
+      "runtimeDelivery": "support",
+      "shape": "group",
+      "targetSide": "ally"
+    },
+    {
+      "actorKey": "[\"Nexus de Convergence\",\"id:oc_act1_reflet_vie_possible\"]",
+      "actorId": "oc_act1_reflet_vie_possible",
+      "actorName": "Reflet de Vie Possible",
+      "universe": "Nexus de Convergence",
+      "kind": "enemy",
+      "source": "src/game/enemies.js",
+      "weapon": "possible_life_mirror",
+      "sourceSpecial": "Memoire empruntee",
+      "sourceLore": "Le Sans-Auteur extrait un choix regrette et lui donne un corps provisoire. Le Reflet combat avec les gestes que sa cible aurait appris dans cette autre vie, mais ne peut expliquer aucun de ses souvenirs.",
+      "actId": "arrivals",
+      "before": "Strong attack",
+      "action": {
+        "name": "Geste de l’autre vie",
+        "type": "melee",
+        "targeting": {
+          "delivery": "melee",
+          "shape": "single"
+        },
+        "dmg": 1.45,
+        "cd": 3
+      },
+      "effect": "damage",
+      "runtimeDelivery": "melee",
+      "shape": "single",
+      "targetSide": "enemy"
+    },
+    {
+      "actorKey": "[\"Nexus de Convergence\",\"id:oc_act1_courtier_regret\"]",
+      "actorId": "oc_act1_courtier_regret",
+      "actorName": "Courtier du Regret",
+      "universe": "Nexus de Convergence",
+      "kind": "enemy",
+      "source": "src/game/enemies.js",
+      "weapon": "regret_hook",
+      "sourceSpecial": "Offre sans consequence",
+      "sourceLore": "Messager faconne dans les marges du Nexus, il promet a chaque membre de la cellule une victoire dont le prix aurait deja ete paye par une autre version de lui-meme.",
+      "actId": "arrivals",
+      "before": "Strong attack",
+      "action": {
+        "name": "Offre piégée du Regret",
+        "type": "glitch",
+        "targeting": {
+          "delivery": "ranged",
+          "shape": "single"
+        },
+        "dmg": 0,
+        "cd": 3,
+        "statusEffect": "glitched"
+      },
+      "effect": "glitchOnly",
+      "runtimeDelivery": "ranged",
+      "shape": "single",
+      "targetSide": "enemy"
+    },
+    {
+      "actorKey": "[\"Nexus de Convergence\",\"id:oc_act2_scribe_registre_noir\"]",
+      "actorId": "oc_act2_scribe_registre_noir",
+      "actorName": "Scribe du Registre Noir",
+      "universe": "Nexus de Convergence",
+      "kind": "enemy",
+      "source": "src/game/enemies.js",
+      "weapon": "black_index_quill",
+      "sourceSpecial": "Dette reclassee",
+      "sourceLore": "Protocole A.R.C.A. corrompu qui transforme les pertes nominatives en simples couts techniques. Chaque ligne qu il rature renforce la pression causale du Sans-Auteur.",
+      "actId": "anchors",
+      "before": "Strong attack",
+      "action": {
+        "name": "Ratures du Registre Noir",
+        "type": "blast_aoe",
+        "targeting": {
+          "delivery": "area",
+          "shape": "area",
+          "areaRadius": 106
+        },
+        "dmg": 1,
+        "cd": 3,
+        "statusEffect": "glitched"
+      },
+      "effect": "damage",
+      "runtimeDelivery": "ranged",
+      "shape": "area",
+      "targetSide": "enemy"
+    },
+    {
+      "actorKey": "[\"Nexus de Convergence\",\"id:oc_act2_porte_verrou_endeuille\"]",
+      "actorId": "oc_act2_porte_verrou_endeuille",
+      "actorName": "Porte-Verrou Endeuille",
+      "universe": "Nexus de Convergence",
+      "kind": "enemy",
+      "source": "src/game/enemies.js",
+      "weapon": "mourning_lock_ram",
+      "sourceSpecial": "Ancrage de deuil",
+      "sourceLore": "Carcasse de maintenance soudee a un ancien Verrou d Origine. Elle repousse les temoins du sacrifice afin que le premier ancrage continue de fonctionner sans jamais nommer ceux qui l ont alimente.",
+      "actId": "anchors",
+      "before": "Strong attack",
+      "action": {
+        "name": "Garde du Verrou d’Origine",
+        "type": "shield",
+        "targeting": {
+          "effect": "guard",
+          "targetSide": "self",
+          "shape": "single",
+          "reduce": 0.44,
+          "duration": 2.5,
+          "excludeSelf": false
+        },
+        "dmg": 0,
+        "cd": 3
+      },
+      "effect": "guard",
+      "runtimeDelivery": "self",
+      "shape": "single",
+      "targetSide": "self"
+    },
+    {
+      "actorKey": "[\"Nexus de Convergence\",\"id:oc_act3_indexeur_contradictions\"]",
+      "actorId": "oc_act3_indexeur_contradictions",
+      "actorName": "Indexeur des Contradictions",
+      "universe": "Nexus de Convergence",
+      "kind": "enemy",
+      "source": "src/game/enemies.js",
+      "weapon": "contradiction_shear",
+      "sourceSpecial": "Cohérence forcee",
+      "sourceLore": "Automate d archive qui coupe tout souvenir incompatible avec la version dominante. Une Trame rendue parfaitement coherente devient plus facile a traverser, mais cesse d appartenir a ceux qui l ont vecue.",
+      "actId": "archives",
+      "before": "Strong attack",
+      "action": {
+        "name": "Cisaille des contradictions",
+        "type": "projectile",
+        "targeting": {
+          "delivery": "projectile",
+          "shape": "line",
+          "lineWidth": 52
+        },
+        "dmg": 1.05,
+        "cd": 3
+      },
+      "effect": "damage",
+      "runtimeDelivery": "ranged",
+      "shape": "line",
+      "targetSide": "enemy"
+    },
+    {
+      "actorKey": "[\"Nexus de Convergence\",\"id:oc_act3_guide_issue_parfaite\"]",
+      "actorId": "oc_act3_guide_issue_parfaite",
+      "actorName": "Guide de l Issue Parfaite",
+      "universe": "Nexus de Convergence",
+      "kind": "enemy",
+      "source": "src/game/enemies.js",
+      "weapon": "perfect_exit_lure",
+      "sourceSpecial": "Itineraire sans perte",
+      "sourceLore": "Silhouette hospitaliere qui indique toujours le chemin le plus court. Ses portails retirent les echecs, les deuils et les noms necessaires pour comprendre comment la destination fut atteinte.",
+      "actId": "archives",
+      "before": "Strong attack",
+      "action": {
+        "name": "Leurre du chemin court",
+        "type": "glitch",
+        "targeting": {
+          "delivery": "ranged",
+          "shape": "single"
+        },
+        "dmg": 0,
+        "cd": 3,
+        "statusEffect": "glitched"
+      },
+      "effect": "glitchOnly",
+      "runtimeDelivery": "ranged",
+      "shape": "single",
+      "targetSide": "enemy"
+    },
+    {
+      "actorKey": "[\"Nexus de Convergence\",\"id:oc_act4_rature_seuil_blanc\"]",
+      "actorId": "oc_act4_rature_seuil_blanc",
+      "actorName": "Rature du Seuil Blanc",
+      "universe": "Nexus de Convergence",
+      "kind": "enemy",
+      "source": "src/game/enemies.js",
+      "weapon": "white_margin_claw",
+      "sourceSpecial": "Marge devorante",
+      "sourceLore": "Trait mobile detache de la marge du Sans-Auteur. Il ne blesse pas le corps: il efface le lien entre une action et la raison pour laquelle elle devait etre accomplie.",
+      "actId": "white-void",
+      "before": "Strong attack",
+      "action": {
+        "name": "Effacement de l’intention",
+        "type": "glitch",
+        "targeting": {
+          "delivery": "ranged",
+          "shape": "single"
+        },
+        "dmg": 0,
+        "cd": 3,
+        "statusEffect": "glitched"
+      },
+      "effect": "glitchOnly",
+      "runtimeDelivery": "ranged",
+      "shape": "single",
+      "targetSide": "enemy"
+    },
+    {
+      "actorKey": "[\"Nexus de Convergence\",\"id:oc_act4_simulacre_sans_choix\"]",
+      "actorId": "oc_act4_simulacre_sans_choix",
+      "actorName": "Simulacre Sans Choix",
+      "universe": "Nexus de Convergence",
+      "kind": "enemy",
+      "source": "src/game/enemies.js",
+      "weapon": "consent_nullifier",
+      "sourceSpecial": "Paix obligatoire",
+      "sourceLore": "Gardien d une Cite ideale ou aucun conflit ne subsiste parce que les habitants ne peuvent plus se rappeler avoir prefere une voie a une autre.",
+      "actId": "white-void",
+      "before": "Strong attack",
+      "action": {
+        "name": "Garde de la Cité idéale",
+        "type": "shield",
+        "targeting": {
+          "effect": "guard",
+          "targetSide": "self",
+          "shape": "single",
+          "reduce": 0.4,
+          "duration": 2.5,
+          "excludeSelf": false
+        },
+        "dmg": 0,
+        "cd": 3
+      },
+      "effect": "guard",
+      "runtimeDelivery": "self",
+      "shape": "single",
+      "targetSide": "self"
+    },
+    {
+      "actorKey": "[\"Nexus de Convergence\",\"id:oc_act5_vigie_coordonnee_x\"]",
+      "actorId": "oc_act5_vigie_coordonnee_x",
+      "actorName": "Vigie de la Coordonnee X",
+      "universe": "Nexus de Convergence",
+      "kind": "enemy",
+      "source": "src/game/enemies.js",
+      "weapon": "coordinate_x_beacon",
+      "sourceSpecial": "Position interdite",
+      "sourceLore": "Ancienne balise A.R.C.A. retournee contre les explorateurs. Elle brouille la coordonnee restauree de Route X pour empecher ses habitants de redevenir des temoins consultables.",
+      "actId": "primordial",
+      "before": "Strong attack",
+      "action": {
+        "name": "Brouillage de Route X",
+        "type": "blast_aoe",
+        "targeting": {
+          "delivery": "area",
+          "shape": "area",
+          "areaRadius": 112
+        },
+        "dmg": 1,
+        "cd": 3,
+        "statusEffect": "glitched"
+      },
+      "effect": "damage",
+      "runtimeDelivery": "ranged",
+      "shape": "area",
+      "targetSide": "enemy"
+    },
+    {
+      "actorKey": "[\"Nexus de Convergence\",\"id:oc_act5_contre_temoin_veyr\"]",
+      "actorId": "oc_act5_contre_temoin_veyr",
+      "actorName": "Contre-Temoin de Veyr",
+      "universe": "Nexus de Convergence",
+      "kind": "enemy",
+      "source": "src/game/enemies.js",
+      "weapon": "testimony_redactor",
+      "sourceSpecial": "Deposition tronquee",
+      "sourceLore": "Contrefacon produite par le Sans-Auteur pour remplacer le temoignage integral de Veyr. Elle transforme deux responsabilites distinctes en une accusation simple, donc facile a effacer.",
+      "actId": "primordial",
+      "before": "Strong attack",
+      "action": {
+        "name": "Censure du témoignage intégral",
+        "type": "glitch",
+        "targeting": {
+          "delivery": "ranged",
+          "shape": "single"
+        },
+        "dmg": 0,
+        "cd": 3,
+        "statusEffect": "glitched"
+      },
+      "effect": "glitchOnly",
+      "runtimeDelivery": "ranged",
+      "shape": "single",
+      "targetSide": "enemy"
+    }
+  ]
+}

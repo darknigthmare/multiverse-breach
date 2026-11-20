@@ -1,0 +1,260 @@
+{
+  "baselineCommit": "b1ab5783e",
+  "newNativeArt": false,
+  "fullArtApproval": false,
+  "node22": {
+    "version": "22.23.5",
+    "command": "node --loader ./scripts/sourceSceneTestLoader.mjs --test scripts/historicalIconicP0FighterActions.test.mjs",
+    "before": {
+      "tests": 7,
+      "pass": 1,
+      "fail": 6,
+      "cancelled": 0,
+      "skipped": 0,
+      "sha256": "a2b7ab13e0806949bdcdad51fe16c48f459a5d76165bd0ad6f660323b50169ef"
+    },
+    "after": {
+      "tests": 7,
+      "pass": 7,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "sha256": "75f716c053c17d3431466a2e5ebbda2476979777712630cfa083490e3eccd3c1"
+    },
+    "beforeScope": "Prior Git version of EngineFighter with the same roster and targeted loss test, via a read-only source loader"
+  },
+  "browser": {
+    "scope": "FighterMode compiled with Vite, fixed local match geometry, production controls and particles, real Canvas rendering. No gameplay fixtures replaced.",
+    "buildLogSha256": "d047070a0914436586fdf0486fd74a6107462503b00c5a3b7b445430bdebe689",
+    "version": "151.0.7922.173",
+    "cases": [
+      {
+        "actor": "jack_sparrow_potc",
+        "side": "player",
+        "viewport": [
+          1280,
+          900
+        ],
+        "key": "g",
+        "name": "Reserved Flintlock Pistol Shot",
+        "gap": 230,
+        "initial": {
+          "actor": "player-0-jack_sparrow_potc",
+          "target": "cpu-0-cloud_ff7",
+          "actorX": 160,
+          "targetX": 390,
+          "gap": 230,
+          "hp": {
+            "player-0-jack_sparrow_potc": 230,
+            "player-1-tifa_ff7": 234,
+            "cpu-0-cloud_ff7": 234,
+            "cpu-1-barret_ff7": 254
+          },
+          "storage": "[]"
+        },
+        "hit": {
+          "owner": "player-0-jack_sparrow_potc",
+          "target": "cpu-0-cloud_ff7",
+          "side": "player",
+          "damage": 33.9,
+          "canonSourceAbility": true,
+          "delivery": "projectile",
+          "name": "Reserved Flintlock Pistol Shot",
+          "elapsed": 0.7166666666666672
+        },
+        "maxBulletTravel": 130.00000000000017,
+        "spawns": [
+          {
+            "side": "player",
+            "owner": "player-0-jack_sparrow_potc",
+            "sourceHeroId": "jack_sparrow_potc",
+            "kind": "bullet",
+            "x": 218,
+            "y": 379,
+            "vx": 520,
+            "maxRange": 300,
+            "radius": 3,
+            "canonSourceAbility": true,
+            "authoredAbility": false,
+            "name": "Reserved Flintlock Pistol Shot",
+            "delivery": "projectile",
+            "shape": "single",
+            "maxTargets": 1,
+            "identityAuthored": false,
+            "feedback": {
+              "color": "#edc48b",
+              "sfx": "shoot",
+              "kind": "flintlock"
+            },
+            "elapsed": 0.4666666666666666
+          }
+        ],
+        "typedParticles": [
+          "smoke"
+        ],
+        "shotHud": {
+          "remaining": 0,
+          "capacity": 1
+        },
+        "unrelatedHttp": [],
+        "pageErrors": []
+      },
+      {
+        "actor": "jack_sparrow_potc",
+        "side": "cpu",
+        "viewport": [
+          390,
+          844
+        ],
+        "title": "Flintlock shot [M]",
+        "name": "Reserved Flintlock Pistol Shot",
+        "gap": 230,
+        "initial": {
+          "actor": "cpu-0-jack_sparrow_potc",
+          "target": "player-0-cloud_ff7",
+          "actorX": 800,
+          "targetX": 570,
+          "gap": 230,
+          "hp": {
+            "player-0-cloud_ff7": 234,
+            "player-1-barret_ff7": 254,
+            "cpu-0-jack_sparrow_potc": 230,
+            "cpu-1-tifa_ff7": 234
+          },
+          "storage": "[]"
+        },
+        "hit": {
+          "owner": "cpu-0-jack_sparrow_potc",
+          "target": "player-0-cloud_ff7",
+          "side": "cpu",
+          "damage": 33.9,
+          "canonSourceAbility": true,
+          "delivery": "projectile",
+          "name": "Reserved Flintlock Pistol Shot",
+          "elapsed": 0.850000000000001
+        },
+        "maxBulletTravel": 121.3333333333328,
+        "spawns": [
+          {
+            "side": "cpu",
+            "owner": "cpu-0-jack_sparrow_potc",
+            "sourceHeroId": "jack_sparrow_potc",
+            "kind": "bullet",
+            "x": 742,
+            "y": 379,
+            "vx": -520,
+            "maxRange": 300,
+            "radius": 3,
+            "canonSourceAbility": true,
+            "authoredAbility": false,
+            "name": "Reserved Flintlock Pistol Shot",
+            "delivery": "projectile",
+            "shape": "single",
+            "maxTargets": 1,
+            "identityAuthored": false,
+            "feedback": {
+              "color": "#edc48b",
+              "sfx": "shoot",
+              "kind": "flintlock"
+            },
+            "elapsed": 0.6000000000000002
+          }
+        ],
+        "typedParticles": [
+          "smoke"
+        ],
+        "shotHud": {
+          "remaining": 0,
+          "capacity": 1
+        },
+        "unrelatedHttp": [],
+        "pageErrors": []
+      },
+      {
+        "actor": "lilo_pelekai",
+        "side": "player",
+        "viewport": [
+          1280,
+          900
+        ],
+        "key": "f",
+        "name": "Camera Flash Distraction",
+        "gap": 180,
+        "initial": {
+          "actor": "player-0-lilo_pelekai",
+          "target": "cpu-0-cloud_ff7",
+          "actorX": 160,
+          "targetX": 340,
+          "gap": 180,
+          "hp": {
+            "player-0-lilo_pelekai": 230,
+            "player-1-tifa_ff7": 234,
+            "cpu-0-cloud_ff7": 234,
+            "cpu-1-barret_ff7": 254
+          },
+          "storage": "[]"
+        },
+        "hit": {
+          "owner": "player-0-lilo_pelekai",
+          "target": "cpu-0-cloud_ff7",
+          "side": "player",
+          "damage": 8.6,
+          "canonSourceAbility": true,
+          "delivery": "beam",
+          "name": "Camera Flash Distraction",
+          "elapsed": 0.35
+        },
+        "maxBulletTravel": 0,
+        "spawns": [],
+        "typedParticles": [
+          "camera_flash",
+          "camera_flash"
+        ],
+        "unrelatedHttp": [],
+        "pageErrors": []
+      },
+      {
+        "actor": "roger_rabbit",
+        "side": "cpu",
+        "viewport": [
+          390,
+          844
+        ],
+        "title": "P2 heavy attack [M]",
+        "name": "Elastic Toon Feint",
+        "gap": 66,
+        "initial": {
+          "actor": "cpu-0-roger_rabbit",
+          "target": "player-0-cloud_ff7",
+          "actorX": 800,
+          "targetX": 734,
+          "gap": 66,
+          "hp": {
+            "player-0-cloud_ff7": 234,
+            "player-1-barret_ff7": 254,
+            "cpu-0-roger_rabbit": 230,
+            "cpu-1-tifa_ff7": 234
+          },
+          "storage": "[]"
+        },
+        "hit": {
+          "owner": "cpu-0-roger_rabbit",
+          "target": "player-0-cloud_ff7",
+          "side": "cpu",
+          "damage": 33.9,
+          "canonSourceAbility": true,
+          "delivery": "melee",
+          "name": "Elastic Toon Feint",
+          "elapsed": 0.49999999999999994
+        },
+        "maxBulletTravel": 0,
+        "spawns": [],
+        "typedParticles": [],
+        "unrelatedHttp": [],
+        "pageErrors": []
+      }
+    ],
+    "capture": "silex.jpg",
+    "captureSha256": "e649417f23824eab9f23bcf18ee65c2d4cce4d2d258f2b458f972e0dc18a7550"
+  }
+}

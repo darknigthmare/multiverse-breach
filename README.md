@@ -18,7 +18,9 @@ La passe suivante donne un secondaire propre à **40 adversaires RPG** et ajoute
 
 La passe suivante porte à **80** le nombre d’adversaires RPG dont le secondaire a été revu. Le témoin du khipu reçoit une planche dédiée de seize poses. Les tirs Tactics tiennent compte de toute l’empreinte des grandes unités. Trois boss retrouvent leurs animations en Mêlée personnalisée et la pagination des packs DLC ramène le focus sur la première fiche visible. Doom atteint alors **172 lots sur 317**. [Bilan et vérifications](docs/assets/p0-p1-p2-continuation-08-2026-11-20/README.md).
 
-La dernière passe réexamine les **22 défauts visuels P0 historiques**. Les corrections de Han Solo et Luke Skywalker sont vérifiées en jeu. Seize autres planches incompatibles sont écartées. Lilo, Jack Sparrow et Roger Rabbit réutilisent les cellules examinées de leurs planches. Doom atteint **192 lots sur 317**. [État des P0 et preuves](docs/assets/p0-p1-p2-continuation-09-2026-11-20/README.md).
+La passe suivante réexamine les **22 défauts visuels P0 historiques**. Les corrections de Han Solo et Luke Skywalker sont vérifiées en jeu. Seize autres planches incompatibles sont écartées. Lilo, Jack Sparrow et Roger Rabbit réutilisent les cellules examinées de leurs planches. Doom atteint alors **192 lots sur 317**. [État des P0 et preuves](docs/assets/p0-p1-p2-continuation-09-2026-11-20/README.md).
+
+La dernière passe porte à **120** le nombre de secondaires RPG spécifiques des ennemis originaux. Jack, Lilo et Roger retrouvent leurs commandes en Duel. Les effets de Vader suivent l’impact réel en RPG. Raven et Starfire retrouvent leurs portraits dans quatre écrans et les aigrettes de l’Amas des Huit Orochi s’animent en Mêlée. Doom atteint **209 lots sur 317**. [Corrections et vérifications](docs/assets/p0-p1-p2-continuation-10-2026-11-20/README.md).
 
 Les travaux sur Gears/Dead Space, Portal/Left 4 Dead, Revan, Imp et Mancubus sont détaillés dans la [reprise du 13 novembre](docs/assets/p0-p1-p2-continuation-02-2026-11-13/README.md). La [première passe](docs/assets/p0-p1-p2-continuation-2026-11-13/README.md) et les [sept espaces du Hub](docs/assets/p0-p1-menu-continuation-2026-11-13/README.md) conservent leurs résultats datés.
 
@@ -66,7 +68,7 @@ Pour conserver et transférer les médias d’un lot, utiliser `node scripts/exp
 
 Un assemblage complet peut alimenter directement `dlc:export:runtime` avec `--media-assembly`, `--media-plan` et `--media-plan-sha256`. Le checkout fournit le code et le dossier assemblé fournit les médias vérifiés. La destination doit avoir la place pour l’édition exportée. [Commande complète et validation](docs/development/corrections-2026-11-20/dlc-distribution-from-assembly/README.md).
 
-L’assemblage temporaire Doom contient désormais **5 542 médias vérifiés sur 7 693**, répartis en **192 lots sur 317**. La dernière reprise a ajouté 20 lots et vérifié les empreintes de tous les fichiers assemblés. Il reste 125 lots et 4,09 Go à assembler selon la révision gelée du plan. [État du plan Doom](docs/assets/p0-p1-p2-continuation-09-2026-11-20/dlc/README.md).
+L’assemblage temporaire Doom contient désormais **5 799 médias vérifiés sur 7 693**, répartis en **209 lots sur 317**. La dernière reprise a ajouté 17 lots et vérifié les empreintes de tous les fichiers assemblés. Il reste 108 lots et 3,56 Go à assembler selon la révision gelée du plan. [État du plan Doom](docs/assets/p0-p1-p2-continuation-10-2026-11-20/dlc/README.md).
 
 ## Jouer
 
@@ -129,7 +131,7 @@ Une entrée dans le catalogue, une capacité nommée, une recette de présentati
 
 Les métadonnées d’override et l’absence de placeholder générique ne certifient pas une identité de source ni une animation vérifiée. Les 822 emplacements sans enregistrement explicite restent un manque de couverture rédigée, même lorsque le moteur résout une action.
 
-Cet inventaire combat ne comprend pas toutes les images du jeu : portraits, décors, objets, cartes et illustrations possèdent leurs propres catalogues. Les 525 univers ont une ambiance par défaut ; les mécanismes liés à des scènes précises constituent une couverture supplémentaire.
+Cet inventaire combat ne comprend pas toutes les images du jeu : portraits, décors, objets, cartes et illustrations possèdent leurs propres catalogues. Les 525 univers ont une ambiance par défaut ; les mécanismes liés à des scènes précises constituent une couverture supplémentaire. [Audit courant des supers, invocations et ambiances](docs/combat-completion-2026-10-18/current.md)
 
 Le **lot W17** conserve **120 personnages avec de nouveaux dessins**, en trois groupes de 40 : 120 présentations32 et 120 bases16. Les **125 identités revues** comprennent 80 nouvelles définitions de capacités et 45 révisions ; les cinq identités suspendues ne deviennent pas cinq livraisons artistiques supplémentaires. Jade ajoute un manifeste Mêlée45 ; six renforts RPG16, un NPC de capture16 et une action gyrodisk16 ont des registres distincts. L’inventaire ajoute 254 PNG aux fichiers W16. Le [plan et ses annexes](docs/combat-fidelity-wave17-2026-11-02/batch-plan-before.json) et le [protocole de clôture](docs/combat-fidelity-wave17-2026-11-02/CLOSURE.md) conservent leurs périmètres historiques.
 
