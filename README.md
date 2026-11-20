@@ -12,7 +12,9 @@ La passe précédente retire **81 P1**. Elle ajoute un atlas animé pour l’ess
 
 Une autre passe couvre **deux lots de 40 acteurs** et retire **80 P1** supplémentaires. Le duel gagne 28 séquences sur les atlas existants. Le RPG synchronise le tir du Slig et conserve le faisceau confirmé de l’ÜberCharge. Les soins en hauteur respectent l’irradiation et le Codex affiche le rang réel des menaces. [Résultats et preuves](docs/assets/p0-p1-p2-continuation-05-2026-11-20/README.md).
 
-Les derniers lots retirent **142 P1** avec 70 contrats d’acteurs et les nouveaux atlas animés du Phare et du Kraken. Dix-huit héros disposent de **126 séquences de duel**. L’Observatoire et le Carrefour rejoignent les terrains Tactics jouables. Le HUD RPG J2 et la pause A.R.C.A. ont été corrigés. L’assemblage Doom atteint **124 lots sur 317**. [Bilan, captures et reçus](docs/assets/p0-p1-p2-continuation-06-2026-11-20/README.md).
+La passe suivante retire **142 P1** avec 70 contrats d’acteurs et les atlas animés du Phare et du Kraken. Dix-huit héros disposent de **126 séquences de duel**. L’Observatoire et le Carrefour rejoignent les terrains Tactics jouables. Le HUD RPG J2 et la pause A.R.C.A. sont corrigés. L’assemblage Doom atteint **124 lots sur 317**. [Bilan, captures et reçus](docs/assets/p0-p1-p2-continuation-06-2026-11-20/README.md).
+
+La dernière passe donne un secondaire propre à **40 adversaires RPG** et ajoute le Qhapaq Ñan des Falaises et le Gouffre des Auditeurs au Tactics. La Bibliothèque des actes annexes retrouve son état et le bon élément au retour d’un briefing. Doom atteint **152 lots sur 317**. [Parcours, captures et reçus](docs/assets/p0-p1-p2-continuation-07-2026-11-20/README.md).
 
 Les travaux sur Gears/Dead Space, Portal/Left 4 Dead, Revan, Imp et Mancubus sont détaillés dans la [reprise du 13 novembre](docs/assets/p0-p1-p2-continuation-02-2026-11-13/README.md). La [première passe](docs/assets/p0-p1-p2-continuation-2026-11-13/README.md) et les [sept espaces du Hub](docs/assets/p0-p1-menu-continuation-2026-11-13/README.md) conservent leurs résultats datés.
 
@@ -60,7 +62,7 @@ Pour conserver et transférer les médias d’un lot, utiliser `node scripts/exp
 
 Un assemblage complet peut alimenter directement `dlc:export:runtime` avec `--media-assembly`, `--media-plan` et `--media-plan-sha256`. Le checkout fournit le code et le dossier assemblé fournit les médias vérifiés. La destination doit avoir la place pour l’édition exportée. [Commande complète et validation](docs/development/corrections-2026-11-20/dlc-distribution-from-assembly/README.md).
 
-Pour Doom, 112 lots locaux et sept lots complétés via Git LFS ont été intégrés à l’assemblage temporaire. Il contient désormais 4 294 médias vérifiés. Le reçu détaille les 193 lots restants et l’espace nécessaire à leur assemblage. [État du plan Doom](docs/assets/p0-p1-p2-continuation-06-2026-11-20/dlc/README.md).
+L’assemblage temporaire Doom contient désormais **4 808 médias vérifiés**. La dernière reprise a ajouté 28 lots et contrôlé la réutilisation des lots déjà validés. Il reste 165 lots et 5,35 Go à assembler. [État du plan Doom](docs/assets/p0-p1-p2-continuation-07-2026-11-20/dlc/README.md).
 
 ## Jouer
 
@@ -91,7 +93,7 @@ Les noms internes et les noms utilisés dans les rapports ne sont pas toujours i
 | Nom utilisé | Identifiant du mode | Fonctionnement actuel |
 | --- | --- | --- |
 | **RPG** | `RPG` | Jauges ATB, ciblage manuel, actions simples, secondaires, défense, super et invocation ou renfort selon le profil du personnage. Les protections et soutiens agissent sur les alliés sans créer de dégâts offensifs. |
-| **Tactics / Tactique** | `Tactics` | Tours d’unités, déplacements sur grille en perspective 3/4, coûts de terrain, obstacles, couvertures, orientation et objectifs de mission. Vingt-sept terrains verticaux couvrent des reliefs naturels, des gués, des ravins et des structures à plusieurs étages. Caméra avec déplacement et zoom. |
+| **Tactics / Tactique** | `Tactics` | Tours d’unités, déplacements sur grille en perspective 3/4, coûts de terrain, obstacles, couvertures, orientation et objectifs de mission. Vingt-neuf terrains verticaux couvrent des reliefs naturels, des gués, des ravins et des structures à plusieurs étages. Caméra avec déplacement et zoom. |
 | **Mêlée / Smash** | `Smash` | Combat sur plateformes, déplacements physiques, sauts, garde, charge, prises de rebord et objectifs d’arène. Les personnages couverts possèdent un manifeste d’animation par état. |
 | **Combat / Fighter** | `Fighter` | Moteur de duel distinct, avec sa préparation, ses séquences de présentation, ses actions et ses conditions de victoire. |
 
@@ -117,7 +119,7 @@ Une entrée dans le catalogue, une capacité nommée, une recette de présentati
 | Invocations et renforts natifs16 | 68 planches |
 | Actions supplémentaires16 | 2 planches, 32 poses |
 | Familier de protection autonome16 | 1 planche, distincte des invocations RPG |
-| Terrains Tactics verticaux | 27 terrains dont vingt-trois secteurs d’univers et quatre arènes Nexus, pour 65 matières |
+| Terrains Tactics verticaux | 29 terrains dont vingt-cinq secteurs d’univers et quatre arènes Nexus, pour 73 matières |
 | Décors animés | 445 mécanismes dans 220 univers ; 305 univers sans mécanisme localisé |
 | Ressources de cet audit combat | 1 491 PNG dans 149 registres ; les 1 237 PNG et 138 registres W16 restent préservés |
 
@@ -180,6 +182,8 @@ La verticalité est intégrée au moteur Tactics. Ouvrir **Combat custom**, choi
 | Chambre et puits de maintenance | Portal 2, 2011 | Galerie haute, escaliers, passerelle métallique et niveau de service inférieur |
 | Observatoire des Angles Impossibles | The Drowned Testament, campagne originale | Crypte, galerie de cuivre, passages d’angle et cartes à récupérer sur plusieurs étages |
 | Carrefour de la Cité Libre | Valedor: The Shattered Crown, campagne originale | Quatre places à tenir, herbe du jardin, grès des forges, basalte et planches du marché |
+| Qhapaq Ñan des Falaises | Tawantinsuyu: The Split Sun, campagne originale | Escorter le témoin du khipu par trois lacets, entre terre ocre, terrasses en pierre et col herbeux |
+| Gouffre des Auditeurs | Infernum: Nine Pits, campagne originale | Registres à détruire avant la clôture, entre métal, roche noire et rigole chaude |
 
 Les quatre arènes originales du Nexus comprennent un pont avec passage inférieur, les terrasses des ruines, les passerelles du réseau et le Col des Hautes-Herbes. Deux unités peuvent occuper des supports distincts à la même coordonnée. Au col, le gué passe sous la crête et le relais se gagne en tenant le sommet trois tours. [Terrain et parcours](docs/assets/p0-p1-p2-continuation-03-2026-11-20/tactics-highgrass/README.md).
 
@@ -187,9 +191,11 @@ Cliquer une surface ou utiliser les flèches du plateau pour l’inspecter, puis
 
 Les déplacements suivent un chemin et son coût réel ; occupation, hauteur libre, empreinte des grandes unités, ligne de vue, objectifs et ressources distinguent les étages. Les arbres et obstacles ont des volumes physiques. Une coupe n’autorise pas un tir à travers un plancher opaque. Dans les secteurs d’univers avec objectif de contrôle, le score progresse une fois par tour réellement terminé. Les anciennes cartes plates conservent leur géométrie.
 
-Les **65 matières configurées** couvrent les secteurs d’univers et les arènes Nexus. Chaque surface possède son identifiant, son matériau et la hauteur de ses quatre coins. Les quatre hauteurs donnent sa pente à la case et permettent de distinguer un pont de son passage inférieur à la même position horizontale. Le rendu projette des motifs différents sur le dessus, les flancs et les dessous des plateformes. Les raccords suivent les arêtes à la bonne altitude. Les volumes déterminent le placement et le masquage des personnages. [Rendu du terrain](src/game/tacticsTerrainRenderer.js) · [Matières W17](src/game/tacticsUniversePresentationWave17.js)
+Les **73 matières configurées** couvrent les secteurs d’univers et les arènes Nexus. Chaque surface possède son identifiant, son matériau et la hauteur de ses quatre coins. Les quatre hauteurs donnent sa pente à la case et permettent de distinguer un pont de son passage inférieur à la même position horizontale. Le rendu projette des motifs différents sur le dessus, les flancs et les dessous des plateformes. Les raccords suivent les arêtes à la bonne altitude. Les volumes déterminent le placement et le masquage des personnages. [Rendu du terrain](src/game/tacticsTerrainRenderer.js) · [Matières W17](src/game/tacticsUniversePresentationWave17.js)
 
 Dans l’Observatoire, deux cartes partagent une coordonnée horizontale et se ramassent depuis leurs étages respectifs. Des passages d’angle relient la crypte à la galerie pour deux points d’action. Au Carrefour, des rampes et escaliers joignent les quatre quartiers. Chaque place de l’objectif porte son matériau et sa hauteur. Ces plateaux utilisent une géométrie propre au Tactics et sont accessibles depuis la campagne originale ou le combat custom. [Parcours des deux secteurs](docs/assets/p0-p1-p2-continuation-06-2026-11-20/tactics/README.md)
+
+Au Qhapaq Ñan, le témoin suit les terrasses jusqu’au support d’extraction. Dans le Gouffre, les registres occupent trois hauteurs et la clôture compte les fins de tour alliées. Les matériaux et les trajets rendent les deux missions lisibles par étage. [Parcours et matières des deux nouveaux secteurs](docs/assets/p0-p1-p2-continuation-07-2026-11-20/tactics/README.md)
 
 Chaque niveau Tactics utilise un environnement propre à ce mode, y compris les anciennes cartes. Les atlas de tuiles Tactics sont distincts de ceux des autres moteurs ; leurs images d’arène ne servent plus de fond Tactics.
 

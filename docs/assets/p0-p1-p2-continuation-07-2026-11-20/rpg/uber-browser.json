@@ -1,0 +1,137 @@
+{
+  "atlas": "/sprites/generated/summon-animations-wave17/medic.png",
+  "actualAtlasSha256": "3506c472ca798ea30e4d8c341411111b12988cea15a7f83e14c5cc6c47325f33",
+  "scope": "Chromium et raster fourni avec vrai EngineRpg, prise d’empreinte des appels Canvas à l’impact, pas de GameCanvas.",
+  "scenarios": [
+    {
+      "side": "player",
+      "imageReady": true,
+      "nativeDraws": [
+        {
+          "src": "/sprites/generated/summon-animations-wave17/medic.png",
+          "crop": [
+            1024,
+            512,
+            512,
+            256
+          ]
+        }
+      ],
+      "medics": [],
+      "targets": [
+        [
+          [
+            382.59375,
+            249.6875
+          ],
+          [
+            390,
+            293.70834285714284
+          ]
+        ]
+      ],
+      "tick": 99,
+      "liveBeam": 8,
+      "sameSimulation": true,
+      "nativeAtlas404": false,
+      "otherMissingAssets": [],
+      "pageErrors": []
+    },
+    {
+      "side": "player",
+      "imageReady": false,
+      "nativeDraws": [],
+      "medics": [
+        {
+          "method": "drawRpgHero",
+          "x": 330,
+          "y": 320
+        }
+      ],
+      "targets": [
+        [
+          [
+            344.6195738845779,
+            276.5364019647684
+          ],
+          [
+            390,
+            293.70834285714284
+          ]
+        ]
+      ],
+      "tick": 99,
+      "liveBeam": 8,
+      "sameSimulation": true,
+      "nativeAtlas404": true,
+      "otherMissingAssets": [],
+      "pageErrors": []
+    },
+    {
+      "side": "enemy",
+      "imageReady": true,
+      "nativeDraws": [
+        {
+          "src": "/sprites/generated/summon-animations-wave17/medic.png",
+          "crop": [
+            1024,
+            512,
+            512,
+            256
+          ]
+        }
+      ],
+      "medics": [],
+      "targets": [
+        [
+          [
+            277.40625,
+            249.6875
+          ],
+          [
+            390,
+            293.70834285714284
+          ]
+        ]
+      ],
+      "tick": 99,
+      "liveBeam": 8,
+      "sameSimulation": true,
+      "nativeAtlas404": false,
+      "otherMissingAssets": [
+        "/sprites/generated/heroes/nexus-de-convergence/target.png"
+      ],
+      "pageErrors": []
+    },
+    {
+      "side": "enemy",
+      "imageReady": false,
+      "nativeDraws": [],
+      "medics": [
+        {
+          "method": "drawRpgEnemy",
+          "x": 330,
+          "y": 320
+        }
+      ],
+      "targets": [
+        [
+          [
+            344.6195738845779,
+            276.5364019647684
+          ],
+          [
+            390,
+            293.70834285714284
+          ]
+        ]
+      ],
+      "tick": 99,
+      "liveBeam": 8,
+      "sameSimulation": true,
+      "nativeAtlas404": true,
+      "otherMissingAssets": [],
+      "pageErrors": []
+    }
+  ]
+}

@@ -1,0 +1,222 @@
+{
+  "sourceBaseline": "b690600f2",
+  "node": "22.23.5",
+  "sourceSha256": {
+    "src/components/HubScreen.jsx": "27f0ac2a2f38dd3aad4b012c3a32da477d74b38478db1bc53502bbf842193bb6",
+    "src/components/OcDlcLibrary.jsx": "10797fa5490b1221aadc4cf2a20d396d4d6a84b57de70436fc3462ae4fd3ab68",
+    "scripts/browserOcDlcLibrary.py": "5ea7b644d089c8dd00f392e3a0a5915e183b9867dc561bc7aa1e0ebc94b85997"
+  },
+  "browser": {
+    "scope": "Production Hub and side-act library. Prepared in-memory parent model, not a save-file or campaign playthrough.",
+    "chromium": "151.0.7922.173",
+    "textScale": 1.5,
+    "reducedMotion": true,
+    "before": [
+      {
+        "lang": "fr",
+        "viewport": [
+          390,
+          744
+        ],
+        "reserveFocus": "BODY",
+        "restoreFocus": "BODY",
+        "headingFocused": false,
+        "briefingCloseLabel": "FERMER",
+        "return": {
+          "query": "",
+          "status": "all",
+          "missionsExpanded": false,
+          "focus": "BUTTON",
+          "missionFocused": false
+        },
+        "nextButtonRetained": false,
+        "saveModelRoundtrip": true,
+        "completed": [
+          47001
+        ],
+        "launches": 0,
+        "jsErrors": [],
+        "missingResources": []
+      },
+      {
+        "lang": "en",
+        "viewport": [
+          740,
+          390
+        ],
+        "reserveFocus": "BODY",
+        "restoreFocus": "BODY",
+        "headingFocused": false,
+        "briefingCloseLabel": "CLOSE",
+        "return": {
+          "query": "",
+          "status": "all",
+          "missionsExpanded": false,
+          "focus": "BUTTON",
+          "missionFocused": false
+        },
+        "nextButtonRetained": false,
+        "saveModelRoundtrip": true,
+        "completed": [
+          47001
+        ],
+        "launches": 0,
+        "jsErrors": [],
+        "missingResources": []
+      },
+      {
+        "lang": "fr",
+        "viewport": [
+          1280,
+          900
+        ],
+        "reserveFocus": "BODY",
+        "restoreFocus": "BODY",
+        "headingFocused": false,
+        "briefingCloseLabel": "FERMER",
+        "return": {
+          "query": "",
+          "status": "all",
+          "missionsExpanded": false,
+          "focus": "BUTTON",
+          "missionFocused": false
+        },
+        "nextButtonRetained": false,
+        "saveModelRoundtrip": true,
+        "completed": [
+          47001
+        ],
+        "launches": 0,
+        "jsErrors": [],
+        "missingResources": []
+      }
+    ],
+    "after": [
+      {
+        "lang": "fr",
+        "viewport": [
+          390,
+          744
+        ],
+        "reserveFocus": "SELECT",
+        "restoreFocus": "SELECT",
+        "headingFocused": true,
+        "briefingCloseLabel": "RETOUR AUX ACTES",
+        "return": {
+          "query": "Thalassa",
+          "status": "active",
+          "missionsExpanded": true,
+          "focus": "BUTTON",
+          "missionFocused": true
+        },
+        "nextButtonRetained": true,
+        "saveModelRoundtrip": true,
+        "completed": [
+          47001
+        ],
+        "launches": 0,
+        "jsErrors": [],
+        "missingResources": []
+      },
+      {
+        "lang": "en",
+        "viewport": [
+          740,
+          390
+        ],
+        "reserveFocus": "SELECT",
+        "restoreFocus": "SELECT",
+        "headingFocused": true,
+        "briefingCloseLabel": "BACK TO ACTS",
+        "return": {
+          "query": "Thalassa",
+          "status": "active",
+          "missionsExpanded": true,
+          "focus": "BUTTON",
+          "missionFocused": true
+        },
+        "nextButtonRetained": true,
+        "saveModelRoundtrip": true,
+        "completed": [
+          47001
+        ],
+        "launches": 0,
+        "jsErrors": [],
+        "missingResources": []
+      },
+      {
+        "lang": "fr",
+        "viewport": [
+          1280,
+          900
+        ],
+        "reserveFocus": "SELECT",
+        "restoreFocus": "SELECT",
+        "headingFocused": true,
+        "briefingCloseLabel": "RETOUR AUX ACTES",
+        "return": {
+          "query": "Thalassa",
+          "status": "active",
+          "missionsExpanded": true,
+          "focus": "BUTTON",
+          "missionFocused": true
+        },
+        "nextButtonRetained": true,
+        "saveModelRoundtrip": true,
+        "completed": [
+          47001
+        ],
+        "launches": 0,
+        "jsErrors": [],
+        "missingResources": []
+      }
+    ]
+  },
+  "existingBrowserMatrix": {
+    "fixture": "OC_DLC_LIBRARY_PROFILE=PROFILE OC_DLC_LIBRARY_OUT=TMP node scripts/buildOcDlcLibraryFixture.mjs",
+    "command": "python scripts/browserOcDlcLibrary.py --verify --edition PROFILE --base-url LOCAL --out TMP",
+    "cases": {
+      "all": {
+        "profile": {
+          "schemaVersion": 1,
+          "mode": "all",
+          "packIds": [],
+          "sharedPolicy": "preserve-all"
+        },
+        "passed": 6,
+        "reportSha256": "69373286d6464d21f49b6803c0fc6f500fe1b7047c6067345036879d1d900641"
+      },
+      "thalassa": {
+        "profile": {
+          "schemaVersion": 1,
+          "mode": "selected",
+          "packIds": [
+            "thalassa-mnemique"
+          ],
+          "sharedPolicy": "preserve-all"
+        },
+        "passed": 6,
+        "reportSha256": "4530d42482fb8d9971004b6c575b08f0d9883b347a21b8ff951f61f2c3096558"
+      },
+      "base": {
+        "profile": {
+          "schemaVersion": 1,
+          "mode": "base",
+          "packIds": [],
+          "sharedPolicy": "preserve-all"
+        },
+        "passed": 6,
+        "reportSha256": "1d18e1b0b97c30d96f0a4a706208ea1f725856adab291de3edcd4ec4245a3ddd"
+      }
+    }
+  },
+  "tests": {
+    "command": "node --test --test-concurrency=1 scripts/ocDlcLibraryView.test.mjs scripts/canonEncounterBriefing.test.mjs scripts/missionDirectoryView.test.mjs scripts/missionAccessRules.test.mjs",
+    "passed": 44,
+    "failed": 0,
+    "tapSha256": "7add98d3014e24d42b0d2a5760a9be66adb4b240be38ace345a2ca489f345df4"
+  },
+  "captures": {
+    "retour-aux-actes.jpg": "276985f2ef6cc4bf857dbd4ff289a6b1607f1b4baace6a5ecf02bb6bb2ea3a02"
+  }
+}

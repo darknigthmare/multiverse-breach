@@ -1,0 +1,1017 @@
+{
+  "sourceCommit": "b690600f2",
+  "scope": "Forty regular actors with new secondary actions in RPG. Previous reservations for different work are retained.",
+  "actorCount": 40,
+  "previouslyReservedCount": 40,
+  "worlds": {
+    "The Aether Crown": 5,
+    "Meridian Clockwork": 5,
+    "Iron Tempest": 5,
+    "Helios 56": 5,
+    "Kemet: The Devoured Sun": 5,
+    "Imperium Aeternum": 5,
+    "The Crownless Sea": 5,
+    "The Drowned Testament": 5
+  },
+  "previousGenericSecondaries": 40,
+  "runtimeSecondariesChanged": 40,
+  "otherProfilesComparedAndIdentical": 160,
+  "beforeProfileExportSha256": "7d6ce4e4250e5e12a6b1a4e92864e6fd6ef57a5cbb79378103be23e1a1d0c9ff",
+  "afterProfileExportSha256": "54afa0d19d763d925b2f49a53f472e0616ccc35f87d1dc9b3302eea918aa2d4d",
+  "effects": {
+    "damage": 30,
+    "guard": 6,
+    "heal": 2,
+    "buff": 2
+  },
+  "actors": [
+    {
+      "actorKey": "[\"The Aether Crown\",\"id:aether_crown:brass_constable\"]",
+      "actorId": "aether_crown:brass_constable",
+      "universe": "The Aether Crown",
+      "actorName": "Brass Constable",
+      "kind": "enemy",
+      "previouslyReserved": true,
+      "weapon": "shield_bash",
+      "sourceSignature": "Bouclier de laiton et matraque pneumatique.",
+      "action": {
+        "name": "Matraque pneumatique",
+        "type": "melee",
+        "targeting": {
+          "delivery": "melee",
+          "shape": "single"
+        },
+        "dmg": 1.45,
+        "cd": 3
+      },
+      "effect": "damage",
+      "delivery": "melee",
+      "shape": "single"
+    },
+    {
+      "actorKey": "[\"The Aether Crown\",\"id:aether_crown:coalbound_golem\"]",
+      "actorId": "aether_crown:coalbound_golem",
+      "universe": "The Aether Crown",
+      "actorName": "Coalbound Golem",
+      "kind": "enemy",
+      "previouslyReserved": true,
+      "weapon": "heavy_melee",
+      "sourceSignature": "Automate alimenté par un cœur de charbon humain.",
+      "action": {
+        "name": "Choc de la fournaise",
+        "type": "blast_aoe",
+        "targeting": {
+          "delivery": "radial",
+          "shape": "area",
+          "range": 135,
+          "areaRadius": 135
+        },
+        "dmg": 0.95,
+        "cd": 3
+      },
+      "effect": "damage",
+      "delivery": "radial",
+      "shape": "area"
+    },
+    {
+      "actorKey": "[\"The Aether Crown\",\"id:aether_crown:aether_mite_swarm\"]",
+      "actorId": "aether_crown:aether_mite_swarm",
+      "universe": "The Aether Crown",
+      "actorName": "Aether Mite Swarm",
+      "kind": "enemy",
+      "previouslyReserved": true,
+      "weapon": "staff",
+      "sourceSignature": "Ronge les jauges et les dispositifs énergétiques.",
+      "action": {
+        "name": "Morsures de l’essaim",
+        "type": "spray",
+        "targeting": {
+          "delivery": "projectile",
+          "shape": "cone",
+          "coneAngle": 55
+        },
+        "dmg": 1,
+        "cd": 3
+      },
+      "effect": "damage",
+      "delivery": "ranged",
+      "shape": "cone"
+    },
+    {
+      "actorKey": "[\"The Aether Crown\",\"id:aether_crown:sky_corsair_press_gang\"]",
+      "actorId": "aether_crown:sky_corsair_press_gang",
+      "universe": "The Aether Crown",
+      "actorName": "Sky Corsair Press-Gang",
+      "kind": "enemy",
+      "previouslyReserved": true,
+      "weapon": "blade",
+      "sourceSignature": "Projette les héros entre les plateformes.",
+      "action": {
+        "name": "Taille d’abordage",
+        "type": "melee",
+        "targeting": {
+          "delivery": "melee",
+          "shape": "single"
+        },
+        "dmg": 1.45,
+        "cd": 3
+      },
+      "effect": "damage",
+      "delivery": "melee",
+      "shape": "single"
+    },
+    {
+      "actorKey": "[\"The Aether Crown\",\"id:aether_crown:pressure_wraith\"]",
+      "actorId": "aether_crown:pressure_wraith",
+      "universe": "The Aether Crown",
+      "actorName": "Pressure Wraith",
+      "kind": "enemy",
+      "previouslyReserved": true,
+      "weapon": "magic",
+      "sourceSignature": "Explose si sa pression n’est pas purgée à temps.",
+      "action": {
+        "name": "Surpression de la conduite",
+        "type": "blast_aoe",
+        "targeting": {
+          "delivery": "radial",
+          "shape": "area",
+          "range": 170,
+          "areaRadius": 170
+        },
+        "dmg": 0.95,
+        "cd": 3
+      },
+      "effect": "damage",
+      "delivery": "radial",
+      "shape": "area"
+    },
+    {
+      "actorKey": "[\"Meridian Clockwork\",\"id:meridian_clockwork:escapement_guard\"]",
+      "actorId": "meridian_clockwork:escapement_guard",
+      "universe": "Meridian Clockwork",
+      "actorName": "Escapement Guard",
+      "kind": "enemy",
+      "previouslyReserved": true,
+      "weapon": "shield_bash",
+      "sourceSignature": "Bloque les déplacements avec des ancres d’horloge.",
+      "action": {
+        "name": "Ancre d’échappement",
+        "type": "shield",
+        "targeting": {
+          "effect": "guard",
+          "targetSide": "self",
+          "shape": "single",
+          "reduce": 0.4,
+          "duration": 2.5,
+          "excludeSelf": false
+        },
+        "dmg": 0,
+        "cd": 3
+      },
+      "effect": "guard",
+      "delivery": "self",
+      "shape": "single"
+    },
+    {
+      "actorKey": "[\"Meridian Clockwork\",\"id:meridian_clockwork:springblade_automaton\"]",
+      "actorId": "meridian_clockwork:springblade_automaton",
+      "universe": "Meridian Clockwork",
+      "actorName": "Springblade Automaton",
+      "kind": "enemy",
+      "previouslyReserved": true,
+      "weapon": "claws",
+      "sourceSignature": "Accumule de la tension avant une ruée tranchante.",
+      "action": {
+        "name": "Ruée des lames à ressort",
+        "type": "melee",
+        "targeting": {
+          "delivery": "melee",
+          "shape": "single"
+        },
+        "dmg": 1.45,
+        "cd": 3
+      },
+      "effect": "damage",
+      "delivery": "melee",
+      "shape": "single"
+    },
+    {
+      "actorKey": "[\"Meridian Clockwork\",\"id:meridian_clockwork:gearwing_falcon\"]",
+      "actorId": "meridian_clockwork:gearwing_falcon",
+      "universe": "Meridian Clockwork",
+      "actorName": "Gearwing Falcon",
+      "kind": "enemy",
+      "previouslyReserved": true,
+      "weapon": "blade",
+      "sourceSignature": "Marque les cibles depuis les hauteurs.",
+      "action": {
+        "name": "Piqué d’engrenage",
+        "type": "melee",
+        "targeting": {
+          "delivery": "melee",
+          "shape": "single"
+        },
+        "dmg": 1.45,
+        "cd": 3
+      },
+      "effect": "damage",
+      "delivery": "melee",
+      "shape": "single"
+    },
+    {
+      "actorKey": "[\"Meridian Clockwork\",\"id:meridian_clockwork:pendulum_penitent\"]",
+      "actorId": "meridian_clockwork:pendulum_penitent",
+      "universe": "Meridian Clockwork",
+      "actorName": "Pendulum Penitent",
+      "kind": "enemy",
+      "previouslyReserved": true,
+      "weapon": "heavy_melee",
+      "sourceSignature": "Frappe alternativement les deux côtés de l’arène.",
+      "action": {
+        "name": "Balayage des deux balanciers",
+        "type": "blast_aoe",
+        "targeting": {
+          "delivery": "radial",
+          "shape": "area",
+          "range": 155,
+          "areaRadius": 155
+        },
+        "dmg": 0.95,
+        "cd": 3
+      },
+      "effect": "damage",
+      "delivery": "radial",
+      "shape": "area"
+    },
+    {
+      "actorKey": "[\"Meridian Clockwork\",\"id:meridian_clockwork:hour_thief\"]",
+      "actorId": "meridian_clockwork:hour_thief",
+      "universe": "Meridian Clockwork",
+      "actorName": "Hour-Thief",
+      "kind": "enemy",
+      "previouslyReserved": true,
+      "weapon": "magic",
+      "sourceSignature": "Retire du temps de recharge aux boss et en ajoute aux héros.",
+      "action": {
+        "name": "Heure dérobée",
+        "type": "glitch",
+        "targeting": {
+          "delivery": "ranged",
+          "shape": "single"
+        },
+        "dmg": 1.05,
+        "cd": 3,
+        "statusEffect": "glitched"
+      },
+      "effect": "damage",
+      "delivery": "ranged",
+      "shape": "single"
+    },
+    {
+      "actorKey": "[\"Iron Tempest\",\"id:iron_tempest:soot_legionnaire\"]",
+      "actorId": "iron_tempest:soot_legionnaire",
+      "universe": "Iron Tempest",
+      "actorName": "Soot Legionnaire",
+      "kind": "enemy",
+      "previouslyReserved": true,
+      "weapon": "shield_bash",
+      "sourceSignature": "Infanterie blindée à masque filtrant.",
+      "action": {
+        "name": "Couvert du bouclier de suie",
+        "type": "shield",
+        "targeting": {
+          "effect": "guard",
+          "targetSide": "self",
+          "shape": "single",
+          "reduce": 0.35,
+          "duration": 2.5,
+          "excludeSelf": false
+        },
+        "dmg": 0,
+        "cd": 3
+      },
+      "effect": "guard",
+      "delivery": "self",
+      "shape": "single"
+    },
+    {
+      "actorKey": "[\"Iron Tempest\",\"id:iron_tempest:gyro_trooper\"]",
+      "actorId": "iron_tempest:gyro_trooper",
+      "universe": "Iron Tempest",
+      "actorName": "Gyro Trooper",
+      "kind": "enemy",
+      "previouslyReserved": true,
+      "weapon": "blade",
+      "sourceSignature": "Saute derrière les lignes avec un rotor dorsal.",
+      "action": {
+        "name": "Taille du rotor",
+        "type": "melee",
+        "targeting": {
+          "delivery": "melee",
+          "shape": "single"
+        },
+        "dmg": 1.45,
+        "cd": 3
+      },
+      "effect": "damage",
+      "delivery": "melee",
+      "shape": "single"
+    },
+    {
+      "actorKey": "[\"Iron Tempest\",\"id:iron_tempest:trench_automaton\"]",
+      "actorId": "iron_tempest:trench_automaton",
+      "universe": "Iron Tempest",
+      "actorName": "Trench Automaton",
+      "kind": "enemy",
+      "previouslyReserved": true,
+      "weapon": "staff",
+      "sourceSignature": "Répare les barricades et ravitaille les boss.",
+      "action": {
+        "name": "Réparations de campagne",
+        "type": "heal",
+        "targeting": {
+          "effect": "heal",
+          "targetSide": "ally",
+          "shape": "single",
+          "healRatio": 0.18,
+          "range": 210,
+          "excludeSelf": true
+        },
+        "dmg": 0,
+        "cd": 3
+      },
+      "effect": "heal",
+      "delivery": "support",
+      "shape": "single"
+    },
+    {
+      "actorKey": "[\"Iron Tempest\",\"id:iron_tempest:fuel_hound\"]",
+      "actorId": "iron_tempest:fuel_hound",
+      "universe": "Iron Tempest",
+      "actorName": "Fuel Hound",
+      "kind": "enemy",
+      "previouslyReserved": true,
+      "weapon": "claws",
+      "sourceSignature": "Explose près de la cible marquée.",
+      "action": {
+        "name": "Explosion du molosse",
+        "type": "blast_aoe",
+        "targeting": {
+          "delivery": "area",
+          "shape": "area",
+          "areaRadius": 95
+        },
+        "dmg": 1,
+        "cd": 3
+      },
+      "effect": "damage",
+      "delivery": "ranged",
+      "shape": "area"
+    },
+    {
+      "actorKey": "[\"Iron Tempest\",\"id:iron_tempest:propaganda_drone\"]",
+      "actorId": "iron_tempest:propaganda_drone",
+      "universe": "Iron Tempest",
+      "actorName": "Propaganda Drone",
+      "kind": "enemy",
+      "previouslyReserved": true,
+      "weapon": "magic",
+      "sourceSignature": "Impose de faux objectifs et brouille le HUD.",
+      "action": {
+        "name": "Parasites de l’émetteur",
+        "type": "blast_aoe",
+        "targeting": {
+          "delivery": "area",
+          "shape": "area",
+          "areaRadius": 110
+        },
+        "dmg": 1,
+        "cd": 3,
+        "statusEffect": "glitched"
+      },
+      "effect": "damage",
+      "delivery": "ranged",
+      "shape": "area"
+    },
+    {
+      "actorKey": "[\"Helios 56\",\"id:helios_56:isotope_mite\"]",
+      "actorId": "helios_56:isotope_mite",
+      "universe": "Helios 56",
+      "actorName": "Isotope Mite",
+      "kind": "enemy",
+      "previouslyReserved": true,
+      "weapon": "melee",
+      "sourceSignature": "Se nourrit des boucliers et laisse une zone irradiée.",
+      "action": {
+        "name": "Contamination isotopique",
+        "type": "blast_aoe",
+        "targeting": {
+          "delivery": "radial",
+          "shape": "area",
+          "range": 142,
+          "areaRadius": 142
+        },
+        "dmg": 0.95,
+        "cd": 3,
+        "statusEffect": "radiated"
+      },
+      "effect": "damage",
+      "delivery": "radial",
+      "shape": "area"
+    },
+    {
+      "actorKey": "[\"Helios 56\",\"id:helios_56:civil_defense_automaton\"]",
+      "actorId": "helios_56:civil_defense_automaton",
+      "universe": "Helios 56",
+      "actorName": "Civil Defense Automaton",
+      "kind": "enemy",
+      "previouslyReserved": true,
+      "weapon": "shield_bash",
+      "sourceSignature": "Protège les panneaux de propagande au lieu des civils.",
+      "action": {
+        "name": "Paravent atomique",
+        "type": "shield",
+        "targeting": {
+          "effect": "guard",
+          "targetSide": "ally",
+          "shape": "group",
+          "reduce": 0.32,
+          "range": 180,
+          "duration": 2.5,
+          "excludeSelf": false
+        },
+        "dmg": 0,
+        "cd": 3
+      },
+      "effect": "guard",
+      "delivery": "support",
+      "shape": "group"
+    },
+    {
+      "actorKey": "[\"Helios 56\",\"id:helios_56:radglass_mutant\"]",
+      "actorId": "helios_56:radglass_mutant",
+      "universe": "Helios 56",
+      "actorName": "Radglass Mutant",
+      "kind": "enemy",
+      "previouslyReserved": true,
+      "weapon": "heavy_melee",
+      "sourceSignature": "Réfracte les rayons et renvoie une partie des dégâts.",
+      "action": {
+        "name": "Rayon réfracté",
+        "type": "beam",
+        "targeting": {
+          "delivery": "beam",
+          "shape": "line",
+          "lineWidth": 54
+        },
+        "dmg": 1.05,
+        "cd": 3
+      },
+      "effect": "damage",
+      "delivery": "ranged",
+      "shape": "line"
+    },
+    {
+      "actorKey": "[\"Helios 56\",\"id:helios_56:saucer_scout\"]",
+      "actorId": "helios_56:saucer_scout",
+      "universe": "Helios 56",
+      "actorName": "Saucer Scout",
+      "kind": "enemy",
+      "previouslyReserved": true,
+      "weapon": "blade",
+      "sourceSignature": "Enlève temporairement une unité vers une plateforme haute.",
+      "action": {
+        "name": "Griffe de la soucoupe",
+        "type": "melee",
+        "targeting": {
+          "delivery": "melee",
+          "shape": "single"
+        },
+        "dmg": 1.45,
+        "cd": 3
+      },
+      "effect": "damage",
+      "delivery": "melee",
+      "shape": "single"
+    },
+    {
+      "actorKey": "[\"Helios 56\",\"id:helios_56:happy_home_servitor\"]",
+      "actorId": "helios_56:happy_home_servitor",
+      "universe": "Helios 56",
+      "actorName": "Happy Home Servitor",
+      "kind": "enemy",
+      "previouslyReserved": true,
+      "weapon": "staff",
+      "sourceSignature": "Soigne les ennemis en diffusant des jingles hypnotiques.",
+      "action": {
+        "name": "Jingle réparateur",
+        "type": "heal",
+        "targeting": {
+          "effect": "heal",
+          "targetSide": "ally",
+          "shape": "group",
+          "healRatio": 0.2,
+          "range": 260,
+          "excludeSelf": true
+        },
+        "dmg": 0,
+        "cd": 3
+      },
+      "effect": "heal",
+      "delivery": "support",
+      "shape": "group"
+    },
+    {
+      "actorKey": "[\"Kemet: The Devoured Sun\",\"id:kemet_devoured_sun:shabti_corrompu\"]",
+      "actorId": "kemet_devoured_sun:shabti_corrompu",
+      "universe": "Kemet: The Devoured Sun",
+      "actorName": "Shabti corrompu",
+      "kind": "enemy",
+      "previouslyReserved": true,
+      "weapon": "shield_bash",
+      "sourceSignature": "Statue servile animée par un ordre falsifié; elle protège le scribe qui l’a réveillée.",
+      "action": {
+        "name": "Protection du scribe",
+        "type": "shield",
+        "targeting": {
+          "effect": "guard",
+          "targetSide": "ally",
+          "shape": "single",
+          "reduce": 0.42,
+          "range": 200,
+          "duration": 2.5,
+          "excludeSelf": true
+        },
+        "dmg": 0,
+        "cd": 3
+      },
+      "effect": "guard",
+      "delivery": "support",
+      "shape": "single"
+    },
+    {
+      "actorKey": "[\"Kemet: The Devoured Sun\",\"id:kemet_devoured_sun:serpent_des_dunes\"]",
+      "actorId": "kemet_devoured_sun:serpent_des_dunes",
+      "universe": "Kemet: The Devoured Sun",
+      "actorName": "Serpent des dunes",
+      "kind": "enemy",
+      "previouslyReserved": true,
+      "weapon": "claws",
+      "sourceSignature": "S’enfouit puis frappe la cible isolée depuis une case de sable.",
+      "action": {
+        "name": "Morsure des dunes",
+        "type": "melee",
+        "targeting": {
+          "delivery": "melee",
+          "shape": "single"
+        },
+        "dmg": 1.45,
+        "cd": 3
+      },
+      "effect": "damage",
+      "delivery": "melee",
+      "shape": "single"
+    },
+    {
+      "actorKey": "[\"Kemet: The Devoured Sun\",\"id:kemet_devoured_sun:ombre_de_ba\"]",
+      "actorId": "kemet_devoured_sun:ombre_de_ba",
+      "universe": "Kemet: The Devoured Sun",
+      "actorName": "Ombre de Ba",
+      "kind": "enemy",
+      "previouslyReserved": true,
+      "weapon": "magic",
+      "sourceSignature": "Vole une portion de jauge spéciale et crée un double spectral.",
+      "action": {
+        "name": "Ombre de Ba",
+        "type": "blast_aoe",
+        "targeting": {
+          "delivery": "area",
+          "shape": "area",
+          "areaRadius": 75
+        },
+        "dmg": 1,
+        "cd": 3
+      },
+      "effect": "damage",
+      "delivery": "ranged",
+      "shape": "area"
+    },
+    {
+      "actorKey": "[\"Kemet: The Devoured Sun\",\"id:kemet_devoured_sun:chacal_de_tombe\"]",
+      "actorId": "kemet_devoured_sun:chacal_de_tombe",
+      "universe": "Kemet: The Devoured Sun",
+      "actorName": "Chacal de tombe",
+      "kind": "enemy",
+      "previouslyReserved": true,
+      "weapon": "blade",
+      "sourceSignature": "Marque les héros blessés et accélère à chaque porte funéraire ouverte.",
+      "action": {
+        "name": "Entaille funéraire",
+        "type": "melee",
+        "targeting": {
+          "delivery": "melee",
+          "shape": "single"
+        },
+        "dmg": 1.45,
+        "cd": 3
+      },
+      "effect": "damage",
+      "delivery": "melee",
+      "shape": "single"
+    },
+    {
+      "actorKey": "[\"Kemet: The Devoured Sun\",\"id:kemet_devoured_sun:pretre_d_isfet\"]",
+      "actorId": "kemet_devoured_sun:pretre_d_isfet",
+      "universe": "Kemet: The Devoured Sun",
+      "actorName": "Prêtre d’Isfet",
+      "kind": "enemy",
+      "previouslyReserved": true,
+      "weapon": "staff",
+      "sourceSignature": "Inverse temporairement les bonus de Maât et renforce les créatures du chaos.",
+      "action": {
+        "name": "Bénédiction d’Isfet",
+        "type": "buff",
+        "targeting": {
+          "effect": "buff",
+          "targetSide": "ally",
+          "shape": "group",
+          "buffMultiplier": 1.2,
+          "range": 225,
+          "duration": 3,
+          "excludeSelf": true
+        },
+        "dmg": 0,
+        "cd": 3
+      },
+      "effect": "buff",
+      "delivery": "support",
+      "shape": "group"
+    },
+    {
+      "actorKey": "[\"Imperium Aeternum\",\"id:imperium_aeternum:lemure_de_la_maison_vide\"]",
+      "actorId": "imperium_aeternum:lemure_de_la_maison_vide",
+      "universe": "Imperium Aeternum",
+      "actorName": "Lémure de la Maison Vide",
+      "kind": "enemy",
+      "previouslyReserved": true,
+      "weapon": "magic",
+      "sourceSignature": "Traverse les murs et affaiblit les héros éloignés du feu civique.",
+      "action": {
+        "name": "Épuisement du Lémure",
+        "type": "glitch",
+        "targeting": {
+          "delivery": "ranged",
+          "shape": "single"
+        },
+        "dmg": 1.05,
+        "cd": 3,
+        "statusEffect": "glitched"
+      },
+      "effect": "damage",
+      "delivery": "ranged",
+      "shape": "single"
+    },
+    {
+      "actorKey": "[\"Imperium Aeternum\",\"id:imperium_aeternum:legionnaire_au_serment_brise\"]",
+      "actorId": "imperium_aeternum:legionnaire_au_serment_brise",
+      "universe": "Imperium Aeternum",
+      "actorName": "Légionnaire au serment brisé",
+      "kind": "enemy",
+      "previouslyReserved": true,
+      "weapon": "shield_bash",
+      "sourceSignature": "Gagne de la défense tant qu’un commandant hostile demeure vivant.",
+      "action": {
+        "name": "Abri du serment rompu",
+        "type": "shield",
+        "targeting": {
+          "effect": "guard",
+          "targetSide": "self",
+          "shape": "single",
+          "reduce": 0.42,
+          "duration": 2.5,
+          "excludeSelf": false
+        },
+        "dmg": 0,
+        "cd": 3
+      },
+      "effect": "guard",
+      "delivery": "self",
+      "shape": "single"
+    },
+    {
+      "actorKey": "[\"Imperium Aeternum\",\"id:imperium_aeternum:louve_de_bronze\"]",
+      "actorId": "imperium_aeternum:louve_de_bronze",
+      "universe": "Imperium Aeternum",
+      "actorName": "Louve de bronze",
+      "kind": "enemy",
+      "previouslyReserved": true,
+      "weapon": "blade",
+      "sourceSignature": "Automate rapide qui protège les enseignes impériales.",
+      "action": {
+        "name": "Crocs de l’enseigne",
+        "type": "melee",
+        "targeting": {
+          "delivery": "melee",
+          "shape": "single"
+        },
+        "dmg": 1.45,
+        "cd": 3
+      },
+      "effect": "damage",
+      "delivery": "melee",
+      "shape": "single"
+    },
+    {
+      "actorKey": "[\"Imperium Aeternum\",\"id:imperium_aeternum:oracle_des_dirae\"]",
+      "actorId": "imperium_aeternum:oracle_des_dirae",
+      "universe": "Imperium Aeternum",
+      "actorName": "Oracle des Dirae",
+      "kind": "enemy",
+      "previouslyReserved": true,
+      "weapon": "staff",
+      "sourceSignature": "Transforme une case sûre en présage néfaste au tour suivant.",
+      "action": {
+        "name": "Présage des Dirae",
+        "type": "blast_aoe",
+        "targeting": {
+          "delivery": "area",
+          "shape": "area",
+          "areaRadius": 100
+        },
+        "dmg": 1,
+        "cd": 3
+      },
+      "effect": "damage",
+      "delivery": "ranged",
+      "shape": "area"
+    },
+    {
+      "actorKey": "[\"Imperium Aeternum\",\"id:imperium_aeternum:aquila_mecanique\"]",
+      "actorId": "imperium_aeternum:aquila_mecanique",
+      "universe": "Imperium Aeternum",
+      "actorName": "Aquila mécanique",
+      "kind": "enemy",
+      "previouslyReserved": true,
+      "weapon": "claws",
+      "sourceSignature": "Plonge sur la cible qui porte le plus de reliques.",
+      "action": {
+        "name": "Piqué de l’Aquila",
+        "type": "melee",
+        "targeting": {
+          "delivery": "melee",
+          "shape": "single"
+        },
+        "dmg": 1.45,
+        "cd": 3
+      },
+      "effect": "damage",
+      "delivery": "melee",
+      "shape": "single"
+    },
+    {
+      "actorKey": "[\"The Crownless Sea\",\"id:crownless_sea:corsaire_noye\"]",
+      "actorId": "crownless_sea:corsaire_noye",
+      "universe": "The Crownless Sea",
+      "actorName": "Corsaire noyé",
+      "kind": "enemy",
+      "previouslyReserved": true,
+      "weapon": "shield_bash",
+      "sourceSignature": "Revient depuis l’eau tant que son contrat de marque n’est pas brûlé.",
+      "action": {
+        "name": "Coup du bouclier noyé",
+        "type": "melee",
+        "targeting": {
+          "delivery": "melee",
+          "shape": "single"
+        },
+        "dmg": 1.45,
+        "cd": 3
+      },
+      "effect": "damage",
+      "delivery": "melee",
+      "shape": "single"
+    },
+    {
+      "actorKey": "[\"The Crownless Sea\",\"id:crownless_sea:goule_a_poudre\"]",
+      "actorId": "crownless_sea:goule_a_poudre",
+      "universe": "The Crownless Sea",
+      "actorName": "Goule à poudre",
+      "kind": "enemy",
+      "previouslyReserved": true,
+      "weapon": "heavy_melee",
+      "sourceSignature": "Explose près des barils et peut déclencher des réactions en chaîne.",
+      "action": {
+        "name": "Baril à poudre",
+        "type": "blast_aoe",
+        "targeting": {
+          "delivery": "area",
+          "shape": "area",
+          "areaRadius": 105
+        },
+        "dmg": 1,
+        "cd": 3
+      },
+      "effect": "damage",
+      "delivery": "ranged",
+      "shape": "area"
+    },
+    {
+      "actorKey": "[\"The Crownless Sea\",\"id:crownless_sea:sirene_de_recif\"]",
+      "actorId": "crownless_sea:sirene_de_recif",
+      "universe": "The Crownless Sea",
+      "actorName": "Sirène de récif",
+      "kind": "enemy",
+      "previouslyReserved": true,
+      "weapon": "magic",
+      "sourceSignature": "Attire les unités vers les bords ou brouille la direction des commandes.",
+      "action": {
+        "name": "Appel du récif",
+        "type": "glitch",
+        "targeting": {
+          "delivery": "ranged",
+          "shape": "single"
+        },
+        "dmg": 1.05,
+        "cd": 3,
+        "statusEffect": "glitched"
+      },
+      "effect": "damage",
+      "delivery": "ranged",
+      "shape": "single"
+    },
+    {
+      "actorKey": "[\"The Crownless Sea\",\"id:crownless_sea:fusilier_de_la_marine_de_la_couronne\"]",
+      "actorId": "crownless_sea:fusilier_de_la_marine_de_la_couronne",
+      "universe": "The Crownless Sea",
+      "actorName": "Fusilier de la Marine de la Couronne",
+      "kind": "enemy",
+      "previouslyReserved": true,
+      "weapon": "staff",
+      "sourceSignature": "Pose des lignes de tir et protège les officiers.",
+      "action": {
+        "name": "Ligne de la Marine",
+        "type": "projectile",
+        "targeting": {
+          "delivery": "projectile",
+          "shape": "line",
+          "lineWidth": 45
+        },
+        "dmg": 1.05,
+        "cd": 3
+      },
+      "effect": "damage",
+      "delivery": "ranged",
+      "shape": "line"
+    },
+    {
+      "actorKey": "[\"The Crownless Sea\",\"id:crownless_sea:coffre_mimetique\"]",
+      "actorId": "crownless_sea:coffre_mimetique",
+      "universe": "The Crownless Sea",
+      "actorName": "Coffre mimétique",
+      "kind": "enemy",
+      "previouslyReserved": true,
+      "weapon": "claws",
+      "sourceSignature": "Imite une récompense puis avale la première unité qui le ramasse.",
+      "action": {
+        "name": "Morsure du coffre",
+        "type": "melee",
+        "targeting": {
+          "delivery": "melee",
+          "shape": "single"
+        },
+        "dmg": 1.45,
+        "cd": 3
+      },
+      "effect": "damage",
+      "delivery": "melee",
+      "shape": "single"
+    },
+    {
+      "actorKey": "[\"The Drowned Testament\",\"id:drowned_testament:cultiste_lie_au_sel\"]",
+      "actorId": "drowned_testament:cultiste_lie_au_sel",
+      "universe": "The Drowned Testament",
+      "actorName": "Cultiste lié au sel",
+      "kind": "enemy",
+      "previouslyReserved": true,
+      "weapon": "staff",
+      "sourceSignature": "Chante pour augmenter la Pression de Rêve et renforcer les créatures marines.",
+      "action": {
+        "name": "Chant lié au sel",
+        "type": "buff",
+        "targeting": {
+          "effect": "buff",
+          "targetSide": "ally",
+          "shape": "group",
+          "buffMultiplier": 1.18,
+          "range": 235,
+          "duration": 3,
+          "excludeSelf": true
+        },
+        "dmg": 0,
+        "cd": 3
+      },
+      "effect": "buff",
+      "delivery": "support",
+      "shape": "group"
+    },
+    {
+      "actorKey": "[\"The Drowned Testament\",\"id:drowned_testament:sangsue_de_reve\"]",
+      "actorId": "drowned_testament:sangsue_de_reve",
+      "universe": "The Drowned Testament",
+      "actorName": "Sangsue de rêve",
+      "kind": "enemy",
+      "previouslyReserved": true,
+      "weapon": "claws",
+      "sourceSignature": "S’attache à la compétence la plus utilisée et augmente son temps de recharge.",
+      "action": {
+        "name": "Emprise de la sangsue",
+        "type": "melee",
+        "targeting": {
+          "delivery": "melee",
+          "shape": "single"
+        },
+        "dmg": 1.05,
+        "cd": 3,
+        "statusEffect": "glitched"
+      },
+      "effect": "damage",
+      "delivery": "melee",
+      "shape": "single"
+    },
+    {
+      "actorKey": "[\"The Drowned Testament\",\"id:drowned_testament:rejeton_du_ch_ur_profond\"]",
+      "actorId": "drowned_testament:rejeton_du_ch_ur_profond",
+      "universe": "The Drowned Testament",
+      "actorName": "Rejeton du Chœur Profond",
+      "kind": "enemy",
+      "previouslyReserved": true,
+      "weapon": "heavy_melee",
+      "sourceSignature": "Ses cris superposés créent des zones où l’interface devient incertaine.",
+      "action": {
+        "name": "Hurlement du Chœur",
+        "type": "blast_aoe",
+        "targeting": {
+          "delivery": "radial",
+          "shape": "area",
+          "range": 148,
+          "areaRadius": 148
+        },
+        "dmg": 0.95,
+        "cd": 3
+      },
+      "effect": "damage",
+      "delivery": "radial",
+      "shape": "area"
+    },
+    {
+      "actorKey": "[\"The Drowned Testament\",\"id:drowned_testament:traqueur_d_angles\"]",
+      "actorId": "drowned_testament:traqueur_d_angles",
+      "universe": "The Drowned Testament",
+      "actorName": "Traqueur d’angles",
+      "kind": "enemy",
+      "previouslyReserved": true,
+      "weapon": "blade",
+      "sourceSignature": "Se déplace entre deux coins non adjacents sans traverser l’espace.",
+      "action": {
+        "name": "Entaille d’angle",
+        "type": "melee",
+        "targeting": {
+          "delivery": "melee",
+          "shape": "single"
+        },
+        "dmg": 1.45,
+        "cd": 3
+      },
+      "effect": "damage",
+      "delivery": "melee",
+      "shape": "single"
+    },
+    {
+      "actorKey": "[\"The Drowned Testament\",\"id:drowned_testament:coquille_couverte_de_balanes\"]",
+      "actorId": "drowned_testament:coquille_couverte_de_balanes",
+      "universe": "The Drowned Testament",
+      "actorName": "Coquille couverte de balanes",
+      "kind": "enemy",
+      "previouslyReserved": true,
+      "weapon": "shield_bash",
+      "sourceSignature": "Ancien habitant vidé de sa voix; l’armure tombe lorsque son nom est retrouvé.",
+      "action": {
+        "name": "Carapace de balanes",
+        "type": "shield",
+        "targeting": {
+          "effect": "guard",
+          "targetSide": "self",
+          "shape": "single",
+          "reduce": 0.4,
+          "duration": 2.5,
+          "excludeSelf": false
+        },
+        "dmg": 0,
+        "cd": 3
+      },
+      "effect": "guard",
+      "delivery": "self",
+      "shape": "single"
+    }
+  ]
+}

@@ -1,0 +1,478 @@
+{
+  "baseCommit": "b690600f2",
+  "codeTestedCommit": "8d387411d",
+  "changedSourceSha256": {
+    "src/game/engineSmash.js": "1653b61a8c12342476bbcec19cfeee724cc099b032afb4366eb6d6326f4d9ed4",
+    "src/game/renderer.js": "fd7e4770293b5fbcd7f60b684ba2e2dd946469f13a2d48c29ee6cdab3d230c33",
+    "src/game/combat/originalCampaignDuelPresentations.js": "6dcab698b16d8b2906d6abfd9199035a6499f88f82b897cf056482b495d81d73",
+    "src/game/melee/stageAtmosphere.js": "c7326c53f65db31fb4223faaaf8a372d8e802374714273ad4046dee001ef53bd",
+    "src/game/melee/originalMeleeStageMotion.js": "945128833b00888b7906d1a0ab9e5f25115c6dcce56b7246bdc2f7328553664e",
+    "scripts/originalFighterPresentations.test.mjs": "2889270c11eadad619274c01e89cfe2cecc57103d5f728aed6cd856e44ace96d",
+    "scripts/stageAtmosphere.test.mjs": "a2184efac38c8ddc6b0e786defdf2867d05570969085d6552b3c0a38e569f53e",
+    "scripts/meleeLedgeStateTiming.test.mjs": "09b6d39e2a63f6b144a811821fc50d87c8780ee3b60c164d2ef98dffcbc10005"
+  },
+  "nodeVersion": "22.23.5",
+  "node": {
+    "combatTestsPassed": 54,
+    "combatFiles": [
+      "scripts/meleeLedgeStateTiming.test.mjs",
+      "scripts/originalFighterPresentations.test.mjs"
+    ],
+    "ambienceTestsPassed": 22,
+    "ambienceFiles": [
+      "scripts/stageAtmosphere.test.mjs",
+      "scripts/stageAnimationCatalog.test.mjs"
+    ],
+    "ambienceTestScope": "Four existing WebP omitted by sparse checkout temporarily supplied at their exact path from the pinned native git blobs. Test copies removed after completion.",
+    "ambienceTapSha256": "2fe57da515ca0b7dbe7dbedb2abff0b30ad256989cdc0c30ae9f1e4d70aa3471",
+    "beforeNpcTestSha256": "8f8db5b44b573ab3880b399b475460eb9c94517a13f891e1915dad2cb2b998bd",
+    "fourExactBlobs": {
+      "doom": "08253dbf4524135436fc0c9afed809ca2e5144e7",
+      "stargate": "a4c044dff80443de0d2dc1f17e31d87ff92019fa",
+      "portal": "13ab4d2fb0c39fd6696bc1b9d9de1929881926d5",
+      "rick-morty": "7c6aa0da91af5f022cb6a56128bc59ec593a1624"
+    }
+  },
+  "baselineDecor": [
+    {
+      "stageKey": "aether_coppermarket",
+      "oldType": "unconfigured",
+      "oldEnabled": false
+    },
+    {
+      "stageKey": "meridian_thousand_dials",
+      "oldType": "unconfigured",
+      "oldEnabled": false
+    },
+    {
+      "stageKey": "iron_zephyr_airfield",
+      "oldType": "unconfigured",
+      "oldEnabled": false
+    },
+    {
+      "stageKey": "helios_tomorrowville_expo",
+      "oldType": "physical-city-lights",
+      "oldEnabled": true
+    },
+    {
+      "stageKey": "primordia_shoreless_sea",
+      "oldType": "unconfigured",
+      "oldEnabled": false
+    },
+    {
+      "stageKey": "pirate_port_no_flag",
+      "oldType": "unconfigured",
+      "oldEnabled": false
+    },
+    {
+      "stageKey": "lovecraft_greywake_harbor",
+      "oldType": "unconfigured",
+      "oldEnabled": false
+    },
+    {
+      "stageKey": "fantasy_hollow_peak",
+      "oldType": "unconfigured",
+      "oldEnabled": false
+    }
+  ],
+  "oldBossAttackWithoutSimulationTick": [
+    [
+      0,
+      [
+        "/sprites/generated/bosses/the-crownless-sea/amiral-chain.png",
+        0,
+        512,
+        256,
+        256
+      ]
+    ],
+    [
+      11,
+      [
+        "/sprites/generated/bosses/the-crownless-sea/amiral-chain.png",
+        256,
+        512,
+        256,
+        256
+      ]
+    ],
+    [
+      21,
+      [
+        "/sprites/generated/bosses/the-crownless-sea/amiral-chain.png",
+        512,
+        512,
+        256,
+        256
+      ]
+    ],
+    [
+      31,
+      [
+        "/sprites/generated/bosses/the-crownless-sea/amiral-chain.png",
+        768,
+        512,
+        256,
+        256
+      ]
+    ]
+  ],
+  "browser": {
+    "chromium": "151.0.7922.173",
+    "ViteCodeOnlyBuildExit": 0,
+    "duels": [
+      {
+        "viewport": [
+          1280,
+          800
+        ],
+        "winner": "celeste_ray",
+        "loserSide": "cpu",
+        "completed": 1,
+        "pageErrors": 0,
+        "httpErrors": 0,
+        "phaseCount": 5,
+        "finale": {
+          "phase": "fatality",
+          "entries": [
+            {
+              "id": "celeste_ray",
+              "side": "player",
+              "phase": "fatality",
+              "crop": [
+                256,
+                512,
+                256,
+                256
+              ],
+              "caption": "Équation du Soleil Sûr"
+            }
+          ],
+          "motifStrokes": [
+            "#23a9b0"
+          ]
+        }
+      },
+      {
+        "viewport": [
+          1280,
+          800
+        ],
+        "winner": "nova_bell",
+        "loserSide": "player",
+        "completed": 1,
+        "pageErrors": 0,
+        "httpErrors": 0,
+        "phaseCount": 5,
+        "finale": {
+          "phase": "fatality",
+          "entries": [
+            {
+              "id": "nova_bell",
+              "side": "cpu",
+              "phase": "fatality",
+              "crop": [
+                512,
+                512,
+                256,
+                256
+              ],
+              "caption": "Passage Comète"
+            }
+          ],
+          "motifStrokes": [
+            "#e8503d"
+          ]
+        }
+      },
+      {
+        "viewport": [
+          1280,
+          800
+        ],
+        "winner": "aura_7",
+        "loserSide": "cpu",
+        "completed": 1,
+        "pageErrors": 0,
+        "httpErrors": 0,
+        "phaseCount": 5,
+        "finale": {
+          "phase": "fatality",
+          "entries": [
+            {
+              "id": "aura_7",
+              "side": "player",
+              "phase": "fatality",
+              "crop": [
+                512,
+                0,
+                256,
+                256
+              ],
+              "caption": "Directive : Sauver Tout le Monde"
+            }
+          ],
+          "motifStrokes": [
+            "#f5d45c"
+          ]
+        }
+      },
+      {
+        "viewport": [
+          390,
+          844
+        ],
+        "winner": "astra_vey",
+        "loserSide": "player",
+        "completed": 1,
+        "pageErrors": 0,
+        "httpErrors": 0,
+        "phaseCount": 5,
+        "finale": {
+          "phase": "fatality",
+          "entries": [
+            {
+              "id": "astra_vey",
+              "side": "cpu",
+              "phase": "fatality",
+              "crop": [
+                512,
+                512,
+                256,
+                256
+              ],
+              "caption": "Carte de l’Avant-Monde"
+            }
+          ],
+          "motifStrokes": [
+            "#7df9ff"
+          ]
+        }
+      },
+      {
+        "viewport": [
+          1280,
+          800
+        ],
+        "winner": "korun_stoneborn",
+        "loserSide": "cpu",
+        "completed": 1,
+        "pageErrors": 0,
+        "httpErrors": 0,
+        "phaseCount": 5,
+        "finale": {
+          "phase": "fatality",
+          "entries": [
+            {
+              "id": "korun_stoneborn",
+              "side": "player",
+              "phase": "fatality",
+              "crop": [
+                512,
+                512,
+                256,
+                256
+              ],
+              "caption": "Soulèvement des Fondations"
+            }
+          ],
+          "motifStrokes": [
+            "#b08968"
+          ]
+        }
+      },
+      {
+        "viewport": [
+          1280,
+          800
+        ],
+        "winner": "nyme_first_song",
+        "loserSide": "player",
+        "completed": 1,
+        "pageErrors": 0,
+        "httpErrors": 0,
+        "phaseCount": 5,
+        "finale": {
+          "phase": "fatality",
+          "entries": [
+            {
+              "id": "nyme_first_song",
+              "side": "cpu",
+              "phase": "fatality",
+              "crop": [
+                256,
+                512,
+                256,
+                256
+              ],
+              "caption": "Le Monde se souvient de son Chant"
+            }
+          ],
+          "motifStrokes": [
+            "#ff70a6"
+          ]
+        }
+      }
+    ],
+    "meleeStages": [
+      {
+        "stage": "aether_coppermarket",
+        "color": "#9bb2bd",
+        "viewport": [
+          1280,
+          800
+        ],
+        "checkedMotion": true,
+        "checkedReduce": true,
+        "nativePathCount": 9,
+        "hitTrace": null,
+        "pageErrors": [],
+        "httpErrors": {}
+      },
+      {
+        "stage": "meridian_thousand_dials",
+        "color": "#c7a474",
+        "viewport": [
+          1280,
+          800
+        ],
+        "checkedMotion": true,
+        "checkedReduce": true,
+        "nativePathCount": 48,
+        "hitTrace": null,
+        "pageErrors": [],
+        "httpErrors": {}
+      },
+      {
+        "stage": "iron_zephyr_airfield",
+        "color": "#c9b180",
+        "viewport": [
+          390,
+          844
+        ],
+        "checkedMotion": true,
+        "checkedReduce": true,
+        "nativePathCount": 12,
+        "hitTrace": null,
+        "pageErrors": [],
+        "httpErrors": {}
+      },
+      {
+        "stage": "helios_tomorrowville_expo",
+        "color": "#91d8cb",
+        "viewport": [
+          1280,
+          800
+        ],
+        "checkedMotion": true,
+        "checkedReduce": true,
+        "nativePathCount": 15,
+        "hitTrace": null,
+        "pageErrors": [],
+        "httpErrors": {}
+      },
+      {
+        "stage": "primordia_shoreless_sea",
+        "color": "#a7b2da",
+        "viewport": [
+          1280,
+          800
+        ],
+        "checkedMotion": true,
+        "checkedReduce": true,
+        "nativePathCount": 20,
+        "hitTrace": null,
+        "pageErrors": [],
+        "httpErrors": {}
+      },
+      {
+        "stage": "pirate_port_no_flag",
+        "color": "#d3b47d",
+        "viewport": [
+          390,
+          844
+        ],
+        "checkedMotion": true,
+        "checkedReduce": true,
+        "nativePathCount": 12,
+        "hitTrace": {
+          "losses": [
+            11,
+            11
+          ],
+          "atImpact": [
+            [
+              0,
+              768,
+              256,
+              256
+            ],
+            [
+              0,
+              768,
+              256,
+              256
+            ]
+          ],
+          "elevenTicks": [
+            [
+              256,
+              768,
+              256,
+              256
+            ],
+            [
+              256,
+              768,
+              256,
+              256
+            ]
+          ]
+        },
+        "pageErrors": [],
+        "httpErrors": {}
+      },
+      {
+        "stage": "lovecraft_greywake_harbor",
+        "color": "#9dbbba",
+        "viewport": [
+          1280,
+          800
+        ],
+        "checkedMotion": true,
+        "checkedReduce": true,
+        "nativePathCount": 12,
+        "hitTrace": null,
+        "pageErrors": [],
+        "httpErrors": {}
+      },
+      {
+        "stage": "fantasy_hollow_peak",
+        "color": "#b9c8dd",
+        "viewport": [
+          1280,
+          800
+        ],
+        "checkedMotion": true,
+        "checkedReduce": true,
+        "nativePathCount": 15,
+        "hitTrace": null,
+        "pageErrors": [],
+        "httpErrors": {}
+      }
+    ],
+    "totalPassed": 14,
+    "scope": "Real EngineFighter in Canvas with controlled KOs. Real GameCanvas and EngineSmash for exact registered stages, with fixtures disabling unrelated hazards and picking available actors. Browser tests exercise the applied reduced-motion setting."
+  },
+  "content": {
+    "actorsReviewed": 62,
+    "newActorKeys": 0,
+    "duelClips": 42,
+    "existingHeroAtlases": 6,
+    "heroPosesInspected": 96,
+    "decodedNpcSheets": 56,
+    "npc4x4Sheets": 52,
+    "newNativeRasters": 0,
+    "globalFidelityTasksClosed": 0
+  }
+}

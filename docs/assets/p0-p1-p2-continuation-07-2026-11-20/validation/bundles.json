@@ -1,0 +1,78 @@
+{
+  "sourceCommit": "8d387411d4240d35326e9ccd4154f1875e5ae3b9",
+  "node": "22.23.5",
+  "checks": [
+    {
+      "name": "all",
+      "profileInput": "config/dlc-profiles/all.json",
+      "command": "node --max-old-space-size=4096 scripts/checkDlcProfileBundle.mjs --profile FILE",
+      "result": {
+        "schemaVersion": 1,
+        "passed": true,
+        "profile": {
+          "schemaVersion": 1,
+          "mode": "all",
+          "packIds": [],
+          "sharedPolicy": "preserve-all"
+        },
+        "selectedPacks": 505,
+        "modules": 2877,
+        "dlcModules": 2038,
+        "javascriptBytes": 53148074,
+        "scope": "Full executable application compile and selected-DLC module closure. No exported edition, media hydration/copy, production prebuild, or artwork approval.",
+        "emittedFiles": 0
+      }
+    },
+    {
+      "name": "base",
+      "profileInput": "config/dlc-profiles/base.json",
+      "command": "node --max-old-space-size=4096 scripts/checkDlcProfileBundle.mjs --profile FILE",
+      "result": {
+        "schemaVersion": 1,
+        "passed": true,
+        "profile": {
+          "schemaVersion": 1,
+          "mode": "base",
+          "packIds": [],
+          "sharedPolicy": "preserve-all"
+        },
+        "selectedPacks": 0,
+        "modules": 840,
+        "dlcModules": 0,
+        "javascriptBytes": 49869180,
+        "scope": "Full executable application compile and selected-DLC module closure. No exported edition, media hydration/copy, production prebuild, or artwork approval.",
+        "emittedFiles": 0
+      }
+    },
+    {
+      "name": "mass-effect",
+      "profileInput": {
+        "schemaVersion": 1,
+        "mode": "selected",
+        "packIds": [
+          "mass-effect"
+        ],
+        "sharedPolicy": "preserve-all"
+      },
+      "command": "node --max-old-space-size=4096 scripts/checkDlcProfileBundle.mjs --profile FILE",
+      "result": {
+        "schemaVersion": 1,
+        "passed": true,
+        "profile": {
+          "schemaVersion": 1,
+          "mode": "selected",
+          "packIds": [
+            "mass-effect"
+          ],
+          "sharedPolicy": "preserve-all"
+        },
+        "selectedPacks": 1,
+        "modules": 851,
+        "dlcModules": 11,
+        "javascriptBytes": 49891224,
+        "scope": "Full executable application compile and selected-DLC module closure. No exported edition, media hydration/copy, production prebuild, or artwork approval.",
+        "emittedFiles": 0
+      }
+    }
+  ]
+}

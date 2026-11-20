@@ -1,0 +1,188 @@
+{
+  "sourceBaseline": "b690600f247ad1f3501e73b1e0adae0f01f28a0d",
+  "changedSourceSha256": {
+    "src/game/rpgTargeting.js": "8188c372bbe5dfaa990318d81df9cd69ae2b73981bc07a5a6582b4c9f9759f46",
+    "src/game/originalCampaignEnemyActions.js": "8138fd684d7c892abe88e5d55b299fbe1bf0e01b03cbd49a9218e68734724d5d",
+    "scripts/originalCampaignEnemyActions.test.mjs": "688f29765af7321d4be2dd90a73a057e1681b863c0db0d025456d2d4500960c6"
+  },
+  "nodeVersion": "22.23.5",
+  "runtimeTest": {
+    "command": "node --loader ./scripts/sourceSceneTestLoader.mjs --test --test-concurrency=1 scripts/originalCampaignEnemyActions.test.mjs scripts/originalCampaignActors.test.mjs scripts/originalTideActors.test.mjs scripts/originalMachineActors.test.mjs",
+    "individualP2EngineCases": 40,
+    "allRuntimeAndAdjacentTests": {
+      "tests": 60,
+      "pass": 60,
+      "fail": 0,
+      "skipped": 0
+    },
+    "tapSha256": "26a91500bd435961b419bf538ef3561c5a37a42aeac4394185ac5adc0f08ebe6"
+  },
+  "checkedInOriginalAssetChangesForThisLot": 0,
+  "browser": {
+    "origin": "GameCanvas build with actual game source and public sprite requests. Coordinates and ready ATB set by the local test. Actual keyboard, tap, targeting and confirmation inputs.",
+    "cases": [
+      {
+        "case": "isotope",
+        "name": "Contamination isotopique",
+        "viewport": [
+          1280,
+          840
+        ],
+        "touch": false,
+        "errors": [],
+        "missing": [
+          "/images/oc-worlds/v2/helios_56/items/helios_chelate_serum.png",
+          "/images/oc-worlds/v2/helios_56/items/helios_lunar_rescue_patrol.png",
+          "/images/oc-worlds/v2/helios_56/items/helios_pocket_reactor.png",
+          "/images/oc-worlds/v2/helios_56/items/helios_stasis_bubble.png",
+          "/images/oc-worlds/v2/helios_56/items/helios_sunrise_protocol.png"
+        ],
+        "passed": true,
+        "initial": {
+          "heroIds": [
+            "hero:0:celeste_ray",
+            "hero:1:nova_bell",
+            "hero:2:aura_7"
+          ],
+          "heroHp": [
+            121,
+            136,
+            167
+          ],
+          "foeIds": [
+            "enemy:custom:0:helios_56:isotope_mite",
+            "enemy:custom:1:helios_56:radglass_mutant",
+            "enemy:custom:2:helios_56:saucer_scout"
+          ],
+          "foeHp": [
+            92,
+            116,
+            96
+          ],
+          "allyCap": 58
+        },
+        "preview": {
+          "targets": [
+            "hero:0:celeste_ray",
+            "hero:1:nova_bell"
+          ],
+          "shape": "area",
+          "delivery": "radial",
+          "effect": "damage",
+          "estimates": [
+            {
+              "id": "hero:0:celeste_ray",
+              "amount": 10
+            },
+            {
+              "id": "hero:1:nova_bell",
+              "amount": 10
+            }
+          ]
+        },
+        "after": {
+          "heroHp": [
+            111,
+            127,
+            167
+          ],
+          "heroRadiation": [
+            298,
+            298,
+            0
+          ],
+          "foeHp": [
+            92,
+            116,
+            96
+          ],
+          "cooldown": 161,
+          "draws": [
+            "/sprites/generated/bosses/helios-56/isotope-mite.png",
+            "/sprites/generated/bosses/helios-56/radglass-mutant.png",
+            "/sprites/generated/bosses/helios-56/saucer-scout.png"
+          ]
+        }
+      },
+      {
+        "case": "servitor",
+        "name": "Jingle réparateur",
+        "viewport": [
+          390,
+          844
+        ],
+        "touch": true,
+        "errors": [],
+        "missing": [
+          "/images/oc-worlds/v2/helios_56/items/helios_chelate_serum.png",
+          "/images/oc-worlds/v2/helios_56/items/helios_lunar_rescue_patrol.png",
+          "/images/oc-worlds/v2/helios_56/items/helios_pocket_reactor.png",
+          "/images/oc-worlds/v2/helios_56/items/helios_stasis_bubble.png",
+          "/images/oc-worlds/v2/helios_56/items/helios_sunrise_protocol.png"
+        ],
+        "passed": true,
+        "initial": {
+          "heroIds": [
+            "hero:0:celeste_ray",
+            "hero:1:nova_bell",
+            "hero:2:aura_7"
+          ],
+          "heroHp": [
+            121,
+            136,
+            167
+          ],
+          "foeIds": [
+            "enemy:custom:0:helios_56:happy_home_servitor",
+            "enemy:custom:1:helios_56:radglass_mutant",
+            "enemy:custom:2:helios_56:saucer_scout"
+          ],
+          "foeHp": [
+            84,
+            40,
+            33
+          ],
+          "allyCap": 58
+        },
+        "preview": {
+          "targets": [
+            "enemy:custom:1:helios_56:radglass_mutant"
+          ],
+          "shape": "group",
+          "delivery": "support",
+          "effect": "heal",
+          "estimates": [
+            {
+              "id": "enemy:custom:1:helios_56:radglass_mutant",
+              "amount": 18
+            }
+          ]
+        },
+        "after": {
+          "heroHp": [
+            121,
+            136,
+            167
+          ],
+          "heroRadiation": [
+            0,
+            0,
+            0
+          ],
+          "foeHp": [
+            84,
+            58,
+            33
+          ],
+          "cooldown": 162,
+          "draws": [
+            "/sprites/generated/bosses/helios-56/happy-home-servitor.png",
+            "/sprites/generated/bosses/helios-56/radglass-mutant.png",
+            "/sprites/generated/bosses/helios-56/saucer-scout.png"
+          ]
+        }
+      }
+    ]
+  },
+  "coverage": "Quarante actions secondaires RPG jouées. Les données visuelles, le rendu des états par mode et les phases avancées de scénario restent distincts."
+}

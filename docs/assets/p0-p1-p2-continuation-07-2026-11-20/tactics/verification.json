@@ -1,0 +1,301 @@
+{
+  "baseRevision": "b690600f2",
+  "scopedFiles": {
+    "src/App.jsx": "5fbd043bdb92f3e783c2f217ae6fdd146406b44e5f0ccfd8a3db03b00d1adbcf",
+    "src/game/engineTactics.js": "f8ab5f9b72ddeb0dd99fc7bf3542ce25e5d2e0810c5d6e1977561e9a50adb462",
+    "src/game/tacticsEnvironmentRenderer.js": "2a23d98fa2ab082522e4ec726401848aedd7ac8d67c2f9b0ecc711fd619720b8",
+    "src/game/tacticsEscort.js": "650f1bf3fee8b419d487af70820b4e2122e7937fe5f610033d1da82539912f89",
+    "src/game/tacticsOriginalBattlefields.js": "f271268d661d698c4a0cb81d002b5ab7f3abe7635f86c059c49582d18ba34877",
+    "src/game/tacticsOriginalPresentation.js": "536e67c6fd766bdc38508d7e41ab52a64124b03fa5ba30cd5162cd0d796e6724",
+    "src/game/tacticsVerticalRuntime.js": "1bb6c64e226fac7f5381e95d63ddc89135555f1343be928d8f71ff5492e60aa6",
+    "scripts/tacticsOriginalSectors.test.mjs": "116cc9cb64ff9bd05aab7edf62d094177a18b196f20e928c16c748e16f3b8fdc"
+  },
+  "sourceReferences": {
+    "src/game/originalUniversesManifest.json": "8fafbd428fb0233fac58661a9bf09d941af4fba6607ceb18e92217b1dc88e234",
+    "public/images/oc-worlds/tawantinsuyu_split_sun/stages/inca_qhapaq_nan_cliffs.svg": "4ae6b62b25d1b5d67a9d42df6de15ab92c63867e9b013ee9bfd8a5191ddc1525",
+    "public/images/oc-worlds/infernum_nine_pits/stages/hell_pit_auditors.svg": "c2de25d1afb9b31ef890fd5c9589d739c6a9ba7418bc108d22901c6b33e2621c"
+  },
+  "nodeVersion": "22.23.5",
+  "dedicatedTests": {
+    "source": "scripts/tacticsOriginalSectors.test.mjs",
+    "newCases": 11,
+    "result": {
+      "tests": 20,
+      "pass": 20,
+      "fail": 0,
+      "skipped": 0,
+      "sha256": "c347c58d9b8d9bca508b3c234b29690ecd469119668a5f5789560e5b0bf975d7"
+    }
+  },
+  "reproductionsBeforeCorrection": {
+    "canTargetLedger": {
+      "tests": 1,
+      "pass": 0,
+      "fail": 1,
+      "skipped": 0,
+      "sha256": "551c4bc890cced38f9a6d63e76cd5f05fbc340c9cf69629e99cc17c878a2b7cc"
+    },
+    "clearedEscort": {
+      "tests": 1,
+      "pass": 0,
+      "fail": 1,
+      "skipped": 0,
+      "sha256": "4046b64592f86d2a4d7cbb30adc17e8c5a867044e4eba3e118ef47f9acf78346"
+    }
+  },
+  "manualSoloDeadline": {
+    "testedEarlierTurnLimit": 16,
+    "earlierLimitSufficient": false,
+    "turnLimitUsed": 24,
+    "result": "Victory with the three ledgers destroyed before closing."
+  },
+  "browser": {
+    "version": "Chromium 151.0.7922.173 built on Debian GNU/Linux 13 (trixie)",
+    "scope": "Four actual CustomBattleMode → GameCanvas sessions. Manual input observed for both new boards on desktop and mobile. Auto victory and the complete objectives were exercised in Node.",
+    "cases": [
+      {
+        "field": "tawantinsuyu_qhapaq_nan_tactics",
+        "width": 1280,
+        "height": 900,
+        "lang": "fr",
+        "autoSelectedInLobby": true,
+        "explicitSelectedInLobby": true,
+        "initial": {
+          "id": "tawantinsuyu_qhapaq_nan_tactics",
+          "title": "Restez à portée du témoin du khipu. Suivez les trois lacets jusqu’au passage haut.",
+          "escort": "tawantinsuyu:khipu-witness",
+          "start": "tawantinsuyu_qhapaq_nan_tactics:ground:1:7"
+        },
+        "observed": {
+          "actorZ": 0,
+          "escortZ": 1,
+          "escortAt": "tawantinsuyu_qhapaq_nan_tactics:ground:4:6",
+          "progress": 0,
+          "remaining": null,
+          "objectiveText": "Restez à portée du témoin du khipu. Suivez les trois lacets jusqu’au passage haut.",
+          "motion": false
+        },
+        "plans": [
+          {
+            "surfaceId": "tawantinsuyu_qhapaq_nan_tactics:ground:1:7",
+            "attack": false,
+            "cost": 1
+          },
+          {
+            "surfaceId": "tawantinsuyu_qhapaq_nan_tactics:ground:1:6",
+            "attack": false,
+            "cost": 1
+          },
+          {
+            "surfaceId": "tawantinsuyu_qhapaq_nan_tactics:ground:2:6",
+            "attack": false,
+            "cost": 1
+          }
+        ],
+        "overflow": false,
+        "disposed": true,
+        "errors": [],
+        "http": []
+      },
+      {
+        "field": "tawantinsuyu_qhapaq_nan_tactics",
+        "width": 390,
+        "height": 844,
+        "lang": "en",
+        "autoSelectedInLobby": true,
+        "explicitSelectedInLobby": true,
+        "initial": {
+          "id": "tawantinsuyu_qhapaq_nan_tactics",
+          "title": "Stay alongside the khipu witness. Follow three switchbacks to the high pass.",
+          "escort": "tawantinsuyu:khipu-witness",
+          "start": "tawantinsuyu_qhapaq_nan_tactics:ground:1:7"
+        },
+        "observed": {
+          "actorZ": 0,
+          "escortZ": 1,
+          "escortAt": "tawantinsuyu_qhapaq_nan_tactics:ground:4:6",
+          "progress": 0,
+          "remaining": null,
+          "objectiveText": "Stay alongside the khipu witness. Follow three switchbacks to the high pass.",
+          "motion": false
+        },
+        "plans": [
+          {
+            "surfaceId": "tawantinsuyu_qhapaq_nan_tactics:ground:1:7",
+            "attack": false,
+            "cost": 1
+          },
+          {
+            "surfaceId": "tawantinsuyu_qhapaq_nan_tactics:ground:1:6",
+            "attack": false,
+            "cost": 1
+          },
+          {
+            "surfaceId": "tawantinsuyu_qhapaq_nan_tactics:ground:2:6",
+            "attack": false,
+            "cost": 1
+          }
+        ],
+        "overflow": false,
+        "disposed": true,
+        "errors": [],
+        "http": []
+      },
+      {
+        "field": "infernum_pit_of_auditors_tactics",
+        "width": 1280,
+        "height": 900,
+        "lang": "fr",
+        "autoSelectedInLobby": true,
+        "explicitSelectedInLobby": true,
+        "initial": {
+          "id": "infernum_pit_of_auditors_tactics",
+          "title": "Clôture dans 24 tours alliés. Détruisez les trois registres avant la clôture, sur la coursive, dans la fosse et au greffe.",
+          "deadline": 24
+        },
+        "observed": {
+          "actorZ": 2.5,
+          "progress": 1,
+          "remaining": 19,
+          "objectiveText": "Clôture dans 19 tours alliés. Détruisez les trois registres avant la clôture, sur la coursive, dans la fosse et au greffe.",
+          "motion": false
+        },
+        "plans": [
+          {
+            "surfaceId": "infernum_pit_of_auditors_tactics:ground:2:4",
+            "attack": false,
+            "cost": 2
+          },
+          {
+            "surfaceId": "infernum_pit_of_auditors_tactics:ground:3:4",
+            "attack": false,
+            "cost": 2
+          },
+          {
+            "surfaceId": "infernum_pit_of_auditors_tactics:ground:4:4",
+            "attack": false,
+            "cost": 1
+          },
+          {
+            "surfaceId": "infernum_pit_of_auditors_tactics:ground:4:2",
+            "attack": true
+          },
+          {
+            "surfaceId": "infernum_pit_of_auditors_tactics:ground:4:4",
+            "attack": false,
+            "cost": 0
+          },
+          {
+            "surfaceId": "infernum_pit_of_auditors_tactics:ground:4:2",
+            "attack": true
+          },
+          {
+            "surfaceId": "infernum_pit_of_auditors_tactics:ground:4:4",
+            "attack": false,
+            "cost": 0
+          },
+          {
+            "surfaceId": "infernum_pit_of_auditors_tactics:ground:4:2",
+            "attack": true
+          }
+        ],
+        "overflow": false,
+        "disposed": true,
+        "errors": [],
+        "http": []
+      },
+      {
+        "field": "infernum_pit_of_auditors_tactics",
+        "width": 390,
+        "height": 844,
+        "lang": "en",
+        "autoSelectedInLobby": true,
+        "explicitSelectedInLobby": true,
+        "initial": {
+          "id": "infernum_pit_of_auditors_tactics",
+          "title": "Closing in 24 allied turns. Destroy the three ledgers before closing, on the catwalk, in the trench and at the clerk’s office.",
+          "deadline": 24
+        },
+        "observed": {
+          "actorZ": 2.5,
+          "progress": 1,
+          "remaining": 19,
+          "objectiveText": "Closing in 19 allied turns. Destroy the three ledgers before closing, on the catwalk, in the trench and at the clerk’s office.",
+          "motion": false
+        },
+        "plans": [
+          {
+            "surfaceId": "infernum_pit_of_auditors_tactics:ground:2:4",
+            "attack": false,
+            "cost": 2
+          },
+          {
+            "surfaceId": "infernum_pit_of_auditors_tactics:ground:3:4",
+            "attack": false,
+            "cost": 2
+          },
+          {
+            "surfaceId": "infernum_pit_of_auditors_tactics:ground:4:4",
+            "attack": false,
+            "cost": 1
+          },
+          {
+            "surfaceId": "infernum_pit_of_auditors_tactics:ground:4:2",
+            "attack": true
+          },
+          {
+            "surfaceId": "infernum_pit_of_auditors_tactics:ground:4:4",
+            "attack": false,
+            "cost": 0
+          },
+          {
+            "surfaceId": "infernum_pit_of_auditors_tactics:ground:4:2",
+            "attack": true
+          },
+          {
+            "surfaceId": "infernum_pit_of_auditors_tactics:ground:4:4",
+            "attack": false,
+            "cost": 0
+          },
+          {
+            "surfaceId": "infernum_pit_of_auditors_tactics:ground:4:2",
+            "attack": true
+          }
+        ],
+        "overflow": false,
+        "disposed": true,
+        "errors": [],
+        "http": []
+      }
+    ],
+    "fixtureBuildSeconds": 11.72,
+    "replaySha256": "e12ca9ebba3925dc2f23b3dd862ce3b43190f51f0c23212ead521d6fb228019c"
+  },
+  "evidenceVolume": {
+    "captureDirectory": "/tmp/mvb-tactics-original-07",
+    "capturedExamples": [
+      "cliffs-1280.jpg",
+      "cliffs-progress-390.jpg",
+      "auditors-progress-1280.jpg",
+      "auditors-progress-390.jpg"
+    ],
+    "scope": "Browser captures on the temporary volume.",
+    "captureSha256": {
+      "cliffs-1280.jpg": "c970b13bf1499e98e208ff448f2816f57c98c597da84af3b414272e6b8c87d64",
+      "cliffs-progress-390.jpg": "f0ffb0d05d56b046185c6a76de3683c996933bfbfb6cbafe6f0db2b844dd6957",
+      "auditors-progress-1280.jpg": "16394d550a9cda209241e8e1db7f2cc3db2b835f9ab5386065e1abb968eabb05",
+      "auditors-progress-390.jpg": "3b7943785eeaeed9fcd8869470bfd5cb0afb8edecd4e4e0a20ea5a991e3b71ba"
+    }
+  },
+  "integratedSourceRevision": "8d387411d4240d35326e9ccd4154f1875e5ae3b9",
+  "relatedTests": {
+    "command": "node --test --test-concurrency=1 scripts/tacticsOriginalSectors.test.mjs scripts/tacticsEscort.test.mjs scripts/tacticsTerrain.test.mjs scripts/tacticsTerrainRenderer.test.mjs scripts/tacticsNexusHighgrass.test.mjs scripts/tacticsVerticalReview.test.mjs",
+    "result": {
+      "tests": 68,
+      "pass": 68,
+      "fail": 0,
+      "skipped": 0
+    },
+    "sha256": "f166a3fa9071bdb4868c5fbfd965d77c09570d23b6bf634b41780fcec78d6993"
+  }
+}

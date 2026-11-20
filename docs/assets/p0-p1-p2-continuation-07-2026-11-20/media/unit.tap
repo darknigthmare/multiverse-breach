@@ -1,0 +1,85 @@
+TAP version 13
+# (node:108956) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:
+# --import 'data:text/javascript,import { register } from "node:module"; import { pathToFileURL } from "node:url"; register("./scripts/sourceSceneTestLoader.mjs", pathToFileURL("./"));'
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: Kraken Sans Couronne selects its atlas and keeps the exact static image as fallback
+ok 1 - Kraken Sans Couronne selects its atlas and keeps the exact static image as fallback
+  ---
+  duration_ms: 77.518322
+  type: 'test'
+  ...
+# Subtest: Kraken Sans Couronne reads sixteen distinct padded cells with a stable baseline
+ok 2 - Kraken Sans Couronne reads sixteen distinct padded cells with a stable baseline
+  ---
+  duration_ms: 218.576263
+  type: 'test'
+  ...
+# Subtest: Le Phare qui Regarde selects its atlas and keeps the exact static image as fallback
+ok 3 - Le Phare qui Regarde selects its atlas and keeps the exact static image as fallback
+  ---
+  duration_ms: 11.815693
+  type: 'test'
+  ...
+# Subtest: Le Phare qui Regarde reads sixteen distinct padded cells with a stable baseline
+ok 4 - Le Phare qui Regarde reads sixteen distinct padded cells with a stable baseline
+  ---
+  duration_ms: 139.708627
+  type: 'test'
+  ...
+# Subtest: the lighthouse beam expands across its attack row without appearing on the other rows
+ok 5 - the lighthouse beam expands across its attack row without appearing on the other rows
+  ---
+  duration_ms: 101.120926
+  type: 'test'
+  ...
+# (node:109039) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:
+# --import 'data:text/javascript,import { register } from "node:module"; import { pathToFileURL } from "node:url"; register("./scripts/sourceSceneTestLoader.mjs", pathToFileURL("./"));'
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: Lord Pneuma animates only the exact actor and still serves the original 1×1 bitmap
+ok 6 - Lord Pneuma animates only the exact actor and still serves the original 1×1 bitmap
+  ---
+  duration_ms: 8.396275
+  type: 'test'
+  ...
+# Subtest: Lord Pneuma preserves the body and gives the measured source regions distinct state motion
+ok 7 - Lord Pneuma preserves the body and gives the measured source regions distinct state motion
+  ---
+  duration_ms: 6.425996
+  type: 'test'
+  ...
+# Subtest: Vaelgor, Premier Wyrm animates only the exact actor and still serves the original 1×1 bitmap
+ok 8 - Vaelgor, Premier Wyrm animates only the exact actor and still serves the original 1×1 bitmap
+  ---
+  duration_ms: 3.180233
+  type: 'test'
+  ...
+# Subtest: Vaelgor, Premier Wyrm preserves the body and gives the measured source regions distinct state motion
+ok 9 - Vaelgor, Premier Wyrm preserves the body and gives the measured source regions distinct state motion
+  ---
+  duration_ms: 1.627603
+  type: 'test'
+  ...
+# (node:109087) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:
+# --import 'data:text/javascript,import { register } from "node:module"; import { pathToFileURL } from "node:url"; register("./scripts/sourceSceneTestLoader.mjs", pathToFileURL("./"));'
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: only the exact boss and archived sheet receive cutout animation
+ok 10 - only the exact boss and archived sheet receive cutout animation
+  ---
+  duration_ms: 4.132247
+  type: 'test'
+  ...
+# Subtest: rest, movement, ringing and impact transform exactly two independent bells
+ok 11 - rest, movement, ringing and impact transform exactly two independent bells
+  ---
+  duration_ms: 11.267188
+  type: 'test'
+  ...
+1..11
+# tests 11
+# suites 0
+# pass 11
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 10960.800484

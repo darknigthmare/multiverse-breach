@@ -1,0 +1,103 @@
+{
+  "sourceCommit": "8d387411d4240d35326e9ccd4154f1875e5ae3b9",
+  "node": "22.23.5",
+  "checks": [
+    {
+      "name": "Contrats de source",
+      "command": "npm run test:source-contracts",
+      "totals": {
+        "tests": 220,
+        "pass": 220,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "tapSha256": "2e071a712754b57e4731a294196bb5a7ae464d77719aca9cfc7fafc1569f36bd"
+    },
+    {
+      "name": "RPG, contrôles et invocations W16",
+      "command": "node --test --test-concurrency=1 scripts/rpgSourceControlWave16.test.mjs scripts/rpgControlWave15.test.mjs scripts/rpgSummonWave16.test.mjs",
+      "totals": {
+        "tests": 54,
+        "pass": 54,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "tapSha256": "225a3ca5619d096ba3f1f2432d6d41126fb6a59f52509e1f53bad83e4f7499fe"
+    },
+    {
+      "name": "RPG, invocations et mécaniques W17",
+      "command": "node --test --test-concurrency=1 scripts/rpgSummon.test.mjs scripts/sourceMechanicsWave17.test.mjs scripts/sourceEngineWave17.test.mjs",
+      "totals": {
+        "tests": 70,
+        "pass": 70,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "tapSha256": "35fd9519b5b9d18bcd85c81b94a1dd687770915b80022e2c0fb7841c3300321b"
+    },
+    {
+      "name": "Tactics vertical",
+      "command": "npm run test:tactics-verticality",
+      "totals": {
+        "tests": 320,
+        "pass": 320,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "tapSha256": "e67a1bf9ff91611f41d5cb3ad77575597465f9985f2ea8a16163e45fb60e2831"
+    },
+    {
+      "name": "Interface immersive",
+      "command": "npm run test:ui-immersion",
+      "totals": {
+        "tests": 582,
+        "pass": 582,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "tapSha256": "fd8b0a6fbd662c44cfe5b565fda5053a6fea923896bb214f1eb7fc3e00e9e4cf"
+    }
+  ],
+  "lint": {
+    "command": "node_modules/.bin/oxlint --deny-warnings FILES",
+    "checkedFiles": 27,
+    "exitCode": 0,
+    "pythonSyntax": "scripts/browserOcDlcLibrary.py"
+  },
+  "focusedEvidence": [
+    {
+      "name": "Acteurs originaux et commandes RPG",
+      "path": "../roster/verification.json"
+    },
+    {
+      "name": "Duel et Mêlée",
+      "path": "../motion/verification.json"
+    },
+    {
+      "name": "Mouvement des deux boss",
+      "path": "../media/browser-results.json"
+    },
+    {
+      "name": "Falaises et Gouffre",
+      "path": "../tactics/verification.json"
+    },
+    {
+      "name": "Bibliothèque des actes annexes",
+      "path": "../menus/verification.json"
+    },
+    {
+      "name": "Faisceau au Canvas avec ou sans planche",
+      "path": "../rpg/uber-browser.json"
+    },
+    {
+      "name": "Lots Doom et reprise",
+      "path": "../dlc/coverage.json"
+    }
+  ],
+  "scope": "Suites, parcours ciblés et reçus techniques. Les tests qui apparaissent dans plusieurs suites sont comptés par suite."
+}
