@@ -2,13 +2,17 @@
 
 [Vérification d’intégration à master](MASTER_INTEGRATION_2026-11-02.md) : hub, galerie, variantes, références Rift et classeur synchronisés.
 
+## Série Music du 20 novembre 2026
+
+Cette vague ajoute **55 CG Music** pour 41 personnages, dont **36 décors CG03** et **19 scènes, poses ou accessoires**. Ado Avatar possède **15 des 15 CG** de sa série. Il reste **2 210 CG Music** à produire, dont 79 décors. Le roster complet compte **27 136 emplacements ouverts**. [Planches et illustration par personnage](reviews/music-long-2026-11-20/README.md).
+
 ## Portraits Music du 20 novembre 2026
 
 La [planche des personnages Music](reviews/music-portraits-2026-11-20/README.md) présente **six CG01 en pied** intégrées à la galerie et **sept études de portrait** documentées. Chaque illustration a sa propre pose et son propre décor. Les essais précédents restent accessibles dans le dossier de revue. Parmi les 154 personnages Music, **148 CG01 restent à réaliser**, dont les sept personnages déjà étudiés. Le [classeur de fidélité](Multiverse_Breach_Fidelite_CG.xlsx) suit la livraison et la couverture des références.
 
 ## Décors Music du 20 novembre 2026
 
-La [vague Music](reviews/music-domains-2026-11-20/README.md) ajoute **39 CG03** dans **11 univers**. Chaque personnage reçoit un décor seul, ancré dans la continuité du jeu, avec une composition propre. Le [classeur de fidélité](Multiverse_Breach_Fidelite_CG.xlsx) suit cette livraison. Sur les 154 personnages de la catégorie, **115 décors CG03 restent à produire**.
+La [vague Music](reviews/music-domains-2026-11-20/README.md) ajoute **39 CG03** dans **11 univers**. Chaque personnage reçoit un décor seul, ancré dans la continuité du jeu, avec une composition propre. Le [classeur de fidélité](Multiverse_Breach_Fidelite_CG.xlsx) suit cette livraison. À l’issue de cette vague, 115 décors CG03 restaient à produire pour les 154 personnages Music.
 
 ## Reprise du 1er novembre 2026 — Alien et associés, vague 12
 
