@@ -21,15 +21,15 @@
     "proposedUniverseScopes": 196,
     "withOriginalAuthoredVisualPrompt": 9,
     "characterSpecificSourceDescriptions": 343,
-    "subjectsWithSourceEvidenceReceipts": 263,
-    "discoveredSourceEvidenceFiles": 308,
-    "withIndependentLocalCanonImage": 43,
-    "withInspectedIndependentLocalCanonImage": 42,
+    "subjectsWithSourceEvidenceReceipts": 276,
+    "discoveredSourceEvidenceFiles": 321,
+    "withIndependentLocalCanonImage": 51,
+    "withInspectedIndependentLocalCanonImage": 50,
     "withIndependentLocalIconicOutfitImage": 6,
     "withIndependentLocalEquipmentImage": 8,
     "withIndependentLocalCostumeSupportImage": 6,
     "withIndependentLocalEnvironmentImage": 7,
-    "withInspectedOriginalProjectReference": 74,
+    "withInspectedOriginalProjectReference": 76,
     "withLocalProjectArt": 1912,
     "selectedSpritesWithConfirmedMajorDifference": 11,
     "selectedSpritesWithReviewedCorrections": 59,
@@ -40,23 +40,23 @@
       "character-specific-lock-needs-image-comparison": 317,
       "current-selected-sprite-too-far-from-terrestrial-target-no-atlas-attempt": 1,
       "current-selected-sprite-too-far-source-qualified-no-atlas-attempt": 2,
-      "documentary-lock-needs-inspected-identity-image": 5,
-      "identity-or-visual-locks-incomplete": 1300,
+      "documentary-lock-needs-inspected-identity-image": 8,
+      "identity-or-visual-locks-incomplete": 1289,
       "original-project-reference-to-compare": 84,
       "reference-compared-close-to-reference-not-certified": 4,
-      "source-evidence-qualified-needs-final-comparison": 26,
+      "source-evidence-qualified-needs-final-comparison": 34,
       "source-identity-qualified-existing-sprite-too-far-correction-blocked": 7,
       "source-identity-qualified-existing-sprite-too-far-correction-needed": 1,
       "specific-target-proposed-needs-source-review": 165
     },
     "incarnationStatuses": {
-      "documented-in-project-source-record": 650,
+      "documented-in-project-source-record": 661,
       "original-project-canon": 84,
       "primary-ina-source-identity-record": 1,
       "proposed-production-incarnation": 146,
       "proposed-universe-scope-needs-character-incarnation-check": 691,
       "published-pilot-target-not-perfect-fidelity-approval": 5,
-      "source-work-known-incarnation-to-resolve": 335
+      "source-work-known-incarnation-to-resolve": 324
     }
   },
   "subjects": [
@@ -186607,14 +186607,16 @@
       "universeId": "rammstein",
       "priority": "P1",
       "incarnation": {
-        "label": "Till Lindemann — Rammstein; époque et version précises à fixer",
-        "status": "source-work-known-incarnation-to-resolve",
-        "evidence": []
+        "label": "Till Lindemann, concert public à Londres O2 le 24 février 2012, tenue de Du riechst so gut",
+        "status": "documented-in-project-source-record",
+        "evidence": [
+          "docs/cg/reviews/music-portraits-2026-11-20/till-lindemann-reference-evidence-2026-11-20.json"
+        ]
       },
-      "identityLock": "Till Lindemann, Rammstein : l’identité nominative est conservée; les détails de ressemblance ne sont pas établis par les données actuelles.",
+      "identityLock": "Cheveux courts peignés vers l’arrière, traits adultes et carrure large. Gilet zippé sans manches noir à côtes horizontales, ceinture à boucle rectangulaire et pantalon sombre texturé.",
       "visualLocks": {
         "silhouette": [
-          "silhouette : détail non établi dans les données de référence de ce personnage; comparer la cible à un visuel source indépendant avant validation."
+          "Cheveux courts peignés vers l’arrière, traits adultes et carrure large."
         ],
         "anatomy": [
           "anatomy : détail non établi dans les données de référence de ce personnage; comparer la cible à un visuel source indépendant avant validation."
@@ -186623,10 +186625,10 @@
           "costume : détail non établi dans les données de référence de ce personnage; comparer la cible à un visuel source indépendant avant validation."
         ],
         "palette": [
-          "palette : détail non établi dans les données de référence de ce personnage; comparer la cible à un visuel source indépendant avant validation."
+          "Gilet zippé sans manches noir à côtes horizontales, ceinture à boucle rectangulaire et pantalon sombre texturé."
         ],
         "face": [
-          "face : détail non établi dans les données de référence de ce personnage; comparer la cible à un visuel source indépendant avant validation."
+          "Cheveux courts peignés vers l’arrière, traits adultes et carrure large."
         ],
         "distinguishingMarks": [
           "distinguishingMarks : détail non établi dans les données de référence de ce personnage; comparer la cible à un visuel source indépendant avant validation."
@@ -186643,8 +186645,8 @@
         ]
       },
       "universeCoherence": {
-        "sourceWork": "Rammstein",
-        "period": "Till Lindemann — Rammstein; époque et version précises à fixer",
+        "sourceWork": "Till Lindemann, concert public à Londres O2 le 24 février 2012, tenue de Du riechst so gut",
+        "period": "Till Lindemann, concert public à Londres O2 le 24 février 2012, tenue de Du riechst so gut",
         "locations": [
           "Rammstein stadium tower stage and Feuerzone"
         ],
@@ -186664,18 +186666,114 @@
       },
       "sourceRefs": [
         {
-          "url": "https://presse.rammstein.de/en",
+          "path": "docs/cg/reviews/music-portraits-2026-11-20/till-lindemann-reference-evidence-2026-11-20.json",
+          "role": "character-reference-evidence-receipt",
+          "sourceFile": "docs/cg/reviews/music-portraits-2026-11-20/till-lindemann-reference-evidence-2026-11-20.json",
+          "status": "reference-evidence-with-stated-inspection-status-and-limitations"
+        },
+        {
+          "path": "DLC/Rammstein/data/expandedUniverses.js",
+          "role": "source-evidence-provenance",
+          "sourceFile": "docs/cg/reviews/music-portraits-2026-11-20/till-lindemann-reference-evidence-2026-11-20.json",
+          "status": "historical-repo-record-not-reopened"
+        },
+        {
+          "path": "DLC/Rammstein/data/loreAccuratePacks.js",
+          "role": "source-evidence-provenance",
+          "sourceFile": "docs/cg/reviews/music-portraits-2026-11-20/till-lindemann-reference-evidence-2026-11-20.json",
+          "status": "historical-repo-record-not-reopened"
+        },
+        {
+          "path": "docs/cg/reviews/music-portraits-2026-11-20/till-lindemann-reference-evidence-2026-11-20.json",
           "role": "source-identity-or-world-reference",
           "sourceFile": "src/game/heroes.js / dossier / source-pack",
           "status": "historical-repo-record-not-reopened"
+        },
+        {
+          "url": "https://commons.wikimedia.org/wiki/File:Till_Lindemann_Du_riechst_so_gut_London.jpg",
+          "role": "source-identity-or-world-reference",
+          "sourceFile": "src/game/heroes.js / dossier / source-pack",
+          "status": "historical-repo-record-not-reopened"
+        },
+        {
+          "url": "https://commons.wikimedia.org/wiki/File:Till_Lindemann_Mein_Teil_London.jpg",
+          "role": "source-identity-or-world-reference",
+          "sourceFile": "src/game/heroes.js / dossier / source-pack",
+          "status": "historical-repo-record-not-reopened"
+        },
+        {
+          "url": "https://commons.wikimedia.org/wiki/File:Till_Lindemann_Du_riechst_so_gut_London.jpg",
+          "role": "independent-canon-reference",
+          "sourceFile": "docs/cg/reviews/music-portraits-2026-11-20/till-lindemann-reference-evidence-2026-11-20.json",
+          "status": "historically-viewed-not-1to1-approval",
+          "referencePurpose": "identity",
+          "referenceScope": "public-stage-body-and-costume",
+          "slot": null
+        },
+        {
+          "url": "https://commons.wikimedia.org/wiki/File:Till_Lindemann_Mein_Teil_London.jpg",
+          "role": "independent-canon-reference",
+          "sourceFile": "docs/cg/reviews/music-portraits-2026-11-20/till-lindemann-reference-evidence-2026-11-20.json",
+          "status": "historically-viewed-not-1to1-approval",
+          "referencePurpose": "identity",
+          "referenceScope": "face-structure-support-only",
+          "slot": null
         }
       ],
       "sources": [
         {
-          "url": "https://presse.rammstein.de/en",
+          "path": "docs/cg/reviews/music-portraits-2026-11-20/till-lindemann-reference-evidence-2026-11-20.json",
+          "role": "character-reference-evidence-receipt",
+          "sourceFile": "docs/cg/reviews/music-portraits-2026-11-20/till-lindemann-reference-evidence-2026-11-20.json",
+          "status": "reference-evidence-with-stated-inspection-status-and-limitations"
+        },
+        {
+          "path": "DLC/Rammstein/data/expandedUniverses.js",
+          "role": "source-evidence-provenance",
+          "sourceFile": "docs/cg/reviews/music-portraits-2026-11-20/till-lindemann-reference-evidence-2026-11-20.json",
+          "status": "historical-repo-record-not-reopened"
+        },
+        {
+          "path": "DLC/Rammstein/data/loreAccuratePacks.js",
+          "role": "source-evidence-provenance",
+          "sourceFile": "docs/cg/reviews/music-portraits-2026-11-20/till-lindemann-reference-evidence-2026-11-20.json",
+          "status": "historical-repo-record-not-reopened"
+        },
+        {
+          "path": "docs/cg/reviews/music-portraits-2026-11-20/till-lindemann-reference-evidence-2026-11-20.json",
           "role": "source-identity-or-world-reference",
           "sourceFile": "src/game/heroes.js / dossier / source-pack",
           "status": "historical-repo-record-not-reopened"
+        },
+        {
+          "url": "https://commons.wikimedia.org/wiki/File:Till_Lindemann_Du_riechst_so_gut_London.jpg",
+          "role": "source-identity-or-world-reference",
+          "sourceFile": "src/game/heroes.js / dossier / source-pack",
+          "status": "historical-repo-record-not-reopened"
+        },
+        {
+          "url": "https://commons.wikimedia.org/wiki/File:Till_Lindemann_Mein_Teil_London.jpg",
+          "role": "source-identity-or-world-reference",
+          "sourceFile": "src/game/heroes.js / dossier / source-pack",
+          "status": "historical-repo-record-not-reopened"
+        },
+        {
+          "url": "https://commons.wikimedia.org/wiki/File:Till_Lindemann_Du_riechst_so_gut_London.jpg",
+          "role": "independent-canon-reference",
+          "sourceFile": "docs/cg/reviews/music-portraits-2026-11-20/till-lindemann-reference-evidence-2026-11-20.json",
+          "status": "historically-viewed-not-1to1-approval",
+          "referencePurpose": "identity",
+          "referenceScope": "public-stage-body-and-costume",
+          "slot": null
+        },
+        {
+          "url": "https://commons.wikimedia.org/wiki/File:Till_Lindemann_Mein_Teil_London.jpg",
+          "role": "independent-canon-reference",
+          "sourceFile": "docs/cg/reviews/music-portraits-2026-11-20/till-lindemann-reference-evidence-2026-11-20.json",
+          "status": "historically-viewed-not-1to1-approval",
+          "referencePurpose": "identity",
+          "referenceScope": "face-structure-support-only",
+          "slot": null
         }
       ],
       "localVisuals": [
@@ -186699,11 +186797,62 @@
           "exists": true,
           "selectedInRuntime": false,
           "status": "existing-project-art-not-independent-canon-proof"
+        },
+        {
+          "path": "/cg/rammstein/till-lindemann/character-solo-music-2026-11-20.png",
+          "role": "project-generated-art",
+          "exists": true,
+          "selectedInRuntime": false,
+          "status": "existing-project-art-not-independent-canon-proof"
+        },
+        {
+          "path": "/cg/rammstein/till-lindemann/character-solo-music-2026-11-20.webp",
+          "role": "project-generated-art",
+          "exists": true,
+          "selectedInRuntime": false,
+          "status": "existing-project-art-not-independent-canon-proof"
+        },
+        {
+          "path": "docs/cg/references/music-portraits-2026-11-20/till-lindemann-1.jpg",
+          "url": "https://commons.wikimedia.org/wiki/File:Till_Lindemann_Du_riechst_so_gut_London.jpg",
+          "role": "independent-canon-reference",
+          "referencePurpose": "identity",
+          "referenceScope": "public-stage-body-and-costume",
+          "slot": null,
+          "referenceCharacter": "till_lindemann",
+          "sourceReferenceRole": "public-performance-identity-photo",
+          "canonicalProjectReference": false,
+          "exists": true,
+          "viewed": true,
+          "status": "historically-viewed-not-1to1-approval",
+          "sourceFile": "docs/cg/reviews/music-portraits-2026-11-20/till-lindemann-reference-evidence-2026-11-20.json",
+          "sha256": "6dfff0ff0e7d6c222cd49c063551da0bc4918bf976c956a4edb72b63c57b8625",
+          "limitations": [
+            "Dark green lighting limits the neutral garment color and fine detail of footwear or face."
+          ]
+        },
+        {
+          "path": "docs/cg/references/music-portraits-2026-11-20/till-lindemann-2.jpg",
+          "url": "https://commons.wikimedia.org/wiki/File:Till_Lindemann_Mein_Teil_London.jpg",
+          "role": "independent-canon-reference",
+          "referencePurpose": "identity",
+          "referenceScope": "face-structure-support-only",
+          "slot": null,
+          "referenceCharacter": "till_lindemann",
+          "sourceReferenceRole": "public-performance-identity-photo",
+          "canonicalProjectReference": false,
+          "exists": true,
+          "viewed": true,
+          "status": "historically-viewed-not-1to1-approval",
+          "sourceFile": "docs/cg/reviews/music-portraits-2026-11-20/till-lindemann-reference-evidence-2026-11-20.json",
+          "sha256": "1bbd4a25c4675576e6689fc5ef38c2b5dee8cb951e287a98582d2c7d09473286",
+          "limitations": [
+            "Face structure only from the same show. This separate Mein Teil costume is excluded."
+          ]
         }
       ],
       "cgRequirements": {
         "canonSlots": [
-          "CG01",
           "CG02",
           "CG04",
           "CG06",
@@ -186714,6 +186863,7 @@
           "CG05"
         ],
         "fanArtSlots": [
+          "CG01",
           "CG03",
           "CG09",
           "CG10",
@@ -186729,14 +186879,16 @@
           "CG01": {
             "slot": "CG01",
             "type": "characterSolo",
-            "themeBrief": "Personnage de référence dans une incarnation source précise, sans transformation.",
-            "poseBrief": "Portrait entier en trois quarts, appui calme, silhouette dégagée et équipement complet; attitude de référence sans attaque.",
-            "backgroundBrief": "Rammstein stadium tower stage and Feuerzone — composition distincte pour Till Lindemann / CG01",
-            "status": "needs-reference",
-            "continuityStatus": "source-identity-in-original-scene",
+            "themeBrief": "Till Lindemann — Avant la balance · portrait entier",
+            "poseBrief": "Portrait en pied en trois quarts, bras détendus, un pied légèrement avancé sur le caillebotis.",
+            "backgroundBrief": "Passerelle réfractaire de l’Industrial Feuerzone Caillebotis et garde-corps de graphite Portrait devant les conduites techniques Caisses et baffles bas vers le fond Reflets verts et témoin orange au fond",
+            "status": "generated",
+            "continuityStatus": "fan-art-special-theme-original-scene",
             "source": [
-              "https://presse.rammstein.de/en",
-              "docs/cg/CG_PILOT_REFERENCE_AUDIT.md"
+              "docs/cg/reviews/music-portraits-2026-11-20/visual-review.json",
+              "docs/cg/reviews/music-portraits-2026-11-20/till-lindemann-reference-evidence-2026-11-20.json",
+              "DLC/Rammstein/data/expandedUniverses.js",
+              "DLC/Rammstein/data/loreAccuratePacks.js"
             ],
             "sourceComparisonRequired": true,
             "visualFidelityApproved": false
@@ -186944,19 +187096,21 @@
         "commonRule": "Une pose et une composition de décor distinctes par CG; pour objet/décor seul, aucun personnage forcé. Préserver incarnation/anatomie/tenue sauf transformation spéciale explicitement étiquetée. Préserver tous les anciens assets comme variantes."
       },
       "readiness": {
-        "identity": "source-work-known-incarnation-to-resolve",
-        "visualReference": "source-image-needed-or-historical-url-only",
-        "sourceReview": "identity-or-visual-locks-incomplete",
+        "identity": "documented-in-project-source-record",
+        "visualReference": "independent-image-inspected-with-limitations",
+        "sourceReview": "source-evidence-qualified-needs-final-comparison",
         "visualFidelityApproved": false,
-        "detailedVisualAxes": [],
+        "detailedVisualAxes": [
+          "silhouette",
+          "palette",
+          "face"
+        ],
         "missing": [
-          "Incarnation exacte encore à choisir; le nom de franchise ne suffit pas.",
-          "Silhouette, anatomie, visage, tenue et équipement non décrits spécifiquement; la vignette actuelle sert uniquement de point de comparaison.",
-          "Aucune image source indépendante conservée localement et inspectée dans cette session pour ce personnage.",
-          "Axes visuels non détaillés : silhouette, anatomy, costume, palette, face, distinguishingMarks."
+          "Axes visuels non détaillés : anatomy, costume, distinguishingMarks.",
+          "Les lumières du concert limitent la lecture des teintes. Le deuxième cliché, du même concert, n’établit que des traits de visage. Les accessoires du spectacle et la tenue de Mein Teil sont exclus."
         ]
       },
-      "qualificationStatus": "identity-or-visual-locks-incomplete",
+      "qualificationStatus": "source-evidence-qualified-needs-final-comparison",
       "notes": [
         "Palette runtime indicative (pas preuve canon) : #7b241c.",
         "Kit jeu séparé du canon : Till Lindemann Signature Strike ; Till Lindemann Breach Technique ; Till Lindemann Guard ; Till Lindemann Origin Burst."
@@ -186967,7 +187121,7 @@
         "plan": "docs/cg/roster-production-2026-10-18.json",
         "dossier": null,
         "sourcePack": "src/game/expandedUniverses.js / src/game/canonRosterWave.js",
-        "sourceSpecificDescription": null,
+        "sourceSpecificDescription": "docs/cg/reviews/music-portraits-2026-11-20/till-lindemann-reference-evidence-2026-11-20.json#visualLocks",
         "hasRuntimeSpecificDescription": false,
         "rawRuntimePalette": [
           "#7b241c"
@@ -188875,26 +189029,28 @@
       "universeId": "system-of-a-down",
       "priority": "P1",
       "incarnation": {
-        "label": "Serj Tankian — System of a Down; époque et version précises à fixer",
-        "status": "source-work-known-incarnation-to-resolve",
-        "evidence": []
+        "label": "Serj Tankian · Rock en Seine · 2013-08-25",
+        "status": "documented-in-project-source-record",
+        "evidence": [
+          "docs/cg/reviews/music-portraits-2026-11-20/serj-tankian-reference-evidence-2026-11-20.json"
+        ]
       },
-      "identityLock": "Serj Tankian, System of a Down : l’identité nominative est conservée; les détails de ressemblance ne sont pas établis par les données actuelles.",
+      "identityLock": "Curly short dark/graying hair, graying beard, long face/nose, black open-neck short-sleeved shirt and olive-gray trouser top are consistent with photographed foreground singer.",
       "visualLocks": {
         "silhouette": [
-          "silhouette : détail non établi dans les données de référence de ce personnage; comparer la cible à un visuel source indépendant avant validation."
+          "Curly short dark/graying hair, graying beard, long face/nose, black open-neck short-sleeved shirt and olive-gray trouser top are consistent with photographed foreground singer."
         ],
         "anatomy": [
           "anatomy : détail non établi dans les données de référence de ce personnage; comparer la cible à un visuel source indépendant avant validation."
         ],
         "costume": [
-          "costume : détail non établi dans les données de référence de ce personnage; comparer la cible à un visuel source indépendant avant validation."
+          "Curly short dark/graying hair, graying beard, long face/nose, black open-neck short-sleeved shirt and olive-gray trouser top are consistent with photographed foreground singer."
         ],
         "palette": [
-          "palette : détail non établi dans les données de référence de ce personnage; comparer la cible à un visuel source indépendant avant validation."
+          "Curly short dark/graying hair, graying beard, long face/nose, black open-neck short-sleeved shirt and olive-gray trouser top are consistent with photographed foreground singer."
         ],
         "face": [
-          "face : détail non établi dans les données de référence de ce personnage; comparer la cible à un visuel source indépendant avant validation."
+          "Curly short dark/graying hair, graying beard, long face/nose, black open-neck short-sleeved shirt and olive-gray trouser top are consistent with photographed foreground singer."
         ],
         "distinguishingMarks": [
           "distinguishingMarks : détail non établi dans les données de référence de ce personnage; comparer la cible à un visuel source indépendant avant validation."
@@ -188907,12 +189063,12 @@
           "Les armes, rayons, couleurs et catégories du gameplay ne prouvent pas un équipement ou pouvoir canonique."
         ],
         "outfit": [
-          "costume : détail non établi dans les données de référence de ce personnage; comparer la cible à un visuel source indépendant avant validation."
+          "Curly short dark/graying hair, graying beard, long face/nose, black open-neck short-sleeved shirt and olive-gray trouser top are consistent with photographed foreground singer."
         ]
       },
       "universeCoherence": {
-        "sourceWork": "System of a Down",
-        "period": "Serj Tankian — System of a Down; époque et version précises à fixer",
+        "sourceWork": "Serj Tankian · Rock en Seine · 2013-08-25",
+        "period": "Serj Tankian · Rock en Seine · 2013-08-25",
         "locations": [
           "B.Y.O.B. militarized banquet march through an urban protest set"
         ],
@@ -188932,18 +189088,72 @@
       },
       "sourceRefs": [
         {
-          "url": "https://www.systemofadown.com/music",
+          "path": "docs/cg/reviews/music-portraits-2026-11-20/serj-tankian-reference-evidence-2026-11-20.json",
+          "role": "character-reference-evidence-receipt",
+          "sourceFile": "docs/cg/reviews/music-portraits-2026-11-20/serj-tankian-reference-evidence-2026-11-20.json",
+          "status": "reference-evidence-with-stated-inspection-status-and-limitations"
+        },
+        {
+          "path": "DLC/SystemOfADown/data/expandedUniverses.js",
+          "role": "source-evidence-provenance",
+          "sourceFile": "docs/cg/reviews/music-portraits-2026-11-20/serj-tankian-reference-evidence-2026-11-20.json",
+          "status": "historical-repo-record-not-reopened"
+        },
+        {
+          "path": "docs/cg/reviews/music-portraits-2026-11-20/serj-tankian-reference-evidence-2026-11-20.json",
           "role": "source-identity-or-world-reference",
           "sourceFile": "src/game/heroes.js / dossier / source-pack",
           "status": "historical-repo-record-not-reopened"
+        },
+        {
+          "url": "https://commons.wikimedia.org/wiki/File:Rock_en_Seine_soad_4.JPG",
+          "role": "source-identity-or-world-reference",
+          "sourceFile": "src/game/heroes.js / dossier / source-pack",
+          "status": "historical-repo-record-not-reopened"
+        },
+        {
+          "url": "https://commons.wikimedia.org/wiki/File:Rock_en_Seine_soad_4.JPG",
+          "role": "independent-canon-reference",
+          "sourceFile": "docs/cg/reviews/music-portraits-2026-11-20/serj-tankian-reference-evidence-2026-11-20.json",
+          "status": "historically-viewed-not-1to1-approval",
+          "referencePurpose": "identity",
+          "referenceScope": "visible-head-and-upper-body",
+          "slot": null
         }
       ],
       "sources": [
         {
-          "url": "https://www.systemofadown.com/music",
+          "path": "docs/cg/reviews/music-portraits-2026-11-20/serj-tankian-reference-evidence-2026-11-20.json",
+          "role": "character-reference-evidence-receipt",
+          "sourceFile": "docs/cg/reviews/music-portraits-2026-11-20/serj-tankian-reference-evidence-2026-11-20.json",
+          "status": "reference-evidence-with-stated-inspection-status-and-limitations"
+        },
+        {
+          "path": "DLC/SystemOfADown/data/expandedUniverses.js",
+          "role": "source-evidence-provenance",
+          "sourceFile": "docs/cg/reviews/music-portraits-2026-11-20/serj-tankian-reference-evidence-2026-11-20.json",
+          "status": "historical-repo-record-not-reopened"
+        },
+        {
+          "path": "docs/cg/reviews/music-portraits-2026-11-20/serj-tankian-reference-evidence-2026-11-20.json",
           "role": "source-identity-or-world-reference",
           "sourceFile": "src/game/heroes.js / dossier / source-pack",
           "status": "historical-repo-record-not-reopened"
+        },
+        {
+          "url": "https://commons.wikimedia.org/wiki/File:Rock_en_Seine_soad_4.JPG",
+          "role": "source-identity-or-world-reference",
+          "sourceFile": "src/game/heroes.js / dossier / source-pack",
+          "status": "historical-repo-record-not-reopened"
+        },
+        {
+          "url": "https://commons.wikimedia.org/wiki/File:Rock_en_Seine_soad_4.JPG",
+          "role": "independent-canon-reference",
+          "sourceFile": "docs/cg/reviews/music-portraits-2026-11-20/serj-tankian-reference-evidence-2026-11-20.json",
+          "status": "historically-viewed-not-1to1-approval",
+          "referencePurpose": "identity",
+          "referenceScope": "visible-head-and-upper-body",
+          "slot": null
         }
       ],
       "localVisuals": [
@@ -188974,6 +189184,27 @@
           "exists": true,
           "selectedInRuntime": false,
           "status": "existing-project-art-not-independent-canon-proof"
+        },
+        {
+          "path": "docs/cg/references/music-portraits-2026-11-20/serj-tankian-1.jpg",
+          "url": "https://commons.wikimedia.org/wiki/File:Rock_en_Seine_soad_4.JPG",
+          "role": "independent-canon-reference",
+          "referencePurpose": "identity",
+          "referenceScope": "visible-head-and-upper-body",
+          "slot": null,
+          "referenceCharacter": "serj_tankian",
+          "sourceReferenceRole": "public-performance-identity-photo",
+          "canonicalProjectReference": false,
+          "exists": true,
+          "viewed": true,
+          "status": "historically-viewed-not-1to1-approval",
+          "sourceFile": "docs/cg/reviews/music-portraits-2026-11-20/serj-tankian-reference-evidence-2026-11-20.json",
+          "sha256": "51424485c6745862126a0fdc100a76acc19694aaade630a3093bf6041e9c7650",
+          "limitations": [
+            "Not a full-body authority",
+            "Precise iris color and hidden clothes/footwear unknown",
+            "Source contains another person, explicitly excluded"
+          ]
         }
       ],
       "cgRequirements": {
@@ -189010,7 +189241,8 @@
             "status": "needs-reference",
             "continuityStatus": "source-identity-in-original-scene",
             "source": [
-              "https://www.systemofadown.com/music",
+              "docs/cg/reviews/music-portraits-2026-11-20/serj-tankian-reference-evidence-2026-11-20.json",
+              "https://commons.wikimedia.org/wiki/File:Rock_en_Seine_soad_4.JPG",
               "docs/cg/CG_PILOT_REFERENCE_AUDIT.md"
             ],
             "sourceComparisonRequired": true,
@@ -189220,19 +189452,27 @@
         "commonRule": "Une pose et une composition de décor distinctes par CG; pour objet/décor seul, aucun personnage forcé. Préserver incarnation/anatomie/tenue sauf transformation spéciale explicitement étiquetée. Préserver tous les anciens assets comme variantes."
       },
       "readiness": {
-        "identity": "source-work-known-incarnation-to-resolve",
-        "visualReference": "source-image-needed-or-historical-url-only",
-        "sourceReview": "identity-or-visual-locks-incomplete",
+        "identity": "documented-in-project-source-record",
+        "visualReference": "independent-image-inspected-with-limitations",
+        "sourceReview": "source-evidence-qualified-needs-final-comparison",
         "visualFidelityApproved": false,
-        "detailedVisualAxes": [],
+        "detailedVisualAxes": [
+          "silhouette",
+          "costume",
+          "palette",
+          "face"
+        ],
         "missing": [
-          "Incarnation exacte encore à choisir; le nom de franchise ne suffit pas.",
-          "Silhouette, anatomie, visage, tenue et équipement non décrits spécifiquement; la vignette actuelle sert uniquement de point de comparaison.",
-          "Aucune image source indépendante conservée localement et inspectée dans cette session pour ce personnage.",
-          "Axes visuels non détaillés : silhouette, anatomy, costume, palette, face, distinguishingMarks."
+          "Axes visuels non détaillés : anatomy, distinguishingMarks.",
+          "Not a full-body authority",
+          "Precise iris color and hidden clothes/footwear unknown",
+          "Source contains another person, explicitly excluded",
+          "New frontward head/hand pose is an authorized Fan Art interpretation; not literal source-photo reproduction.",
+          "Small facial/iris and garment microdetails are not certified 1:1.",
+          "Full body reference is insufficient. Lower-body and footwear coverage are not established. Scope is the visible portrait only."
         ]
       },
-      "qualificationStatus": "identity-or-visual-locks-incomplete",
+      "qualificationStatus": "source-evidence-qualified-needs-final-comparison",
       "notes": [
         "Palette runtime indicative (pas preuve canon) : #b03a2e.",
         "Kit jeu séparé du canon : Serj Tankian Signature Strike ; Serj Tankian Breach Technique ; Serj Tankian Guard ; Serj Tankian Origin Burst."
@@ -189243,7 +189483,7 @@
         "plan": "docs/cg/roster-production-2026-10-18.json",
         "dossier": null,
         "sourcePack": "src/game/expandedUniverses.js / src/game/canonRosterWave.js",
-        "sourceSpecificDescription": null,
+        "sourceSpecificDescription": "docs/cg/reviews/music-portraits-2026-11-20/serj-tankian-reference-evidence-2026-11-20.json#visualLocks",
         "hasRuntimeSpecificDescription": false,
         "rawRuntimePalette": [
           "#b03a2e"
@@ -189261,29 +189501,31 @@
       "universeId": "system-of-a-down",
       "priority": "P1",
       "incarnation": {
-        "label": "Daron Malakian — System of a Down; époque et version précises à fixer",
-        "status": "source-work-known-incarnation-to-resolve",
-        "evidence": []
+        "label": "Daron Malakian · Rock en Seine · 2013-08-25",
+        "status": "documented-in-project-source-record",
+        "evidence": [
+          "docs/cg/reviews/music-portraits-2026-11-20/daron-malakian-reference-evidence-2026-11-20.json"
+        ]
       },
-      "identityLock": "Daron Malakian, System of a Down : l’identité nominative est conservée; les détails de ressemblance ne sont pas établis par les données actuelles.",
+      "identityLock": "Black brimmed hat hiding eyes, long hair, narrow soul patch, black red/rust-embroidered jacket and dark broad angular guitar are source-consistent.",
       "visualLocks": {
         "silhouette": [
-          "silhouette : détail non établi dans les données de référence de ce personnage; comparer la cible à un visuel source indépendant avant validation."
+          "Black brimmed hat hiding eyes, long hair, narrow soul patch, black red/rust-embroidered jacket and dark broad angular guitar are source-consistent."
         ],
         "anatomy": [
-          "anatomy : détail non établi dans les données de référence de ce personnage; comparer la cible à un visuel source indépendant avant validation."
+          "Black brimmed hat hiding eyes, long hair, narrow soul patch, black red/rust-embroidered jacket and dark broad angular guitar are source-consistent."
         ],
         "costume": [
-          "costume : détail non établi dans les données de référence de ce personnage; comparer la cible à un visuel source indépendant avant validation."
+          "Black brimmed hat hiding eyes, long hair, narrow soul patch, black red/rust-embroidered jacket and dark broad angular guitar are source-consistent."
         ],
         "palette": [
-          "palette : détail non établi dans les données de référence de ce personnage; comparer la cible à un visuel source indépendant avant validation."
+          "Black brimmed hat hiding eyes, long hair, narrow soul patch, black red/rust-embroidered jacket and dark broad angular guitar are source-consistent."
         ],
         "face": [
-          "face : détail non établi dans les données de référence de ce personnage; comparer la cible à un visuel source indépendant avant validation."
+          "Black brimmed hat hiding eyes, long hair, narrow soul patch, black red/rust-embroidered jacket and dark broad angular guitar are source-consistent."
         ],
         "distinguishingMarks": [
-          "distinguishingMarks : détail non établi dans les données de référence de ce personnage; comparer la cible à un visuel source indépendant avant validation."
+          "Black brimmed hat hiding eyes, long hair, narrow soul patch, black red/rust-embroidered jacket and dark broad angular guitar are source-consistent."
         ],
         "equipment": [
           "Aucun équipement distinct établi pour cette incarnation; CG02 à adapter ou déclarer N/A plutôt que reprendre une arme générique du gameplay."
@@ -189293,12 +189535,12 @@
           "Les armes, rayons, couleurs et catégories du gameplay ne prouvent pas un équipement ou pouvoir canonique."
         ],
         "outfit": [
-          "costume : détail non établi dans les données de référence de ce personnage; comparer la cible à un visuel source indépendant avant validation."
+          "Black brimmed hat hiding eyes, long hair, narrow soul patch, black red/rust-embroidered jacket and dark broad angular guitar are source-consistent."
         ]
       },
       "universeCoherence": {
-        "sourceWork": "System of a Down",
-        "period": "Daron Malakian — System of a Down; époque et version précises à fixer",
+        "sourceWork": "Daron Malakian · Rock en Seine · 2013-08-25",
+        "period": "Daron Malakian · Rock en Seine · 2013-08-25",
         "locations": [
           "B.Y.O.B. militarized banquet march through an urban protest set"
         ],
@@ -189318,18 +189560,72 @@
       },
       "sourceRefs": [
         {
-          "url": "https://www.systemofadown.com/music",
+          "path": "docs/cg/reviews/music-portraits-2026-11-20/daron-malakian-reference-evidence-2026-11-20.json",
+          "role": "character-reference-evidence-receipt",
+          "sourceFile": "docs/cg/reviews/music-portraits-2026-11-20/daron-malakian-reference-evidence-2026-11-20.json",
+          "status": "reference-evidence-with-stated-inspection-status-and-limitations"
+        },
+        {
+          "path": "DLC/SystemOfADown/data/expandedUniverses.js",
+          "role": "source-evidence-provenance",
+          "sourceFile": "docs/cg/reviews/music-portraits-2026-11-20/daron-malakian-reference-evidence-2026-11-20.json",
+          "status": "historical-repo-record-not-reopened"
+        },
+        {
+          "path": "docs/cg/reviews/music-portraits-2026-11-20/daron-malakian-reference-evidence-2026-11-20.json",
           "role": "source-identity-or-world-reference",
           "sourceFile": "src/game/heroes.js / dossier / source-pack",
           "status": "historical-repo-record-not-reopened"
+        },
+        {
+          "url": "https://commons.wikimedia.org/wiki/File:Rock_en_Seine_soad_2.JPG",
+          "role": "source-identity-or-world-reference",
+          "sourceFile": "src/game/heroes.js / dossier / source-pack",
+          "status": "historical-repo-record-not-reopened"
+        },
+        {
+          "url": "https://commons.wikimedia.org/wiki/File:Rock_en_Seine_soad_2.JPG",
+          "role": "independent-canon-reference",
+          "sourceFile": "docs/cg/reviews/music-portraits-2026-11-20/daron-malakian-reference-evidence-2026-11-20.json",
+          "status": "historically-viewed-not-1to1-approval",
+          "referencePurpose": "identity",
+          "referenceScope": "visible-head-and-upper-body",
+          "slot": null
         }
       ],
       "sources": [
         {
-          "url": "https://www.systemofadown.com/music",
+          "path": "docs/cg/reviews/music-portraits-2026-11-20/daron-malakian-reference-evidence-2026-11-20.json",
+          "role": "character-reference-evidence-receipt",
+          "sourceFile": "docs/cg/reviews/music-portraits-2026-11-20/daron-malakian-reference-evidence-2026-11-20.json",
+          "status": "reference-evidence-with-stated-inspection-status-and-limitations"
+        },
+        {
+          "path": "DLC/SystemOfADown/data/expandedUniverses.js",
+          "role": "source-evidence-provenance",
+          "sourceFile": "docs/cg/reviews/music-portraits-2026-11-20/daron-malakian-reference-evidence-2026-11-20.json",
+          "status": "historical-repo-record-not-reopened"
+        },
+        {
+          "path": "docs/cg/reviews/music-portraits-2026-11-20/daron-malakian-reference-evidence-2026-11-20.json",
           "role": "source-identity-or-world-reference",
           "sourceFile": "src/game/heroes.js / dossier / source-pack",
           "status": "historical-repo-record-not-reopened"
+        },
+        {
+          "url": "https://commons.wikimedia.org/wiki/File:Rock_en_Seine_soad_2.JPG",
+          "role": "source-identity-or-world-reference",
+          "sourceFile": "src/game/heroes.js / dossier / source-pack",
+          "status": "historical-repo-record-not-reopened"
+        },
+        {
+          "url": "https://commons.wikimedia.org/wiki/File:Rock_en_Seine_soad_2.JPG",
+          "role": "independent-canon-reference",
+          "sourceFile": "docs/cg/reviews/music-portraits-2026-11-20/daron-malakian-reference-evidence-2026-11-20.json",
+          "status": "historically-viewed-not-1to1-approval",
+          "referencePurpose": "identity",
+          "referenceScope": "visible-head-and-upper-body",
+          "slot": null
         }
       ],
       "localVisuals": [
@@ -189353,6 +189649,27 @@
           "exists": true,
           "selectedInRuntime": false,
           "status": "existing-project-art-not-independent-canon-proof"
+        },
+        {
+          "path": "docs/cg/references/music-portraits-2026-11-20/daron-malakian-1.jpg",
+          "url": "https://commons.wikimedia.org/wiki/File:Rock_en_Seine_soad_2.JPG",
+          "role": "independent-canon-reference",
+          "referencePurpose": "identity",
+          "referenceScope": "visible-head-and-upper-body",
+          "slot": null,
+          "referenceCharacter": "daron_malakian",
+          "sourceReferenceRole": "public-performance-identity-photo",
+          "canonicalProjectReference": false,
+          "exists": true,
+          "viewed": true,
+          "status": "historically-viewed-not-1to1-approval",
+          "sourceFile": "docs/cg/reviews/music-portraits-2026-11-20/daron-malakian-reference-evidence-2026-11-20.json",
+          "sha256": "1552fe9dfa2133058636a489d39afd25c583612217dd923a07641fd6ac40476f",
+          "limitations": [
+            "Eyes shadowed by hat; no iris color",
+            "Photo cropped below guitar/body; no footwear",
+            "Instrument controls and tiny pick graphics are not fidelity locks"
+          ]
         }
       ],
       "cgRequirements": {
@@ -189389,7 +189706,8 @@
             "status": "needs-reference",
             "continuityStatus": "source-identity-in-original-scene",
             "source": [
-              "https://www.systemofadown.com/music",
+              "docs/cg/reviews/music-portraits-2026-11-20/daron-malakian-reference-evidence-2026-11-20.json",
+              "https://commons.wikimedia.org/wiki/File:Rock_en_Seine_soad_2.JPG",
               "docs/cg/CG_PILOT_REFERENCE_AUDIT.md"
             ],
             "sourceComparisonRequired": true,
@@ -189599,19 +189917,28 @@
         "commonRule": "Une pose et une composition de décor distinctes par CG; pour objet/décor seul, aucun personnage forcé. Préserver incarnation/anatomie/tenue sauf transformation spéciale explicitement étiquetée. Préserver tous les anciens assets comme variantes."
       },
       "readiness": {
-        "identity": "source-work-known-incarnation-to-resolve",
-        "visualReference": "source-image-needed-or-historical-url-only",
-        "sourceReview": "identity-or-visual-locks-incomplete",
+        "identity": "documented-in-project-source-record",
+        "visualReference": "independent-image-inspected-with-limitations",
+        "sourceReview": "source-evidence-qualified-needs-final-comparison",
         "visualFidelityApproved": false,
-        "detailedVisualAxes": [],
+        "detailedVisualAxes": [
+          "silhouette",
+          "anatomy",
+          "costume",
+          "palette",
+          "face",
+          "distinguishingMarks"
+        ],
         "missing": [
-          "Incarnation exacte encore à choisir; le nom de franchise ne suffit pas.",
-          "Silhouette, anatomie, visage, tenue et équipement non décrits spécifiquement; la vignette actuelle sert uniquement de point de comparaison.",
-          "Aucune image source indépendante conservée localement et inspectée dans cette session pour ce personnage.",
-          "Axes visuels non détaillés : silhouette, anatomy, costume, palette, face, distinguishingMarks."
+          "Eyes shadowed by hat; no iris color",
+          "Photo cropped below guitar/body; no footwear",
+          "Instrument controls and tiny pick graphics are not fidelity locks",
+          "Guitar controls/hardware and tiny decorative shapes are not exact-model claims.",
+          "Eyes stay shadowed; no iris certification or complete lower-body authority.",
+          "Full body reference is insufficient. Lower-body and footwear coverage are not established. Scope is the visible portrait only."
         ]
       },
-      "qualificationStatus": "identity-or-visual-locks-incomplete",
+      "qualificationStatus": "source-evidence-qualified-needs-final-comparison",
       "notes": [
         "Palette runtime indicative (pas preuve canon) : #1c2833.",
         "Kit jeu séparé du canon : Daron Malakian Signature Strike ; Daron Malakian Breach Technique ; Daron Malakian Guard ; Daron Malakian Origin Burst."
@@ -189622,7 +189949,7 @@
         "plan": "docs/cg/roster-production-2026-10-18.json",
         "dossier": null,
         "sourcePack": "src/game/expandedUniverses.js / src/game/canonRosterWave.js",
-        "sourceSpecificDescription": null,
+        "sourceSpecificDescription": "docs/cg/reviews/music-portraits-2026-11-20/daron-malakian-reference-evidence-2026-11-20.json#visualLocks",
         "hasRuntimeSpecificDescription": false,
         "rawRuntimePalette": [
           "#1c2833"
@@ -189640,14 +189967,16 @@
       "universeId": "system-of-a-down",
       "priority": "P1",
       "incarnation": {
-        "label": "Shavo Odadjian — System of a Down; époque et version précises à fixer",
-        "status": "source-work-known-incarnation-to-resolve",
-        "evidence": []
+        "label": "Shavo Odadjian · Soundwave Festival, Claremont Showgrounds · 2012-03-05",
+        "status": "documented-in-project-source-record",
+        "evidence": [
+          "docs/cg/reviews/music-portraits-2026-11-20/shavo-odadjian-reference-evidence-2026-11-20.json"
+        ]
       },
-      "identityLock": "Shavo Odadjian, System of a Down : l’identité nominative est conservée; les détails de ressemblance ne sont pas établis par les données actuelles.",
+      "identityLock": "Cap, narrow long goatee, necklace, wrist cuffs, oversized dark jersey cut, camouflage upper trousers and pale angular bass correspond to photographed 2012 subject.",
       "visualLocks": {
         "silhouette": [
-          "silhouette : détail non établi dans les données de référence de ce personnage; comparer la cible à un visuel source indépendant avant validation."
+          "Cap, narrow long goatee, necklace, wrist cuffs, oversized dark jersey cut, camouflage upper trousers and pale angular bass correspond to photographed 2012 subject."
         ],
         "anatomy": [
           "anatomy : détail non établi dans les données de référence de ce personnage; comparer la cible à un visuel source indépendant avant validation."
@@ -189676,8 +190005,8 @@
         ]
       },
       "universeCoherence": {
-        "sourceWork": "System of a Down",
-        "period": "Shavo Odadjian — System of a Down; époque et version précises à fixer",
+        "sourceWork": "Shavo Odadjian · Soundwave Festival, Claremont Showgrounds · 2012-03-05",
+        "period": "Shavo Odadjian · Soundwave Festival, Claremont Showgrounds · 2012-03-05",
         "locations": [
           "B.Y.O.B. militarized banquet march through an urban protest set"
         ],
@@ -189697,18 +190026,72 @@
       },
       "sourceRefs": [
         {
-          "url": "https://www.systemofadown.com/music",
+          "path": "docs/cg/reviews/music-portraits-2026-11-20/shavo-odadjian-reference-evidence-2026-11-20.json",
+          "role": "character-reference-evidence-receipt",
+          "sourceFile": "docs/cg/reviews/music-portraits-2026-11-20/shavo-odadjian-reference-evidence-2026-11-20.json",
+          "status": "reference-evidence-with-stated-inspection-status-and-limitations"
+        },
+        {
+          "path": "DLC/SystemOfADown/data/expandedUniverses.js",
+          "role": "source-evidence-provenance",
+          "sourceFile": "docs/cg/reviews/music-portraits-2026-11-20/shavo-odadjian-reference-evidence-2026-11-20.json",
+          "status": "historical-repo-record-not-reopened"
+        },
+        {
+          "path": "docs/cg/reviews/music-portraits-2026-11-20/shavo-odadjian-reference-evidence-2026-11-20.json",
           "role": "source-identity-or-world-reference",
           "sourceFile": "src/game/heroes.js / dossier / source-pack",
           "status": "historical-repo-record-not-reopened"
+        },
+        {
+          "url": "https://commons.wikimedia.org/wiki/File:System_Of_A_Down_@_Claremont_Showgrounds_(5_3_2012)_(6859500592).jpg",
+          "role": "source-identity-or-world-reference",
+          "sourceFile": "src/game/heroes.js / dossier / source-pack",
+          "status": "historical-repo-record-not-reopened"
+        },
+        {
+          "url": "https://commons.wikimedia.org/wiki/File:System_Of_A_Down_@_Claremont_Showgrounds_(5_3_2012)_(6859500592).jpg",
+          "role": "independent-canon-reference",
+          "sourceFile": "docs/cg/reviews/music-portraits-2026-11-20/shavo-odadjian-reference-evidence-2026-11-20.json",
+          "status": "historically-viewed-not-1to1-approval",
+          "referencePurpose": "identity",
+          "referenceScope": "visible-head-and-upper-body",
+          "slot": null
         }
       ],
       "sources": [
         {
-          "url": "https://www.systemofadown.com/music",
+          "path": "docs/cg/reviews/music-portraits-2026-11-20/shavo-odadjian-reference-evidence-2026-11-20.json",
+          "role": "character-reference-evidence-receipt",
+          "sourceFile": "docs/cg/reviews/music-portraits-2026-11-20/shavo-odadjian-reference-evidence-2026-11-20.json",
+          "status": "reference-evidence-with-stated-inspection-status-and-limitations"
+        },
+        {
+          "path": "DLC/SystemOfADown/data/expandedUniverses.js",
+          "role": "source-evidence-provenance",
+          "sourceFile": "docs/cg/reviews/music-portraits-2026-11-20/shavo-odadjian-reference-evidence-2026-11-20.json",
+          "status": "historical-repo-record-not-reopened"
+        },
+        {
+          "path": "docs/cg/reviews/music-portraits-2026-11-20/shavo-odadjian-reference-evidence-2026-11-20.json",
           "role": "source-identity-or-world-reference",
           "sourceFile": "src/game/heroes.js / dossier / source-pack",
           "status": "historical-repo-record-not-reopened"
+        },
+        {
+          "url": "https://commons.wikimedia.org/wiki/File:System_Of_A_Down_@_Claremont_Showgrounds_(5_3_2012)_(6859500592).jpg",
+          "role": "source-identity-or-world-reference",
+          "sourceFile": "src/game/heroes.js / dossier / source-pack",
+          "status": "historical-repo-record-not-reopened"
+        },
+        {
+          "url": "https://commons.wikimedia.org/wiki/File:System_Of_A_Down_@_Claremont_Showgrounds_(5_3_2012)_(6859500592).jpg",
+          "role": "independent-canon-reference",
+          "sourceFile": "docs/cg/reviews/music-portraits-2026-11-20/shavo-odadjian-reference-evidence-2026-11-20.json",
+          "status": "historically-viewed-not-1to1-approval",
+          "referencePurpose": "identity",
+          "referenceScope": "visible-head-and-upper-body",
+          "slot": null
         }
       ],
       "localVisuals": [
@@ -189732,6 +190115,27 @@
           "exists": true,
           "selectedInRuntime": false,
           "status": "existing-project-art-not-independent-canon-proof"
+        },
+        {
+          "path": "docs/cg/references/music-portraits-2026-11-20/shavo-odadjian-1.jpg",
+          "url": "https://commons.wikimedia.org/wiki/File:System_Of_A_Down_@_Claremont_Showgrounds_(5_3_2012)_(6859500592).jpg",
+          "role": "independent-canon-reference",
+          "referencePurpose": "identity",
+          "referenceScope": "visible-head-and-upper-body",
+          "slot": null,
+          "referenceCharacter": "shavo_odadjian",
+          "sourceReferenceRole": "public-performance-identity-photo",
+          "canonicalProjectReference": false,
+          "exists": true,
+          "viewed": true,
+          "status": "historically-viewed-not-1to1-approval",
+          "sourceFile": "docs/cg/reviews/music-portraits-2026-11-20/shavo-odadjian-reference-evidence-2026-11-20.json",
+          "sha256": "92e85104b3f76415b54d834a47cc4ebe7410caa17f6808bb56f3b798cb05bbf4",
+          "limitations": [
+            "Numbers on original jersey removed as explicit logo/text-free adaptation",
+            "No iris/hidden footwear/tattoo details certified",
+            "Lighting colors are adapted, not a claim of true colors under neutral light"
+          ]
         }
       ],
       "cgRequirements": {
@@ -189768,7 +190172,8 @@
             "status": "needs-reference",
             "continuityStatus": "source-identity-in-original-scene",
             "source": [
-              "https://www.systemofadown.com/music",
+              "docs/cg/reviews/music-portraits-2026-11-20/shavo-odadjian-reference-evidence-2026-11-20.json",
+              "https://commons.wikimedia.org/wiki/File:System_Of_A_Down_@_Claremont_Showgrounds_(5_3_2012)_(6859500592).jpg",
               "docs/cg/CG_PILOT_REFERENCE_AUDIT.md"
             ],
             "sourceComparisonRequired": true,
@@ -189978,19 +190383,26 @@
         "commonRule": "Une pose et une composition de décor distinctes par CG; pour objet/décor seul, aucun personnage forcé. Préserver incarnation/anatomie/tenue sauf transformation spéciale explicitement étiquetée. Préserver tous les anciens assets comme variantes."
       },
       "readiness": {
-        "identity": "source-work-known-incarnation-to-resolve",
-        "visualReference": "source-image-needed-or-historical-url-only",
-        "sourceReview": "identity-or-visual-locks-incomplete",
+        "identity": "documented-in-project-source-record",
+        "visualReference": "independent-image-inspected-with-limitations",
+        "sourceReview": "source-evidence-qualified-needs-final-comparison",
         "visualFidelityApproved": false,
-        "detailedVisualAxes": [],
+        "detailedVisualAxes": [
+          "silhouette"
+        ],
         "missing": [
-          "Incarnation exacte encore à choisir; le nom de franchise ne suffit pas.",
-          "Silhouette, anatomie, visage, tenue et équipement non décrits spécifiquement; la vignette actuelle sert uniquement de point de comparaison.",
-          "Aucune image source indépendante conservée localement et inspectée dans cette session pour ce personnage.",
-          "Axes visuels non détaillés : silhouette, anatomy, costume, palette, face, distinguishingMarks."
+          "Axes visuels non détaillés : anatomy, costume, palette, face, distinguishingMarks.",
+          "Numbers on original jersey removed as explicit logo/text-free adaptation",
+          "No iris/hidden footwear/tattoo details certified",
+          "Lighting colors are adapted, not a claim of true colors under neutral light",
+          "Original jersey numbers deliberately removed for text-free Fan Art adaptation.",
+          "Goatee is rendered with a braid-like texture; exact hair-strand/braiding pattern is not verifiable from this small public reference.",
+          "Small cheek mark and detailed necklace/hardware are not certified as exact identity details.",
+          "Requested level head angle is not literally matched.",
+          "Full body reference is insufficient. Lower-body and footwear coverage are not established. Scope is the visible portrait only."
         ]
       },
-      "qualificationStatus": "identity-or-visual-locks-incomplete",
+      "qualificationStatus": "source-evidence-qualified-needs-final-comparison",
       "notes": [
         "Palette runtime indicative (pas preuve canon) : #7d6608.",
         "Kit jeu séparé du canon : Shavo Odadjian Signature Strike ; Shavo Odadjian Breach Technique ; Shavo Odadjian Guard ; Shavo Odadjian Origin Burst."
@@ -190001,7 +190413,7 @@
         "plan": "docs/cg/roster-production-2026-10-18.json",
         "dossier": null,
         "sourcePack": "src/game/expandedUniverses.js / src/game/canonRosterWave.js",
-        "sourceSpecificDescription": null,
+        "sourceSpecificDescription": "docs/cg/reviews/music-portraits-2026-11-20/shavo-odadjian-reference-evidence-2026-11-20.json#visualLocks",
         "hasRuntimeSpecificDescription": false,
         "rawRuntimePalette": [
           "#7d6608"
@@ -190019,17 +190431,19 @@
       "universeId": "system-of-a-down",
       "priority": "P1",
       "incarnation": {
-        "label": "John Dolmayan — System of a Down; époque et version précises à fixer",
-        "status": "source-work-known-incarnation-to-resolve",
-        "evidence": []
+        "label": "John Dolmayan · System of a Down performance, location not asserted by file description · 2013-08-20",
+        "status": "documented-in-project-source-record",
+        "evidence": [
+          "docs/cg/reviews/music-portraits-2026-11-20/john-dolmayan-reference-evidence-2026-11-20.json"
+        ]
       },
-      "identityLock": "John Dolmayan, System of a Down : l’identité nominative est conservée; les détails de ressemblance ne sont pas établis par les données actuelles.",
+      "identityLock": "Short dark side-combed hair, mustache/goatee, sleeveless dark top and bare upper arms follow central drummer in source photo.",
       "visualLocks": {
         "silhouette": [
-          "silhouette : détail non établi dans les données de référence de ce personnage; comparer la cible à un visuel source indépendant avant validation."
+          "Short dark side-combed hair, mustache/goatee, sleeveless dark top and bare upper arms follow central drummer in source photo."
         ],
         "anatomy": [
-          "anatomy : détail non établi dans les données de référence de ce personnage; comparer la cible à un visuel source indépendant avant validation."
+          "Short dark side-combed hair, mustache/goatee, sleeveless dark top and bare upper arms follow central drummer in source photo."
         ],
         "costume": [
           "costume : détail non établi dans les données de référence de ce personnage; comparer la cible à un visuel source indépendant avant validation."
@@ -190038,7 +190452,7 @@
           "palette : détail non établi dans les données de référence de ce personnage; comparer la cible à un visuel source indépendant avant validation."
         ],
         "face": [
-          "face : détail non établi dans les données de référence de ce personnage; comparer la cible à un visuel source indépendant avant validation."
+          "Short dark side-combed hair, mustache/goatee, sleeveless dark top and bare upper arms follow central drummer in source photo."
         ],
         "distinguishingMarks": [
           "distinguishingMarks : détail non établi dans les données de référence de ce personnage; comparer la cible à un visuel source indépendant avant validation."
@@ -190055,8 +190469,8 @@
         ]
       },
       "universeCoherence": {
-        "sourceWork": "System of a Down",
-        "period": "John Dolmayan — System of a Down; époque et version précises à fixer",
+        "sourceWork": "John Dolmayan · System of a Down performance, location not asserted by file description · 2013-08-20",
+        "period": "John Dolmayan · System of a Down performance, location not asserted by file description · 2013-08-20",
         "locations": [
           "B.Y.O.B. militarized banquet march through an urban protest set"
         ],
@@ -190076,18 +190490,72 @@
       },
       "sourceRefs": [
         {
-          "url": "https://www.systemofadown.com/music",
+          "path": "docs/cg/reviews/music-portraits-2026-11-20/john-dolmayan-reference-evidence-2026-11-20.json",
+          "role": "character-reference-evidence-receipt",
+          "sourceFile": "docs/cg/reviews/music-portraits-2026-11-20/john-dolmayan-reference-evidence-2026-11-20.json",
+          "status": "reference-evidence-with-stated-inspection-status-and-limitations"
+        },
+        {
+          "path": "DLC/SystemOfADown/data/expandedUniverses.js",
+          "role": "source-evidence-provenance",
+          "sourceFile": "docs/cg/reviews/music-portraits-2026-11-20/john-dolmayan-reference-evidence-2026-11-20.json",
+          "status": "historical-repo-record-not-reopened"
+        },
+        {
+          "path": "docs/cg/reviews/music-portraits-2026-11-20/john-dolmayan-reference-evidence-2026-11-20.json",
           "role": "source-identity-or-world-reference",
           "sourceFile": "src/game/heroes.js / dossier / source-pack",
           "status": "historical-repo-record-not-reopened"
+        },
+        {
+          "url": "https://commons.wikimedia.org/wiki/File:SoaD-2013-2.jpg",
+          "role": "source-identity-or-world-reference",
+          "sourceFile": "src/game/heroes.js / dossier / source-pack",
+          "status": "historical-repo-record-not-reopened"
+        },
+        {
+          "url": "https://commons.wikimedia.org/wiki/File:SoaD-2013-2.jpg",
+          "role": "independent-canon-reference",
+          "sourceFile": "docs/cg/reviews/music-portraits-2026-11-20/john-dolmayan-reference-evidence-2026-11-20.json",
+          "status": "historically-viewed-not-1to1-approval",
+          "referencePurpose": "conditioning-crop",
+          "referenceScope": "conditioning-crop",
+          "slot": null
         }
       ],
       "sources": [
         {
-          "url": "https://www.systemofadown.com/music",
+          "path": "docs/cg/reviews/music-portraits-2026-11-20/john-dolmayan-reference-evidence-2026-11-20.json",
+          "role": "character-reference-evidence-receipt",
+          "sourceFile": "docs/cg/reviews/music-portraits-2026-11-20/john-dolmayan-reference-evidence-2026-11-20.json",
+          "status": "reference-evidence-with-stated-inspection-status-and-limitations"
+        },
+        {
+          "path": "DLC/SystemOfADown/data/expandedUniverses.js",
+          "role": "source-evidence-provenance",
+          "sourceFile": "docs/cg/reviews/music-portraits-2026-11-20/john-dolmayan-reference-evidence-2026-11-20.json",
+          "status": "historical-repo-record-not-reopened"
+        },
+        {
+          "path": "docs/cg/reviews/music-portraits-2026-11-20/john-dolmayan-reference-evidence-2026-11-20.json",
           "role": "source-identity-or-world-reference",
           "sourceFile": "src/game/heroes.js / dossier / source-pack",
           "status": "historical-repo-record-not-reopened"
+        },
+        {
+          "url": "https://commons.wikimedia.org/wiki/File:SoaD-2013-2.jpg",
+          "role": "source-identity-or-world-reference",
+          "sourceFile": "src/game/heroes.js / dossier / source-pack",
+          "status": "historical-repo-record-not-reopened"
+        },
+        {
+          "url": "https://commons.wikimedia.org/wiki/File:SoaD-2013-2.jpg",
+          "role": "independent-canon-reference",
+          "sourceFile": "docs/cg/reviews/music-portraits-2026-11-20/john-dolmayan-reference-evidence-2026-11-20.json",
+          "status": "historically-viewed-not-1to1-approval",
+          "referencePurpose": "conditioning-crop",
+          "referenceScope": "conditioning-crop",
+          "slot": null
         }
       ],
       "localVisuals": [
@@ -190111,6 +190579,50 @@
           "exists": true,
           "selectedInRuntime": false,
           "status": "existing-project-art-not-independent-canon-proof"
+        },
+        {
+          "path": "docs/cg/references/music-portraits-2026-11-20/john-dolmayan-1.jpg",
+          "url": "https://commons.wikimedia.org/wiki/File:SoaD-2013-2.jpg",
+          "role": "independent-canon-reference",
+          "referencePurpose": "identity",
+          "referenceScope": "visible-head-and-upper-body",
+          "slot": null,
+          "referenceCharacter": "john_dolmayan",
+          "sourceReferenceRole": "public-performance-identity-photo",
+          "canonicalProjectReference": false,
+          "exists": true,
+          "viewed": true,
+          "status": "historically-viewed-not-1to1-approval",
+          "sourceFile": "docs/cg/reviews/music-portraits-2026-11-20/john-dolmayan-reference-evidence-2026-11-20.json",
+          "sha256": "c1d2e90943e5a620aa282dceddf7c3a74f0a6119bbb6e9fc850a1be5be6f0358",
+          "limitations": [
+            "Weaker face-detail source than other three; no absolute likeness certification",
+            "Source is monochrome: no actual garment or iris color claimed",
+            "Cymbal partially obscures upper face; do not hallucinate photoreal facial detail",
+            "No hidden lower body/footwear/complete unseen kit geometry certified"
+          ]
+        },
+        {
+          "path": "docs/cg/references/music-portraits-2026-11-20/john-dolmayan-2.png",
+          "url": "https://commons.wikimedia.org/wiki/File:SoaD-2013-2.jpg",
+          "role": "independent-canon-reference",
+          "referencePurpose": "conditioning-crop",
+          "referenceScope": "conditioning-crop",
+          "slot": null,
+          "referenceCharacter": "john_dolmayan",
+          "sourceReferenceRole": "same-photo-conditioning-crop",
+          "canonicalProjectReference": false,
+          "exists": true,
+          "viewed": true,
+          "status": "historically-viewed-not-1to1-approval",
+          "sourceFile": "docs/cg/reviews/music-portraits-2026-11-20/john-dolmayan-reference-evidence-2026-11-20.json",
+          "sha256": "4384fcb1d5a88550529091bf4090f61a195d6d7556a737f9752293e541741df3",
+          "limitations": [
+            "Weaker face-detail source than other three; no absolute likeness certification",
+            "Source is monochrome: no actual garment or iris color claimed",
+            "Cymbal partially obscures upper face; do not hallucinate photoreal facial detail",
+            "No hidden lower body/footwear/complete unseen kit geometry certified"
+          ]
         }
       ],
       "cgRequirements": {
@@ -190147,7 +190659,8 @@
             "status": "needs-reference",
             "continuityStatus": "source-identity-in-original-scene",
             "source": [
-              "https://www.systemofadown.com/music",
+              "docs/cg/reviews/music-portraits-2026-11-20/john-dolmayan-reference-evidence-2026-11-20.json",
+              "https://commons.wikimedia.org/wiki/File:SoaD-2013-2.jpg",
               "docs/cg/CG_PILOT_REFERENCE_AUDIT.md"
             ],
             "sourceComparisonRequired": true,
@@ -190357,19 +190870,28 @@
         "commonRule": "Une pose et une composition de décor distinctes par CG; pour objet/décor seul, aucun personnage forcé. Préserver incarnation/anatomie/tenue sauf transformation spéciale explicitement étiquetée. Préserver tous les anciens assets comme variantes."
       },
       "readiness": {
-        "identity": "source-work-known-incarnation-to-resolve",
-        "visualReference": "source-image-needed-or-historical-url-only",
-        "sourceReview": "identity-or-visual-locks-incomplete",
+        "identity": "documented-in-project-source-record",
+        "visualReference": "independent-image-inspected-with-limitations",
+        "sourceReview": "source-evidence-qualified-needs-final-comparison",
         "visualFidelityApproved": false,
-        "detailedVisualAxes": [],
+        "detailedVisualAxes": [
+          "silhouette",
+          "anatomy",
+          "face"
+        ],
         "missing": [
-          "Incarnation exacte encore à choisir; le nom de franchise ne suffit pas.",
-          "Silhouette, anatomie, visage, tenue et équipement non décrits spécifiquement; la vignette actuelle sert uniquement de point de comparaison.",
-          "Aucune image source indépendante conservée localement et inspectée dans cette session pour ce personnage.",
-          "Axes visuels non détaillés : silhouette, anatomy, costume, palette, face, distinguishingMarks."
+          "Axes visuels non détaillés : costume, palette, distinguishingMarks.",
+          "Weaker face-detail source than other three; no absolute likeness certification",
+          "Source is monochrome: no actual garment or iris color claimed",
+          "Cymbal partially obscures upper face; do not hallucinate photoreal facial detail",
+          "No hidden lower body/footwear/complete unseen kit geometry certified",
+          "Source central drummer is small, monochrome, and partly obscured: exact facial geometry, iris, garment colors and microdetails cannot be certified.",
+          "Output shows more of both eyes than source obscuration; cymbal crosses the upper cheek/nose area. This is a bounded Fan Art interpretation, not certified exact face reconstruction.",
+          "No hidden lower-body, footwear or exact whole-kit authority claimed.",
+          "Full body reference is insufficient. Lower-body and footwear coverage are not established. Scope is the visible portrait only."
         ]
       },
-      "qualificationStatus": "identity-or-visual-locks-incomplete",
+      "qualificationStatus": "source-evidence-qualified-needs-final-comparison",
       "notes": [
         "Palette runtime indicative (pas preuve canon) : #566573.",
         "Kit jeu séparé du canon : Drumline Strike ; Toxicity Tempo Lock ; Rhythm Guard ; Hypnotize Drum Break."
@@ -190380,7 +190902,7 @@
         "plan": "docs/cg/roster-production-2026-10-18.json",
         "dossier": null,
         "sourcePack": "src/game/expandedUniverses.js / src/game/canonRosterWave.js",
-        "sourceSpecificDescription": null,
+        "sourceSpecificDescription": "docs/cg/reviews/music-portraits-2026-11-20/john-dolmayan-reference-evidence-2026-11-20.json#visualLocks",
         "hasRuntimeSpecificDescription": false,
         "rawRuntimePalette": [
           "#566573"
@@ -193422,34 +193944,44 @@
       "universeId": "oliver-tree",
       "priority": "P1",
       "incarnation": {
-        "label": "Oliver Tree — Oliver Tree; époque et version précises à fixer",
-        "status": "source-work-known-incarnation-to-resolve",
-        "evidence": []
+        "label": "Oliver Tree, persona publique de scène le 2 février 2020 en veste violet-rose à col jaune",
+        "status": "documented-in-project-source-record",
+        "evidence": [
+          "docs/cg/reviews/music-portraits-2026-11-20/oliver-tree-reference-evidence-2026-11-20.json"
+        ]
       },
-      "identityLock": "Oliver Tree, Oliver Tree : l’identité nominative est conservée; les détails de ressemblance ne sont pas établis par les données actuelles.",
+      "identityLock": "Visage, coupe au bol brune, lunettes rouges, col jaune et panneaux nylon violets/rose concordent avec les éléments visibles des photos. Nouvelle posture calme, bouche fermée, mains en poches ; nouveau hall orange/chartreuse sans personnage secondaire. Le minuscule signe blanc sur la branche des lunettes du premier natif a été retiré par une vraie édition ImageGen ; branche rouge unie dans le natif retenu. Aucun texte lisible ni arme observé. L’image reste à mi-corps et ne valide pas pieds, jambes ou détails cachés.",
       "visualLocks": {
         "silhouette": [
-          "silhouette : détail non établi dans les données de référence de ce personnage; comparer la cible à un visuel source indépendant avant validation."
+          "L’image reste à mi-corps et ne valide pas pieds, jambes ou détails cachés."
         ],
         "anatomy": [
-          "anatomy : détail non établi dans les données de référence de ce personnage; comparer la cible à un visuel source indépendant avant validation."
+          "Nouvelle posture calme, bouche fermée, mains en poches ;",
+          "L’image reste à mi-corps et ne valide pas pieds, jambes ou détails cachés."
         ],
         "costume": [
           "costume : détail non établi dans les données de référence de ce personnage; comparer la cible à un visuel source indépendant avant validation."
         ],
         "palette": [
-          "palette : détail non établi dans les données de référence de ce personnage; comparer la cible à un visuel source indépendant avant validation."
+          "Visage, coupe au bol brune, lunettes rouges, col jaune et panneaux nylon violets/rose concordent avec les éléments visibles des photos.",
+          "nouveau hall orange/chartreuse sans personnage secondaire.",
+          "Le minuscule signe blanc sur la branche des lunettes du premier natif a été retiré par une vraie édition ImageGen ;",
+          "branche rouge unie dans le natif retenu."
         ],
         "face": [
-          "face : détail non établi dans les données de référence de ce personnage; comparer la cible à un visuel source indépendant avant validation."
+          "Visage, coupe au bol brune, lunettes rouges, col jaune et panneaux nylon violets/rose concordent avec les éléments visibles des photos.",
+          "Nouvelle posture calme, bouche fermée, mains en poches ;",
+          "Le minuscule signe blanc sur la branche des lunettes du premier natif a été retiré par une vraie édition ImageGen ;"
         ],
         "distinguishingMarks": [
-          "distinguishingMarks : détail non établi dans les données de référence de ce personnage; comparer la cible à un visuel source indépendant avant validation."
+          "L’image reste à mi-corps et ne valide pas pieds, jambes ou détails cachés."
         ],
         "equipment": [
-          "Aucun équipement distinct établi pour cette incarnation; CG02 à adapter ou déclarer N/A plutôt que reprendre une arme générique du gameplay."
+          "Visage, coupe au bol brune, lunettes rouges, col jaune et panneaux nylon violets/rose concordent avec les éléments visibles des photos. Nouvelle posture calme, bouche fermée, mains en poches ; nouveau hall orange/chartreuse sans personnage secondaire. Le minuscule signe blanc sur la branche des lunettes du premier natif a été retiré par une vraie édition ImageGen ; branche rouge unie dans le natif retenu. Aucun texte lisible ni arme observé. L’image reste à mi-corps et ne valide pas pieds, jambes ou détails cachés."
         ],
         "forbiddenMixes": [
+          "Aucun texte lisible ni arme observé.",
+          "L’image reste à mi-corps et ne valide pas pieds, jambes ou détails cachés.",
           "Ne pas fusionner plusieurs continuités ou variantes de Oliver Tree; toute transformation spéciale garde son étiquette WhatIf.",
           "Les armes, rayons, couleurs et catégories du gameplay ne prouvent pas un équipement ou pouvoir canonique."
         ],
@@ -193458,8 +193990,8 @@
         ]
       },
       "universeCoherence": {
-        "sourceWork": "Oliver Tree",
-        "period": "Oliver Tree — Oliver Tree; époque et version précises à fixer",
+        "sourceWork": "Oliver Tree, persona publique de scène le 2 février 2020 en veste violet-rose à col jaune",
+        "period": "Oliver Tree, persona publique de scène le 2 février 2020 en veste violet-rose à col jaune",
         "locations": [
           "Hurt demolition lot and giant kick-scooter test ramp"
         ],
@@ -193479,18 +194011,102 @@
       },
       "sourceRefs": [
         {
-          "url": "https://www.atlanticrecords.com/artists/oliver-tree",
+          "path": "docs/cg/reviews/music-portraits-2026-11-20/oliver-tree-reference-evidence-2026-11-20.json",
+          "role": "character-reference-evidence-receipt",
+          "sourceFile": "docs/cg/reviews/music-portraits-2026-11-20/oliver-tree-reference-evidence-2026-11-20.json",
+          "status": "reference-evidence-with-stated-inspection-status-and-limitations"
+        },
+        {
+          "path": "DLC/OliverTree/data/expandedUniverses.js",
+          "role": "source-evidence-provenance",
+          "sourceFile": "docs/cg/reviews/music-portraits-2026-11-20/oliver-tree-reference-evidence-2026-11-20.json",
+          "status": "historical-repo-record-not-reopened"
+        },
+        {
+          "path": "docs/cg/reviews/music-portraits-2026-11-20/oliver-tree-reference-evidence-2026-11-20.json",
           "role": "source-identity-or-world-reference",
           "sourceFile": "src/game/heroes.js / dossier / source-pack",
           "status": "historical-repo-record-not-reopened"
+        },
+        {
+          "url": "https://commons.wikimedia.org/wiki/File:Oliver_Tree_(50118164757).jpg",
+          "role": "source-identity-or-world-reference",
+          "sourceFile": "src/game/heroes.js / dossier / source-pack",
+          "status": "historical-repo-record-not-reopened"
+        },
+        {
+          "url": "https://commons.wikimedia.org/wiki/File:Oliver_Tree_(50118171992).jpg",
+          "role": "source-identity-or-world-reference",
+          "sourceFile": "src/game/heroes.js / dossier / source-pack",
+          "status": "historical-repo-record-not-reopened"
+        },
+        {
+          "url": "https://commons.wikimedia.org/wiki/File:Oliver_Tree_(50118164757).jpg",
+          "role": "independent-canon-reference",
+          "sourceFile": "docs/cg/reviews/music-portraits-2026-11-20/oliver-tree-reference-evidence-2026-11-20.json",
+          "status": "historically-viewed-not-1to1-approval",
+          "referencePurpose": "identity",
+          "referenceScope": "visible-head-and-upper-body",
+          "slot": null
+        },
+        {
+          "url": "https://commons.wikimedia.org/wiki/File:Oliver_Tree_(50118171992).jpg",
+          "role": "independent-canon-reference",
+          "sourceFile": "docs/cg/reviews/music-portraits-2026-11-20/oliver-tree-reference-evidence-2026-11-20.json",
+          "status": "historically-viewed-not-1to1-approval",
+          "referencePurpose": "identity",
+          "referenceScope": "visible-head-and-upper-body",
+          "slot": null
         }
       ],
       "sources": [
         {
-          "url": "https://www.atlanticrecords.com/artists/oliver-tree",
+          "path": "docs/cg/reviews/music-portraits-2026-11-20/oliver-tree-reference-evidence-2026-11-20.json",
+          "role": "character-reference-evidence-receipt",
+          "sourceFile": "docs/cg/reviews/music-portraits-2026-11-20/oliver-tree-reference-evidence-2026-11-20.json",
+          "status": "reference-evidence-with-stated-inspection-status-and-limitations"
+        },
+        {
+          "path": "DLC/OliverTree/data/expandedUniverses.js",
+          "role": "source-evidence-provenance",
+          "sourceFile": "docs/cg/reviews/music-portraits-2026-11-20/oliver-tree-reference-evidence-2026-11-20.json",
+          "status": "historical-repo-record-not-reopened"
+        },
+        {
+          "path": "docs/cg/reviews/music-portraits-2026-11-20/oliver-tree-reference-evidence-2026-11-20.json",
           "role": "source-identity-or-world-reference",
           "sourceFile": "src/game/heroes.js / dossier / source-pack",
           "status": "historical-repo-record-not-reopened"
+        },
+        {
+          "url": "https://commons.wikimedia.org/wiki/File:Oliver_Tree_(50118164757).jpg",
+          "role": "source-identity-or-world-reference",
+          "sourceFile": "src/game/heroes.js / dossier / source-pack",
+          "status": "historical-repo-record-not-reopened"
+        },
+        {
+          "url": "https://commons.wikimedia.org/wiki/File:Oliver_Tree_(50118171992).jpg",
+          "role": "source-identity-or-world-reference",
+          "sourceFile": "src/game/heroes.js / dossier / source-pack",
+          "status": "historical-repo-record-not-reopened"
+        },
+        {
+          "url": "https://commons.wikimedia.org/wiki/File:Oliver_Tree_(50118164757).jpg",
+          "role": "independent-canon-reference",
+          "sourceFile": "docs/cg/reviews/music-portraits-2026-11-20/oliver-tree-reference-evidence-2026-11-20.json",
+          "status": "historically-viewed-not-1to1-approval",
+          "referencePurpose": "identity",
+          "referenceScope": "visible-head-and-upper-body",
+          "slot": null
+        },
+        {
+          "url": "https://commons.wikimedia.org/wiki/File:Oliver_Tree_(50118171992).jpg",
+          "role": "independent-canon-reference",
+          "sourceFile": "docs/cg/reviews/music-portraits-2026-11-20/oliver-tree-reference-evidence-2026-11-20.json",
+          "status": "historically-viewed-not-1to1-approval",
+          "referencePurpose": "identity",
+          "referenceScope": "visible-head-and-upper-body",
+          "slot": null
         }
       ],
       "localVisuals": [
@@ -193514,6 +194130,40 @@
           "exists": true,
           "selectedInRuntime": false,
           "status": "existing-project-art-not-independent-canon-proof"
+        },
+        {
+          "path": "docs/cg/references/music-portraits-2026-11-20/oliver-tree-1.jpg",
+          "url": "https://commons.wikimedia.org/wiki/File:Oliver_Tree_(50118164757).jpg",
+          "role": "independent-canon-reference",
+          "referencePurpose": "identity",
+          "referenceScope": "visible-head-and-upper-body",
+          "slot": null,
+          "referenceCharacter": "oliver_tree",
+          "sourceReferenceRole": "public-performance-identity-photo",
+          "canonicalProjectReference": false,
+          "exists": true,
+          "viewed": true,
+          "status": "historically-viewed-not-1to1-approval",
+          "sourceFile": "docs/cg/reviews/music-portraits-2026-11-20/oliver-tree-reference-evidence-2026-11-20.json",
+          "sha256": "735c7aac0d54ba9e6f726798f88a24cb401f5d0c959ea9acafef47e770996bb8",
+          "limitations": []
+        },
+        {
+          "path": "docs/cg/references/music-portraits-2026-11-20/oliver-tree-2.jpg",
+          "url": "https://commons.wikimedia.org/wiki/File:Oliver_Tree_(50118171992).jpg",
+          "role": "independent-canon-reference",
+          "referencePurpose": "identity",
+          "referenceScope": "visible-head-and-upper-body",
+          "slot": null,
+          "referenceCharacter": "oliver_tree",
+          "sourceReferenceRole": "public-performance-identity-photo",
+          "canonicalProjectReference": false,
+          "exists": true,
+          "viewed": true,
+          "status": "historically-viewed-not-1to1-approval",
+          "sourceFile": "docs/cg/reviews/music-portraits-2026-11-20/oliver-tree-reference-evidence-2026-11-20.json",
+          "sha256": "45a60798735a6c7df39c9f2430e935117c3777b6685b4b51ded7852a40a54792",
+          "limitations": []
         }
       ],
       "cgRequirements": {
@@ -193550,7 +194200,9 @@
             "status": "needs-reference",
             "continuityStatus": "source-identity-in-original-scene",
             "source": [
-              "https://www.atlanticrecords.com/artists/oliver-tree",
+              "docs/cg/reviews/music-portraits-2026-11-20/oliver-tree-reference-evidence-2026-11-20.json",
+              "https://commons.wikimedia.org/wiki/File:Oliver_Tree_(50118164757).jpg",
+              "https://commons.wikimedia.org/wiki/File:Oliver_Tree_(50118171992).jpg",
               "docs/cg/CG_PILOT_REFERENCE_AUDIT.md"
             ],
             "sourceComparisonRequired": true,
@@ -193759,19 +194411,24 @@
         "commonRule": "Une pose et une composition de décor distinctes par CG; pour objet/décor seul, aucun personnage forcé. Préserver incarnation/anatomie/tenue sauf transformation spéciale explicitement étiquetée. Préserver tous les anciens assets comme variantes."
       },
       "readiness": {
-        "identity": "source-work-known-incarnation-to-resolve",
-        "visualReference": "source-image-needed-or-historical-url-only",
-        "sourceReview": "identity-or-visual-locks-incomplete",
+        "identity": "documented-in-project-source-record",
+        "visualReference": "independent-image-inspected-with-limitations",
+        "sourceReview": "source-evidence-qualified-needs-final-comparison",
         "visualFidelityApproved": false,
-        "detailedVisualAxes": [],
+        "detailedVisualAxes": [
+          "silhouette",
+          "anatomy",
+          "palette",
+          "face",
+          "distinguishingMarks"
+        ],
         "missing": [
-          "Incarnation exacte encore à choisir; le nom de franchise ne suffit pas.",
-          "Silhouette, anatomie, visage, tenue et équipement non décrits spécifiquement; la vignette actuelle sert uniquement de point de comparaison.",
-          "Aucune image source indépendante conservée localement et inspectée dans cette session pour ce personnage.",
-          "Axes visuels non détaillés : silhouette, anatomy, costume, palette, face, distinguishingMarks."
+          "Axes visuels non détaillés : costume.",
+          "Les références ouvertes couvrent le visage, le haut de tenue et une partie du jean, pas les chaussures. Variante Turbo et variante Cowboy de ce roster hors du champ.",
+          "Full body reference is insufficient. Lower-body and footwear coverage are not established. Scope is the visible portrait only."
         ]
       },
-      "qualificationStatus": "identity-or-visual-locks-incomplete",
+      "qualificationStatus": "source-evidence-qualified-needs-final-comparison",
       "notes": [
         "Palette runtime indicative (pas preuve canon) : #d8d43f.",
         "Kit jeu séparé du canon : Oliver Tree Signature Strike ; Oliver Tree Breach Technique ; Oliver Tree Guard ; Oliver Tree Origin Burst."
@@ -193782,7 +194439,7 @@
         "plan": "docs/cg/roster-production-2026-10-18.json",
         "dossier": null,
         "sourcePack": "src/game/expandedUniverses.js / src/game/canonRosterWave.js",
-        "sourceSpecificDescription": null,
+        "sourceSpecificDescription": "docs/cg/reviews/music-portraits-2026-11-20/oliver-tree-reference-evidence-2026-11-20.json#visualLocks",
         "hasRuntimeSpecificDescription": false,
         "rawRuntimePalette": [
           "#d8d43f"
@@ -289214,34 +289871,54 @@
       "universeId": "linkin-park",
       "priority": "P1",
       "incarnation": {
-        "label": "Chester Echo — Linkin Park; époque et version précises à fixer",
-        "status": "source-work-known-incarnation-to-resolve",
-        "evidence": []
+        "label": "Chester Bennington — The Globe Arena, Stockholm —25May2007",
+        "status": "documented-in-project-source-record",
+        "evidence": [
+          "docs/cg/reviews/music-portraits-2026-11-20/chester-lp-reference-evidence-2026-11-20.json"
+        ]
       },
-      "identityLock": "Chester Echo, Linkin Park : l’identité nominative est conservée; les détails de ressemblance ne sont pas établis par les données actuelles.",
+      "identityLock": "Both initial and corrected real native outputs personally viewed. Final preserves the photographed2007 source face/hair/goatee, round ear plug, pendant and charcoal long-sleeved top rather than prior sprite tank top. LEFT hand now holds the complete black microphone calmly near chest, RIGHT arm lowered: distinct from raised pointing/concert pose. True ImageGen correction moved yellow tape from bottom to just below microphone head. Original empty acoustic-balcony background is graphite/cyan and differs from concert LED wall. Complete head and microphone inside frame, torso cropped above hips by design; no shoes, hidden tattoos or lower clothing invented. No third party, readable text, logo, UI or game-character asset observed. Face likeness and source-visible details accepted for independent review with source limitations, not perfect1:1 certification.",
       "visualLocks": {
         "silhouette": [
-          "silhouette : détail non établi dans les données de référence de ce personnage; comparer la cible à un visuel source indépendant avant validation."
+          "Final preserves the photographed2007 source face/hair/goatee, round ear plug, pendant and charcoal long-sleeved top rather than prior sprite tank top.",
+          "Original empty acoustic-balcony background is graphite/cyan and differs from concert LED wall."
         ],
         "anatomy": [
-          "anatomy : détail non établi dans les données de référence de ce personnage; comparer la cible à un visuel source indépendant avant validation."
+          "LEFT hand now holds the complete black microphone calmly near chest, RIGHT arm lowered: distinct from raised pointing/concert pose.",
+          "True ImageGen correction moved yellow tape from bottom to just below microphone head.",
+          "Complete head and microphone inside frame, torso cropped above hips by design;",
+          "Face likeness and source-visible details accepted for independent review with source limitations, not perfect1:1 certification."
         ],
         "costume": [
           "costume : détail non établi dans les données de référence de ce personnage; comparer la cible à un visuel source indépendant avant validation."
         ],
         "palette": [
-          "palette : détail non établi dans les données de référence de ce personnage; comparer la cible à un visuel source indépendant avant validation."
+          "Final preserves the photographed2007 source face/hair/goatee, round ear plug, pendant and charcoal long-sleeved top rather than prior sprite tank top.",
+          "LEFT hand now holds the complete black microphone calmly near chest, RIGHT arm lowered: distinct from raised pointing/concert pose.",
+          "True ImageGen correction moved yellow tape from bottom to just below microphone head.",
+          "Original empty acoustic-balcony background is graphite/cyan and differs from concert LED wall.",
+          "no shoes, hidden tattoos or lower clothing invented.",
+          "No third party, readable text, logo, UI or game-character asset observed.",
+          "Face likeness and source-visible details accepted for independent review with source limitations, not perfect1:1 certification."
         ],
         "face": [
-          "face : détail non établi dans les données de référence de ce personnage; comparer la cible à un visuel source indépendant avant validation."
+          "Final preserves the photographed2007 source face/hair/goatee, round ear plug, pendant and charcoal long-sleeved top rather than prior sprite tank top.",
+          "Face likeness and source-visible details accepted for independent review with source limitations, not perfect1:1 certification."
         ],
         "distinguishingMarks": [
-          "distinguishingMarks : détail non établi dans les données de référence de ce personnage; comparer la cible à un visuel source indépendant avant validation."
+          "LEFT hand now holds the complete black microphone calmly near chest, RIGHT arm lowered: distinct from raised pointing/concert pose.",
+          "no shoes, hidden tattoos or lower clothing invented.",
+          "Face likeness and source-visible details accepted for independent review with source limitations, not perfect1:1 certification."
         ],
         "equipment": [
-          "Aucun équipement distinct établi pour cette incarnation; CG02 à adapter ou déclarer N/A plutôt que reprendre une arme générique du gameplay."
+          "LEFT hand now holds the complete black microphone calmly near chest, RIGHT arm lowered: distinct from raised pointing/concert pose.",
+          "True ImageGen correction moved yellow tape from bottom to just below microphone head.",
+          "Complete head and microphone inside frame, torso cropped above hips by design;"
         ],
         "forbiddenMixes": [
+          "no shoes, hidden tattoos or lower clothing invented.",
+          "No third party, readable text, logo, UI or game-character asset observed.",
+          "Face likeness and source-visible details accepted for independent review with source limitations, not perfect1:1 certification.",
           "Ne pas fusionner plusieurs continuités ou variantes de Chester Echo; toute transformation spéciale garde son étiquette WhatIf.",
           "Les armes, rayons, couleurs et catégories du gameplay ne prouvent pas un équipement ou pouvoir canonique."
         ],
@@ -289250,8 +289927,8 @@
         ]
       },
       "universeCoherence": {
-        "sourceWork": "Linkin Park",
-        "period": "Chester Echo — Linkin Park; époque et version précises à fixer",
+        "sourceWork": "Chester Bennington — The Globe Arena, Stockholm —25May2007",
+        "period": "Chester Bennington — The Globe Arena, Stockholm —25May2007",
         "locations": [
           "In the End desert monument and Meteora industrial performance room"
         ],
@@ -289271,18 +289948,72 @@
       },
       "sourceRefs": [
         {
-          "url": "https://www.linkinpark.com/music",
+          "path": "docs/cg/reviews/music-portraits-2026-11-20/chester-lp-reference-evidence-2026-11-20.json",
+          "role": "character-reference-evidence-receipt",
+          "sourceFile": "docs/cg/reviews/music-portraits-2026-11-20/chester-lp-reference-evidence-2026-11-20.json",
+          "status": "reference-evidence-with-stated-inspection-status-and-limitations"
+        },
+        {
+          "path": "DLC/LinkinPark/data/expandedUniverses.js",
+          "role": "source-evidence-provenance",
+          "sourceFile": "docs/cg/reviews/music-portraits-2026-11-20/chester-lp-reference-evidence-2026-11-20.json",
+          "status": "historical-repo-record-not-reopened"
+        },
+        {
+          "path": "docs/cg/reviews/music-portraits-2026-11-20/chester-lp-reference-evidence-2026-11-20.json",
           "role": "source-identity-or-world-reference",
           "sourceFile": "src/game/heroes.js / dossier / source-pack",
           "status": "historical-repo-record-not-reopened"
+        },
+        {
+          "url": "https://commons.wikimedia.org/wiki/File:Chester_bennington.jpg",
+          "role": "source-identity-or-world-reference",
+          "sourceFile": "src/game/heroes.js / dossier / source-pack",
+          "status": "historical-repo-record-not-reopened"
+        },
+        {
+          "url": "https://commons.wikimedia.org/wiki/File:Chester_bennington.jpg",
+          "role": "independent-canon-reference",
+          "sourceFile": "docs/cg/reviews/music-portraits-2026-11-20/chester-lp-reference-evidence-2026-11-20.json",
+          "status": "historically-viewed-not-1to1-approval",
+          "referencePurpose": "identity",
+          "referenceScope": "visible-head-and-upper-body",
+          "slot": null
         }
       ],
       "sources": [
         {
-          "url": "https://www.linkinpark.com/music",
+          "path": "docs/cg/reviews/music-portraits-2026-11-20/chester-lp-reference-evidence-2026-11-20.json",
+          "role": "character-reference-evidence-receipt",
+          "sourceFile": "docs/cg/reviews/music-portraits-2026-11-20/chester-lp-reference-evidence-2026-11-20.json",
+          "status": "reference-evidence-with-stated-inspection-status-and-limitations"
+        },
+        {
+          "path": "DLC/LinkinPark/data/expandedUniverses.js",
+          "role": "source-evidence-provenance",
+          "sourceFile": "docs/cg/reviews/music-portraits-2026-11-20/chester-lp-reference-evidence-2026-11-20.json",
+          "status": "historical-repo-record-not-reopened"
+        },
+        {
+          "path": "docs/cg/reviews/music-portraits-2026-11-20/chester-lp-reference-evidence-2026-11-20.json",
           "role": "source-identity-or-world-reference",
           "sourceFile": "src/game/heroes.js / dossier / source-pack",
           "status": "historical-repo-record-not-reopened"
+        },
+        {
+          "url": "https://commons.wikimedia.org/wiki/File:Chester_bennington.jpg",
+          "role": "source-identity-or-world-reference",
+          "sourceFile": "src/game/heroes.js / dossier / source-pack",
+          "status": "historical-repo-record-not-reopened"
+        },
+        {
+          "url": "https://commons.wikimedia.org/wiki/File:Chester_bennington.jpg",
+          "role": "independent-canon-reference",
+          "sourceFile": "docs/cg/reviews/music-portraits-2026-11-20/chester-lp-reference-evidence-2026-11-20.json",
+          "status": "historically-viewed-not-1to1-approval",
+          "referencePurpose": "identity",
+          "referenceScope": "visible-head-and-upper-body",
+          "slot": null
         }
       ],
       "localVisuals": [
@@ -289306,6 +290037,25 @@
           "exists": true,
           "selectedInRuntime": false,
           "status": "existing-project-art-not-independent-canon-proof"
+        },
+        {
+          "path": "docs/cg/references/music-portraits-2026-11-20/chester-lp-1.jpg",
+          "url": "https://commons.wikimedia.org/wiki/File:Chester_bennington.jpg",
+          "role": "independent-canon-reference",
+          "referencePurpose": "identity",
+          "referenceScope": "visible-head-and-upper-body",
+          "slot": null,
+          "referenceCharacter": "chester_lp",
+          "sourceReferenceRole": "public-performance-identity-photo",
+          "canonicalProjectReference": false,
+          "exists": true,
+          "viewed": true,
+          "status": "historically-viewed-not-1to1-approval",
+          "sourceFile": "docs/cg/reviews/music-portraits-2026-11-20/chester-lp-reference-evidence-2026-11-20.json",
+          "sha256": "a60025a17c92fa7367bcb94ac6b2b052b7b0d6ae7f5a34152f4cc9a98999f5ba",
+          "limitations": [
+            "Les chaussures et le bas du corps sont absents du cadrage source."
+          ]
         }
       ],
       "cgRequirements": {
@@ -289342,7 +290092,8 @@
             "status": "needs-reference",
             "continuityStatus": "source-identity-in-original-scene",
             "source": [
-              "https://www.linkinpark.com/music",
+              "docs/cg/reviews/music-portraits-2026-11-20/chester-lp-reference-evidence-2026-11-20.json",
+              "https://commons.wikimedia.org/wiki/File:Chester_bennington.jpg",
               "docs/cg/CG_PILOT_REFERENCE_AUDIT.md"
             ],
             "sourceComparisonRequired": true,
@@ -289550,19 +290301,24 @@
         "commonRule": "Une pose et une composition de décor distinctes par CG; pour objet/décor seul, aucun personnage forcé. Préserver incarnation/anatomie/tenue sauf transformation spéciale explicitement étiquetée. Préserver tous les anciens assets comme variantes."
       },
       "readiness": {
-        "identity": "source-work-known-incarnation-to-resolve",
-        "visualReference": "source-image-needed-or-historical-url-only",
-        "sourceReview": "identity-or-visual-locks-incomplete",
+        "identity": "documented-in-project-source-record",
+        "visualReference": "independent-image-inspected-with-limitations",
+        "sourceReview": "source-evidence-qualified-needs-final-comparison",
         "visualFidelityApproved": false,
-        "detailedVisualAxes": [],
+        "detailedVisualAxes": [
+          "silhouette",
+          "anatomy",
+          "palette",
+          "face",
+          "distinguishingMarks"
+        ],
         "missing": [
-          "Incarnation exacte encore à choisir; le nom de franchise ne suffit pas.",
-          "Silhouette, anatomie, visage, tenue et équipement non décrits spécifiquement; la vignette actuelle sert uniquement de point de comparaison.",
-          "Aucune image source indépendante conservée localement et inspectée dans cette session pour ce personnage.",
-          "Axes visuels non détaillés : silhouette, anatomy, costume, palette, face, distinguishingMarks."
+          "Axes visuels non détaillés : costume.",
+          "Les chaussures et le bas du corps sont absents du cadrage source.",
+          "Full body reference is insufficient. Lower-body and footwear coverage are not established. Scope is the visible portrait only."
         ]
       },
-      "qualificationStatus": "identity-or-visual-locks-incomplete",
+      "qualificationStatus": "source-evidence-qualified-needs-final-comparison",
       "notes": [
         "Palette runtime indicative (pas preuve canon) : #00b7ff.",
         "Kit jeu séparé du canon : Chester Echo Signature Strike ; Chester Echo Breach Technique ; Chester Echo Guard ; Chester Echo Origin Burst."
@@ -289573,7 +290329,7 @@
         "plan": "docs/cg/roster-production-2026-10-18.json",
         "dossier": null,
         "sourcePack": "src/game/expandedUniverses.js / src/game/canonRosterWave.js",
-        "sourceSpecificDescription": null,
+        "sourceSpecificDescription": "docs/cg/reviews/music-portraits-2026-11-20/chester-lp-reference-evidence-2026-11-20.json#visualLocks",
         "hasRuntimeSpecificDescription": false,
         "rawRuntimePalette": [
           "#00b7ff"
@@ -289591,44 +290347,67 @@
       "universeId": "linkin-park",
       "priority": "P1",
       "incarnation": {
-        "label": "Mike Signal — Linkin Park; époque et version précises à fixer",
-        "status": "source-work-known-incarnation-to-resolve",
-        "evidence": []
+        "label": "Mike Shinoda — Bangkok MTVThailand interview —February2006",
+        "status": "documented-in-project-source-record",
+        "evidence": [
+          "docs/cg/reviews/music-portraits-2026-11-20/mike-lp-reference-evidence-2026-11-20.json"
+        ]
       },
-      "identityLock": "Mike Signal, Linkin Park : l’identité nominative est conservée; les détails de ressemblance ne sont pas établis par les données actuelles.",
+      "identityLock": "Both initial and corrected real native outputs personally viewed. Final preserves authentic2006 buzz cut, visible face proportions, moustache/goatee, light-gray loose T-shirt and skull illustration, LEFT wristwatch and ring. New quiet seated pose has closed mouth, open shoulders and own hands at console edge instead of interviewers microphone/third-party hand. Genuine ImageGen correction removed the legible-looking cursive cluster from the shirt; remaining marks read as abstract illustration/flames rather than writing. Correction also tightened portrait framing: lower portions of hands naturally meet/cross the lower image edge; no claim that both hands are wholly framed. Entire head and torso visible; no unseen footwear or lower-body costume invented. Empty cyan/graphite editing background is an original game adaptation. No other person, logo, readable text, UI or game-character asset observed. Source-based likeness accepted for independent review with limits, not absolute1:1 certification.",
       "visualLocks": {
         "silhouette": [
-          "silhouette : détail non établi dans les données de référence de ce personnage; comparer la cible à un visuel source indépendant avant validation."
+          "Final preserves authentic2006 buzz cut, visible face proportions, moustache/goatee, light-gray loose T-shirt and skull illustration, LEFT wristwatch and ring.",
+          "no unseen footwear or lower-body costume invented.",
+          "Empty cyan/graphite editing background is an original game adaptation."
         ],
         "anatomy": [
-          "anatomy : détail non établi dans les données de référence de ce personnage; comparer la cible à un visuel source indépendant avant validation."
+          "New quiet seated pose has closed mouth, open shoulders and own hands at console edge instead of interviewers microphone/third-party hand.",
+          "Genuine ImageGen correction removed the legible-looking cursive cluster from the shirt;",
+          "remaining marks read as abstract illustration/flames rather than writing.",
+          "Correction also tightened portrait framing: lower portions of hands naturally meet/cross the lower image edge;",
+          "no claim that both hands are wholly framed.",
+          "Entire head and torso visible;"
         ],
         "costume": [
-          "costume : détail non établi dans les données de référence de ce personnage; comparer la cible à un visuel source indépendant avant validation."
+          "Final preserves authentic2006 buzz cut, visible face proportions, moustache/goatee, light-gray loose T-shirt and skull illustration, LEFT wristwatch and ring.",
+          "Genuine ImageGen correction removed the legible-looking cursive cluster from the shirt;",
+          "no unseen footwear or lower-body costume invented."
         ],
         "palette": [
-          "palette : détail non établi dans les données de référence de ce personnage; comparer la cible à un visuel source indépendant avant validation."
+          "Final preserves authentic2006 buzz cut, visible face proportions, moustache/goatee, light-gray loose T-shirt and skull illustration, LEFT wristwatch and ring.",
+          "no unseen footwear or lower-body costume invented.",
+          "Empty cyan/graphite editing background is an original game adaptation.",
+          "No other person, logo, readable text, UI or game-character asset observed.",
+          "Source-based likeness accepted for independent review with limits, not absolute1:1 certification."
         ],
         "face": [
-          "face : détail non établi dans les données de référence de ce personnage; comparer la cible à un visuel source indépendant avant validation."
+          "Final preserves authentic2006 buzz cut, visible face proportions, moustache/goatee, light-gray loose T-shirt and skull illustration, LEFT wristwatch and ring.",
+          "New quiet seated pose has closed mouth, open shoulders and own hands at console edge instead of interviewers microphone/third-party hand."
         ],
         "distinguishingMarks": [
-          "distinguishingMarks : détail non établi dans les données de référence de ce personnage; comparer la cible à un visuel source indépendant avant validation."
+          "Final preserves authentic2006 buzz cut, visible face proportions, moustache/goatee, light-gray loose T-shirt and skull illustration, LEFT wristwatch and ring.",
+          "remaining marks read as abstract illustration/flames rather than writing."
         ],
         "equipment": [
-          "Aucun équipement distinct établi pour cette incarnation; CG02 à adapter ou déclarer N/A plutôt que reprendre une arme générique du gameplay."
+          "New quiet seated pose has closed mouth, open shoulders and own hands at console edge instead of interviewers microphone/third-party hand."
         ],
         "forbiddenMixes": [
+          "no claim that both hands are wholly framed.",
+          "no unseen footwear or lower-body costume invented.",
+          "No other person, logo, readable text, UI or game-character asset observed.",
+          "Source-based likeness accepted for independent review with limits, not absolute1:1 certification.",
           "Ne pas fusionner plusieurs continuités ou variantes de Mike Signal; toute transformation spéciale garde son étiquette WhatIf.",
           "Les armes, rayons, couleurs et catégories du gameplay ne prouvent pas un équipement ou pouvoir canonique."
         ],
         "outfit": [
-          "costume : détail non établi dans les données de référence de ce personnage; comparer la cible à un visuel source indépendant avant validation."
+          "Final preserves authentic2006 buzz cut, visible face proportions, moustache/goatee, light-gray loose T-shirt and skull illustration, LEFT wristwatch and ring.",
+          "Genuine ImageGen correction removed the legible-looking cursive cluster from the shirt;",
+          "no unseen footwear or lower-body costume invented."
         ]
       },
       "universeCoherence": {
-        "sourceWork": "Linkin Park",
-        "period": "Mike Signal — Linkin Park; époque et version précises à fixer",
+        "sourceWork": "Mike Shinoda — Bangkok MTVThailand interview —February2006",
+        "period": "Mike Shinoda — Bangkok MTVThailand interview —February2006",
         "locations": [
           "In the End desert monument and Meteora industrial performance room"
         ],
@@ -289648,18 +290427,72 @@
       },
       "sourceRefs": [
         {
-          "url": "https://www.linkinpark.com/music",
+          "path": "docs/cg/reviews/music-portraits-2026-11-20/mike-lp-reference-evidence-2026-11-20.json",
+          "role": "character-reference-evidence-receipt",
+          "sourceFile": "docs/cg/reviews/music-portraits-2026-11-20/mike-lp-reference-evidence-2026-11-20.json",
+          "status": "reference-evidence-with-stated-inspection-status-and-limitations"
+        },
+        {
+          "path": "DLC/LinkinPark/data/expandedUniverses.js",
+          "role": "source-evidence-provenance",
+          "sourceFile": "docs/cg/reviews/music-portraits-2026-11-20/mike-lp-reference-evidence-2026-11-20.json",
+          "status": "historical-repo-record-not-reopened"
+        },
+        {
+          "path": "docs/cg/reviews/music-portraits-2026-11-20/mike-lp-reference-evidence-2026-11-20.json",
           "role": "source-identity-or-world-reference",
           "sourceFile": "src/game/heroes.js / dossier / source-pack",
           "status": "historical-repo-record-not-reopened"
+        },
+        {
+          "url": "https://commons.wikimedia.org/wiki/File:MikeShinodainBKK.JPG",
+          "role": "source-identity-or-world-reference",
+          "sourceFile": "src/game/heroes.js / dossier / source-pack",
+          "status": "historical-repo-record-not-reopened"
+        },
+        {
+          "url": "https://commons.wikimedia.org/wiki/File:MikeShinodainBKK.JPG",
+          "role": "independent-canon-reference",
+          "sourceFile": "docs/cg/reviews/music-portraits-2026-11-20/mike-lp-reference-evidence-2026-11-20.json",
+          "status": "historically-viewed-not-1to1-approval",
+          "referencePurpose": "identity",
+          "referenceScope": "visible-head-and-upper-body",
+          "slot": null
         }
       ],
       "sources": [
         {
-          "url": "https://www.linkinpark.com/music",
+          "path": "docs/cg/reviews/music-portraits-2026-11-20/mike-lp-reference-evidence-2026-11-20.json",
+          "role": "character-reference-evidence-receipt",
+          "sourceFile": "docs/cg/reviews/music-portraits-2026-11-20/mike-lp-reference-evidence-2026-11-20.json",
+          "status": "reference-evidence-with-stated-inspection-status-and-limitations"
+        },
+        {
+          "path": "DLC/LinkinPark/data/expandedUniverses.js",
+          "role": "source-evidence-provenance",
+          "sourceFile": "docs/cg/reviews/music-portraits-2026-11-20/mike-lp-reference-evidence-2026-11-20.json",
+          "status": "historical-repo-record-not-reopened"
+        },
+        {
+          "path": "docs/cg/reviews/music-portraits-2026-11-20/mike-lp-reference-evidence-2026-11-20.json",
           "role": "source-identity-or-world-reference",
           "sourceFile": "src/game/heroes.js / dossier / source-pack",
           "status": "historical-repo-record-not-reopened"
+        },
+        {
+          "url": "https://commons.wikimedia.org/wiki/File:MikeShinodainBKK.JPG",
+          "role": "source-identity-or-world-reference",
+          "sourceFile": "src/game/heroes.js / dossier / source-pack",
+          "status": "historical-repo-record-not-reopened"
+        },
+        {
+          "url": "https://commons.wikimedia.org/wiki/File:MikeShinodainBKK.JPG",
+          "role": "independent-canon-reference",
+          "sourceFile": "docs/cg/reviews/music-portraits-2026-11-20/mike-lp-reference-evidence-2026-11-20.json",
+          "status": "historically-viewed-not-1to1-approval",
+          "referencePurpose": "identity",
+          "referenceScope": "visible-head-and-upper-body",
+          "slot": null
         }
       ],
       "localVisuals": [
@@ -289683,6 +290516,25 @@
           "exists": true,
           "selectedInRuntime": false,
           "status": "existing-project-art-not-independent-canon-proof"
+        },
+        {
+          "path": "docs/cg/references/music-portraits-2026-11-20/mike-lp-1.jpg",
+          "url": "https://commons.wikimedia.org/wiki/File:MikeShinodainBKK.JPG",
+          "role": "independent-canon-reference",
+          "referencePurpose": "identity",
+          "referenceScope": "visible-head-and-upper-body",
+          "slot": null,
+          "referenceCharacter": "mike_lp",
+          "sourceReferenceRole": "public-performance-identity-photo",
+          "canonicalProjectReference": false,
+          "exists": true,
+          "viewed": true,
+          "status": "historically-viewed-not-1to1-approval",
+          "sourceFile": "docs/cg/reviews/music-portraits-2026-11-20/mike-lp-reference-evidence-2026-11-20.json",
+          "sha256": "61763a9a84d460b39b031cecddb92e7ffc0c230e8d8715b88aba06aa75564d60",
+          "limitations": [
+            "Les chaussures et le bas du corps sont absents du cadrage source."
+          ]
         }
       ],
       "cgRequirements": {
@@ -289719,7 +290571,8 @@
             "status": "needs-reference",
             "continuityStatus": "source-identity-in-original-scene",
             "source": [
-              "https://www.linkinpark.com/music",
+              "docs/cg/reviews/music-portraits-2026-11-20/mike-lp-reference-evidence-2026-11-20.json",
+              "https://commons.wikimedia.org/wiki/File:MikeShinodainBKK.JPG",
               "docs/cg/CG_PILOT_REFERENCE_AUDIT.md"
             ],
             "sourceComparisonRequired": true,
@@ -289927,19 +290780,25 @@
         "commonRule": "Une pose et une composition de décor distinctes par CG; pour objet/décor seul, aucun personnage forcé. Préserver incarnation/anatomie/tenue sauf transformation spéciale explicitement étiquetée. Préserver tous les anciens assets comme variantes."
       },
       "readiness": {
-        "identity": "source-work-known-incarnation-to-resolve",
-        "visualReference": "source-image-needed-or-historical-url-only",
-        "sourceReview": "identity-or-visual-locks-incomplete",
+        "identity": "documented-in-project-source-record",
+        "visualReference": "independent-image-inspected-with-limitations",
+        "sourceReview": "source-evidence-qualified-needs-final-comparison",
         "visualFidelityApproved": false,
-        "detailedVisualAxes": [],
+        "detailedVisualAxes": [
+          "silhouette",
+          "anatomy",
+          "costume",
+          "palette",
+          "face",
+          "distinguishingMarks"
+        ],
         "missing": [
-          "Incarnation exacte encore à choisir; le nom de franchise ne suffit pas.",
-          "Silhouette, anatomie, visage, tenue et équipement non décrits spécifiquement; la vignette actuelle sert uniquement de point de comparaison.",
-          "Aucune image source indépendante conservée localement et inspectée dans cette session pour ce personnage.",
-          "Axes visuels non détaillés : silhouette, anatomy, costume, palette, face, distinguishingMarks."
+          "Les chaussures et le bas du corps sont absents du cadrage source.",
+          "Le bord du cadre coupe le bas des mains.",
+          "Full body reference is insufficient. Lower-body and footwear coverage are not established. Scope is the visible portrait only."
         ]
       },
-      "qualificationStatus": "identity-or-visual-locks-incomplete",
+      "qualificationStatus": "source-evidence-qualified-needs-final-comparison",
       "notes": [
         "Palette runtime indicative (pas preuve canon) : #23daff.",
         "Kit jeu séparé du canon : Mike Signal Signature Strike ; Mike Signal Breach Technique ; Mike Signal Guard ; Mike Signal Origin Burst."
@@ -289950,7 +290809,7 @@
         "plan": "docs/cg/roster-production-2026-10-18.json",
         "dossier": null,
         "sourcePack": "src/game/expandedUniverses.js / src/game/canonRosterWave.js",
-        "sourceSpecificDescription": null,
+        "sourceSpecificDescription": "docs/cg/reviews/music-portraits-2026-11-20/mike-lp-reference-evidence-2026-11-20.json#visualLocks",
         "hasRuntimeSpecificDescription": false,
         "rawRuntimePalette": [
           "#23daff"
@@ -291470,31 +292329,31 @@
       "universeId": "michael-jackson",
       "priority": "P0",
       "incarnation": {
-        "label": "Michael Jackson — King of Pop Avatar, canon original du projet (2026)",
+        "label": "King of Pop Avatar, personnage original Multiverse Breach selon le kit et le sprite retenu",
         "status": "original-project-canon",
         "evidence": [
           "src/game/heroes.js / originalUniversesManifest",
+          "docs/cg/reviews/music-portraits-2026-11-20/mj-performer-reference-evidence-2026-11-20.json",
           "docs/cg/roster-fidelity-authored-locks-2026-10-18.json",
           "src/game/heroes.js"
         ]
       },
-      "identityLock": "Keep the project s original fully clothed adult stage avatar distinct from a documentary likeness or any specific Michael Jackson film/game costume. Final visual review is pending. Do not silently label this substitute as Thriller, Moonwalker or historical Michael Jackson.",
+      "identityLock": "Visage stylisé aux yeux sombres et à la peau chaude, boucles brunes, fedora noir à bande grise, veste noire aux broderies or, chemise claire, pantalon court noir, chaussettes blanches et chaussures de danse noires.",
       "visualLocks": {
         "silhouette": [
-          "silhouette : détail non établi dans les données de référence de ce personnage; comparer la cible à un visuel source indépendant avant validation."
+          "Visage stylisé aux yeux sombres et à la peau chaude, boucles brunes, fedora noir à bande grise, veste noire aux broderies or, chemise claire, pantalon court noir, chaussettes blanches et chaussures de danse noires."
         ],
         "anatomy": [
           "Anatomie humanoïde à deux bras et deux jambes; âge et proportions de l’incarnation indiquée, aucune armure/mutation anatomique ajoutée."
         ],
         "costume": [
-          "Keep the project s original fully clothed adult stage avatar distinct from a documentary likeness or any specific Michael Jackson film/game costume."
+          "Visage stylisé aux yeux sombres et à la peau chaude, boucles brunes, fedora noir à bande grise, veste noire aux broderies or, chemise claire, pantalon court noir, chaussettes blanches et chaussures de danse noires."
         ],
         "palette": [
-          "Keep the project s original fully clothed adult stage avatar distinct from a documentary likeness or any specific Michael Jackson film/game costume.",
-          "Do not silently label this substitute as Thriller, Moonwalker or historical Michael Jackson."
+          "Visage stylisé aux yeux sombres et à la peau chaude, boucles brunes, fedora noir à bande grise, veste noire aux broderies or, chemise claire, pantalon court noir, chaussettes blanches et chaussures de danse noires."
         ],
         "face": [
-          "face : détail non établi dans les données de référence de ce personnage; comparer la cible à un visuel source indépendant avant validation."
+          "Visage stylisé aux yeux sombres et à la peau chaude, boucles brunes, fedora noir à bande grise, veste noire aux broderies or, chemise claire, pantalon court noir, chaussettes blanches et chaussures de danse noires."
         ],
         "distinguishingMarks": [
           "distinguishingMarks : détail non établi dans les données de référence de ce personnage; comparer la cible à un visuel source indépendant avant validation."
@@ -291504,18 +292363,17 @@
           "Dance Shoes"
         ],
         "forbiddenMixes": [
-          "Do not silently label this substitute as Thriller, Moonwalker or historical Michael Jackson.",
           "Ne pas fusionner plusieurs continuités ou variantes de King of Pop Avatar; toute transformation spéciale garde son étiquette WhatIf.",
           "Les armes, rayons, couleurs et catégories du gameplay ne prouvent pas un équipement ou pouvoir canonique.",
           "Avatar original du projet : préserver cette identité et sa silhouette propres, sans substitution automatique par une célébrité réelle."
         ],
         "outfit": [
-          "Keep the project s original fully clothed adult stage avatar distinct from a documentary likeness or any specific Michael Jackson film/game costume."
+          "Visage stylisé aux yeux sombres et à la peau chaude, boucles brunes, fedora noir à bande grise, veste noire aux broderies or, chemise claire, pantalon court noir, chaussettes blanches et chaussures de danse noires."
         ]
       },
       "universeCoherence": {
         "sourceWork": "Michael Jackson",
-        "period": "Michael Jackson — King of Pop Avatar, canon original du projet (2026)",
+        "period": "King of Pop Avatar, personnage original Multiverse Breach selon le kit et le sprite retenu",
         "locations": [
           "Scène musicale originale du projet MultiverseBreach; décor nouveau sans prétendre reproduire Thriller, Moonwalker ou un concert réel."
         ],
@@ -291537,7 +292395,31 @@
       },
       "sourceRefs": [
         {
+          "path": "docs/cg/reviews/music-portraits-2026-11-20/mj-performer-reference-evidence-2026-11-20.json",
+          "role": "character-reference-evidence-receipt",
+          "sourceFile": "docs/cg/reviews/music-portraits-2026-11-20/mj-performer-reference-evidence-2026-11-20.json",
+          "status": "reference-evidence-with-stated-inspection-status-and-limitations"
+        },
+        {
+          "path": "DLC/MichaelJackson/data/expandedUniverses.js",
+          "role": "source-evidence-provenance",
+          "sourceFile": "docs/cg/reviews/music-portraits-2026-11-20/mj-performer-reference-evidence-2026-11-20.json",
+          "status": "historical-repo-record-not-reopened"
+        },
+        {
+          "path": "DLC/MichaelJackson/data/canonP0SourceKits.js",
+          "role": "source-evidence-provenance",
+          "sourceFile": "docs/cg/reviews/music-portraits-2026-11-20/mj-performer-reference-evidence-2026-11-20.json",
+          "status": "historical-repo-record-not-reopened"
+        },
+        {
           "url": "https://chatgpt.com/share/6abdc1d1-1a7c-83eb-9a7a-d979173f3754",
+          "role": "source-identity-or-world-reference",
+          "sourceFile": "src/game/heroes.js / dossier / source-pack",
+          "status": "historical-repo-record-not-reopened"
+        },
+        {
+          "path": "docs/cg/reviews/music-portraits-2026-11-20/mj-performer-reference-evidence-2026-11-20.json",
           "role": "source-identity-or-world-reference",
           "sourceFile": "src/game/heroes.js / dossier / source-pack",
           "status": "historical-repo-record-not-reopened"
@@ -291563,7 +292445,31 @@
       ],
       "sources": [
         {
+          "path": "docs/cg/reviews/music-portraits-2026-11-20/mj-performer-reference-evidence-2026-11-20.json",
+          "role": "character-reference-evidence-receipt",
+          "sourceFile": "docs/cg/reviews/music-portraits-2026-11-20/mj-performer-reference-evidence-2026-11-20.json",
+          "status": "reference-evidence-with-stated-inspection-status-and-limitations"
+        },
+        {
+          "path": "DLC/MichaelJackson/data/expandedUniverses.js",
+          "role": "source-evidence-provenance",
+          "sourceFile": "docs/cg/reviews/music-portraits-2026-11-20/mj-performer-reference-evidence-2026-11-20.json",
+          "status": "historical-repo-record-not-reopened"
+        },
+        {
+          "path": "DLC/MichaelJackson/data/canonP0SourceKits.js",
+          "role": "source-evidence-provenance",
+          "sourceFile": "docs/cg/reviews/music-portraits-2026-11-20/mj-performer-reference-evidence-2026-11-20.json",
+          "status": "historical-repo-record-not-reopened"
+        },
+        {
           "url": "https://chatgpt.com/share/6abdc1d1-1a7c-83eb-9a7a-d979173f3754",
+          "role": "source-identity-or-world-reference",
+          "sourceFile": "src/game/heroes.js / dossier / source-pack",
+          "status": "historical-repo-record-not-reopened"
+        },
+        {
+          "path": "docs/cg/reviews/music-portraits-2026-11-20/mj-performer-reference-evidence-2026-11-20.json",
           "role": "source-identity-or-world-reference",
           "sourceFile": "src/game/heroes.js / dossier / source-pack",
           "status": "historical-repo-record-not-reopened"
@@ -291608,6 +292514,37 @@
           "exists": true,
           "selectedInRuntime": false,
           "status": "existing-project-art-not-independent-canon-proof"
+        },
+        {
+          "path": "/cg/michael-jackson/mj-performer/character-solo-music-2026-11-20.png",
+          "role": "project-generated-art",
+          "exists": true,
+          "selectedInRuntime": false,
+          "status": "existing-project-art-not-independent-canon-proof"
+        },
+        {
+          "path": "/cg/michael-jackson/mj-performer/character-solo-music-2026-11-20.webp",
+          "role": "project-generated-art",
+          "exists": true,
+          "selectedInRuntime": false,
+          "status": "existing-project-art-not-independent-canon-proof"
+        },
+        {
+          "path": "DLC/MichaelJackson/assets/sprites/generated/heroes/michael-jackson/mj-performer.png",
+          "url": null,
+          "role": "canonical-original-project-sprite-pack",
+          "referencePurpose": "identity",
+          "referenceScope": "internal-project-character-design",
+          "slot": null,
+          "referenceCharacter": "mj_performer",
+          "sourceReferenceRole": "canonical-original-project-sprite-pack",
+          "canonicalProjectReference": true,
+          "exists": true,
+          "viewed": true,
+          "status": "original-project-canon-reference-not-independent-source",
+          "sourceFile": "docs/cg/reviews/music-portraits-2026-11-20/mj-performer-reference-evidence-2026-11-20.json",
+          "sha256": "48b1b581bb26320f3080015aecb54a33d37e2a482a64cc6f24f7a1ebe446c0c8",
+          "limitations": []
         }
       ],
       "cgRequirements": {
@@ -291638,14 +292575,16 @@
           "CG01": {
             "slot": "CG01",
             "type": "characterSolo",
-            "themeBrief": "Personnage de référence dans une incarnation source précise, sans transformation.",
-            "poseBrief": "Portrait entier en trois quarts, appui calme, silhouette dégagée et équipement complet; attitude de référence sans attaque.",
-            "backgroundBrief": "Scène musicale originale du projet MultiverseBreach; décor nouveau sans prétendre reproduire Thriller, Moonwalker ou un concert réel. — composition distincte pour King of Pop Avatar / CG01",
-            "status": "needs-reference",
+            "themeBrief": "King of Pop Avatar — Répétition avant scène · portrait entier",
+            "poseBrief": "Pas croisé de danse en trois quarts, main ouverte à droite de l’image, autre main sur le revers, personnage entier.",
+            "backgroundBrief": "Salle de répétition des coulisses du King of Pop Rhythm Rift Parquet sombre et petits repères de danse ambrés Personnage en pied devant un banc et une caisse de scène Rideau prune et alcôve vitrée sans reflet humain Lumière pratique ambre chaude sur le parquet",
+            "status": "generated",
             "continuityStatus": "source-identity-in-original-scene",
             "source": [
-              "https://chatgpt.com/share/6abdc1d1-1a7c-83eb-9a7a-d979173f3754",
-              "docs/cg/CG_PILOT_REFERENCE_AUDIT.md"
+              "docs/cg/reviews/music-portraits-2026-11-20/visual-review.json",
+              "docs/cg/reviews/music-portraits-2026-11-20/mj-performer-reference-evidence-2026-11-20.json",
+              "DLC/MichaelJackson/data/expandedUniverses.js",
+              "DLC/MichaelJackson/data/canonP0SourceKits.js"
             ],
             "sourceComparisonRequired": true,
             "visualFidelityApproved": false
@@ -291857,12 +292796,15 @@
         "sourceReview": "original-project-reference-to-compare",
         "visualFidelityApproved": false,
         "detailedVisualAxes": [
+          "silhouette",
           "anatomy",
           "costume",
-          "palette"
+          "palette",
+          "face"
         ],
         "missing": [
-          "Axes visuels non détaillés : silhouette, face, distinguishingMarks."
+          "Axes visuels non détaillés : distinguishingMarks.",
+          "Haute résolution réinterprétée à partir des détails lisibles du sprite. Le modèle source est un avatar de jeu, sans cible de ressemblance avec Michael Jackson."
         ]
       },
       "qualificationStatus": "original-project-reference-to-compare",
@@ -291877,7 +292819,7 @@
         "plan": "docs/cg/roster-production-2026-10-18.json",
         "dossier": null,
         "sourcePack": "src/game/expandedUniverses.js / src/game/canonRosterWave.js",
-        "sourceSpecificDescription": "runtime-visualAnchor",
+        "sourceSpecificDescription": "docs/cg/reviews/music-portraits-2026-11-20/mj-performer-reference-evidence-2026-11-20.json#visualLocks",
         "hasRuntimeSpecificDescription": true,
         "rawRuntimePalette": [
           "#f3d35c"
@@ -291895,32 +292837,31 @@
       "universeId": "michael-jackson",
       "priority": "P0",
       "incarnation": {
-        "label": "Michael Jackson — Rhythm Guard, canon original du projet (2026)",
+        "label": "Rhythm Guard, compagnon original Multiverse Breach selon le kit et le sprite retenu",
         "status": "original-project-canon",
         "evidence": [
           "src/game/heroes.js / originalUniversesManifest",
+          "docs/cg/reviews/music-portraits-2026-11-20/rhythm-guard-mj-reference-evidence-2026-11-20.json",
           "docs/cg/roster-fidelity-authored-locks-2026-10-18.json",
           "src/game/heroes.js"
         ]
       },
-      "identityLock": "The project s original fully clothed adult Rhythm Guard companion, with stage clothing and microphone. Not a claimed historical Michael Jackson associate or official Moonwalker cast member. No firearm derived only from the tactical class; existing substitute artwork remains pending review.",
+      "identityLock": "Visage stylisé, cheveux noirs courts et bouclés, casquette et manteau marine fendu, galons clairs, épaulettes, gants noirs et bottes cerclées. Microphone scénique selon le kit écrit.",
       "visualLocks": {
         "silhouette": [
-          "silhouette : détail non établi dans les données de référence de ce personnage; comparer la cible à un visuel source indépendant avant validation."
+          "Visage stylisé, cheveux noirs courts et bouclés, casquette et manteau marine fendu, galons clairs, épaulettes, gants noirs et bottes cerclées."
         ],
         "anatomy": [
-          "Anatomie humanoïde à deux bras et deux jambes; âge et proportions de l’incarnation indiquée, aucune armure/mutation anatomique ajoutée.",
-          "Not a claimed historical Michael Jackson associate or official Moonwalker cast member.",
-          "existing substitute artwork remains pending review."
+          "Anatomie humanoïde à deux bras et deux jambes; âge et proportions de l’incarnation indiquée, aucune armure/mutation anatomique ajoutée."
         ],
         "costume": [
-          "costume : détail non établi dans les données de référence de ce personnage; comparer la cible à un visuel source indépendant avant validation."
+          "Visage stylisé, cheveux noirs courts et bouclés, casquette et manteau marine fendu, galons clairs, épaulettes, gants noirs et bottes cerclées."
         ],
         "palette": [
-          "Not a claimed historical Michael Jackson associate or official Moonwalker cast member."
+          "Visage stylisé, cheveux noirs courts et bouclés, casquette et manteau marine fendu, galons clairs, épaulettes, gants noirs et bottes cerclées."
         ],
         "face": [
-          "face : détail non établi dans les données de référence de ce personnage; comparer la cible à un visuel source indépendant avant validation."
+          "Visage stylisé, cheveux noirs courts et bouclés, casquette et manteau marine fendu, galons clairs, épaulettes, gants noirs et bottes cerclées."
         ],
         "distinguishingMarks": [
           "distinguishingMarks : détail non établi dans les données de référence de ce personnage; comparer la cible à un visuel source indépendant avant validation."
@@ -291930,19 +292871,17 @@
           "Microphone"
         ],
         "forbiddenMixes": [
-          "Not a claimed historical Michael Jackson associate or official Moonwalker cast member.",
-          "No firearm derived only from the tactical class;",
           "Ne pas fusionner plusieurs continuités ou variantes de Rhythm Guard; toute transformation spéciale garde son étiquette WhatIf.",
           "Les armes, rayons, couleurs et catégories du gameplay ne prouvent pas un équipement ou pouvoir canonique.",
           "Avatar original du projet : préserver cette identité et sa silhouette propres, sans substitution automatique par une célébrité réelle."
         ],
         "outfit": [
-          "costume : détail non établi dans les données de référence de ce personnage; comparer la cible à un visuel source indépendant avant validation."
+          "Visage stylisé, cheveux noirs courts et bouclés, casquette et manteau marine fendu, galons clairs, épaulettes, gants noirs et bottes cerclées."
         ]
       },
       "universeCoherence": {
         "sourceWork": "Michael Jackson",
-        "period": "Michael Jackson — Rhythm Guard, canon original du projet (2026)",
+        "period": "Rhythm Guard, compagnon original Multiverse Breach selon le kit et le sprite retenu",
         "locations": [
           "Scène musicale originale du projet MultiverseBreach; décor nouveau sans prétendre reproduire Thriller, Moonwalker ou un concert réel."
         ],
@@ -291964,7 +292903,31 @@
       },
       "sourceRefs": [
         {
+          "path": "docs/cg/reviews/music-portraits-2026-11-20/rhythm-guard-mj-reference-evidence-2026-11-20.json",
+          "role": "character-reference-evidence-receipt",
+          "sourceFile": "docs/cg/reviews/music-portraits-2026-11-20/rhythm-guard-mj-reference-evidence-2026-11-20.json",
+          "status": "reference-evidence-with-stated-inspection-status-and-limitations"
+        },
+        {
+          "path": "DLC/MichaelJackson/data/expandedUniverses.js",
+          "role": "source-evidence-provenance",
+          "sourceFile": "docs/cg/reviews/music-portraits-2026-11-20/rhythm-guard-mj-reference-evidence-2026-11-20.json",
+          "status": "historical-repo-record-not-reopened"
+        },
+        {
+          "path": "DLC/MichaelJackson/data/canonP0SourceKits.js",
+          "role": "source-evidence-provenance",
+          "sourceFile": "docs/cg/reviews/music-portraits-2026-11-20/rhythm-guard-mj-reference-evidence-2026-11-20.json",
+          "status": "historical-repo-record-not-reopened"
+        },
+        {
           "url": "https://chatgpt.com/share/6abdc1d1-1a7c-83eb-9a7a-d979173f3754",
+          "role": "source-identity-or-world-reference",
+          "sourceFile": "src/game/heroes.js / dossier / source-pack",
+          "status": "historical-repo-record-not-reopened"
+        },
+        {
+          "path": "docs/cg/reviews/music-portraits-2026-11-20/rhythm-guard-mj-reference-evidence-2026-11-20.json",
           "role": "source-identity-or-world-reference",
           "sourceFile": "src/game/heroes.js / dossier / source-pack",
           "status": "historical-repo-record-not-reopened"
@@ -291990,7 +292953,31 @@
       ],
       "sources": [
         {
+          "path": "docs/cg/reviews/music-portraits-2026-11-20/rhythm-guard-mj-reference-evidence-2026-11-20.json",
+          "role": "character-reference-evidence-receipt",
+          "sourceFile": "docs/cg/reviews/music-portraits-2026-11-20/rhythm-guard-mj-reference-evidence-2026-11-20.json",
+          "status": "reference-evidence-with-stated-inspection-status-and-limitations"
+        },
+        {
+          "path": "DLC/MichaelJackson/data/expandedUniverses.js",
+          "role": "source-evidence-provenance",
+          "sourceFile": "docs/cg/reviews/music-portraits-2026-11-20/rhythm-guard-mj-reference-evidence-2026-11-20.json",
+          "status": "historical-repo-record-not-reopened"
+        },
+        {
+          "path": "DLC/MichaelJackson/data/canonP0SourceKits.js",
+          "role": "source-evidence-provenance",
+          "sourceFile": "docs/cg/reviews/music-portraits-2026-11-20/rhythm-guard-mj-reference-evidence-2026-11-20.json",
+          "status": "historical-repo-record-not-reopened"
+        },
+        {
           "url": "https://chatgpt.com/share/6abdc1d1-1a7c-83eb-9a7a-d979173f3754",
+          "role": "source-identity-or-world-reference",
+          "sourceFile": "src/game/heroes.js / dossier / source-pack",
+          "status": "historical-repo-record-not-reopened"
+        },
+        {
+          "path": "docs/cg/reviews/music-portraits-2026-11-20/rhythm-guard-mj-reference-evidence-2026-11-20.json",
           "role": "source-identity-or-world-reference",
           "sourceFile": "src/game/heroes.js / dossier / source-pack",
           "status": "historical-repo-record-not-reopened"
@@ -292035,6 +293022,37 @@
           "exists": true,
           "selectedInRuntime": false,
           "status": "existing-project-art-not-independent-canon-proof"
+        },
+        {
+          "path": "/cg/michael-jackson/rhythm-guard-mj/character-solo-music-2026-11-20.png",
+          "role": "project-generated-art",
+          "exists": true,
+          "selectedInRuntime": false,
+          "status": "existing-project-art-not-independent-canon-proof"
+        },
+        {
+          "path": "/cg/michael-jackson/rhythm-guard-mj/character-solo-music-2026-11-20.webp",
+          "role": "project-generated-art",
+          "exists": true,
+          "selectedInRuntime": false,
+          "status": "existing-project-art-not-independent-canon-proof"
+        },
+        {
+          "path": "DLC/MichaelJackson/assets/sprites/generated/heroes/michael-jackson/rhythm-guard-mj.png",
+          "url": null,
+          "role": "canonical-original-project-sprite-pack",
+          "referencePurpose": "identity",
+          "referenceScope": "internal-project-character-design",
+          "slot": null,
+          "referenceCharacter": "rhythm_guard_mj",
+          "sourceReferenceRole": "canonical-original-project-sprite-pack",
+          "canonicalProjectReference": true,
+          "exists": true,
+          "viewed": true,
+          "status": "original-project-canon-reference-not-independent-source",
+          "sourceFile": "docs/cg/reviews/music-portraits-2026-11-20/rhythm-guard-mj-reference-evidence-2026-11-20.json",
+          "sha256": "10198ea1fc15b7db5b52a938e46ea5936d5a27d9928faa047bac85362a4801e8",
+          "limitations": []
         }
       ],
       "cgRequirements": {
@@ -292065,14 +293083,16 @@
           "CG01": {
             "slot": "CG01",
             "type": "characterSolo",
-            "themeBrief": "Personnage de référence dans une incarnation source précise, sans transformation.",
-            "poseBrief": "Portrait entier en trois quarts, appui calme, silhouette dégagée et équipement complet; attitude de référence sans attaque.",
-            "backgroundBrief": "Scène musicale originale du projet MultiverseBreach; décor nouveau sans prétendre reproduire Thriller, Moonwalker ou un concert réel. — composition distincte pour Rhythm Guard / CG01",
-            "status": "needs-reference",
+            "themeBrief": "Rhythm Guard — Le signal du palier · portrait entier",
+            "poseBrief": "Vue en pied en trois quarts, un pied sur une marche, microphone à hauteur de poitrine et main libre en signal de tempo.",
+            "backgroundBrief": "Palier acoustique derrière la scène rythmique Marches sombres et bordures de laiton au sol Rhythm Guard au seuil de l’escalier Panneaux d’absorption marines et rambarde Tube bleu et accents dorés réfléchis",
+            "status": "generated",
             "continuityStatus": "source-identity-in-original-scene",
             "source": [
-              "https://chatgpt.com/share/6abdc1d1-1a7c-83eb-9a7a-d979173f3754",
-              "docs/cg/CG_PILOT_REFERENCE_AUDIT.md"
+              "docs/cg/reviews/music-portraits-2026-11-20/visual-review.json",
+              "docs/cg/reviews/music-portraits-2026-11-20/rhythm-guard-mj-reference-evidence-2026-11-20.json",
+              "DLC/MichaelJackson/data/expandedUniverses.js",
+              "DLC/MichaelJackson/data/canonP0SourceKits.js"
             ],
             "sourceComparisonRequired": true,
             "visualFidelityApproved": false
@@ -292284,11 +293304,15 @@
         "sourceReview": "original-project-reference-to-compare",
         "visualFidelityApproved": false,
         "detailedVisualAxes": [
+          "silhouette",
           "anatomy",
-          "palette"
+          "costume",
+          "palette",
+          "face"
         ],
         "missing": [
-          "Axes visuels non détaillés : silhouette, costume, face, distinguishingMarks."
+          "Axes visuels non détaillés : distinguishingMarks.",
+          "Différence volontaire sur un accessoire. Le kit écrit fait autorité pour le microphone, tandis que le sprite montre une baguette lumineuse. Aucun changement du sprite."
         ]
       },
       "qualificationStatus": "original-project-reference-to-compare",
@@ -292303,7 +293327,7 @@
         "plan": "docs/cg/roster-production-2026-10-18.json",
         "dossier": null,
         "sourcePack": "src/game/expandedUniverses.js / src/game/canonRosterWave.js",
-        "sourceSpecificDescription": "runtime-visualAnchor",
+        "sourceSpecificDescription": "docs/cg/reviews/music-portraits-2026-11-20/rhythm-guard-mj-reference-evidence-2026-11-20.json#visualLocks",
         "hasRuntimeSpecificDescription": true,
         "rawRuntimePalette": [
           "#fff67f"
@@ -433152,44 +434176,54 @@
       "universeId": "ado",
       "priority": "P1",
       "incarnation": {
-        "label": "Ado Avatar — Ado; époque et version précises à fixer",
-        "status": "source-work-known-incarnation-to-resolve",
-        "evidence": []
+        "label": "Avatar scénique fictif interne proposé, adaptation visuelle du sprite ado_avatar exact à bfd17af2; aucune identité ou personne réelle.",
+        "status": "documented-in-project-source-record",
+        "evidence": [
+          "docs/cg/reviews/music-portraits-2026-11-20/ado-avatar-reference-evidence-2026-11-20.json"
+        ]
       },
-      "identityLock": "Ado Avatar, Ado : l’identité nominative est conservée; les détails de ressemblance ne sont pas établis par les données actuelles.",
+      "identityLock": "Whole fictional anime avatar, all hair/coat tips and both shoes are inside frame with visible breathing room. Source blue bow, pale folded blouse, long open navy coat, straight dark trousers and long blue-black fringe hair retained. Anatomical LEFT hand on railing and LEFT shoe on raised step, RIGHT hand relaxed and RIGHT shoe on lower paving. No real face inferred, other character, text, logo, UI, weapon, microphone, instrument or added power. Original empty courtyard architecture differs from all three Ado CG03s. Eight observable axes checked individually above.",
       "visualLocks": {
         "silhouette": [
-          "silhouette : détail non établi dans les données de référence de ce personnage; comparer la cible à un visuel source indépendant avant validation."
+          "Source blue bow, pale folded blouse, long open navy coat, straight dark trousers and long blue-black fringe hair retained.",
+          "Original empty courtyard architecture differs from all three Ado CG03s."
         ],
         "anatomy": [
-          "anatomy : détail non établi dans les données de référence de ce personnage; comparer la cible à un visuel source indépendant avant validation."
+          "Anatomical LEFT hand on railing and LEFT shoe on raised step, RIGHT hand relaxed and RIGHT shoe on lower paving."
         ],
         "costume": [
-          "costume : détail non établi dans les données de référence de ce personnage; comparer la cible à un visuel source indépendant avant validation."
+          "Whole fictional anime avatar, all hair/coat tips and both shoes are inside frame with visible breathing room.",
+          "Source blue bow, pale folded blouse, long open navy coat, straight dark trousers and long blue-black fringe hair retained."
         ],
         "palette": [
-          "palette : détail non établi dans les données de référence de ce personnage; comparer la cible à un visuel source indépendant avant validation."
+          "Source blue bow, pale folded blouse, long open navy coat, straight dark trousers and long blue-black fringe hair retained.",
+          "No real face inferred, other character, text, logo, UI, weapon, microphone, instrument or added power."
         ],
         "face": [
-          "face : détail non établi dans les données de référence de ce personnage; comparer la cible à un visuel source indépendant avant validation."
+          "Whole fictional anime avatar, all hair/coat tips and both shoes are inside frame with visible breathing room.",
+          "Source blue bow, pale folded blouse, long open navy coat, straight dark trousers and long blue-black fringe hair retained.",
+          "No real face inferred, other character, text, logo, UI, weapon, microphone, instrument or added power."
         ],
         "distinguishingMarks": [
-          "distinguishingMarks : détail non établi dans les données de référence de ce personnage; comparer la cible à un visuel source indépendant avant validation."
+          "Anatomical LEFT hand on railing and LEFT shoe on raised step, RIGHT hand relaxed and RIGHT shoe on lower paving."
         ],
         "equipment": [
-          "Aucun équipement distinct établi pour cette incarnation; CG02 à adapter ou déclarer N/A plutôt que reprendre une arme générique du gameplay."
+          "Source blue bow, pale folded blouse, long open navy coat, straight dark trousers and long blue-black fringe hair retained.",
+          "No real face inferred, other character, text, logo, UI, weapon, microphone, instrument or added power."
         ],
         "forbiddenMixes": [
+          "No real face inferred, other character, text, logo, UI, weapon, microphone, instrument or added power.",
           "Ne pas fusionner plusieurs continuités ou variantes de Ado Avatar; toute transformation spéciale garde son étiquette WhatIf.",
           "Les armes, rayons, couleurs et catégories du gameplay ne prouvent pas un équipement ou pouvoir canonique."
         ],
         "outfit": [
-          "costume : détail non établi dans les données de référence de ce personnage; comparer la cible à un visuel source indépendant avant validation."
+          "Whole fictional anime avatar, all hair/coat tips and both shoes are inside frame with visible breathing room.",
+          "Source blue bow, pale folded blouse, long open navy coat, straight dark trousers and long blue-black fringe hair retained."
         ]
       },
       "universeCoherence": {
-        "sourceWork": "symbolic music persona",
-        "period": "Ado Avatar — Ado; époque et version précises à fixer",
+        "sourceWork": "Avatar scénique fictif interne proposé, adaptation visuelle du sprite ado_avatar exact à bfd17af2; aucune identité ou personne réelle.",
+        "period": "Avatar scénique fictif interne proposé, adaptation visuelle du sprite ado_avatar exact à bfd17af2; aucune identité ou personne réelle.",
         "locations": [
           "Usseewa graphic office-city set"
         ],
@@ -433218,6 +434252,24 @@
       },
       "sourceRefs": [
         {
+          "path": "docs/cg/reviews/music-portraits-2026-11-20/ado-avatar-reference-evidence-2026-11-20.json",
+          "role": "character-reference-evidence-receipt",
+          "sourceFile": "docs/cg/reviews/music-portraits-2026-11-20/ado-avatar-reference-evidence-2026-11-20.json",
+          "status": "reference-evidence-with-stated-inspection-status-and-limitations"
+        },
+        {
+          "path": "DLC/Ado/data/expandedUniverses.js",
+          "role": "source-evidence-provenance",
+          "sourceFile": "docs/cg/reviews/music-portraits-2026-11-20/ado-avatar-reference-evidence-2026-11-20.json",
+          "status": "historical-repo-record-not-reopened"
+        },
+        {
+          "path": "DLC/Ado/data/stageLoreProfiles.js",
+          "role": "source-evidence-provenance",
+          "sourceFile": "docs/cg/reviews/music-portraits-2026-11-20/ado-avatar-reference-evidence-2026-11-20.json",
+          "status": "historical-repo-record-not-reopened"
+        },
+        {
           "url": "https://cloud9pro.co.jp/artist/profile/ado/",
           "role": "source-identity-or-world-reference",
           "sourceFile": "src/game/heroes.js / dossier / source-pack",
@@ -433243,6 +434295,24 @@
         }
       ],
       "sources": [
+        {
+          "path": "docs/cg/reviews/music-portraits-2026-11-20/ado-avatar-reference-evidence-2026-11-20.json",
+          "role": "character-reference-evidence-receipt",
+          "sourceFile": "docs/cg/reviews/music-portraits-2026-11-20/ado-avatar-reference-evidence-2026-11-20.json",
+          "status": "reference-evidence-with-stated-inspection-status-and-limitations"
+        },
+        {
+          "path": "DLC/Ado/data/expandedUniverses.js",
+          "role": "source-evidence-provenance",
+          "sourceFile": "docs/cg/reviews/music-portraits-2026-11-20/ado-avatar-reference-evidence-2026-11-20.json",
+          "status": "historical-repo-record-not-reopened"
+        },
+        {
+          "path": "DLC/Ado/data/stageLoreProfiles.js",
+          "role": "source-evidence-provenance",
+          "sourceFile": "docs/cg/reviews/music-portraits-2026-11-20/ado-avatar-reference-evidence-2026-11-20.json",
+          "status": "historical-repo-record-not-reopened"
+        },
         {
           "url": "https://cloud9pro.co.jp/artist/profile/ado/",
           "role": "source-identity-or-world-reference",
@@ -433289,6 +434359,37 @@
           "exists": true,
           "selectedInRuntime": false,
           "status": "existing-project-art-not-independent-canon-proof"
+        },
+        {
+          "path": "/cg/ado/ado-avatar/character-solo-music-2026-11-20.png",
+          "role": "project-generated-art",
+          "exists": true,
+          "selectedInRuntime": false,
+          "status": "existing-project-art-not-independent-canon-proof"
+        },
+        {
+          "path": "/cg/ado/ado-avatar/character-solo-music-2026-11-20.webp",
+          "role": "project-generated-art",
+          "exists": true,
+          "selectedInRuntime": false,
+          "status": "existing-project-art-not-independent-canon-proof"
+        },
+        {
+          "path": "DLC/Ado/assets/sprites/generated/heroes/ado/ado-avatar.png",
+          "url": null,
+          "role": "project-generated-art",
+          "referencePurpose": "internal-design-comparison",
+          "referenceScope": "internal-project-character-design",
+          "slot": null,
+          "referenceCharacter": "ado_avatar",
+          "sourceReferenceRole": "internal-project-sprite-design-not-independent-source",
+          "canonicalProjectReference": false,
+          "exists": true,
+          "viewed": true,
+          "status": "generated-project-reference-not-independent-source",
+          "sourceFile": "docs/cg/reviews/music-portraits-2026-11-20/ado-avatar-reference-evidence-2026-11-20.json",
+          "sha256": "7a1f62d20886b255fce912f02fdb0fc46e6f54afbcfec77e181bcb26687aa7bd",
+          "limitations": []
         }
       ],
       "cgRequirements": {
@@ -433319,14 +434420,16 @@
           "CG01": {
             "slot": "CG01",
             "type": "characterSolo",
-            "themeBrief": "Personnage de référence dans une incarnation source précise, sans transformation.",
-            "poseBrief": "Portrait entier en trois quarts, appui calme, silhouette dégagée et équipement complet; attitude de référence sans attaque.",
-            "backgroundBrief": "Usseewa graphic office-city set — composition distincte pour Ado Avatar / CG01",
-            "status": "needs-reference",
+            "themeBrief": "Ado Avatar — Cour des reflets cobalt · portrait entier",
+            "poseBrief": "Debout de trois quarts sur un pont bas, chaussure gauche sur une marche et droite sur le pavage inférieur; main gauche posée sur la rampe, main droite ouverte le long de la cuisse, tête légèrement tournée vers le spectateur.",
+            "backgroundBrief": "Original backstage water courtyard within an imagined shadow-pop theatre complex. Wet dark stone paving with cobalt reflections and clear space around both whole shoes. The single internal avatar on a low curved bridge above a shallow reflecting canal. Empty rounded obsidian colonnade, night sky and slanted blue skylight; no audience or real-world stage. Cobalt rim light, deep plum shadows and soft reflected light on the stylized face.",
+            "status": "generated",
             "continuityStatus": "source-identity-in-original-scene",
             "source": [
-              "https://www.universal-music.co.jp/ado/",
-              "docs/cg/CG_PILOT_REFERENCE_AUDIT.md"
+              "docs/cg/reviews/music-portraits-2026-11-20/visual-review.json",
+              "docs/cg/reviews/music-portraits-2026-11-20/ado-avatar-reference-evidence-2026-11-20.json",
+              "DLC/Ado/data/expandedUniverses.js",
+              "DLC/Ado/data/stageLoreProfiles.js"
             ],
             "sourceComparisonRequired": true,
             "visualFidelityApproved": false
@@ -433533,19 +434636,27 @@
         "commonRule": "Une pose et une composition de décor distinctes par CG; pour objet/décor seul, aucun personnage forcé. Préserver incarnation/anatomie/tenue sauf transformation spéciale explicitement étiquetée. Préserver tous les anciens assets comme variantes."
       },
       "readiness": {
-        "identity": "source-work-known-incarnation-to-resolve",
+        "identity": "documented-in-project-source-record",
         "visualReference": "source-image-needed-or-historical-url-only",
-        "sourceReview": "identity-or-visual-locks-incomplete",
+        "sourceReview": "documentary-lock-needs-inspected-identity-image",
         "visualFidelityApproved": false,
-        "detailedVisualAxes": [],
+        "detailedVisualAxes": [
+          "silhouette",
+          "anatomy",
+          "costume",
+          "palette",
+          "face",
+          "distinguishingMarks"
+        ],
         "missing": [
-          "Incarnation exacte encore à choisir; le nom de franchise ne suffit pas.",
-          "Silhouette, anatomie, visage, tenue et équipement non décrits spécifiquement; la vignette actuelle sert uniquement de point de comparaison.",
           "Aucune image source indépendante conservée localement et inspectée dans cette session pour ce personnage.",
-          "Axes visuels non détaillés : silhouette, anatomy, costume, palette, face, distinguishingMarks."
+          "This is explicitly an adaptation visuelle du sprite interne; no absolute external likeness or official Ado fidelity is certified.",
+          "The historical sprite was a generated project interpretation with no documented real-person incarnation. The proposed fictional stage avatar does not resolve Ado’s real appearance.",
+          "Fine eye, blouse, shoe and coat construction at high resolution are interpretation from small pixel source details, not externally verified canon.",
+          "This approval applies only to ado_avatar; it does not qualify near-duplicate Uta Echo or Rebellion Dancer collateral sprites as distinct original identities."
         ]
       },
-      "qualificationStatus": "identity-or-visual-locks-incomplete",
+      "qualificationStatus": "documentary-lock-needs-inspected-identity-image",
       "notes": [
         "Palette runtime indicative (pas preuve canon) : #3f6dff.",
         "Kit jeu séparé du canon : Ado Avatar Signature Strike ; Ado Avatar Breach Technique ; Ado Avatar Guard ; Ado Avatar Origin Burst.",
@@ -433557,7 +434668,7 @@
         "plan": "docs/cg/roster-production-2026-10-18.json",
         "dossier": "public/visuals/cosmetics/openai/universes/ado/reference-dossier.json",
         "sourcePack": "src/game/expandedUniverses.js / src/game/canonRosterWave.js",
-        "sourceSpecificDescription": null,
+        "sourceSpecificDescription": "docs/cg/reviews/music-portraits-2026-11-20/ado-avatar-reference-evidence-2026-11-20.json#visualLocks",
         "hasRuntimeSpecificDescription": false,
         "rawRuntimePalette": [
           "#3f6dff"
@@ -453854,26 +454965,28 @@
       "universeId": "buckethead",
       "priority": "P1",
       "incarnation": {
-        "label": "Death Cube K Echo — Buckethead; époque et version précises à fixer",
-        "status": "source-work-known-incarnation-to-resolve",
-        "evidence": []
+        "label": "Death Cube K Echo, avatar de la Trame du projet d’après le sprite existant et la plaque",
+        "status": "documented-in-project-source-record",
+        "evidence": [
+          "docs/cg/reviews/music-portraits-2026-11-20/death-cube-k-echo-reference-evidence-2026-11-20.json"
+        ]
       },
-      "identityLock": "Death Cube K Echo, Buckethead : l’identité nominative est conservée; les détails de ressemblance ne sont pas établis par les données actuelles.",
+      "identityLock": "Seau crème conique unique couvrant la face, petits orifices noirs en bas, mèches brunes, veste ample et pantalon marine, gants gris et chaussures noires bordées de blanc.",
       "visualLocks": {
         "silhouette": [
-          "silhouette : détail non établi dans les données de référence de ce personnage; comparer la cible à un visuel source indépendant avant validation."
+          "Seau crème conique unique couvrant la face, petits orifices noirs en bas, mèches brunes, veste ample et pantalon marine, gants gris et chaussures noires bordées de blanc."
         ],
         "anatomy": [
           "anatomy : détail non établi dans les données de référence de ce personnage; comparer la cible à un visuel source indépendant avant validation."
         ],
         "costume": [
-          "costume : détail non établi dans les données de référence de ce personnage; comparer la cible à un visuel source indépendant avant validation."
+          "Seau crème conique unique couvrant la face, petits orifices noirs en bas, mèches brunes, veste ample et pantalon marine, gants gris et chaussures noires bordées de blanc."
         ],
         "palette": [
-          "palette : détail non établi dans les données de référence de ce personnage; comparer la cible à un visuel source indépendant avant validation."
+          "Seau crème conique unique couvrant la face, petits orifices noirs en bas, mèches brunes, veste ample et pantalon marine, gants gris et chaussures noires bordées de blanc."
         ],
         "face": [
-          "face : détail non établi dans les données de référence de ce personnage; comparer la cible à un visuel source indépendant avant validation."
+          "Seau crème conique unique couvrant la face, petits orifices noirs en bas, mèches brunes, veste ample et pantalon marine, gants gris et chaussures noires bordées de blanc."
         ],
         "distinguishingMarks": [
           "distinguishingMarks : détail non établi dans les données de référence de ce personnage; comparer la cible à un visuel source indépendant avant validation."
@@ -453886,12 +454999,12 @@
           "Les armes, rayons, couleurs et catégories du gameplay ne prouvent pas un équipement ou pouvoir canonique."
         ],
         "outfit": [
-          "costume : détail non établi dans les données de référence de ce personnage; comparer la cible à un visuel source indépendant avant validation."
+          "Seau crème conique unique couvrant la face, petits orifices noirs en bas, mèches brunes, veste ample et pantalon marine, gants gris et chaussures noires bordées de blanc."
         ]
       },
       "universeCoherence": {
-        "sourceWork": "Buckethead",
-        "period": "Death Cube K Echo — Buckethead; époque et version précises à fixer",
+        "sourceWork": "Death Cube K Echo, avatar de la Trame du projet d’après le sprite existant et la plaque",
+        "period": "Death Cube K Echo, avatar de la Trame du projet d’après le sprite existant et la plaque",
         "locations": [
           "Bucketheadland haunted theme-park entrance and Giant Robot ride"
         ],
@@ -453911,6 +455024,24 @@
       },
       "sourceRefs": [
         {
+          "path": "docs/cg/reviews/music-portraits-2026-11-20/death-cube-k-echo-reference-evidence-2026-11-20.json",
+          "role": "character-reference-evidence-receipt",
+          "sourceFile": "docs/cg/reviews/music-portraits-2026-11-20/death-cube-k-echo-reference-evidence-2026-11-20.json",
+          "status": "reference-evidence-with-stated-inspection-status-and-limitations"
+        },
+        {
+          "path": "DLC/Buckethead/data/expandedUniverses.js",
+          "role": "source-evidence-provenance",
+          "sourceFile": "docs/cg/reviews/music-portraits-2026-11-20/death-cube-k-echo-reference-evidence-2026-11-20.json",
+          "status": "historical-repo-record-not-reopened"
+        },
+        {
+          "path": "DLC/Buckethead/data/characterPlaques.js",
+          "role": "source-evidence-provenance",
+          "sourceFile": "docs/cg/reviews/music-portraits-2026-11-20/death-cube-k-echo-reference-evidence-2026-11-20.json",
+          "status": "historical-repo-record-not-reopened"
+        },
+        {
           "url": "https://www.bucketheadpikes.com/",
           "role": "source-identity-or-world-reference",
           "sourceFile": "src/game/heroes.js / dossier / source-pack",
@@ -453918,6 +455049,24 @@
         }
       ],
       "sources": [
+        {
+          "path": "docs/cg/reviews/music-portraits-2026-11-20/death-cube-k-echo-reference-evidence-2026-11-20.json",
+          "role": "character-reference-evidence-receipt",
+          "sourceFile": "docs/cg/reviews/music-portraits-2026-11-20/death-cube-k-echo-reference-evidence-2026-11-20.json",
+          "status": "reference-evidence-with-stated-inspection-status-and-limitations"
+        },
+        {
+          "path": "DLC/Buckethead/data/expandedUniverses.js",
+          "role": "source-evidence-provenance",
+          "sourceFile": "docs/cg/reviews/music-portraits-2026-11-20/death-cube-k-echo-reference-evidence-2026-11-20.json",
+          "status": "historical-repo-record-not-reopened"
+        },
+        {
+          "path": "DLC/Buckethead/data/characterPlaques.js",
+          "role": "source-evidence-provenance",
+          "sourceFile": "docs/cg/reviews/music-portraits-2026-11-20/death-cube-k-echo-reference-evidence-2026-11-20.json",
+          "status": "historical-repo-record-not-reopened"
+        },
         {
           "url": "https://www.bucketheadpikes.com/",
           "role": "source-identity-or-world-reference",
@@ -453946,6 +455095,37 @@
           "exists": true,
           "selectedInRuntime": false,
           "status": "existing-project-art-not-independent-canon-proof"
+        },
+        {
+          "path": "/cg/buckethead/death-cube-k-echo/character-solo-music-2026-11-20.png",
+          "role": "project-generated-art",
+          "exists": true,
+          "selectedInRuntime": false,
+          "status": "existing-project-art-not-independent-canon-proof"
+        },
+        {
+          "path": "/cg/buckethead/death-cube-k-echo/character-solo-music-2026-11-20.webp",
+          "role": "project-generated-art",
+          "exists": true,
+          "selectedInRuntime": false,
+          "status": "existing-project-art-not-independent-canon-proof"
+        },
+        {
+          "path": "DLC/Buckethead/assets/sprites/generated/heroes/buckethead/death-cube-k-echo.png",
+          "url": null,
+          "role": "project-generated-art",
+          "referencePurpose": "internal-design-comparison",
+          "referenceScope": "internal-project-character-design",
+          "slot": null,
+          "referenceCharacter": "death_cube_k_echo",
+          "sourceReferenceRole": "internal-project-sprite-design-not-independent-source",
+          "canonicalProjectReference": false,
+          "exists": true,
+          "viewed": true,
+          "status": "generated-project-reference-not-independent-source",
+          "sourceFile": "docs/cg/reviews/music-portraits-2026-11-20/death-cube-k-echo-reference-evidence-2026-11-20.json",
+          "sha256": "7785ce67047ea36822ac8bd5bc1c1ccc28d4189805b28ef0cba0e7469fb03ade",
+          "limitations": []
         }
       ],
       "cgRequirements": {
@@ -453976,14 +455156,16 @@
           "CG01": {
             "slot": "CG01",
             "type": "characterSolo",
-            "themeBrief": "Personnage de référence dans une incarnation source précise, sans transformation.",
-            "poseBrief": "Portrait entier en trois quarts, appui calme, silhouette dégagée et équipement complet; attitude de référence sans attaque.",
-            "backgroundBrief": "Bucketheadland haunted theme-park entrance and Giant Robot ride — composition distincte pour Death Cube K Echo / CG01",
-            "status": "needs-reference",
+            "themeBrief": "Death Cube K Echo — La passerelle des vibrations · portrait entier",
+            "poseBrief": "En pied de trois quarts, une main gantée repose sur le garde-corps, l’autre pend naturellement et la tête se penche vers le puits.",
+            "backgroundBrief": "Passerelle de transfert du puits de vibrations de Bucketheadland Sol froid et garde-corps de béton bas Echo en pied devant un vide acoustique Poutres et passerelles superposées dans la profondeur Liserés bleus et graphite, éclat sur le seau crème",
+            "status": "generated",
             "continuityStatus": "source-identity-in-original-scene",
             "source": [
-              "https://www.bucketheadpikes.com/",
-              "docs/cg/CG_PILOT_REFERENCE_AUDIT.md"
+              "docs/cg/reviews/music-portraits-2026-11-20/visual-review.json",
+              "docs/cg/reviews/music-portraits-2026-11-20/death-cube-k-echo-reference-evidence-2026-11-20.json",
+              "DLC/Buckethead/data/expandedUniverses.js",
+              "DLC/Buckethead/data/characterPlaques.js"
             ],
             "sourceComparisonRequired": true,
             "visualFidelityApproved": false
@@ -454192,19 +455374,23 @@
         "commonRule": "Une pose et une composition de décor distinctes par CG; pour objet/décor seul, aucun personnage forcé. Préserver incarnation/anatomie/tenue sauf transformation spéciale explicitement étiquetée. Préserver tous les anciens assets comme variantes."
       },
       "readiness": {
-        "identity": "source-work-known-incarnation-to-resolve",
+        "identity": "documented-in-project-source-record",
         "visualReference": "source-image-needed-or-historical-url-only",
-        "sourceReview": "identity-or-visual-locks-incomplete",
+        "sourceReview": "documentary-lock-needs-inspected-identity-image",
         "visualFidelityApproved": false,
-        "detailedVisualAxes": [],
+        "detailedVisualAxes": [
+          "silhouette",
+          "costume",
+          "palette",
+          "face"
+        ],
         "missing": [
-          "Incarnation exacte encore à choisir; le nom de franchise ne suffit pas.",
-          "Silhouette, anatomie, visage, tenue et équipement non décrits spécifiquement; la vignette actuelle sert uniquement de point de comparaison.",
           "Aucune image source indépendante conservée localement et inspectée dans cette session pour ce personnage.",
-          "Axes visuels non détaillés : silhouette, anatomy, costume, palette, face, distinguishingMarks."
+          "Axes visuels non détaillés : anatomy, distinguishingMarks.",
+          "Adaptation du sprite de l’écho interne. Aucun visage sous le seau, aucune reconstitution de la personne civile."
         ]
       },
-      "qualificationStatus": "identity-or-visual-locks-incomplete",
+      "qualificationStatus": "documentary-lock-needs-inspected-identity-image",
       "notes": [
         "Palette runtime indicative (pas preuve canon) : #ffffff.",
         "Kit jeu séparé du canon : Dark Ambient Pulse ; Death Cube Slow Room ; Drone Corridor Veil ; Inverted Mask Lament."
@@ -454215,7 +455401,7 @@
         "plan": "docs/cg/roster-production-2026-10-18.json",
         "dossier": null,
         "sourcePack": "src/game/expandedUniverses.js / src/game/canonRosterWave.js",
-        "sourceSpecificDescription": null,
+        "sourceSpecificDescription": "docs/cg/reviews/music-portraits-2026-11-20/death-cube-k-echo-reference-evidence-2026-11-20.json#visualLocks",
         "hasRuntimeSpecificDescription": false,
         "rawRuntimePalette": [
           "#ffffff"
@@ -454233,26 +455419,28 @@
       "universeId": "buckethead",
       "priority": "P1",
       "incarnation": {
-        "label": "Pike Riff Signal — Buckethead; époque et version précises à fixer",
-        "status": "source-work-known-incarnation-to-resolve",
-        "evidence": []
+        "label": "Pike Riff Signal, avatar de la Trame du projet d’après le sprite existant et la plaque",
+        "status": "documented-in-project-source-record",
+        "evidence": [
+          "docs/cg/reviews/music-portraits-2026-11-20/pike-riff-signal-reference-evidence-2026-11-20.json"
+        ]
       },
-      "identityLock": "Pike Riff Signal, Buckethead : l’identité nominative est conservée; les détails de ressemblance ne sont pas établis par les données actuelles.",
+      "identityLock": "Seau argent à cannelures porté séparément du masque pâle allongé, boucles brunes, veste marine à zip, pantalon large, mains nues et baskets noires à semelle claire.",
       "visualLocks": {
         "silhouette": [
-          "silhouette : détail non établi dans les données de référence de ce personnage; comparer la cible à un visuel source indépendant avant validation."
+          "Seau argent à cannelures porté séparément du masque pâle allongé, boucles brunes, veste marine à zip, pantalon large, mains nues et baskets noires à semelle claire."
         ],
         "anatomy": [
-          "anatomy : détail non établi dans les données de référence de ce personnage; comparer la cible à un visuel source indépendant avant validation."
+          "Seau argent à cannelures porté séparément du masque pâle allongé, boucles brunes, veste marine à zip, pantalon large, mains nues et baskets noires à semelle claire."
         ],
         "costume": [
-          "costume : détail non établi dans les données de référence de ce personnage; comparer la cible à un visuel source indépendant avant validation."
+          "Seau argent à cannelures porté séparément du masque pâle allongé, boucles brunes, veste marine à zip, pantalon large, mains nues et baskets noires à semelle claire."
         ],
         "palette": [
-          "palette : détail non établi dans les données de référence de ce personnage; comparer la cible à un visuel source indépendant avant validation."
+          "Seau argent à cannelures porté séparément du masque pâle allongé, boucles brunes, veste marine à zip, pantalon large, mains nues et baskets noires à semelle claire."
         ],
         "face": [
-          "face : détail non établi dans les données de référence de ce personnage; comparer la cible à un visuel source indépendant avant validation."
+          "Seau argent à cannelures porté séparément du masque pâle allongé, boucles brunes, veste marine à zip, pantalon large, mains nues et baskets noires à semelle claire."
         ],
         "distinguishingMarks": [
           "distinguishingMarks : détail non établi dans les données de référence de ce personnage; comparer la cible à un visuel source indépendant avant validation."
@@ -454265,12 +455453,12 @@
           "Les armes, rayons, couleurs et catégories du gameplay ne prouvent pas un équipement ou pouvoir canonique."
         ],
         "outfit": [
-          "costume : détail non établi dans les données de référence de ce personnage; comparer la cible à un visuel source indépendant avant validation."
+          "Seau argent à cannelures porté séparément du masque pâle allongé, boucles brunes, veste marine à zip, pantalon large, mains nues et baskets noires à semelle claire."
         ]
       },
       "universeCoherence": {
-        "sourceWork": "Buckethead",
-        "period": "Pike Riff Signal — Buckethead; époque et version précises à fixer",
+        "sourceWork": "Pike Riff Signal, avatar de la Trame du projet d’après le sprite existant et la plaque",
+        "period": "Pike Riff Signal, avatar de la Trame du projet d’après le sprite existant et la plaque",
         "locations": [
           "Bucketheadland haunted theme-park entrance and Giant Robot ride"
         ],
@@ -454290,6 +455478,24 @@
       },
       "sourceRefs": [
         {
+          "path": "docs/cg/reviews/music-portraits-2026-11-20/pike-riff-signal-reference-evidence-2026-11-20.json",
+          "role": "character-reference-evidence-receipt",
+          "sourceFile": "docs/cg/reviews/music-portraits-2026-11-20/pike-riff-signal-reference-evidence-2026-11-20.json",
+          "status": "reference-evidence-with-stated-inspection-status-and-limitations"
+        },
+        {
+          "path": "DLC/Buckethead/data/expandedUniverses.js",
+          "role": "source-evidence-provenance",
+          "sourceFile": "docs/cg/reviews/music-portraits-2026-11-20/pike-riff-signal-reference-evidence-2026-11-20.json",
+          "status": "historical-repo-record-not-reopened"
+        },
+        {
+          "path": "DLC/Buckethead/data/characterPlaques.js",
+          "role": "source-evidence-provenance",
+          "sourceFile": "docs/cg/reviews/music-portraits-2026-11-20/pike-riff-signal-reference-evidence-2026-11-20.json",
+          "status": "historical-repo-record-not-reopened"
+        },
+        {
           "url": "https://www.bucketheadpikes.com/",
           "role": "source-identity-or-world-reference",
           "sourceFile": "src/game/heroes.js / dossier / source-pack",
@@ -454297,6 +455503,24 @@
         }
       ],
       "sources": [
+        {
+          "path": "docs/cg/reviews/music-portraits-2026-11-20/pike-riff-signal-reference-evidence-2026-11-20.json",
+          "role": "character-reference-evidence-receipt",
+          "sourceFile": "docs/cg/reviews/music-portraits-2026-11-20/pike-riff-signal-reference-evidence-2026-11-20.json",
+          "status": "reference-evidence-with-stated-inspection-status-and-limitations"
+        },
+        {
+          "path": "DLC/Buckethead/data/expandedUniverses.js",
+          "role": "source-evidence-provenance",
+          "sourceFile": "docs/cg/reviews/music-portraits-2026-11-20/pike-riff-signal-reference-evidence-2026-11-20.json",
+          "status": "historical-repo-record-not-reopened"
+        },
+        {
+          "path": "DLC/Buckethead/data/characterPlaques.js",
+          "role": "source-evidence-provenance",
+          "sourceFile": "docs/cg/reviews/music-portraits-2026-11-20/pike-riff-signal-reference-evidence-2026-11-20.json",
+          "status": "historical-repo-record-not-reopened"
+        },
         {
           "url": "https://www.bucketheadpikes.com/",
           "role": "source-identity-or-world-reference",
@@ -454325,6 +455549,37 @@
           "exists": true,
           "selectedInRuntime": false,
           "status": "existing-project-art-not-independent-canon-proof"
+        },
+        {
+          "path": "/cg/buckethead/pike-riff-signal/character-solo-music-2026-11-20.png",
+          "role": "project-generated-art",
+          "exists": true,
+          "selectedInRuntime": false,
+          "status": "existing-project-art-not-independent-canon-proof"
+        },
+        {
+          "path": "/cg/buckethead/pike-riff-signal/character-solo-music-2026-11-20.webp",
+          "role": "project-generated-art",
+          "exists": true,
+          "selectedInRuntime": false,
+          "status": "existing-project-art-not-independent-canon-proof"
+        },
+        {
+          "path": "DLC/Buckethead/assets/sprites/generated/heroes/buckethead/pike-riff-signal.png",
+          "url": null,
+          "role": "project-generated-art",
+          "referencePurpose": "internal-design-comparison",
+          "referenceScope": "internal-project-character-design",
+          "slot": null,
+          "referenceCharacter": "pike_riff_signal",
+          "sourceReferenceRole": "internal-project-sprite-design-not-independent-source",
+          "canonicalProjectReference": false,
+          "exists": true,
+          "viewed": true,
+          "status": "generated-project-reference-not-independent-source",
+          "sourceFile": "docs/cg/reviews/music-portraits-2026-11-20/pike-riff-signal-reference-evidence-2026-11-20.json",
+          "sha256": "f5ee8ddf4d53b9ee830477b050bf2ff77ac0fbf7ed1451a4db1d18e3cf026bfe",
+          "limitations": []
         }
       ],
       "cgRequirements": {
@@ -454355,14 +455610,16 @@
           "CG01": {
             "slot": "CG01",
             "type": "characterSolo",
-            "themeBrief": "Personnage de référence dans une incarnation source précise, sans transformation.",
-            "poseBrief": "Portrait entier en trois quarts, appui calme, silhouette dégagée et équipement complet; attitude de référence sans attaque.",
-            "backgroundBrief": "Bucketheadland haunted theme-park entrance and Giant Robot ride — composition distincte pour Pike Riff Signal / CG01",
-            "status": "needs-reference",
+            "themeBrief": "Pike Riff Signal — Le balcon des bobines · portrait entier",
+            "poseBrief": "En pied en trois quarts sur des marches basses, main nue ouverte vers les archives, autre main au repos.",
+            "backgroundBrief": "Balcon latéral des archives Pike Marches larges et cartothèque métallique Avatar en pied contre un garde-corps de cuivre Rangées latérales de bobines et chariot en retrait Lanterne chaude sur rambarde, métal argenté éclairé",
+            "status": "generated",
             "continuityStatus": "source-identity-in-original-scene",
             "source": [
-              "https://www.bucketheadpikes.com/",
-              "docs/cg/CG_PILOT_REFERENCE_AUDIT.md"
+              "docs/cg/reviews/music-portraits-2026-11-20/visual-review.json",
+              "docs/cg/reviews/music-portraits-2026-11-20/pike-riff-signal-reference-evidence-2026-11-20.json",
+              "DLC/Buckethead/data/expandedUniverses.js",
+              "DLC/Buckethead/data/characterPlaques.js"
             ],
             "sourceComparisonRequired": true,
             "visualFidelityApproved": false
@@ -454571,19 +455828,24 @@
         "commonRule": "Une pose et une composition de décor distinctes par CG; pour objet/décor seul, aucun personnage forcé. Préserver incarnation/anatomie/tenue sauf transformation spéciale explicitement étiquetée. Préserver tous les anciens assets comme variantes."
       },
       "readiness": {
-        "identity": "source-work-known-incarnation-to-resolve",
+        "identity": "documented-in-project-source-record",
         "visualReference": "source-image-needed-or-historical-url-only",
-        "sourceReview": "identity-or-visual-locks-incomplete",
+        "sourceReview": "documentary-lock-needs-inspected-identity-image",
         "visualFidelityApproved": false,
-        "detailedVisualAxes": [],
+        "detailedVisualAxes": [
+          "silhouette",
+          "anatomy",
+          "costume",
+          "palette",
+          "face"
+        ],
         "missing": [
-          "Incarnation exacte encore à choisir; le nom de franchise ne suffit pas.",
-          "Silhouette, anatomie, visage, tenue et équipement non décrits spécifiquement; la vignette actuelle sert uniquement de point de comparaison.",
           "Aucune image source indépendante conservée localement et inspectée dans cette session pour ce personnage.",
-          "Axes visuels non détaillés : silhouette, anatomy, costume, palette, face, distinguishingMarks."
+          "Axes visuels non détaillés : distinguishingMarks.",
+          "Adaptation du sprite interne, dont les traits fins du masque et les dimensions du seau restent interprétés au format illustration."
         ]
       },
-      "qualificationStatus": "identity-or-visual-locks-incomplete",
+      "qualificationStatus": "documentary-lock-needs-inspected-identity-image",
       "notes": [
         "Palette runtime indicative (pas preuve canon) : #d2d2d2.",
         "Kit jeu séparé du canon : Pike Pick Slash ; Motif Shift Solo ; Riff Route Step ; Pike Archive Cascade."
@@ -454594,7 +455856,7 @@
         "plan": "docs/cg/roster-production-2026-10-18.json",
         "dossier": null,
         "sourcePack": "src/game/expandedUniverses.js / src/game/canonRosterWave.js",
-        "sourceSpecificDescription": null,
+        "sourceSpecificDescription": "docs/cg/reviews/music-portraits-2026-11-20/pike-riff-signal-reference-evidence-2026-11-20.json#visualLocks",
         "hasRuntimeSpecificDescription": false,
         "rawRuntimePalette": [
           "#d2d2d2"
